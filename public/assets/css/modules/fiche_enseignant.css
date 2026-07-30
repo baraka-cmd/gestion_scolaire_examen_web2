@@ -1,0 +1,544 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/fiche_enseignant.css
+   Rôle    : Styles de la fiche détaillée d'un enseignant
+   ============================================================ */
+
+/* ============================================================
+   1. HERO HEADER
+   ============================================================ */
+.enseignant-hero {
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 50%, #1a274f 100%);
+    border-radius: 20px;
+    padding: 32px 36px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.enseignant-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 350px;
+    height: 350px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.enseignant-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.enseignant-hero-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.12);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.enseignant-hero-info {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+}
+
+.enseignant-hero-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.3px;
+}
+
+.enseignant-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.enseignant-hero-meta span {
+    font-size: 0.82rem;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.enseignant-hero-meta i {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.enseignant-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.hero-badge i { font-size: 0.65rem; }
+.hero-badge.success { background: rgba(16, 185, 129, 0.25); border-color: rgba(16, 185, 129, 0.3); }
+.hero-badge.warning { background: rgba(245, 158, 11, 0.25); border-color: rgba(245, 158, 11, 0.3); }
+.hero-badge.danger { background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.3); }
+
+.enseignant-hero-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   2. ONGLETS
+   ============================================================ */
+.enseignant-tabs {
+    display: flex;
+    gap: 0;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-xs);
+}
+
+.enseignant-tab {
+    flex: 1;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-bottom: 3px solid transparent;
+    background: none;
+    font-family: var(--font-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.enseignant-tab:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.enseignant-tab.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 600;
+    background-color: var(--color-primary-lighter);
+}
+
+.enseignant-tab i { font-size: 0.85rem; }
+
+.enseignant-tab .tab-count {
+    font-size: 0.7rem;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.enseignant-tab.active .tab-count {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ============================================================
+   3. PANNEAUX
+   ============================================================ */
+.enseignant-panel {
+    display: none;
+    animation: panelFadeIn 0.3s ease;
+}
+
+.enseignant-panel.active {
+    display: block;
+}
+
+@keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   4. GRILLE D'INFORMATIONS
+   ============================================================ */
+.enseignant-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.enseignant-info-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+}
+
+.enseignant-info-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.enseignant-info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.enseignant-info-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.enseignant-info-card-icon.blue { background-color: #e8eaf6; color: #2c3e90; }
+.enseignant-info-card-icon.green { background-color: #d1fae5; color: #10b981; }
+.enseignant-info-card-icon.orange { background-color: #fef3c7; color: #f59e0b; }
+.enseignant-info-card-icon.purple { background-color: #ede9fe; color: #8b5cf6; }
+
+.enseignant-info-card-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.enseignant-info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 6px 0;
+}
+
+.enseignant-info-label {
+    font-size: 0.7rem;
+    color: var(--color-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.enseignant-info-value {
+    font-size: 0.85rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.enseignant-info-value.empty {
+    color: var(--color-gray-400);
+    font-style: italic;
+}
+
+/* ============================================================
+   5. CARTE CLASSE TITULAIRE
+   ============================================================ */
+.classe-titulaire-card {
+    background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%);
+    border: 1px solid #a7f3d0;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+}
+
+.classe-titulaire-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #065f46;
+}
+
+.classe-titulaire-header i {
+    font-size: 1.2rem;
+    color: #10b981;
+}
+
+.classe-titulaire-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.classe-titulaire-stat {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #a7f3d0;
+    transition: all 0.3s ease;
+}
+
+.classe-titulaire-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.classe-titulaire-stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #065f46;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.classe-titulaire-stat-label {
+    font-size: 0.72rem;
+    color: #047857;
+    font-weight: 500;
+}
+
+/* Pas de classe */
+.no-classe-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border: 1px solid #fde68a;
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+}
+
+.no-classe-card i {
+    font-size: 2.5rem;
+    color: #f59e0b;
+    margin-bottom: 12px;
+}
+
+.no-classe-card p {
+    font-size: 0.9rem;
+    color: #92400e;
+    margin: 0;
+}
+
+/* ============================================================
+   6. TABLEAUX DE DONNÉES
+   ============================================================ */
+.data-table-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+    margin-top: 16px;
+}
+
+.data-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+}
+
+.data-table-title {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.data-table-title i { color: var(--color-primary); }
+
+.data-table-count {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+/* ============================================================
+   7. BOUTON IMPRESSION
+   ============================================================ */
+.btn-print-fiche {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+}
+
+.btn-print-fiche:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .enseignant-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .enseignant-hero-actions {
+        justify-content: center;
+    }
+
+    .enseignant-hero-meta {
+        justify-content: center;
+    }
+
+    .enseignant-hero-badges {
+        justify-content: center;
+    }
+
+    .enseignant-tabs {
+        overflow-x: auto;
+    }
+
+    .enseignant-tab {
+        flex: none;
+        min-width: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .enseignant-hero {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .enseignant-hero-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8rem;
+    }
+
+    .enseignant-hero-name {
+        font-size: 1.2rem;
+    }
+
+    .enseignant-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .classe-titulaire-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .enseignant-hero {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .enseignant-hero-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 1.4rem;
+        border-radius: 16px;
+    }
+
+    .enseignant-hero-meta {
+        gap: 8px;
+    }
+
+    .enseignant-hero-meta span {
+        font-size: 0.74rem;
+    }
+
+    .classe-titulaire-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   9. IMPRESSION
+   ============================================================ */
+@media print {
+    .enseignant-hero-actions,
+    .enseignant-tabs,
+    .btn-print-fiche,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb {
+        display: none !important;
+    }
+
+    .enseignant-hero {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+    }
+
+    .enseignant-info-card,
+    .classe-titulaire-card,
+    .data-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .enseignant-panel {
+        display: block !important;
+    }
+}

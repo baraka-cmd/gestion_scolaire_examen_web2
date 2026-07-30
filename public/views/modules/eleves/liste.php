@@ -35,6 +35,27 @@ $pageDescription = 'Gérez les élèves, leurs inscriptions et leurs information
 $extraCSS = ['modules/eleves.css'];
 $extraJS  = ['modules/eleves.js'];
 
+
+// Statistiques pour le résumé
+$totalActifs = (int) $db->fetchColumn(
+    "SELECT COUNT(*) FROM inscriptions WHERE annee_scolaire_id = (SELECT annee_scolaire_active_id FROM parametres_ecole LIMIT 1) AND statut = 'Actif'"
+);
+$totalGarcons = (int) $db->fetchColumn(
+    "SELECT COUNT(*) FROM inscriptions i 
+     INNER JOIN eleves e ON i.eleve_id = e.id 
+     WHERE i.annee_scolaire_id = (SELECT annee_scolaire_active_id FROM parametres_ecole LIMIT 1) 
+     AND i.statut = 'Actif' AND e.sexe = 'M'"
+);
+$totalFilles = (int) $db->fetchColumn(
+    "SELECT COUNT(*) FROM inscriptions i 
+     INNER JOIN eleves e ON i.eleve_id = e.id 
+     WHERE i.annee_scolaire_id = (SELECT annee_scolaire_active_id FROM parametres_ecole LIMIT 1) 
+     AND i.statut = 'Actif' AND e.sexe = 'F'"
+);
+$nouvellesInscriptions = (int) $db->fetchColumn(
+    "SELECT COUNT(*) FROM inscriptions WHERE MONTH(date_inscription) = MONTH(CURDATE()) AND YEAR(date_inscription) = YEAR(CURDATE())"
+);
+
 require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
 ?>
 
@@ -65,6 +86,41 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
                 <i class="fa-solid fa-user-plus"></i> Nouvel élève
             </button>
         <?php endif; ?>
+    </div>
+</div>
+
+
+<!-- ============================================================
+     RÉSUMÉ DES EFFECTIFS (AVANT LE TABLEAU)
+     ============================================================ -->
+<div class="stats-grid mb-4">
+    <div class="stat-card students">
+        <div class="stat-icon blue"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="stat-content">
+            <div class="stat-value"><?= number_format($totalActifs, 0, ',', ' ') ?></div>
+            <div class="stat-label">Total élèves</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background:linear-gradient(135deg,#3b82f6,#60a5fa);"><i class="fa-solid fa-mars"></i></div>
+        <div class="stat-content">
+            <div class="stat-value"><?= number_format($totalGarcons, 0, ',', ' ') ?></div>
+            <div class="stat-label">Garçons</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6);"><i class="fa-solid fa-venus"></i></div>
+        <div class="stat-content">
+            <div class="stat-value"><?= number_format($totalFilles, 0, ',', ' ') ?></div>
+            <div class="stat-label">Filles</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background:linear-gradient(135deg,#10b981,#34d399);"><i class="fa-solid fa-user-plus"></i></div>
+        <div class="stat-content">
+            <div class="stat-value"><?= $nouvellesInscriptions ?></div>
+            <div class="stat-label">Nouveaux ce mois</div>
+        </div>
     </div>
 </div>
 
@@ -114,6 +170,7 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
     </button>
 </div>
 
+
 <!-- ============================================================
      TABLEAU DES ÉLÈVES
      ============================================================ -->
@@ -150,62 +207,6 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
     </div>
 </div>
 
-<!-- ============================================================
-     RÉSULTATS RAPIDES
-     ============================================================ -->
-<div class="card mt-4">
-    <div class="card-header">
-        <div class="card-header-left">
-            <div class="card-header-icon blue">
-                <i class="fa-solid fa-chart-simple"></i>
-            </div>
-            <div>
-                <div class="card-header-title">Résumé des effectifs</div>
-                <div class="card-header-subtitle">Année scolaire en cours</div>
-            </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-            <?php
-            $totalActifs = $db->fetchColumn(
-                "SELECT COUNT(*) FROM inscriptions WHERE annee_scolaire_id = (SELECT annee_scolaire_active_id FROM parametres_ecole LIMIT 1) AND statut = 'Actif'"
-            );
-            $totalGarcons = $db->fetchColumn(
-                "SELECT COUNT(*) FROM inscriptions i 
-                 INNER JOIN eleves e ON i.eleve_id = e.id 
-                 WHERE i.annee_scolaire_id = (SELECT annee_scolaire_active_id FROM parametres_ecole LIMIT 1) 
-                 AND i.statut = 'Actif' AND e.sexe = 'M'"
-            );
-            $totalFilles = $db->fetchColumn(
-                "SELECT COUNT(*) FROM inscriptions i 
-                 INNER JOIN eleves e ON i.eleve_id = e.id 
-                 WHERE i.annee_scolaire_id = (SELECT annee_scolaire_active_id FROM parametres_ecole LIMIT 1) 
-                 AND i.statut = 'Actif' AND e.sexe = 'F'"
-            );
-            $nouvellesInscriptions = $db->fetchColumn(
-                "SELECT COUNT(*) FROM inscriptions WHERE MONTH(date_inscription) = MONTH(CURDATE()) AND YEAR(date_inscription) = YEAR(CURDATE())"
-            );
-            ?>
-            <div class="detail-stat">
-                <div class="detail-stat-value"><?= number_format($totalActifs, 0, ',', ' ') ?></div>
-                <div class="detail-stat-label">Total élèves</div>
-            </div>
-            <div class="detail-stat">
-                <div class="detail-stat-value" style="color:#3b82f6;"><?= number_format($totalGarcons, 0, ',', ' ') ?></div>
-                <div class="detail-stat-label"><i class="fa-solid fa-mars"></i> Garçons</div>
-            </div>
-            <div class="detail-stat">
-                <div class="detail-stat-value" style="color:#ec4899;"><?= number_format($totalFilles, 0, ',', ' ') ?></div>
-                <div class="detail-stat-label"><i class="fa-solid fa-venus"></i> Filles</div>
-            </div>
-            <div class="detail-stat">
-                <div class="detail-stat-value" style="color:#10b981;"><?= $nouvellesInscriptions ?></div>
-                <div class="detail-stat-label">Nouveaux ce mois</div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php
 require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'footer.php';

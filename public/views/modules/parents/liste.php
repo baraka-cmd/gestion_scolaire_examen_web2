@@ -67,6 +67,36 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
     </div>
 </div>
 
+<div class="card-body">
+        <div class="stats-summary-grid">
+            <div class="stat-summary-card">
+                <div class="stat-summary-icon blue"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-summary-value blue"><?= number_format($totalParents, 0, ',', ' ') ?></div>
+                <div class="stat-summary-label">Total parents</div>
+            </div>
+            <div class="stat-summary-card">
+                <div class="stat-summary-icon blue"><i class="fa-solid fa-mars"></i></div>
+                <div class="stat-summary-value blue"><?= number_format($totalPeres, 0, ',', ' ') ?></div>
+                <div class="stat-summary-label"><i class="fa-solid fa-mars"></i> Pères</div>
+            </div>
+            <div class="stat-summary-card">
+                <div class="stat-summary-icon pink"><i class="fa-solid fa-venus"></i></div>
+                <div class="stat-summary-value pink"><?= number_format($totalMeres, 0, ',', ' ') ?></div>
+                <div class="stat-summary-label"><i class="fa-solid fa-venus"></i> Mères</div>
+            </div>
+            <div class="stat-summary-card">
+                <div class="stat-summary-icon orange"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="stat-summary-value orange"><?= number_format($totalTuteurs, 0, ',', ' ') ?></div>
+                <div class="stat-summary-label"><i class="fa-solid fa-user-tie"></i> Tuteurs</div>
+            </div>
+            <div class="stat-summary-card">
+                <div class="stat-summary-icon green"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="stat-summary-value green"><?= number_format($totalUrgence, 0, ',', ' ') ?></div>
+                <div class="stat-summary-label"><i class="fa-solid fa-phone"></i> Contacts urgence</div>
+            </div>
+        </div>
+    </div>
+
 <!-- ============================================================
      MESSAGE FLASH
      ============================================================ -->
@@ -132,51 +162,6 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
     </div>
 </div>
 
-<!-- ============================================================
-     RÉSUMÉ RAPIDE
-     ============================================================ -->
-<div class="card mt-4">
-    <div class="card-header">
-        <div class="card-header-left">
-            <div class="card-header-icon orange">
-                <i class="fa-solid fa-chart-simple"></i>
-            </div>
-            <div>
-                <div class="card-header-title">Résumé des parents</div>
-                <div class="card-header-subtitle">Statistiques globales</div>
-            </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="stats-summary-grid">
-            <div class="stat-summary-card">
-                <div class="stat-summary-icon blue"><i class="fa-solid fa-users"></i></div>
-                <div class="stat-summary-value blue"><?= number_format($totalParents, 0, ',', ' ') ?></div>
-                <div class="stat-summary-label">Total parents</div>
-            </div>
-            <div class="stat-summary-card">
-                <div class="stat-summary-icon blue"><i class="fa-solid fa-mars"></i></div>
-                <div class="stat-summary-value blue"><?= number_format($totalPeres, 0, ',', ' ') ?></div>
-                <div class="stat-summary-label"><i class="fa-solid fa-mars"></i> Pères</div>
-            </div>
-            <div class="stat-summary-card">
-                <div class="stat-summary-icon pink"><i class="fa-solid fa-venus"></i></div>
-                <div class="stat-summary-value pink"><?= number_format($totalMeres, 0, ',', ' ') ?></div>
-                <div class="stat-summary-label"><i class="fa-solid fa-venus"></i> Mères</div>
-            </div>
-            <div class="stat-summary-card">
-                <div class="stat-summary-icon orange"><i class="fa-solid fa-user-tie"></i></div>
-                <div class="stat-summary-value orange"><?= number_format($totalTuteurs, 0, ',', ' ') ?></div>
-                <div class="stat-summary-label"><i class="fa-solid fa-user-tie"></i> Tuteurs</div>
-            </div>
-            <div class="stat-summary-card">
-                <div class="stat-summary-icon green"><i class="fa-solid fa-phone-volume"></i></div>
-                <div class="stat-summary-value green"><?= number_format($totalUrgence, 0, ',', ' ') ?></div>
-                <div class="stat-summary-label"><i class="fa-solid fa-phone"></i> Contacts urgence</div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php
 require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'footer.php';

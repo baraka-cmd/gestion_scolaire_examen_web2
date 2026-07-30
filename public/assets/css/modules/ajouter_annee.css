@@ -1,0 +1,541 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/ajouter_annee.css
+   Rôle    : Styles du formulaire d'ajout d'année scolaire
+   ============================================================ */
+
+/* ============================================================
+   1. LAYOUT PRINCIPAL
+   ============================================================ */
+.add-annee-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ============================================================
+   2. CARTE DU FORMULAIRE
+   ============================================================ */
+.annee-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.annee-form-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.annee-form-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.annee-form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.annee-form-card:hover .annee-form-icon {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.annee-form-icon i { color: #f59e0b; }
+
+.annee-form-header h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.annee-form-header p {
+    font-size: 0.78rem;
+    margin: 2px 0 0 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+.annee-form-body { padding: 24px 28px; }
+
+.annee-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   3. CHAMPS DE FORMULAIRE
+   ============================================================ */
+.form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.82rem;
+    margin-bottom: 7px;
+    color: var(--color-gray-700);
+}
+
+.form-label i {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    width: 14px;
+    text-align: center;
+}
+
+.form-label .required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    font-family: var(--font-primary);
+    font-size: 0.86rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+}
+
+.form-control.is-invalid {
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.08);
+}
+
+.form-control.is-valid {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+}
+
+input[type="date"].form-control {
+    padding-right: 14px;
+    cursor: pointer;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+input[type="date"].form-control:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
+/* Feedback */
+.invalid-feedback {
+    display: block;
+    font-size: 0.74rem;
+    color: var(--color-error);
+    margin-top: 6px;
+    font-weight: 500;
+    padding-left: 4px;
+    animation: feedbackShake 0.4s ease;
+}
+
+@keyframes feedbackShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+.form-help {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-help i {
+    font-size: 0.7rem;
+}
+
+/* ============================================================
+   4. TITRE DE SECTION
+   ============================================================ */
+.form-section-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-section-title i {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   5. SÉPARATEUR
+   ============================================================ */
+.form-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 24px 0;
+    position: relative;
+}
+
+.form-divider::after {
+    content: '●●●';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 0 16px;
+    color: var(--color-gray-300);
+    font-size: 0.5rem;
+    letter-spacing: 4px;
+}
+
+/* ============================================================
+   6. CHECKBOX PERSONNALISÉE
+   ============================================================ */
+.checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    padding: 8px 0;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.checkbox-custom i {
+    font-size: 0.65rem;
+    color: var(--color-white);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.25s ease;
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.checkbox-wrapper:hover .checkbox-custom {
+    border-color: var(--color-primary);
+}
+
+.checkbox-label {
+    font-size: 0.84rem;
+    color: var(--color-dark);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ============================================================
+   7. CARTE D'INFORMATION
+   ============================================================ */
+.info-card-custom {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.info-card-custom-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    background-color: var(--color-gray-50);
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.info-card-custom-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.info-card-custom-icon.blue { background-color: #e8eaf6; color: #2c3e90; }
+.info-card-custom-icon.green { background-color: #d1fae5; color: #10b981; }
+.info-card-custom-icon.orange { background-color: #fef3c7; color: #f59e0b; }
+.info-card-custom-icon.purple { background-color: #ede9fe; color: #8b5cf6; }
+
+.info-card-custom-header h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.info-card-custom-body {
+    padding: 20px 24px;
+}
+
+/* ============================================================
+   8. APERÇU DES TRIMESTRES
+   ============================================================ */
+.trimestre-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 8px;
+}
+
+.trimestre-preview-item:last-child {
+    margin-bottom: 0;
+}
+
+.trimestre-preview-item.actif {
+    background-color: #f0fdf4;
+    border-color: #a7f3d0;
+}
+
+.trimestre-preview-item.inactif {
+    background-color: #f8fafc;
+}
+
+/* ============================================================
+   9. LISTE À PUCES
+   ============================================================ */
+.info-list {
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.6;
+}
+
+.info-list li strong {
+    color: var(--color-dark);
+}
+
+/* ============================================================
+   10. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .add-annee-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .annee-form-header {
+        padding: 16px 20px;
+    }
+
+    .annee-form-body {
+        padding: 20px;
+    }
+
+    .annee-form-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .annee-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .annee-form-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .annee-form-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .annee-form-body {
+        padding: 16px;
+    }
+
+    .annee-form-footer {
+        padding: 12px 16px;
+    }
+
+    .form-control {
+        padding: 10px 12px 10px 38px;
+        font-size: 0.82rem;
+    }
+
+    .info-card-custom-header {
+        padding: 14px 18px;
+    }
+
+    .info-card-custom-body {
+        padding: 16px 18px;
+    }
+}
+
+/* ============================================================
+   11. ANIMATIONS
+   ============================================================ */
+@keyframes cardSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.annee-form-card {
+    animation: cardSlideIn 0.4s ease;
+}
+
+.info-card-custom {
+    animation: cardSlideIn 0.4s ease 0.1s both;
+}
+
+/* ============================================================
+   12. IMPRESSION
+   ============================================================ */
+@media print {
+    .annee-form-footer,
+    .btn {
+        display: none !important;
+    }
+
+    .annee-form-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .annee-form-card,
+    .info-card-custom {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .add-annee-grid {
+        grid-template-columns: 1fr;
+    }
+}

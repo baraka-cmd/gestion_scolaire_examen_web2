@@ -1,0 +1,489 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/annees.css
+   Rôle    : Styles du module de gestion des années scolaires
+   ============================================================ */
+
+/* ============================================================
+   1. EN-TÊTE DU MODULE
+   ============================================================ */
+.annees-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.annees-header-left h4 {
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.annees-header-left h4 i {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.annees-header-left p {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.annees-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   2. CARTE ANNÉE (TIMELINE STYLE)
+   ============================================================ */
+.annee-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.annee-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.annee-card.active {
+    border-color: #10b981;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+}
+
+.annee-card.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, #10b981, #34d399);
+    border-radius: 5px 0 0 5px;
+}
+
+.annee-card.cloturee {
+    opacity: 0.7;
+    border-color: var(--border-color);
+}
+
+.annee-card.cloturee::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: #94a3b8;
+    border-radius: 5px 0 0 5px;
+}
+
+/* En-tête de la carte */
+.annee-card-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.annee-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.annee-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.annee-card-icon.active {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: #fff;
+}
+
+.annee-card-icon.inactive {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: #fff;
+}
+
+.annee-card-icon.cloturee {
+    background: linear-gradient(135deg, #64748b, #94a3b8);
+    color: #fff;
+}
+
+.annee-card-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.annee-card-dates {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.annee-card-dates i {
+    font-size: 0.7rem;
+    color: var(--color-primary);
+}
+
+/* Badges statut */
+.annee-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.annee-status-badge.active {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.annee-status-badge.inactive {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.annee-status-badge.cloturee {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.annee-status-badge i {
+    font-size: 0.6rem;
+}
+
+/* Corps de la carte */
+.annee-card-body {
+    padding: 20px 24px;
+}
+
+/* Grille des trimestres */
+.trimestres-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.trimestre-item {
+    background-color: var(--color-gray-50);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: center;
+    border: 1px solid var(--border-color-light);
+    transition: all 0.25s ease;
+}
+
+.trimestre-item:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.trimestre-item.actif {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+}
+
+.trimestre-numero {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-gray-400);
+    margin-bottom: 4px;
+}
+
+.trimestre-libelle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 6px;
+}
+
+.trimestre-dates {
+    font-size: 0.72rem;
+    color: var(--color-gray-500);
+}
+
+/* Stats rapides */
+.annee-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.annee-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+}
+
+.annee-stat i {
+    color: var(--color-primary);
+    font-size: 0.85rem;
+}
+
+.annee-stat strong {
+    color: var(--color-dark);
+}
+
+/* Actions */
+.annee-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   3. FORMULAIRE ANNÉE
+   ============================================================ */
+.annee-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    max-width: 650px;
+    overflow: hidden;
+}
+
+.annee-form-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.annee-form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.annee-form-card:hover .annee-form-icon {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.annee-form-icon i { color: #f59e0b; }
+
+.annee-form-header h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.annee-form-header p {
+    font-size: 0.78rem;
+    margin: 2px 0 0 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+.annee-form-body { padding: 24px 28px; }
+
+.annee-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   4. ALERTE ANNÉE ACTIVE
+   ============================================================ */
+.annee-active-alert {
+    background: linear-gradient(135deg, #d1fae5 0%, #f0fdf4 100%);
+    border: 1px solid #a7f3d0;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.annee-active-alert i {
+    font-size: 1.5rem;
+    color: #10b981;
+}
+
+.annee-active-alert strong {
+    color: #065f46;
+}
+
+.annee-active-alert span {
+    color: #047857;
+    font-size: 0.85rem;
+}
+
+/* ============================================================
+   5. BADGE TRIMESTRE ACTIF
+   ============================================================ */
+.trimestre-actif-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #10b981;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* ============================================================
+   6. RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .trimestres-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .annee-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .annee-card-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .annee-form-card {
+        max-width: 100%;
+    }
+
+    .annee-form-header {
+        padding: 16px 20px;
+    }
+
+    .annee-form-body {
+        padding: 20px;
+    }
+
+    .annee-form-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .annee-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .annee-card-body {
+        padding: 14px 16px;
+    }
+
+    .annee-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .annee-card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .annee-card-name {
+        font-size: 1rem;
+    }
+
+    .annee-form-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .annee-form-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .annee-form-body {
+        padding: 16px;
+    }
+}
+
+/* ============================================================
+   7. ANIMATIONS
+   ============================================================ */
+@keyframes cardSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.annee-card {
+    animation: cardSlideUp 0.4s ease;
+}
+
+/* ============================================================
+   8. IMPRESSION
+   ============================================================ */
+@media print {
+    .annees-header-right,
+    .annee-card-actions,
+    .btn {
+        display: none !important;
+    }
+
+    .annee-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+}

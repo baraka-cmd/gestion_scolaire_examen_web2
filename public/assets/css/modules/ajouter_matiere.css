@@ -1,0 +1,528 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/ajouter_matiere.css
+   Rôle    : Styles du formulaire d'ajout de matière
+   ============================================================ */
+
+/* ============================================================
+   1. LAYOUT PRINCIPAL
+   ============================================================ */
+.add-matiere-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ============================================================
+   2. CARTE D'INFORMATION
+   ============================================================ */
+.info-card-custom {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.info-card-custom-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    background-color: var(--color-gray-50);
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.info-card-custom-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.info-card-custom-icon.blue { background-color: #e8eaf6; color: #2c3e90; }
+.info-card-custom-icon.green { background-color: #d1fae5; color: #10b981; }
+.info-card-custom-icon.orange { background-color: #fef3c7; color: #f59e0b; }
+.info-card-custom-icon.purple { background-color: #ede9fe; color: #8b5cf6; }
+
+.info-card-custom-header h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.info-card-custom-body {
+    padding: 20px 24px;
+}
+
+/* ============================================================
+   3. BOÎTE DE FORMULE
+   ============================================================ */
+.formula-box {
+    background: linear-gradient(135deg, #e8eaf6 0%, #f1f5f9 100%);
+    border: 2px solid #c7d2fe;
+    border-radius: 14px;
+    padding: 16px 18px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.formula-box strong {
+    font-size: 0.9rem;
+    color: #2c3e90;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+.formula-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formula-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+}
+
+.formula-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.formula-dot.period1 { background-color: #3b82f6; }
+.formula-dot.period2 { background-color: #f59e0b; }
+.formula-dot.exam { background-color: #ef4444; }
+
+/* ============================================================
+   4. TABLEAU GUIDE DES COEFFICIENTS
+   ============================================================ */
+.guide-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.guide-table th {
+    background-color: var(--color-gray-50);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.guide-table td {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.guide-table tr:last-child td {
+    border-bottom: none;
+}
+
+.guide-table tr:hover {
+    background-color: var(--color-gray-50);
+}
+
+.guide-table .coefficient-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 26px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--color-white);
+}
+
+.coefficient-badge.high { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.coefficient-badge.medium { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.coefficient-badge.low { background: linear-gradient(135deg, #10b981, #34d399); }
+
+/* ============================================================
+   5. FORMULAIRE MATIÈRE (REPRIS DE matieres.css)
+   ============================================================ */
+.matiere-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.matiere-form-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.matiere-form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.matiere-form-card:hover .matiere-form-icon {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.matiere-form-icon i { color: #f59e0b; }
+
+.matiere-form-header h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.matiere-form-header p {
+    font-size: 0.78rem;
+    margin: 2px 0 0 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+.matiere-form-body { padding: 24px 28px; }
+
+.matiere-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   6. CHAMPS DE FORMULAIRE
+   ============================================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.82rem;
+    margin-bottom: 7px;
+    color: var(--color-gray-700);
+}
+
+.form-label i {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    width: 14px;
+    text-align: center;
+}
+
+.form-label .required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    font-family: var(--font-primary);
+    font-size: 0.86rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+}
+
+.form-control.is-invalid {
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.08);
+}
+
+.form-control.is-valid {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+    padding: 12px 14px;
+    line-height: 1.6;
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8.825L1.175 4 2.238 2.938 6 6.7 9.763 2.937 10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+}
+
+/* Feedback */
+.invalid-feedback {
+    display: block;
+    font-size: 0.74rem;
+    color: var(--color-error);
+    margin-top: 6px;
+    font-weight: 500;
+    padding-left: 4px;
+    animation: feedbackShake 0.4s ease;
+}
+
+@keyframes feedbackShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+/* Help text */
+.form-help {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1.6;
+}
+
+.form-help i {
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   7. BOUTONS
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.3);
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .add-matiere-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .matiere-form-header {
+        padding: 16px 20px;
+    }
+
+    .matiere-form-body {
+        padding: 20px;
+    }
+
+    .matiere-form-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .matiere-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .info-card-custom-header {
+        padding: 14px 18px;
+    }
+
+    .info-card-custom-body {
+        padding: 16px 18px;
+    }
+
+    .formula-box strong {
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .matiere-form-header {
+        padding: 14px 16px;
+    }
+
+    .matiere-form-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .matiere-form-body {
+        padding: 16px;
+    }
+
+    .matiere-form-footer {
+        padding: 12px 16px;
+    }
+
+    .form-control {
+        padding: 10px 12px 10px 38px;
+        font-size: 0.82rem;
+    }
+
+    .guide-table th,
+    .guide-table td {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================================
+   9. ANIMATIONS
+   ============================================================ */
+@keyframes cardSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.matiere-form-card {
+    animation: cardSlideIn 0.4s ease;
+}
+
+.info-card-custom {
+    animation: cardSlideIn 0.4s ease 0.1s both;
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .matiere-form-footer,
+    .btn {
+        display: none !important;
+    }
+
+    .matiere-form-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .matiere-form-card,
+    .info-card-custom {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .add-matiere-grid {
+        grid-template-columns: 1fr;
+    }
+}

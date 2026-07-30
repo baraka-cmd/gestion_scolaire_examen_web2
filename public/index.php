@@ -60,6 +60,7 @@ $routes = [
     // Inscriptions
     '/inscriptions'              => 'views/modules/inscriptions/liste.php',
     '/inscriptions/nouvelle'     => 'views/modules/inscriptions/nouvelle.php',
+    '/inscriptions/reinscription' => 'views/modules/inscriptions/reinscription.php',
     
     // Évaluations
     '/evaluations'               => 'views/modules/evaluations/liste.php',
@@ -150,7 +151,11 @@ $routes = [
     '/profil'                    => 'views/modules/utilisateurs/profil.php',
     '/profil/modifier'           => 'views/modules/utilisateurs/modifier.php',
     '/profil/mot-de-passe'       => 'views/modules/utilisateurs/changer_mot_de_passe.php',
-
+    
+    // Années scolaires
+    '/annees-scolaires'          => 'views/modules/annees/liste.php',
+    '/annees-scolaires/ajouter'  => 'views/modules/annees/ajouter.php',
+    
     // Aide
     '/aide'                      => 'views/modules/aide/index.php',
     
@@ -164,9 +169,6 @@ $routes = [
     
     // Mes enfants (parent)
     '/mes-enfants'               => 'views/modules/parents/mes_enfants.php',
-    
-    // Années scolaires
-    '/annees-scolaires'          => 'views/modules/annees/liste.php',
 ];
 
 // ============================================================
@@ -203,16 +205,30 @@ $dynamicRoutes = [
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/enseignants/fiche.php';
     },
+    // Enseignant modifier : /enseignants/modifier/3
+    '#^/enseignants/modifier/(\d+)$#' => function($matches) {
+        $_GET['id'] = $matches[1];
+        require_once __DIR__ . '/views/modules/enseignants/modifier.php';
+    },
     // Parent fiche : /parents/fiche/8
-        '/parents'              => 'views/modules/parents/liste.php',
-    '/parents/ajouter'      => 'views/modules/parents/ajouter.php',
     '#^/parents/fiche/(\d+)$#' => function($matches) {
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/parents/fiche.php';
     },
+    // Parent modifier : /parents/modifier/8
     '#^/parents/modifier/(\d+)$#' => function($matches) {
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/parents/modifier.php';
+    },
+    // Matière modifier : /matieres/modifier/10
+    '#^/matieres/modifier/(\d+)$#' => function($matches) {
+        $_GET['id'] = $matches[1];
+        require_once __DIR__ . '/views/modules/matieres/modifier.php';
+    },
+    // Année scolaire modifier : /annees-scolaires/modifier/3
+    '#^/annees-scolaires/modifier/(\d+)$#' => function($matches) {
+        $_GET['id'] = $matches[1];
+        require_once __DIR__ . '/views/modules/annees/modifier.php';
     },
     // Classe détail : /classes/detail/13
     '#^/classes/detail/(\d+)$#' => function($matches) {
@@ -240,6 +256,8 @@ $dynamicRoutes = [
         require_once __DIR__ . '/views/modules/bulletins/eleve.php';
     },
 ];
+
+
 
 // ============================================================
 // ROUTAGE
