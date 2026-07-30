@@ -1,0 +1,788 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/eleves.css
+   Rôle    : Styles du module de gestion des élèves
+   ============================================================ */
+
+/* ============================================================
+   1. EN-TÊTE DU MODULE
+   ============================================================ */
+.eleves-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.eleves-header-left h4 {
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.eleves-header-left h4 i {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.eleves-header-left p {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.eleves-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   2. BARRE DE FILTRES
+   ============================================================ */
+.eleves-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-xs);
+}
+
+.eleves-filters .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.eleves-filters .filter-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    white-space: nowrap;
+}
+
+.eleves-filters .filter-group select,
+.eleves-filters .filter-group input {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.25s ease;
+    min-width: 150px;
+}
+
+.eleves-filters .filter-group select:focus,
+.eleves-filters .filter-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+.eleves-filters .search-input {
+    min-width: 260px;
+    padding-left: 36px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+}
+
+.btn-reset-filters {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.btn-reset-filters:hover {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+/* ============================================================
+   3. TABLEAU DES ÉLÈVES
+   ============================================================ */
+.eleves-table-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.table-header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.table-header-info span {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+}
+
+.table-header-info strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Cellule élève avec avatar */
+.eleve-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.eleve-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-color: var(--color-primary-lighter);
+    flex-shrink: 0;
+    border: 2px solid var(--border-color);
+}
+
+.eleve-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.eleve-avatar-placeholder.blue { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.eleve-avatar-placeholder.green { background: linear-gradient(135deg, #10b981, #34d399); }
+.eleve-avatar-placeholder.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.eleve-avatar-placeholder.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+.eleve-avatar-placeholder.pink { background: linear-gradient(135deg, #ec4899, #f472b6); }
+.eleve-avatar-placeholder.cyan { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+.eleve-avatar-placeholder.red { background: linear-gradient(135deg, #ef4444, #f87171); }
+
+.eleve-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.eleve-name {
+    font-weight: 500;
+    color: var(--color-dark);
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.eleve-name a {
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.eleve-name a:hover {
+    color: var(--color-primary);
+}
+
+.eleve-matricule {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+/* Sexe */
+.sexe-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.sexe-badge.masculin { background-color: #dbeafe; color: #1e40af; }
+.sexe-badge.feminin { background-color: #fce7f3; color: #9d174d; }
+
+.sexe-badge i { font-size: 0.65rem; }
+
+/* Âge */
+.age-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-600);
+}
+
+/* ============================================================
+   4. FICHE ÉLÈVE
+   ============================================================ */
+.eleve-profile-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.eleve-profile-header {
+    padding: 28px 32px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.eleve-profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.eleve-profile-avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.15);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.eleve-profile-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.eleve-profile-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.eleve-profile-info .matricule {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.eleve-profile-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.eleve-profile-meta span {
+    font-size: 0.78rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.eleve-profile-meta i {
+    font-size: 0.7rem;
+}
+
+.eleve-profile-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.eleve-profile-body {
+    padding: 28px 32px;
+}
+
+/* Sections */
+.eleve-section {
+    margin-bottom: 28px;
+}
+
+.eleve-section:last-child {
+    margin-bottom: 0;
+}
+
+.eleve-section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.eleve-section-title i {
+    color: var(--color-primary);
+    font-size: 0.95rem;
+}
+
+.eleve-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.eleve-detail-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.eleve-detail-label {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.eleve-detail-value {
+    font-size: 0.88rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+/* ============================================================
+   5. PARENTS — CARTES
+   ============================================================ */
+.parents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.parent-card {
+    background-color: var(--color-gray-50);
+    border-radius: 14px;
+    padding: 18px 20px;
+    border: 1px solid var(--border-color-light);
+    transition: all 0.3s ease;
+}
+
+.parent-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.08);
+}
+
+.parent-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.parent-card-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-dark);
+}
+
+.parent-badge {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.parent-badge.principal { background-color: #d1fae5; color: #065f46; }
+.parent-badge.secondaire { background-color: #f1f5f9; color: #475569; }
+
+.parent-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.parent-info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+}
+
+.parent-info-row i {
+    width: 16px;
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+}
+
+.parent-info-row strong {
+    color: var(--color-dark);
+}
+
+/* ============================================================
+   6. FORMULAIRE ÉLÈVE
+   ============================================================ */
+.eleve-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    max-width: 850px;
+    overflow: hidden;
+}
+
+.eleve-form-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.eleve-form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.eleve-form-icon i {
+    color: #f59e0b;
+}
+
+.eleve-form-header h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.eleve-form-header p {
+    font-size: 0.78rem;
+    margin: 2px 0 0 0;
+    opacity: 0.75;
+}
+
+.eleve-form-body {
+    padding: 28px;
+}
+
+.eleve-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+/* Sections du formulaire */
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-lighter);
+}
+
+.form-section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.form-section-icon i {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.form-section-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.form-section-subtitle {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 2px;
+}
+
+.form-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 24px 0;
+    position: relative;
+}
+
+.form-divider::after {
+    content: '●●●';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 0 16px;
+    color: var(--color-gray-300);
+    font-size: 0.5rem;
+    letter-spacing: 4px;
+}
+
+/* ============================================================
+   7. IMPORT CSV
+   ============================================================ */
+.import-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    background-color: var(--color-gray-50);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.import-zone:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.import-zone.dragover {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+}
+
+.import-zone i {
+    font-size: 3rem;
+    color: var(--color-gray-400);
+    margin-bottom: 16px;
+}
+
+.import-zone h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+}
+
+.import-zone p {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+}
+
+.import-zone .btn {
+    margin-top: 16px;
+}
+
+.import-results {
+    margin-top: 20px;
+}
+
+.import-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+
+.import-stat.success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.import-stat.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.import-stat i {
+    font-size: 1.2rem;
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .eleve-profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .eleve-profile-actions {
+        justify-content: center;
+    }
+
+    .eleve-profile-meta {
+        justify-content: center;
+    }
+
+    .parents-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .eleves-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .eleves-filters .search-input {
+        min-width: 100%;
+    }
+
+    .btn-reset-filters {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .eleve-form-card {
+        max-width: 100%;
+    }
+
+    .eleve-form-body {
+        padding: 20px;
+    }
+
+    .eleve-profile-body {
+        padding: 20px;
+    }
+
+    .eleve-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .eleve-profile-header {
+        padding: 20px;
+    }
+
+    .eleve-profile-avatar,
+    .eleve-profile-avatar-placeholder {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+    }
+
+    .eleve-form-header {
+        padding: 16px 18px;
+    }
+
+    .eleve-form-body {
+        padding: 16px;
+    }
+
+    .eleve-form-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .eleve-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .import-zone {
+        padding: 24px 16px;
+    }
+}
+
+/* ============================================================
+   9. ANIMATIONS
+   ============================================================ */
+@keyframes rowFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.table tbody tr {
+    animation: rowFadeIn 0.3s ease;
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .eleves-header-right,
+    .eleves-filters,
+    .eleve-profile-actions,
+    .btn,
+    .actions-cell {
+        display: none !important;
+    }
+
+    .eleve-profile-card,
+    .eleves-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

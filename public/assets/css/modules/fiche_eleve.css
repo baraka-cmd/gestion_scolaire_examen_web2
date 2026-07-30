@@ -1,0 +1,691 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/fiche_eleve.css
+   Rôle    : Styles de la fiche détaillée d'un élève
+   ============================================================ */
+
+/* ============================================================
+   1. EN-TÊTE DU PROFIL
+   ============================================================ */
+.eleve-profile-hero {
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 50%, #1a274f 100%);
+    border-radius: 20px;
+    padding: 32px 36px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.eleve-profile-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.eleve-profile-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.profile-avatar-container {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-avatar-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.12);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-status-dot {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid #2c3e90;
+    background-color: #10b981;
+}
+
+.profile-status-dot.inactive {
+    background-color: #ef4444;
+}
+
+.profile-info {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.3px;
+}
+
+.profile-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.profile-meta-item {
+    font-size: 0.82rem;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.profile-meta-item i {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.profile-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.profile-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.profile-badge i {
+    font-size: 0.65rem;
+}
+
+.profile-badge.success { background: rgba(16, 185, 129, 0.25); border-color: rgba(16, 185, 129, 0.3); }
+.profile-badge.warning { background: rgba(245, 158, 11, 0.25); border-color: rgba(245, 158, 11, 0.3); }
+.profile-badge.danger { background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.3); }
+
+.profile-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   2. ONGLETS DE NAVIGATION
+   ============================================================ */
+.profile-tabs {
+    display: flex;
+    gap: 0;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-xs);
+}
+
+.profile-tab {
+    flex: 1;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-bottom: 3px solid transparent;
+    background: none;
+    font-family: var(--font-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.profile-tab:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.profile-tab.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 600;
+    background-color: var(--color-primary-lighter);
+}
+
+.profile-tab i {
+    font-size: 0.85rem;
+}
+
+.profile-tab .tab-count {
+    font-size: 0.7rem;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.profile-tab.active .tab-count {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ============================================================
+   3. PANNEAUX DE CONTENU
+   ============================================================ */
+.profile-panel {
+    display: none;
+    animation: panelFadeIn 0.3s ease;
+}
+
+.profile-panel.active {
+    display: block;
+}
+
+@keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   4. GRILLE D'INFORMATIONS
+   ============================================================ */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.info-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.info-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.info-card-icon.blue { background-color: #e8eaf6; color: #2c3e90; }
+.info-card-icon.green { background-color: #d1fae5; color: #10b981; }
+.info-card-icon.orange { background-color: #fef3c7; color: #f59e0b; }
+.info-card-icon.red { background-color: #fee2e2; color: #ef4444; }
+.info-card-icon.purple { background-color: #ede9fe; color: #8b5cf6; }
+.info-card-icon.cyan { background-color: #dbeafe; color: #3b82f6; }
+
+.info-card-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 6px 0;
+}
+
+.info-field-label {
+    font-size: 0.7rem;
+    color: var(--color-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.info-field-value {
+    font-size: 0.85rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.info-field-value.empty {
+    color: var(--color-gray-400);
+    font-style: italic;
+}
+
+/* ============================================================
+   5. CARTES PARENTS
+   ============================================================ */
+.parents-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.parent-detail-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.parent-detail-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.parent-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 4px 0 0 4px;
+}
+
+.parent-detail-card.principal::before {
+    background: #10b981;
+}
+
+.parent-detail-card.secondaire::before {
+    background: #3b82f6;
+}
+
+.parent-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.parent-card-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.parent-card-role {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.parent-card-role.principal {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.parent-card-role.secondaire {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.parent-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.parent-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+}
+
+.parent-detail-row i {
+    width: 18px;
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 0.78rem;
+}
+
+.parent-detail-row strong {
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+/* ============================================================
+   6. TIMELINE (HISTORIQUE)
+   ============================================================ */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary), var(--border-color));
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--color-white);
+    box-shadow: 0 0 0 2px var(--color-primary);
+    background-color: var(--color-primary);
+}
+
+.timeline-dot.current {
+    background-color: #10b981;
+    box-shadow: 0 0 0 2px #10b981;
+}
+
+.timeline-dot.past {
+    background-color: var(--color-gray-400);
+    box-shadow: 0 0 0 2px var(--color-gray-400);
+}
+
+.timeline-content {
+    background-color: var(--color-gray-50);
+    border-radius: 12px;
+    padding: 14px 18px;
+    border: 1px solid var(--border-color-light);
+}
+
+.timeline-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 4px;
+}
+
+.timeline-date {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.timeline-badge {
+    display: inline-block;
+    margin-top: 6px;
+}
+
+/* ============================================================
+   7. TABLEAUX DANS LA FICHE
+   ============================================================ */
+.data-table-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.data-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+}
+
+.data-table-title {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.data-table-title i {
+    color: var(--color-primary);
+}
+
+.data-table-count {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+/* Note colorée */
+.note-value {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.note-value.excellent { color: #10b981; }
+.note-value.good { color: #3b82f6; }
+.note-value.average { color: #f59e0b; }
+.note-value.low { color: #ef4444; }
+
+/* ============================================================
+   8. BOUTON IMPRESSION FICHE
+   ============================================================ */
+.btn-print-fiche {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+}
+
+.btn-print-fiche:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .eleve-profile-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .profile-actions {
+        justify-content: center;
+    }
+
+    .profile-meta {
+        justify-content: center;
+    }
+
+    .profile-badges {
+        justify-content: center;
+    }
+
+    .parents-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-tabs {
+        overflow-x: auto;
+    }
+
+    .profile-tab {
+        flex: none;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .eleve-profile-hero {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .profile-avatar,
+    .profile-avatar-placeholder {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8rem;
+    }
+
+    .profile-name {
+        font-size: 1.2rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-tab span:not(.tab-count) {
+        display: none;
+    }
+
+    .profile-tab i {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .eleve-profile-hero {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .profile-avatar,
+    .profile-avatar-placeholder {
+        width: 64px;
+        height: 64px;
+        font-size: 1.4rem;
+        border-radius: 16px;
+    }
+
+    .profile-meta {
+        gap: 8px;
+    }
+
+    .profile-meta-item {
+        font-size: 0.74rem;
+    }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .profile-actions,
+    .profile-tabs,
+    .btn-print-fiche,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb {
+        display: none !important;
+    }
+
+    .eleve-profile-hero {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+    }
+
+    .card, .info-card, .parent-detail-card, .data-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .profile-panel {
+        display: block !important;
+    }
+}

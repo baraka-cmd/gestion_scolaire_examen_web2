@@ -1,0 +1,581 @@
+/* ============================================================
+   Fichier : public/assets/css/templates/header.css
+   Rôle    : Styles de la barre de navigation supérieure
+   ============================================================ */
+
+/* ============================================================
+   1. STRUCTURE PRINCIPALE
+   ============================================================ */
+.navbar-top {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-navbar);
+    height: var(--navbar-height);
+    background-color: var(--color-white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    flex-shrink: 0;
+    transition: box-shadow 0.3s ease;
+}
+
+.navbar-top.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   2. PARTIE GAUCHE
+   ============================================================ */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Bouton toggle sidebar */
+.btn-toggle-sidebar {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--color-gray-500);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.btn-toggle-sidebar:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.btn-toggle-sidebar:active {
+    transform: scale(0.92);
+}
+
+.btn-toggle-sidebar i {
+    transition: transform 0.3s ease;
+}
+
+.btn-toggle-sidebar:hover i {
+    transform: rotate(90deg);
+}
+
+/* Titre de la page */
+.page-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.page-title-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+}
+
+.page-title-icon i {
+    font-size: 1rem;
+    color: var(--color-primary);
+}
+
+.page-title-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.2px;
+}
+
+/* ============================================================
+   3. PARTIE DROITE
+   ============================================================ */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   4. BOUTONS D'ACTIONS
+   ============================================================ */
+.navbar-action-btn {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--color-gray-500);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navbar-action-btn:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.navbar-action-btn:active {
+    transform: scale(0.92);
+}
+
+/* Badge de notification */
+.navbar-action-btn .badge-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 9px;
+    height: 9px;
+    background-color: var(--color-error);
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+.navbar-action-btn .badge-count {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    min-width: 20px;
+    height: 20px;
+    background-color: var(--color-error);
+    color: var(--color-white);
+    border-radius: 50px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+    border: 2px solid var(--color-white);
+    letter-spacing: 0.2px;
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* ============================================================
+   5. RECHERCHE GLOBALE
+   ============================================================ */
+.navbar-search {
+    position: relative;
+    margin-right: 8px;
+}
+
+.navbar-search input {
+    width: 220px;
+    padding: 9px 14px 9px 38px;
+    font-family: var(--font-primary);
+    font-size: 0.82rem;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.navbar-search input::placeholder {
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+.navbar-search input:focus {
+    width: 300px;
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-transparent);
+}
+
+.navbar-search .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-search input:focus ~ .search-icon,
+.navbar-search input:focus + .search-icon {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   6. DATE/HEURE
+   ============================================================ */
+.navbar-datetime {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: var(--color-gray-50);
+    border-radius: 8px;
+    cursor: default;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-datetime:hover {
+    background-color: var(--color-gray-100);
+}
+
+.navbar-datetime i {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   7. DROPDOWN UTILISATEUR
+   ============================================================ */
+.navbar-user {
+    position: relative;
+    margin-left: 4px;
+}
+
+.user-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 14px 6px 8px;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    border: 1.5px solid transparent;
+    background: none;
+    font-family: var(--font-primary);
+}
+
+.user-dropdown-trigger:hover {
+    background-color: var(--color-gray-50);
+    border-color: var(--border-color);
+}
+
+.user-dropdown-trigger:focus-visible {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-color: var(--color-primary-lighter);
+    flex-shrink: 0;
+    border: 2px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.user-dropdown-trigger:hover .user-avatar {
+    border-color: var(--color-primary);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.user-info .user-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.user-info .user-role-text {
+    font-size: 0.68rem;
+    color: var(--color-gray-400);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.user-dropdown-arrow {
+    font-size: 0.6rem;
+    color: var(--color-gray-400);
+    transition: transform 0.3s ease;
+    margin-left: 2px;
+}
+
+.user-dropdown-trigger.open .user-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* ============================================================
+   8. MENU DROPDOWN
+   ============================================================ */
+.user-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    min-width: 260px;
+    z-index: var(--z-overlay);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* En-tête du dropdown */
+.user-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background-color: var(--color-gray-50);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-dropdown-header img {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    object-fit: cover;
+    background-color: var(--color-primary-lighter);
+}
+
+.user-dropdown-header .user-info {
+    flex: 1;
+}
+
+.user-dropdown-header .user-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.user-dropdown-header .user-email {
+    font-size: 0.7rem;
+    color: var(--color-gray-500);
+    margin-top: 2px;
+}
+
+/* Liens du dropdown */
+.user-dropdown-links {
+    padding: 6px 0;
+}
+
+.user-dropdown-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 400;
+}
+
+.user-dropdown-links a:hover {
+    background-color: var(--color-gray-50);
+    color: var(--color-primary);
+}
+
+.user-dropdown-links a i {
+    width: 18px;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+.user-dropdown-links a:hover i {
+    transform: translateX(2px);
+}
+
+.user-dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 6px 0;
+}
+
+.user-dropdown-links .logout-link {
+    color: var(--color-error);
+    font-weight: 500;
+}
+
+.user-dropdown-links .logout-link:hover {
+    background-color: var(--color-error-light);
+    color: var(--color-error-dark);
+}
+
+.user-dropdown-links .logout-link i {
+    color: var(--color-error);
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .navbar-top {
+        padding: 0 16px;
+    }
+
+    .navbar-search input {
+        width: 160px;
+    }
+
+    .navbar-search input:focus {
+        width: 200px;
+    }
+
+    .navbar-datetime {
+        display: none;
+    }
+
+    .user-info .user-name {
+        max-width: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-top {
+        padding: 0 12px;
+        height: 56px;
+    }
+
+    .navbar-search {
+        display: none;
+    }
+
+    .page-title-wrapper {
+        gap: 8px;
+    }
+
+    .page-title-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+    }
+
+    .page-title-icon i {
+        font-size: 0.85rem;
+    }
+
+    .page-title-text {
+        font-size: 0.9rem;
+    }
+
+    .navbar-action-btn {
+        width: 34px;
+        height: 34px;
+        padding: 6px;
+        font-size: 1rem;
+    }
+
+    .user-dropdown-trigger {
+        padding: 4px 8px 4px 4px;
+        gap: 6px;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .user-dropdown-arrow {
+        display: none;
+    }
+
+    .user-dropdown-menu {
+        min-width: 230px;
+        right: -8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-top {
+        padding: 0 8px;
+    }
+
+    .btn-toggle-sidebar {
+        width: 34px;
+        height: 34px;
+        padding: 6px;
+    }
+
+    .page-title-text {
+        font-size: 0.82rem;
+    }
+
+    .navbar-action-btn {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================================
+   10. ANIMATIONS SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.user-dropdown-menu.show {
+    animation: dropdownFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}

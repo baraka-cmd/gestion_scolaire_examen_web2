@@ -1,0 +1,554 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/changer_mot_de_passe.css
+   Rôle    : Styles du formulaire de changement de mot de passe
+   ============================================================ */
+
+/* ============================================================
+   1. CONTAINER PRINCIPAL
+   ============================================================ */
+.password-change-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   2. CARTE DU FORMULAIRE
+   ============================================================ */
+.password-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.password-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* En-tête */
+.password-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+}
+
+.password-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.password-card-icon i {
+    color: #f59e0b;
+}
+
+.password-card-header h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--color-white);
+}
+
+.password-card-header p {
+    font-size: 0.78rem;
+    margin: 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+/* Corps */
+.password-card-body {
+    padding: 28px;
+}
+
+/* Pied */
+.password-card-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* ============================================================
+   3. CHAMPS MOT DE PASSE
+   ============================================================ */
+.password-input-group {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.password-input-group:last-child {
+    margin-bottom: 0;
+}
+
+.password-input-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    color: var(--color-gray-700);
+}
+
+.password-input-label i {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    width: 16px;
+    text-align: center;
+}
+
+.password-input-label .required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-gray-400);
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.password-input-wrapper:focus-within .password-input-icon {
+    color: var(--color-primary);
+}
+
+.password-input {
+    width: 100%;
+    padding: 13px 48px 13px 44px;
+    font-family: var(--font-primary);
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 2px solid var(--border-color);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.password-input::placeholder {
+    color: var(--color-gray-400);
+    font-size: 0.82rem;
+}
+
+.password-input:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+}
+
+.password-input.is-invalid {
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+.password-input.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.08);
+}
+
+.password-input.is-valid {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+}
+
+/* Bouton toggle */
+.password-toggle-btn {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    z-index: 2;
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle-btn:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.password-toggle-btn i {
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+
+.password-toggle-btn:active i {
+    transform: scale(0.9);
+}
+
+/* Feedback */
+.password-feedback {
+    display: block;
+    font-size: 0.74rem;
+    color: var(--color-error);
+    margin-top: 6px;
+    font-weight: 500;
+    padding-left: 4px;
+    animation: feedbackShake 0.4s ease;
+}
+
+@keyframes feedbackShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+/* ============================================================
+   4. INDICATEUR DE FORCE
+   ============================================================ */
+.strength-container {
+    margin-top: -6px;
+    margin-bottom: 18px;
+    padding: 0 4px;
+}
+
+.strength-bar-wrapper {
+    width: 100%;
+    height: 6px;
+    background-color: var(--color-gray-200);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.strength-bar-fill {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+    width: 0%;
+}
+
+.strength-bar-fill.very-weak { width: 20%; background: linear-gradient(90deg, #ef4444, #f87171); }
+.strength-bar-fill.weak { width: 40%; background: linear-gradient(90deg, #f97316, #fb923c); }
+.strength-bar-fill.medium { width: 60%; background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.strength-bar-fill.strong { width: 80%; background: linear-gradient(90deg, #84cc16, #a3e635); }
+.strength-bar-fill.very-strong { width: 100%; background: linear-gradient(90deg, #10b981, #34d399); }
+
+.strength-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+    transition: color 0.4s ease;
+}
+
+.strength-label.very-weak { color: #ef4444; }
+.strength-label.weak { color: #f97316; }
+.strength-label.medium { color: #f59e0b; }
+.strength-label.strong { color: #84cc16; }
+.strength-label.very-strong { color: #10b981; }
+
+/* ============================================================
+   5. EXIGENCES
+   ============================================================ */
+.requirements-container {
+    margin-bottom: 20px;
+    padding: 16px 18px;
+    background-color: var(--color-gray-50);
+    border-radius: 14px;
+    border: 1px solid var(--border-color-light);
+    transition: border-color 0.3s ease;
+}
+
+.requirements-container:hover {
+    border-color: var(--color-primary);
+}
+
+.requirements-title {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.requirements-title i {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+}
+
+.requirements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.76rem;
+    color: var(--color-gray-500);
+    transition: all 0.3s ease;
+    padding: 4px 0;
+}
+
+.requirement-item i {
+    font-size: 0.7rem;
+    width: 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.requirement-item.valid {
+    color: var(--color-success);
+}
+
+.requirement-item.valid i {
+    color: var(--color-success);
+    animation: checkPop 0.3s ease;
+}
+
+.requirement-item.invalid {
+    color: var(--color-error);
+}
+
+.requirement-item.invalid i {
+    color: var(--color-error);
+}
+
+@keyframes checkPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* ============================================================
+   6. SÉPARATEUR
+   ============================================================ */
+.password-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 24px 0;
+    position: relative;
+}
+
+.password-divider::after {
+    content: '\f023';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 0 12px;
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+/* ============================================================
+   7. CONSEILS DE SÉCURITÉ
+   ============================================================ */
+.security-tips {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border: 1px solid #fde68a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 20px 0;
+}
+
+.security-tips-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #92400e;
+    margin-bottom: 12px;
+}
+
+.security-tips-header i {
+    font-size: 1.1rem;
+    color: #f59e0b;
+}
+
+.security-tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.security-tips-list li {
+    font-size: 0.78rem;
+    color: #78350f;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.security-tips-list li i {
+    color: #f59e0b;
+    font-size: 0.7rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   8. ANIMATION SUCCÈS
+   ============================================================ */
+.success-animation {
+    text-align: center;
+    padding: 30px;
+    animation: successFadeIn 0.5s ease;
+}
+
+@keyframes successFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.success-animation i {
+    font-size: 4rem;
+    color: #10b981;
+    margin-bottom: 16px;
+    animation: successBounce 0.6s ease;
+}
+
+@keyframes successBounce {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.success-animation h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+}
+
+.success-animation p {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .password-card-header {
+        padding: 20px;
+    }
+
+    .password-card-body {
+        padding: 20px;
+    }
+
+    .password-card-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .password-card-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .password-input {
+        padding: 11px 44px 11px 40px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .password-card {
+        border-radius: 14px;
+    }
+
+    .password-card-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px 16px;
+    }
+
+    .password-card-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+
+    .password-card-body {
+        padding: 16px;
+    }
+
+    .password-card-footer {
+        padding: 12px 16px;
+    }
+
+    .requirements-container {
+        padding: 12px 14px;
+    }
+
+    .security-tips {
+        padding: 14px 16px;
+    }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .password-toggle-btn,
+    .password-card-footer,
+    .security-tips {
+        display: none !important;
+    }
+
+    .password-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

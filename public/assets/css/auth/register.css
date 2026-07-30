@@ -1,0 +1,869 @@
+/* ============================================================
+   Fichier : public/assets/css/auth/register.css
+   Rôle    : Styles de la page d'inscription
+   ============================================================ */
+
+/* ============================================================
+   1. LAYOUT PRINCIPAL
+   ============================================================ */
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-100);
+    padding: 20px;
+    font-family: var(--font-primary);
+}
+
+.register-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 700px;
+    background-color: var(--color-white);
+    border-radius: 24px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    animation: registerFadeIn 0.6s ease;
+}
+
+@keyframes registerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================================
+   2. PARTIE GAUCHE — INFORMATIONS
+   ============================================================ */
+.register-left {
+    flex: 1;
+    background: linear-gradient(160deg, #1a274f 0%, #2c3e90 35%, #1e3a5f 100%);
+    color: var(--color-white);
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.register-left-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo */
+.register-brand {
+    margin-bottom: 40px;
+}
+
+.register-brand-icon {
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.register-brand-icon:hover {
+    transform: scale(1.05) rotate(-5deg);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.register-brand-icon i {
+    font-size: 2rem;
+    color: #f59e0b;
+}
+
+.register-brand h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.register-brand p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* Avantages */
+.register-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 50px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateX(6px);
+}
+
+.benefit-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.benefit-item:hover .benefit-icon {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.benefit-icon i {
+    font-size: 1.05rem;
+    color: #f59e0b;
+}
+
+.benefit-text strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 3px;
+}
+
+.benefit-text p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Pied gauche */
+.register-left-footer {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.register-left-footer i {
+    margin-right: 4px;
+}
+
+/* Décorations */
+.register-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.register-decoration .decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.register-decoration .circle-1 {
+    width: 350px;
+    height: 350px;
+    top: -100px;
+    right: -80px;
+    animation: floatReg1 12s ease-in-out infinite;
+}
+
+.register-decoration .circle-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: -60px;
+    animation: floatReg2 15s ease-in-out infinite;
+}
+
+.register-decoration .circle-3 {
+    width: 120px;
+    height: 120px;
+    bottom: 30%;
+    right: 20%;
+    animation: floatReg3 10s ease-in-out infinite;
+}
+
+@keyframes floatReg1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-20px, 15px) scale(1.05); }
+    66% { transform: translate(10px, -10px) scale(0.95); }
+}
+
+@keyframes floatReg2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(15px, -20px) scale(1.08); }
+}
+
+@keyframes floatReg3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-10px, -15px) scale(1.1); }
+    75% { transform: translate(10px, 10px) scale(0.9); }
+}
+
+/* ============================================================
+   3. PARTIE DROITE — FORMULAIRE
+   ============================================================ */
+.register-right {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 45px;
+    background-color: var(--color-white);
+    overflow-y: auto;
+}
+
+.register-form-wrapper {
+    width: 100%;
+    max-width: 520px;
+}
+
+/* En-tête */
+.register-form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.register-avatar {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 18px;
+    background: var(--color-primary-lighter);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(44, 62, 144, 0.1);
+}
+
+.register-avatar i {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+}
+
+.register-form-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 6px;
+}
+
+.register-form-header p {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* ============================================================
+   4. CHAMPS DE FORMULAIRE
+   ============================================================ */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+    color: var(--color-gray-700);
+}
+
+.form-label i {
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    width: 14px;
+    text-align: center;
+}
+
+.form-label .required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.06);
+}
+
+.form-control.is-invalid {
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.06);
+}
+
+.form-control.is-valid {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+}
+
+.form-control.is-valid:focus {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.06);
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8.825L1.175 4 2.238 2.938 6 6.7 9.763 2.937 10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+}
+
+/* Toggle mot de passe */
+.toggle-password {
+    position: absolute;
+    right: 4px;
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    z-index: 1;
+    border-radius: 0 10px 10px 0;
+}
+
+.toggle-password:hover {
+    color: var(--color-primary);
+}
+
+.invalid-feedback {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--color-error);
+    margin-top: 4px;
+    font-weight: 500;
+    padding-left: 2px;
+    animation: shakeError 0.4s ease;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+/* ============================================================
+   5. LIGNE DE FORMULAIRE (2 colonnes)
+   ============================================================ */
+.form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+/* ============================================================
+   6. INDICATEUR DE FORCE DU MOT DE PASSE
+   ============================================================ */
+.password-strength {
+    margin-top: -8px;
+    margin-bottom: 12px;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 5px;
+    background-color: var(--color-gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.strength-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.4s ease, background-color 0.4s ease;
+    width: 0%;
+    background-color: var(--color-gray-300);
+}
+
+.strength-fill.very-weak { width: 20%; background-color: #ef4444; }
+.strength-fill.weak { width: 40%; background-color: #f97316; }
+.strength-fill.medium { width: 60%; background-color: #f59e0b; }
+.strength-fill.strong { width: 80%; background-color: #84cc16; }
+.strength-fill.very-strong { width: 100%; background-color: #10b981; }
+
+.strength-text {
+    font-size: 0.68rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.strength-text.very-weak { color: #ef4444; }
+.strength-text.weak { color: #f97316; }
+.strength-text.medium { color: #f59e0b; }
+.strength-text.strong { color: #84cc16; }
+.strength-text.very-strong { color: #10b981; }
+
+/* ============================================================
+   7. EXIGENCES DU MOT DE PASSE
+   ============================================================ */
+.password-requirements {
+    margin-top: -8px;
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background-color: var(--color-gray-50);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.requirements-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.requirements-title i {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.password-requirements ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: var(--color-gray-500);
+    transition: color 0.3s ease;
+}
+
+.password-requirements ul li i {
+    font-size: 0.6rem;
+    width: 12px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.password-requirements ul li.valid {
+    color: var(--color-success);
+}
+
+.password-requirements ul li.valid i {
+    color: var(--color-success);
+}
+
+.password-requirements ul li.invalid {
+    color: var(--color-error);
+}
+
+.password-requirements ul li.invalid i {
+    color: var(--color-error);
+}
+
+/* ============================================================
+   8. CHECKBOX CONDITIONS
+   ============================================================ */
+.form-checkbox {
+    margin-bottom: 20px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.checkbox-custom i {
+    font-size: 0.6rem;
+    color: var(--color-white);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.25s ease;
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.checkbox-wrapper:hover .checkbox-custom {
+    border-color: var(--color-primary);
+}
+
+.checkbox-label {
+    font-size: 0.78rem;
+    color: var(--color-gray-600);
+    line-height: 1.4;
+}
+
+.checkbox-label a {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   9. BOUTON D'INSCRIPTION
+   ============================================================ */
+.btn-register {
+    width: 100%;
+    padding: 13px 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.btn-register::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-register:hover::before {
+    left: 100%;
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.35);
+}
+
+.btn-register:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.25);
+}
+
+.btn-register:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-register .spinner {
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   10. PIED DU FORMULAIRE
+   ============================================================ */
+.register-form-footer {
+    text-align: center;
+}
+
+.register-form-footer p {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.register-form-footer a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-form-footer a:hover {
+    text-decoration: underline;
+}
+
+.register-form-footer i {
+    font-size: 0.7rem;
+    margin-right: 4px;
+}
+
+/* ============================================================
+   11. ALERTES
+   ============================================================ */
+.alert {
+    padding: 13px 16px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    animation: alertSlideIn 0.3s ease;
+}
+
+@keyframes alertSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert i {
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+
+.alert-success i { color: #10b981; }
+
+.alert-error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.alert-error i { color: #ef4444; }
+
+/* ============================================================
+   12. RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+    .register-container {
+        flex-direction: column;
+        max-width: 520px;
+        min-height: auto;
+    }
+
+    .register-left {
+        padding: 30px 25px;
+    }
+
+    .register-brand {
+        margin-bottom: 20px;
+    }
+
+    .register-brand h1 {
+        font-size: 1.2rem;
+    }
+
+    .register-benefits {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .benefit-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .register-right {
+        padding: 30px 25px;
+    }
+
+    .register-decoration {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-page {
+        padding: 10px;
+    }
+
+    .register-container {
+        border-radius: 18px;
+    }
+
+    .register-left {
+        padding: 20px 18px;
+    }
+
+    .register-right {
+        padding: 20px 18px;
+    }
+
+    .register-form-header {
+        margin-bottom: 20px;
+    }
+
+    .register-form-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .register-avatar {
+        width: 55px;
+        height: 55px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+
+    .btn-register {
+        padding: 11px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+
+
+
+.toggle-password {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    z-index: 2;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 4px);
+}
+
+.toggle-password:hover {
+    color: var(--color-primary);
+}
+
+.toggle-password i {
+    font-size: 0.9rem;
+    pointer-events: none;
+}

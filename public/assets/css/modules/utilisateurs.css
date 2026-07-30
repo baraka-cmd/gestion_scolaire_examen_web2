@@ -1,0 +1,861 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/utilisateurs.css
+   Rôle    : Styles du module de gestion des utilisateurs
+   ============================================================ */
+
+/* ============================================================
+   1. EN-TÊTE DU MODULE
+   ============================================================ */
+.module-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.module-header-left h4 {
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.module-header-left h4 i {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.module-header-left p {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.module-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============================================================
+   2. BARRE DE FILTRES
+   ============================================================ */
+.filters-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-xs);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    white-space: nowrap;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.25s ease;
+    min-width: 150px;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+.filter-group .search-input {
+    min-width: 250px;
+    padding-left: 36px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+}
+
+.btn-reset-filters {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.btn-reset-filters:hover {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+/* ============================================================
+   3. TABLEAU DES UTILISATEURS
+   ============================================================ */
+.user-table-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.table-header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.table-header-info span {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+}
+
+.table-header-info strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Cellule utilisateur avec avatar */
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-color: var(--color-primary-lighter);
+    flex-shrink: 0;
+}
+
+.user-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.user-avatar-placeholder.blue { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.user-avatar-placeholder.green { background: linear-gradient(135deg, #10b981, #34d399); }
+.user-avatar-placeholder.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.user-avatar-placeholder.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+.user-avatar-placeholder.red { background: linear-gradient(135deg, #ef4444, #f87171); }
+.user-avatar-placeholder.cyan { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 500;
+    color: var(--color-dark);
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.user-name a {
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.user-name a:hover {
+    color: var(--color-primary);
+}
+
+.user-email {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+/* Badge rôle */
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.role-badge.admin { background-color: #fef3c7; color: #92400e; }
+.role-badge.directeur { background-color: #ede9fe; color: #5b21b6; }
+.role-badge.secretaire { background-color: #dbeafe; color: #1e40af; }
+.role-badge.enseignant { background-color: #d1fae5; color: #065f46; }
+.role-badge.comptable { background-color: #fee2e2; color: #991b1b; }
+.role-badge.parent { background-color: #f1f5f9; color: #475569; }
+
+.role-badge i {
+    font-size: 0.6rem;
+}
+
+/* Statut toggle */
+.status-toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.status-toggle input {
+    display: none;
+}
+
+.status-toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e2e8f0;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+.status-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.status-toggle input:checked + .status-toggle-slider {
+    background-color: #10b981;
+}
+
+.status-toggle input:checked + .status-toggle-slider::before {
+    transform: translateX(20px);
+}
+
+.status-toggle input:disabled + .status-toggle-slider {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================================
+   4. ACTIONS SUR LES LIGNES
+   ============================================================ */
+.actions-cell {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--color-white);
+    color: var(--color-gray-500);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: all 0.25s ease;
+}
+
+.btn-icon:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.btn-icon-view:hover {
+    background-color: #dbeafe;
+    color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.btn-icon-edit:hover {
+    background-color: #fef3c7;
+    color: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.btn-icon-delete:hover {
+    background-color: #fee2e2;
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+.btn-icon-lock:hover {
+    background-color: #ede9fe;
+    color: #8b5cf6;
+    border-color: #8b5cf6;
+}
+
+/* ============================================================
+   5. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border-color-light);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.pagination-info {
+    font-size: 0.78rem;
+    color: var(--color-gray-500);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--color-white);
+    color: var(--color-gray-600);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+    font-family: var(--font-primary);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.pagination-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    font-weight: 600;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+/* ============================================================
+   6. FICHE UTILISATEUR (DÉTAIL)
+   ============================================================ */
+.profile-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 30px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+}
+
+.profile-avatar-large {
+    width: 90px;
+    height: 90px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.1);
+    flex-shrink: 0;
+}
+
+.profile-avatar-placeholder-large {
+    width: 90px;
+    height: 90px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: rgba(255,255,255,0.15);
+    border: 3px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+}
+
+.profile-header-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.profile-header-info p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.profile-header-info p i {
+    font-size: 0.7rem;
+}
+
+.profile-header-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+/* Corps de la fiche */
+.profile-body {
+    padding: 24px 30px;
+}
+
+.profile-section {
+    margin-bottom: 28px;
+}
+
+.profile-section:last-child {
+    margin-bottom: 0;
+}
+
+.profile-section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.profile-section-title i {
+    color: var(--color-primary);
+    font-size: 0.95rem;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-field-label {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.profile-field-value {
+    font-size: 0.88rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+/* Historique des connexions */
+.timeline {
+    position: relative;
+    padding-left: 24px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -20px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+}
+
+.timeline-dot.success { background-color: #10b981; }
+.timeline-dot.error { background-color: #ef4444; }
+.timeline-dot.info { background-color: #3b82f6; }
+.timeline-dot.warning { background-color: #f59e0b; }
+
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.timeline-action {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.timeline-detail {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+}
+
+.timeline-time {
+    font-size: 0.7rem;
+    color: var(--color-gray-400);
+}
+
+/* ============================================================
+   7. FORMULAIRE UTILISATEUR
+   ============================================================ */
+.user-form-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    max-width: 700px;
+}
+
+.user-form-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.user-form-header h5 {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-form-body {
+    padding: 24px;
+}
+
+.user-form-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color-light);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: var(--color-gray-50);
+    border-radius: 0 0 16px 16px;
+}
+
+.form-section-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-section-title i {
+    font-size: 0.9rem;
+}
+
+.form-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 20px 0;
+}
+
+/* Photo upload */
+.photo-upload {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.photo-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 2px dashed var(--border-color);
+    background-color: var(--color-gray-50);
+    flex-shrink: 0;
+}
+
+.photo-preview-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    border: 2px dashed var(--border-color);
+    background-color: var(--color-gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--color-gray-300);
+    flex-shrink: 0;
+}
+
+.photo-upload-info {
+    font-size: 0.78rem;
+    color: var(--color-gray-500);
+}
+
+.photo-upload-info strong {
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.photo-upload-info small {
+    display: block;
+    margin-top: 4px;
+    color: var(--color-gray-400);
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .filters-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group .search-input {
+        min-width: 100%;
+    }
+
+    .btn-reset-filters {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .profile-header-actions {
+        margin-left: 0;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .module-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .module-header-right {
+        width: 100%;
+    }
+
+    .module-header-right .btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-form-card {
+        max-width: 100%;
+    }
+
+    .photo-upload {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .actions-cell {
+        flex-wrap: wrap;
+    }
+
+    .btn-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.75rem;
+    }
+
+    .profile-avatar-large {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+    }
+
+    .profile-avatar-placeholder-large {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+        font-size: 1.5rem;
+    }
+
+    .user-form-body {
+        padding: 16px;
+    }
+}
+
+/* ============================================================
+   9. ANIMATIONS
+   ============================================================ */
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table tbody tr {
+    animation: fadeInRow 0.3s ease;
+}
+
+/* Skeleton loading */
+.skeleton-row {
+    height: 56px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .module-header-right,
+    .filters-bar,
+    .actions-cell,
+    .btn-icon,
+    .pagination-wrapper,
+    .profile-header-actions {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

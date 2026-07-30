@@ -1,0 +1,480 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/ajouter_eleve.css
+   Rôle    : Styles du formulaire d'ajout d'élève
+   ============================================================ */
+
+/* ============================================================
+   1. CONTAINER PRINCIPAL
+   ============================================================ */
+.add-eleve-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   2. CARTE DE SECTION
+   ============================================================ */
+.eleve-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+}
+
+.eleve-form-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+/* En-tête de section */
+.eleve-form-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.eleve-form-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.eleve-form-card:hover .eleve-form-icon {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.eleve-form-icon i {
+    color: #f59e0b;
+}
+
+.eleve-form-header h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+    color: var(--color-white);
+}
+
+.eleve-form-header p {
+    font-size: 0.76rem;
+    margin: 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+.eleve-form-header .required {
+    color: #fca5a5;
+}
+
+/* Corps */
+.eleve-form-body {
+    padding: 24px 28px;
+}
+
+/* ============================================================
+   3. CHAMPS DE FORMULAIRE
+   ============================================================ */
+.form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 220px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.82rem;
+    margin-bottom: 7px;
+    color: var(--color-gray-700);
+}
+
+.form-label i {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    width: 14px;
+    text-align: center;
+}
+
+.form-label .required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    font-family: var(--font-primary);
+    font-size: 0.86rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+}
+
+.form-control.is-invalid {
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.08);
+}
+
+.form-control.is-valid {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 70px;
+    padding: 12px 14px;
+    line-height: 1.6;
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8.825L1.175 4 2.238 2.938 6 6.7 9.763 2.937 10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+}
+
+select.form-control optgroup {
+    font-weight: 600;
+    color: var(--color-gray-500);
+    font-size: 0.8rem;
+}
+
+/* Input type date */
+input[type="date"].form-control {
+    padding-right: 14px;
+    cursor: pointer;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+input[type="date"].form-control:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
+/* Feedback */
+.invalid-feedback {
+    display: block;
+    font-size: 0.74rem;
+    color: var(--color-error);
+    margin-top: 6px;
+    font-weight: 500;
+    padding-left: 4px;
+    animation: feedbackShake 0.4s ease;
+}
+
+@keyframes feedbackShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+/* Help text */
+.form-help {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-help i {
+    font-size: 0.7rem;
+}
+
+/* ============================================================
+   4. INDICATEUR DE PROGRESSION
+   ============================================================ */
+.form-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 28px;
+    padding: 0 20px;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.progress-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    flex-shrink: 0;
+}
+
+.progress-dot.completed {
+    background-color: #10b981;
+    color: var(--color-white);
+}
+
+.progress-dot.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 0 0 6px rgba(44, 62, 144, 0.15);
+}
+
+.progress-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    white-space: nowrap;
+}
+
+.progress-label.completed { color: #10b981; }
+.progress-label.active { color: var(--color-primary); font-weight: 600; }
+
+.progress-line {
+    flex: 1;
+    height: 2px;
+    background-color: var(--color-gray-200);
+    margin: 0 12px;
+    transition: background-color 0.3s ease;
+}
+
+.progress-line.completed {
+    background-color: #10b981;
+}
+
+/* ============================================================
+   5. BOUTONS D'ACTION
+   ============================================================ */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.form-actions .btn {
+    min-width: 140px;
+    justify-content: center;
+}
+
+.btn-submit {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2c3e90 0%, #1a274f 100%);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.35);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   6. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .form-progress {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .progress-line {
+        display: none;
+    }
+
+    .progress-label {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .eleve-form-header {
+        padding: 16px 20px;
+    }
+
+    .eleve-form-body {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .eleve-form-card {
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .eleve-form-header {
+        padding: 14px 16px;
+    }
+
+    .eleve-form-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .eleve-form-body {
+        padding: 16px;
+    }
+
+    .form-control {
+        padding: 10px 12px 10px 38px;
+        font-size: 0.82rem;
+    }
+
+    .btn-submit {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================================
+   7. ANIMATIONS
+   ============================================================ */
+@keyframes sectionSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.eleve-form-card {
+    animation: sectionSlideIn 0.4s ease;
+}
+
+.eleve-form-card:nth-child(2) { animation-delay: 0.1s; }
+.eleve-form-card:nth-child(3) { animation-delay: 0.2s; }
+.eleve-form-card:nth-child(4) { animation-delay: 0.3s; }
+.eleve-form-card:nth-child(5) { animation-delay: 0.4s; }
+
+/* ============================================================
+   8. IMPRESSION
+   ============================================================ */
+@media print {
+    .form-actions,
+    .eleve-form-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .eleve-form-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+}

@@ -1,0 +1,721 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/classes.css
+   Rôle    : Styles du module de gestion des classes
+   ============================================================ */
+
+/* ============================================================
+   1. EN-TÊTE DU MODULE
+   ============================================================ */
+.classes-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.classes-header-left h4 {
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.classes-header-left h4 i {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.classes-header-left p {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.classes-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============================================================
+   2. BARRE DE FILTRES
+   ============================================================ */
+.classes-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-xs);
+}
+
+.classes-filters .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.classes-filters .filter-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    white-space: nowrap;
+}
+
+.classes-filters .filter-group select,
+.classes-filters .filter-group input {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.25s ease;
+    min-width: 150px;
+}
+
+.classes-filters .filter-group select:focus,
+.classes-filters .filter-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+.classes-filters .search-input {
+    min-width: 250px;
+    padding-left: 36px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+}
+
+.btn-reset-filters {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.btn-reset-filters:hover {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+/* ============================================================
+   3. GRILLE DES CLASSES (VUE CARTES)
+   ============================================================ */
+.classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+/* Carte classe */
+.classe-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.classe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.classe-card-header {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.classe-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.classe-card-icon i {
+    color: #f59e0b;
+}
+
+.classe-card-title {
+    flex: 1;
+    min-width: 0;
+}
+
+.classe-card-title h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+    color: var(--color-white);
+}
+
+.classe-card-title span {
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+.classe-card-body {
+    padding: 20px 24px;
+}
+
+.classe-info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+}
+
+.classe-info-row i {
+    width: 18px;
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.classe-info-row strong {
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+.classe-card-footer {
+    padding: 14px 24px;
+    border-top: 1px solid var(--border-color-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-gray-50);
+}
+
+.classe-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.classe-badge.success { background-color: #d1fae5; color: #065f46; }
+.classe-badge.warning { background-color: #fef3c7; color: #92400e; }
+.classe-badge.danger { background-color: #fee2e2; color: #991b1b; }
+.classe-badge.info { background-color: #dbeafe; color: #1e40af; }
+
+/* ============================================================
+   4. VUE TABLEAU (ALTERNATIVE)
+   ============================================================ */
+.classes-table-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.classe-niveau-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-white);
+}
+
+.classe-niveau-badge.n1 { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.classe-niveau-badge.n2 { background: linear-gradient(135deg, #10b981, #34d399); }
+.classe-niveau-badge.n3 { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.classe-niveau-badge.n4 { background: linear-gradient(135deg, #ef4444, #f87171); }
+.classe-niveau-badge.n5 { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+.classe-niveau-badge.n6 { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+
+/* Barre de progression capacité */
+.capacity-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.capacity-bar-track {
+    flex: 1;
+    max-width: 80px;
+    height: 6px;
+    background-color: var(--color-gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.capacity-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.capacity-bar-fill.low { background-color: #10b981; }
+.capacity-bar-fill.medium { background-color: #f59e0b; }
+.capacity-bar-fill.high { background-color: #ef4444; }
+
+.capacity-bar-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+/* ============================================================
+   5. FICHE DÉTAIL CLASSE
+   ============================================================ */
+.classe-detail-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.classe-detail-header {
+    padding: 28px 32px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.classe-detail-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.classe-detail-icon i {
+    color: #f59e0b;
+}
+
+.classe-detail-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.classe-detail-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.classe-detail-info p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin: 0 0 8px 0;
+}
+
+.classe-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.classe-detail-meta span {
+    font-size: 0.78rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.classe-detail-meta i {
+    font-size: 0.7rem;
+}
+
+.classe-detail-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.classe-detail-body {
+    padding: 28px 32px;
+}
+
+.classe-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.detail-stat {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-gray-50);
+    border-radius: 14px;
+    border: 1px solid var(--border-color-light);
+    transition: all 0.3s ease;
+}
+
+.detail-stat:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.08);
+}
+
+.detail-stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.detail-stat-label {
+    font-size: 0.78rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+/* Titulaire */
+.titulaire-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border: 1px solid #fde68a;
+    border-radius: 14px;
+    margin-bottom: 24px;
+}
+
+.titulaire-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.titulaire-info {
+    flex: 1;
+}
+
+.titulaire-info strong {
+    font-size: 0.95rem;
+    color: var(--color-dark);
+    display: block;
+}
+
+.titulaire-info span {
+    font-size: 0.78rem;
+    color: #92400e;
+}
+
+.titulaire-info p {
+    font-size: 0.75rem;
+    color: #78350f;
+    margin: 4px 0 0 0;
+}
+
+.titulaire-empty {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background-color: var(--color-gray-50);
+    border: 1px dashed var(--border-color);
+    border-radius: 14px;
+    margin-bottom: 24px;
+}
+
+.titulaire-empty i {
+    font-size: 1.5rem;
+    color: var(--color-gray-400);
+}
+
+.titulaire-empty p {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* ============================================================
+   6. FORMULAIRE CLASSE
+   ============================================================ */
+.classe-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    max-width: 700px;
+    overflow: hidden;
+}
+
+.classe-form-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.classe-form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.classe-form-icon i {
+    color: #f59e0b;
+}
+
+.classe-form-header h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.classe-form-header p {
+    font-size: 0.78rem;
+    margin: 2px 0 0 0;
+    opacity: 0.75;
+}
+
+.classe-form-body {
+    padding: 28px;
+}
+
+.classe-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* ============================================================
+   7. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .classes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .classe-detail-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .classe-detail-actions {
+        justify-content: center;
+    }
+
+    .classe-detail-meta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .classes-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .classes-filters .search-input {
+        min-width: 100%;
+    }
+
+    .btn-reset-filters {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .classe-detail-body {
+        padding: 16px;
+    }
+
+    .classe-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .classe-form-card {
+        max-width: 100%;
+    }
+
+    .classe-form-body {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .classes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .classe-card-header {
+        padding: 16px 18px;
+    }
+
+    .classe-card-body {
+        padding: 14px 18px;
+    }
+
+    .classe-card-footer {
+        padding: 12px 18px;
+    }
+
+    .classe-detail-header {
+        padding: 20px;
+    }
+
+    .classe-detail-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+    }
+
+    .classe-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .classe-form-header {
+        padding: 18px;
+    }
+
+    .classe-form-body {
+        padding: 16px;
+    }
+
+    .classe-form-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .classe-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================================
+   8. ANIMATIONS
+   ============================================================ */
+@keyframes cardSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.classe-card {
+    animation: cardSlideUp 0.4s ease;
+}
+
+/* Skeleton loading */
+.skeleton-classe-card {
+    height: 220px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 16px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ============================================================
+   9. IMPRESSION
+   ============================================================ */
+@media print {
+    .classes-header-right,
+    .classes-filters,
+    .classe-detail-actions,
+    .classe-form-footer,
+    .btn {
+        display: none !important;
+    }
+
+    .classe-card,
+    .classe-detail-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

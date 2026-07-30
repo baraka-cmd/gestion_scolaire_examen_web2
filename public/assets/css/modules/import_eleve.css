@@ -1,0 +1,679 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/import_eleve.css
+   Rôle    : Styles de la page d'import CSV d'élèves
+   ============================================================ */
+
+/* ============================================================
+   1. CONTAINER PRINCIPAL
+   ============================================================ */
+.import-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.import-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* ============================================================
+   2. CARTE D'IMPORT
+   ============================================================ */
+.import-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.import-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.import-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.import-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.import-card:hover .import-card-icon {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.import-card-icon i {
+    color: #f59e0b;
+}
+
+.import-card-header h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--color-white);
+}
+
+.import-card-header p {
+    font-size: 0.78rem;
+    margin: 0;
+    opacity: 0.8;
+    color: var(--color-white);
+}
+
+.import-card-body {
+    padding: 24px 28px;
+}
+
+.import-card-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* ============================================================
+   3. ZONE DE DROP
+   ============================================================ */
+.dropzone {
+    border: 3px dashed var(--border-color);
+    border-radius: 20px;
+    padding: 48px 32px;
+    text-align: center;
+    background-color: var(--color-gray-50);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropzone::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44, 62, 144, 0.03) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dropzone:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.1);
+}
+
+.dropzone:hover::before {
+    opacity: 1;
+}
+
+.dropzone.dragover {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.15);
+}
+
+.dropzone.dragover::before {
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+    opacity: 1;
+}
+
+.dropzone-icon {
+    font-size: 3.5rem;
+    color: var(--color-gray-400);
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.dropzone:hover .dropzone-icon {
+    color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+.dropzone.dragover .dropzone-icon {
+    color: var(--color-success);
+    animation: dropzoneBounce 0.6s ease;
+}
+
+@keyframes dropzoneBounce {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-15px); }
+    50% { transform: translateY(-5px); }
+    75% { transform: translateY(-10px); }
+}
+
+.dropzone-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+}
+
+.dropzone-text {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    margin-bottom: 20px;
+}
+
+.dropzone-file-info {
+    display: none;
+    margin-top: 12px;
+    padding: 10px 16px;
+    background-color: #dbeafe;
+    border-radius: 10px;
+    font-weight: 500;
+    color: #1e40af;
+    font-size: 0.85rem;
+}
+
+.dropzone-file-info.show {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropzone-file-info i {
+    color: var(--color-primary);
+}
+
+.dropzone-file-info .file-size {
+    font-weight: 400;
+    opacity: 0.7;
+    font-size: 0.75rem;
+}
+
+/* ============================================================
+   4. SÉLECTEUR DE CLASSE
+   ============================================================ */
+.classe-selector {
+    margin-top: 20px;
+}
+
+.classe-selector-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.84rem;
+    margin-bottom: 8px;
+    color: var(--color-gray-700);
+}
+
+.classe-selector-label i {
+    color: var(--color-primary);
+    font-size: 0.8rem;
+}
+
+.classe-selector-label .optional {
+    font-weight: 400;
+    color: var(--color-gray-400);
+    font-size: 0.75rem;
+    margin-left: 4px;
+}
+
+/* ============================================================
+   5. CARTE GUIDE
+   ============================================================ */
+.guide-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.guide-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    color: var(--color-white);
+}
+
+.guide-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.guide-card-icon i {
+    color: #fff;
+}
+
+.guide-card-header h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.guide-card-body {
+    padding: 24px 28px;
+}
+
+.guide-section {
+    margin-bottom: 20px;
+}
+
+.guide-section:last-child {
+    margin-bottom: 0;
+}
+
+.guide-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-dark);
+    margin-bottom: 12px;
+}
+
+.guide-section-title i {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+}
+
+.guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+}
+
+.guide-table th {
+    background-color: var(--color-gray-50);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.guide-table td {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.guide-table td:first-child {
+    font-weight: 500;
+    color: var(--color-dark);
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    background-color: #f8fafc;
+}
+
+.guide-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ============================================================
+   6. CONSEILS
+   ============================================================ */
+.tips-box {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border: 1px solid #fde68a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 20px;
+}
+
+.tips-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #92400e;
+    margin-bottom: 12px;
+}
+
+.tips-header i {
+    font-size: 1.1rem;
+    color: #f59e0b;
+}
+
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tips-list li {
+    font-size: 0.8rem;
+    color: #78350f;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.tips-list li i {
+    color: #f59e0b;
+    font-size: 0.7rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   7. BOUTON MODÈLE
+   ============================================================ */
+.btn-template {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+    text-decoration: none;
+}
+
+.btn-template:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.25);
+}
+
+.btn-template i {
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   8. RÉSULTATS D'IMPORT
+   ============================================================ */
+.results-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    margin-top: 24px;
+    animation: resultsSlideUp 0.5s ease;
+}
+
+@keyframes resultsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.results-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #1a274f 0%, #2c3e90 100%);
+    color: var(--color-white);
+}
+
+.results-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.results-icon.success { background: rgba(16, 185, 129, 0.3); }
+.results-icon.error { background: rgba(239, 68, 68, 0.3); }
+
+.results-header h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.results-header p {
+    font-size: 0.78rem;
+    margin: 2px 0 0 0;
+    opacity: 0.75;
+}
+
+.results-body {
+    padding: 24px 28px;
+}
+
+/* Stats d'import */
+.import-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.import-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.import-stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.import-stat-card.success {
+    background-color: #d1fae5;
+}
+
+.import-stat-card.warning {
+    background-color: #fef3c7;
+}
+
+.import-stat-card.danger {
+    background-color: #fee2e2;
+}
+
+.import-stat-card.info {
+    background-color: #f1f5f9;
+}
+
+.import-stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.import-stat-card.success .import-stat-icon { background-color: #10b981; color: #fff; }
+.import-stat-card.warning .import-stat-icon { background-color: #f59e0b; color: #fff; }
+.import-stat-card.danger .import-stat-icon { background-color: #ef4444; color: #fff; }
+.import-stat-card.info .import-stat-icon { background-color: #64748b; color: #fff; }
+
+.import-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.import-stat-card.success .import-stat-value { color: #065f46; }
+.import-stat-card.warning .import-stat-value { color: #92400e; }
+.import-stat-card.danger .import-stat-value { color: #991b1b; }
+.import-stat-card.info .import-stat-value { color: #334155; }
+
+.import-stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Tableau des erreurs */
+.errors-table-wrapper {
+    margin-top: 16px;
+}
+
+.errors-table-title {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.errors-table-title i {
+    color: var(--color-error);
+}
+
+.error-row-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .import-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dropzone {
+        padding: 32px 20px;
+    }
+
+    .dropzone-icon {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .import-card-header,
+    .guide-card-header,
+    .results-header {
+        padding: 18px 20px;
+    }
+
+    .import-card-body,
+    .guide-card-body,
+    .results-body {
+        padding: 20px;
+    }
+
+    .import-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .dropzone {
+        padding: 28px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .import-card {
+        border-radius: 14px;
+    }
+
+    .import-card-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .import-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .dropzone {
+        padding: 24px 12px;
+    }
+
+    .dropzone-title {
+        font-size: 0.95rem;
+    }
+
+    .guide-table td,
+    .guide-table th {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .dropzone,
+    .btn-template,
+    .classe-selector,
+    .import-card-footer {
+        display: none !important;
+    }
+
+    .import-card,
+    .guide-card,
+    .results-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

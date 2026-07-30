@@ -1,0 +1,643 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/ajouter_utilisateur.css
+   Rôle    : Styles du formulaire d'ajout d'utilisateur
+   ============================================================ */
+
+/* ============================================================
+   1. CONTAINER PRINCIPAL
+   ============================================================ */
+.add-user-container {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   2. CARTE DU FORMULAIRE
+   ============================================================ */
+.add-user-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.add-user-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* En-tête */
+.add-user-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.add-user-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.add-user-card:hover .add-user-card-icon {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.add-user-card-icon i {
+    color: #f59e0b;
+}
+
+.add-user-card-header h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--color-white);
+}
+
+.add-user-card-header p {
+    font-size: 0.78rem;
+    margin: 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+/* Corps */
+.add-user-card-body {
+    padding: 28px;
+}
+
+/* Pied */
+.add-user-card-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+.add-user-card-footer .btn {
+    min-width: 140px;
+    justify-content: center;
+}
+
+/* ============================================================
+   3. SECTIONS DU FORMULAIRE
+   ============================================================ */
+.form-section {
+    margin-bottom: 4px;
+}
+
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-lighter);
+}
+
+.form-section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.form-section-icon i {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.form-section-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.form-section-subtitle {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 2px;
+}
+
+/* ============================================================
+   4. CHAMPS DE FORMULAIRE
+   ============================================================ */
+.form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 220px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.82rem;
+    margin-bottom: 7px;
+    color: var(--color-gray-700);
+}
+
+.form-label i {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    width: 14px;
+    text-align: center;
+}
+
+.form-label .required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    font-family: var(--font-primary);
+    font-size: 0.86rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-gray-400);
+    font-size: 0.8rem;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+}
+
+.form-control.is-invalid {
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.08);
+}
+
+.form-control.is-valid {
+    border-color: var(--color-success);
+    background-color: #f0fdf4;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8.825L1.175 4 2.238 2.938 6 6.7 9.763 2.937 10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+}
+
+select.form-control:disabled {
+    background-color: var(--color-gray-50);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Toggle mot de passe */
+.password-toggle-btn {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    z-index: 2;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle-btn:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.password-toggle-btn i {
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+
+.password-toggle-btn:active i {
+    transform: scale(0.9);
+}
+
+/* Feedback */
+.invalid-feedback {
+    display: block;
+    font-size: 0.74rem;
+    color: var(--color-error);
+    margin-top: 6px;
+    font-weight: 500;
+    padding-left: 4px;
+    animation: feedbackShake 0.4s ease;
+}
+
+@keyframes feedbackShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+/* Help text */
+.form-help {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-help i {
+    font-size: 0.7rem;
+}
+
+/* ============================================================
+   5. INDICATEUR DE FORCE DU MOT DE PASSE
+   ============================================================ */
+.strength-container {
+    margin-top: -6px;
+    margin-bottom: 18px;
+    padding: 0 4px;
+}
+
+.strength-bar-wrapper {
+    width: 100%;
+    height: 6px;
+    background-color: var(--color-gray-200);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.strength-bar-fill {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+    width: 0%;
+}
+
+.strength-bar-fill.very-weak { width: 20%; background: linear-gradient(90deg, #ef4444, #f87171); }
+.strength-bar-fill.weak { width: 40%; background: linear-gradient(90deg, #f97316, #fb923c); }
+.strength-bar-fill.medium { width: 60%; background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.strength-bar-fill.strong { width: 80%; background: linear-gradient(90deg, #84cc16, #a3e635); }
+.strength-bar-fill.very-strong { width: 100%; background: linear-gradient(90deg, #10b981, #34d399); }
+
+.strength-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+    transition: color 0.4s ease;
+}
+
+.strength-label.very-weak { color: #ef4444; }
+.strength-label.weak { color: #f97316; }
+.strength-label.medium { color: #f59e0b; }
+.strength-label.strong { color: #84cc16; }
+.strength-label.very-strong { color: #10b981; }
+
+/* ============================================================
+   6. EXIGENCES DU MOT DE PASSE
+   ============================================================ */
+.requirements-container {
+    margin-bottom: 20px;
+    padding: 16px 18px;
+    background-color: var(--color-gray-50);
+    border-radius: 14px;
+    border: 1px solid var(--border-color-light);
+    transition: all 0.3s ease;
+}
+
+.requirements-container:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(44, 62, 144, 0.06);
+}
+
+.requirements-title {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.requirements-title i {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+}
+
+.requirements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.76rem;
+    color: var(--color-gray-500);
+    transition: all 0.3s ease;
+    padding: 4px 0;
+}
+
+.requirement-item i {
+    font-size: 0.7rem;
+    width: 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.requirement-item.valid {
+    color: var(--color-success);
+}
+
+.requirement-item.valid i {
+    color: var(--color-success);
+    animation: checkPop 0.3s ease;
+}
+
+.requirement-item.invalid {
+    color: var(--color-error);
+}
+
+.requirement-item.invalid i {
+    color: var(--color-error);
+}
+
+@keyframes checkPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* ============================================================
+   7. SÉPARATEUR DE SECTION
+   ============================================================ */
+.form-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 24px 0;
+    position: relative;
+}
+
+.form-divider::after {
+    content: '●●●';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 0 16px;
+    color: var(--color-gray-300);
+    font-size: 0.5rem;
+    letter-spacing: 4px;
+}
+
+/* ============================================================
+   8. APERÇU DES PERMISSIONS
+   ============================================================ */
+.permissions-preview {
+    display: none;
+    margin-top: 16px;
+    padding: 16px 18px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid var(--border-color-light);
+    animation: previewFadeIn 0.3s ease;
+}
+
+@keyframes previewFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.permissions-preview.show {
+    display: block;
+}
+
+.permissions-preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.permissions-preview-title {
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.permissions-preview-title i {
+    color: var(--color-primary);
+}
+
+.permissions-preview-count {
+    font-size: 0.72rem;
+    color: var(--color-gray-500);
+    background: var(--color-white);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.permissions-module-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.permission-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    border: 1px solid var(--border-color);
+    color: var(--color-gray-600);
+    transition: all 0.2s ease;
+}
+
+.permission-tag:hover {
+    background-color: var(--color-primary-lighter);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.permission-tag i {
+    font-size: 0.6rem;
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .add-user-card-header {
+        padding: 18px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .add-user-card-body {
+        padding: 20px;
+    }
+
+    .add-user-card-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .add-user-card-footer .btn {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-user-card {
+        border-radius: 14px;
+    }
+
+    .add-user-card-header {
+        padding: 16px;
+    }
+
+    .add-user-card-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
+    .add-user-card-body {
+        padding: 16px;
+    }
+
+    .add-user-card-footer {
+        padding: 12px 16px;
+    }
+
+    .form-control {
+        padding: 10px 12px 10px 38px;
+        font-size: 0.82rem;
+    }
+
+    .requirements-container {
+        padding: 12px 14px;
+    }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .add-user-card-footer,
+    .password-toggle-btn,
+    .strength-container,
+    .requirements-container,
+    .permissions-preview {
+        display: none !important;
+    }
+
+    .add-user-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
