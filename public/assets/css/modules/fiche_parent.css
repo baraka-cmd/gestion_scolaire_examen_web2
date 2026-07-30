@@ -1,0 +1,723 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/fiche_parent.css
+   Rôle    : Styles de la fiche détaillée d'un parent/tuteur
+   ============================================================ */
+
+/* ============================================================
+   1. HERO HEADER
+   ============================================================ */
+.parent-hero {
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 50%, #1a274f 100%);
+    border-radius: 20px;
+    padding: 32px 36px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.parent-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.parent-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.parent-hero-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.12);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.parent-hero-info {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+}
+
+.parent-hero-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.3px;
+}
+
+.parent-hero-lien {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.parent-hero-lien i {
+    font-size: 0.65rem;
+}
+
+.parent-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.parent-hero-meta span {
+    font-size: 0.82rem;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.parent-hero-meta i {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.parent-hero-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   2. ONGLETS
+   ============================================================ */
+.parent-tabs {
+    display: flex;
+    gap: 0;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-xs);
+}
+
+.parent-tab {
+    flex: 1;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-bottom: 3px solid transparent;
+    background: none;
+    font-family: var(--font-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.parent-tab:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.parent-tab.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 600;
+    background-color: var(--color-primary-lighter);
+}
+
+.parent-tab i {
+    font-size: 0.85rem;
+}
+
+.parent-tab .tab-count {
+    font-size: 0.7rem;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.parent-tab.active .tab-count {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ============================================================
+   3. PANNEAUX
+   ============================================================ */
+.parent-panel {
+    display: none;
+    animation: panelFadeIn 0.3s ease;
+}
+
+.parent-panel.active {
+    display: block;
+}
+
+@keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   4. GRILLE D'INFORMATIONS
+   ============================================================ */
+.parent-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.parent-info-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+}
+
+.parent-info-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.parent-info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.parent-info-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.parent-info-card-icon.blue { background-color: #e8eaf6; color: #2c3e90; }
+.parent-info-card-icon.green { background-color: #d1fae5; color: #10b981; }
+.parent-info-card-icon.orange { background-color: #fef3c7; color: #f59e0b; }
+.parent-info-card-icon.purple { background-color: #ede9fe; color: #8b5cf6; }
+
+.parent-info-card-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.parent-info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 6px 0;
+}
+
+.parent-info-label {
+    font-size: 0.7rem;
+    color: var(--color-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.parent-info-value {
+    font-size: 0.85rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.parent-info-value.empty {
+    color: var(--color-gray-400);
+    font-style: italic;
+}
+
+/* ============================================================
+   5. CARTES ENFANTS
+   ============================================================ */
+.enfants-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.enfant-detail-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.enfant-detail-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.enfant-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+}
+
+.enfant-detail-card.principal::before {
+    background: #10b981;
+}
+
+.enfant-detail-card.secondaire::before {
+    background: #3b82f6;
+}
+
+.enfant-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.enfant-card-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.enfant-card-avatar.blue { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.enfant-card-avatar.green { background: linear-gradient(135deg, #10b981, #34d399); }
+.enfant-card-avatar.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.enfant-card-avatar.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+.enfant-card-avatar.pink { background: linear-gradient(135deg, #ec4899, #f472b6); }
+
+.enfant-card-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.enfant-card-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.enfant-card-matricule {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+.enfant-card-role {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.enfant-card-role.principal {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.enfant-card-role.secondaire {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.enfant-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.enfant-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+}
+
+.enfant-detail-row i {
+    width: 18px;
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 0.78rem;
+}
+
+.enfant-detail-row strong {
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.enfant-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color-light);
+}
+
+/* ============================================================
+   6. SECTION LIER UN ENFANT
+   ============================================================ */
+.lier-enfant-card {
+    background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%);
+    border: 1px solid #a7f3d0;
+    border-radius: 16px;
+    padding: 22px 24px;
+}
+
+.lier-enfant-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #065f46;
+}
+
+.lier-enfant-header i {
+    font-size: 1.1rem;
+    color: #10b981;
+}
+
+.lier-enfant-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.lier-enfant-form .form-group {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   7. BOUTON IMPRESSION
+   ============================================================ */
+.btn-print-fiche {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+}
+
+.btn-print-fiche:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .parent-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .parent-hero-actions {
+        justify-content: center;
+    }
+
+    .parent-hero-meta {
+        justify-content: center;
+    }
+
+    .enfants-container {
+        grid-template-columns: 1fr;
+    }
+
+    .parent-tabs {
+        overflow-x: auto;
+    }
+
+    .parent-tab {
+        flex: none;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .parent-hero {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .parent-hero-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8rem;
+    }
+
+    .parent-hero-name {
+        font-size: 1.2rem;
+    }
+
+    .parent-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lier-enfant-form {
+        flex-direction: column;
+    }
+
+    .lier-enfant-form .form-group {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .parent-hero {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .parent-hero-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 1.4rem;
+        border-radius: 16px;
+    }
+
+    .parent-hero-meta {
+        gap: 8px;
+    }
+
+    .parent-hero-meta span {
+        font-size: 0.74rem;
+    }
+}
+
+/* ============================================================
+   9. IMPRESSION
+   ============================================================ */
+@media print {
+    .parent-hero-actions,
+    .parent-tabs,
+    .btn-print-fiche,
+    .lier-enfant-card,
+    .enfant-card-actions,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb {
+        display: none !important;
+    }
+
+    .parent-hero {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+    }
+
+    .parent-info-card,
+    .enfant-detail-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .parent-panel {
+        display: block !important;
+    }
+}
+
+
+
+
+
+
+
+/* ============================================================
+   STYLES COMPOSANT RECHERCHE & SÉLECTION ÉLÈVE (FICHE PARENT)
+   ============================================================ */
+.lier-enfant-form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lier-enfant-form-box .search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.lier-enfant-form-box .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.lier-enfant-form-box #searchEleveLier {
+    padding-left: 38px;
+    border-radius: 10px;
+    background-color: var(--color-white);
+}
+
+.eleves-selection-list {
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--color-white);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.eleve-lier-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    margin: 0;
+}
+
+.eleve-lier-item:hover {
+    background-color: #f0fdf4;
+}
+
+.eleve-lier-item.selected {
+    background-color: #e6f4ea;
+    border-color: #10b981;
+}
+
+.eleve-lier-item input[type="radio"] {
+    accent-color: #10b981;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.eleve-lier-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.eleve-lier-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.eleve-lier-detail {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-subtle {
+    background-color: var(--color-gray-100);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.lier-enfant-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+}
+
+@media (max-width: 576px) {
+    .lier-enfant-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .lier-enfant-footer button {
+        width: 100%;
+    }
+}

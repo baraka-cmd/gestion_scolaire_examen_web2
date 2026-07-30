@@ -1,0 +1,805 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/parents.css
+   Rôle    : Styles du module de gestion des parents/tuteurs
+   ============================================================ */
+
+/* ============================================================
+   1. EN-TÊTE DU MODULE
+   ============================================================ */
+.parents-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.parents-header-left h4 {
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.parents-header-left h4 i {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.parents-header-left p {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.parents-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   2. BARRE DE FILTRES
+   ============================================================ */
+.parents-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-xs);
+}
+
+.parents-filters .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.parents-filters .filter-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    white-space: nowrap;
+}
+
+.parents-filters .filter-group select,
+.parents-filters .filter-group input {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.25s ease;
+    min-width: 150px;
+}
+
+.parents-filters .filter-group select:focus,
+.parents-filters .filter-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+.parents-filters .search-input {
+    min-width: 260px;
+    padding-left: 36px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    font-size: 0.85rem;
+}
+
+.btn-reset-filters {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.btn-reset-filters:hover {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+/* ============================================================
+   3. TABLEAU DES PARENTS
+   ============================================================ */
+.parents-table-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.table-header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.table-header-info span {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+}
+
+.table-header-info strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Cellule parent avec avatar */
+.parent-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.parent-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.parent-avatar-placeholder.blue { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.parent-avatar-placeholder.green { background: linear-gradient(135deg, #10b981, #34d399); }
+.parent-avatar-placeholder.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.parent-avatar-placeholder.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+.parent-avatar-placeholder.pink { background: linear-gradient(135deg, #ec4899, #f472b6); }
+.parent-avatar-placeholder.cyan { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+
+.parent-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.parent-name {
+    font-weight: 500;
+    color: var(--color-dark);
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.parent-name a {
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.parent-name a:hover {
+    color: var(--color-primary);
+}
+
+.parent-phone {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+/* Badge lien de parenté */
+.lien-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.lien-badge.pere { background-color: #dbeafe; color: #1e40af; }
+.lien-badge.mere { background-color: #fce7f3; color: #9d174d; }
+.lien-badge.tuteur { background-color: #fef3c7; color: #92400e; }
+.lien-badge.tutrice { background-color: #ede9fe; color: #5b21b6; }
+.lien-badge.autre { background-color: #f1f5f9; color: #475569; }
+
+.lien-badge i { font-size: 0.65rem; }
+
+/* Badge nombre d'enfants */
+.enfants-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-600);
+}
+
+.enfants-count.multiple { background-color: #d1fae5; color: #065f46; }
+
+/* ============================================================
+   4. FICHE PARENT
+   ============================================================ */
+.parent-profile-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.parent-profile-header {
+    padding: 28px 32px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.parent-profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.15);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.parent-profile-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.parent-profile-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.parent-profile-info .lien-text {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.parent-profile-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.parent-profile-meta span {
+    font-size: 0.78rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.parent-profile-meta i {
+    font-size: 0.7rem;
+}
+
+.parent-profile-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.parent-profile-body {
+    padding: 28px 32px;
+}
+
+/* ============================================================
+   5. CARTES ENFANTS
+   ============================================================ */
+.enfants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.enfant-card {
+    background-color: var(--color-gray-50);
+    border-radius: 14px;
+    padding: 18px 20px;
+    border: 1px solid var(--border-color-light);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.enfant-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.08);
+    transform: translateY(-2px);
+}
+
+.enfant-card.principal {
+    border-left: 4px solid #10b981;
+}
+
+.enfant-card.secondaire {
+    border-left: 4px solid #3b82f6;
+}
+
+.enfant-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.enfant-card-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-dark);
+}
+
+.enfant-card-badge {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.enfant-card-badge.principal { background-color: #d1fae5; color: #065f46; }
+.enfant-card-badge.secondaire { background-color: #dbeafe; color: #1e40af; }
+
+.enfant-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.enfant-info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+}
+
+.enfant-info-row i {
+    width: 16px;
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+}
+
+.enfant-info-row strong {
+    color: var(--color-dark);
+}
+
+.enfant-card-footer {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color-light);
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+/* ============================================================
+   6. FORMULAIRE PARENT
+   ============================================================ */
+.parent-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.parent-form-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.parent-form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.parent-form-icon i {
+    color: #f59e0b;
+}
+
+.parent-form-header h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.parent-form-header p {
+    font-size: 0.78rem;
+    margin: 2px 0 0 0;
+    opacity: 0.75;
+}
+
+.parent-form-body {
+    padding: 28px;
+}
+
+.parent-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+/* Sections */
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-lighter);
+}
+
+.form-section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.form-section-icon i {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.form-section-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.form-section-subtitle {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 2px;
+}
+
+.form-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 24px 0;
+    position: relative;
+}
+
+.form-divider::after {
+    content: '●●●';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 0 16px;
+    color: var(--color-gray-300);
+    font-size: 0.5rem;
+    letter-spacing: 4px;
+}
+
+/* ============================================================
+   7. SÉLECTION D'ÉLÈVES (MULTISELECT)
+   ============================================================ */
+.eleves-selection {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    max-height: 250px;
+    overflow-y: auto;
+    background-color: var(--color-white);
+}
+
+.eleves-selection-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.eleves-selection-item:last-child {
+    border-bottom: none;
+}
+
+.eleves-selection-item:hover {
+    background-color: var(--color-primary-lighter);
+}
+
+.eleves-selection-item.selected {
+    background-color: #d1fae5;
+}
+
+.eleves-selection-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.eleves-selection-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.eleves-selection-name {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--color-dark);
+}
+
+.eleves-selection-detail {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .parent-profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .parent-profile-actions {
+        justify-content: center;
+    }
+
+    .parent-profile-meta {
+        justify-content: center;
+    }
+
+    .enfants-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .parents-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .parents-filters .search-input {
+        min-width: 100%;
+    }
+
+    .btn-reset-filters {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .parent-form-card {
+        max-width: 100%;
+    }
+
+    .parent-form-body {
+        padding: 20px;
+    }
+
+    .parent-profile-body {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .parent-profile-header {
+        padding: 20px;
+    }
+
+    .parent-profile-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+    }
+
+    .parent-form-header {
+        padding: 16px 18px;
+    }
+
+    .parent-form-body {
+        padding: 16px;
+    }
+
+    .parent-form-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .parent-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================================
+   9. ANIMATIONS
+   ============================================================ */
+@keyframes cardSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.enfant-card {
+    animation: cardSlideUp 0.4s ease;
+}
+
+/* Skeleton loading */
+.skeleton-parent-card {
+    height: 180px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 16px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .parents-header-right,
+    .parents-filters,
+    .parent-profile-actions,
+    .btn,
+    .actions-cell {
+        display: none !important;
+    }
+
+    .parent-profile-card,
+    .parents-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+
+
+/* ============================================================
+   11. STATISTIQUES (SECTION RÉSUMÉ)
+   ============================================================ */
+.stats-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.stat-summary-card {
+    background-color: var(--color-white);
+    border-radius: 14px;
+    padding: 20px 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.stat-summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.stat-summary-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin: 0 auto 12px;
+}
+
+.stat-summary-icon.blue { background: linear-gradient(135deg, #2c3e90, #4a6cf7); color: #fff; }
+.stat-summary-icon.green { background: linear-gradient(135deg, #10b981, #34d399); color: #fff; }
+.stat-summary-icon.pink { background: linear-gradient(135deg, #ec4899, #f472b6); color: #fff; }
+.stat-summary-icon.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #fff; }
+.stat-summary-icon.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); color: #fff; }
+
+.stat-summary-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-summary-value.blue { color: #2c3e90; }
+.stat-summary-value.green { color: #10b981; }
+.stat-summary-value.pink { color: #ec4899; }
+.stat-summary-value.orange { color: #f59e0b; }
+.stat-summary-value.purple { color: #8b5cf6; }
+
+.stat-summary-label {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.stat-summary-label i {
+    font-size: 0.7rem;
+}

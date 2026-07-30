@@ -567,3 +567,132 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 242
+[30-Jul-2026 21:15:33 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:15:33 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:16:09 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:16:09 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:16:09 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:16:09 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:17:09 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:17:09 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:18:10 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:18:10 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:19:10 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:19:10 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:20:10 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:20:10 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:21:10 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:21:10 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:10 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:10 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:30 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:30 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:30 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:30 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:30 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:22:30 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:23:20 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:23:20 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:23:34 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:23:34 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:23:48 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:23:48 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:24:54 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:24:54 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:25:54 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:25:54 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:26:54 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:26:54 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:27:00 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:27:00 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:27:00 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:27:00 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:30:26 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:30:26 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:39:17 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:39:17 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:43:32 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:43:32 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:44:54 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:44:54 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:46:03 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:46:03 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:47:03 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:47:03 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:47:12 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:47:12 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:47:13 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:47:13 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:57:19 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:57:19 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:57:22 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:57:22 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:57:22 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:57:22 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:58:19 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:58:19 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:58:19 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:58:19 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:59:23 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 21:59:23 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:00:10 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:00:10 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:00:47 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:00:47 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:01:41 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:01:41 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:02:41 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:02:41 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:03:41 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:03:41 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:04:41 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:04:41 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:14 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:14 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:14 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:14 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:16 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:16 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:36 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:36 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:43 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:05:43 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:12 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:34 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:34 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:35 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:07:35 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:08:43 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:08:43 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:09:43 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:09:43 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:10:34 Africa/Lubumbashi] PHP Warning:  Undefined variable $totalParents in C:\xampp\htdocs\gestion_scolaire\public\views\modules\parents\liste.php on line 147
+[30-Jul-2026 22:10:34 Africa/Lubumbashi] PHP Warning:  Undefined variable $totalPeres in C:\xampp\htdocs\gestion_scolaire\public\views\modules\parents\liste.php on line 152
+[30-Jul-2026 22:10:34 Africa/Lubumbashi] PHP Warning:  Undefined variable $totalMeres in C:\xampp\htdocs\gestion_scolaire\public\views\modules\parents\liste.php on line 157
+[30-Jul-2026 22:10:34 Africa/Lubumbashi] PHP Warning:  Undefined variable $totalTuteurs in C:\xampp\htdocs\gestion_scolaire\public\views\modules\parents\liste.php on line 162
+[30-Jul-2026 22:10:34 Africa/Lubumbashi] PHP Warning:  Undefined variable $totalUrgence in C:\xampp\htdocs\gestion_scolaire\public\views\modules\parents\liste.php on line 167
+[30-Jul-2026 22:10:35 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:10:35 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:10:35 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:10:35 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:11:35 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:11:35 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:12:21 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:12:21 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:12:21 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:12:21 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:13:21 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:13:21 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:17:15 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:17:15 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:18:15 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:18:15 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:19:15 Africa/Lubumbashi] PHP Warning:  preg_match(): No ending delimiter '/' found in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252
+[30-Jul-2026 22:19:15 Africa/Lubumbashi] PHP Warning:  preg_match(): Unknown modifier 'a' in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 252

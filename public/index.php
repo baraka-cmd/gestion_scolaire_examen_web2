@@ -204,9 +204,15 @@ $dynamicRoutes = [
         require_once __DIR__ . '/views/modules/enseignants/fiche.php';
     },
     // Parent fiche : /parents/fiche/8
+        '/parents'              => 'views/modules/parents/liste.php',
+    '/parents/ajouter'      => 'views/modules/parents/ajouter.php',
     '#^/parents/fiche/(\d+)$#' => function($matches) {
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/parents/fiche.php';
+    },
+    '#^/parents/modifier/(\d+)$#' => function($matches) {
+        $_GET['id'] = $matches[1];
+        require_once __DIR__ . '/views/modules/parents/modifier.php';
     },
     // Classe détail : /classes/detail/13
     '#^/classes/detail/(\d+)$#' => function($matches) {
