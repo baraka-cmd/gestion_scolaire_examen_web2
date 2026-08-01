@@ -84,17 +84,18 @@ $routes = [
 '/bulletins/imprimer'        => 'views/modules/bulletins/imprimer.php',
     
     // Emploi du temps
-    '/emploi-du-temps'           => 'views/modules/emploi/consulter.php',
-    '/emploi-du-temps/ajouter'   => 'views/modules/emploi/ajouter.php',
-    
-    // Absences
-    '/absences'                  => 'views/modules/absences/liste.php',
-    '/absences/marquer'          => 'views/modules/absences/marquer.php',
-    '/absences/justifier'        => 'views/modules/absences/justifier.php',
-    
-    // Retards
-    '/retards'                   => 'views/modules/retards/liste.php',
-    '/retards/enregistrer'       => 'views/modules/retards/enregistrer.php',
+'/emploi-du-temps'           => 'views/modules/emploi/consulter.php',
+'/emploi-du-temps/ajouter'   => 'views/modules/emploi/consulter.php',
+
+// Absences
+'/absences'                  => 'views/modules/absences/liste.php',
+'/absences/marquer'          => 'views/modules/absences/marquer.php',
+'/absences/justifier'        => 'views/modules/absences/justifier.php',
+'/absences/liste' => 'views/modules/absences/liste.php',
+
+// Retards
+'/retards'                   => 'views/modules/retards/liste.php',
+'/retards/enregistrer'       => 'views/modules/retards/enregistrer.php',
     
     // Discipline
     '/discipline'                => 'views/modules/discipline/liste.php',
@@ -250,37 +251,22 @@ $dynamicRoutes = [
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/paiements/recu.php';
     },
-    // Routes dynamiques — remplacer les anciennes
-'#^/bulletins/consulter\?eleve_id=(\d+)&annee_id=(\d+)$#' => function($matches) {
-    $_GET['eleve_id'] = $matches[1];
-    $_GET['annee_id'] = $matches[2];
-    require_once __DIR__ . '/views/modules/bulletins/consulter.php';
-},
-
-'#^/bulletins/eleve/(\d+)$#' => function($matches) {
-    $_GET['eleve_id'] = $matches[1];
-    require_once __DIR__ . '/views/modules/bulletins/consulter.php';
-},
-
-    // Évaluation : saisie notes /evaluations/notes/5
-    '#^/notes/notes/(\d+)$#' => function($matches) {
-        $_GET['id'] = $matches[1];
-        require_once __DIR__ . '/views/modules/notes/saisie.php';
+    // Bulletin élève : /bulletins/eleve/25
+    '#^/bulletins/eleve/(\d+)$#' => function($matches) {
+        $_GET['eleve_id'] = $matches[1];
+        require_once __DIR__ . '/views/modules/bulletins/consulter.php';
     },
-
-    // Route dynamique : /notes/saisie/113
+    // Notes saisie : /notes/saisie/113
     '#^/notes/saisie/(\d+)$#' => function($matches) {
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/notes/saisie.php';
     },
-
-    // Route pour modifier une évaluation (réutilise ajouter.php avec un ID)
+    // Notes modifier : /notes/ajouter/113
     '#^/notes/ajouter/(\d+)$#' => function($matches) {
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/notes/ajouter.php';
     },
 ];
-
 
 
 // ============================================================

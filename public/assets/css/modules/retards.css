@@ -1,0 +1,625 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/retards.css
+   Rôle    : Styles des interfaces de gestion des retards
+   Système : École primaire congolaise
+   Version : 1.0
+   ============================================================ */
+
+/* ============================================================
+   1. BARRE D'INFORMATION
+   ============================================================ */
+.retard-info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.retard-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #78350f;
+    font-size: 0.84rem;
+}
+
+.retard-info-item i {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.retard-info-item strong {
+    font-weight: 700;
+    color: #78350f;
+}
+
+/* ============================================================
+   2. CARTE DE LISTE
+   ============================================================ */
+.retard-list-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.retard-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color-light);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.retard-list-header h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.retard-list-header h5 i {
+    color: #f59e0b;
+}
+
+/* ============================================================
+   3. LIGNES DU TABLEAU
+   ============================================================ */
+.retard-row {
+    transition: all 0.3s ease;
+}
+
+.retard-row.has-retard {
+    background-color: #fffbeb;
+}
+
+.retard-row.has-retard:hover {
+    background-color: #fef3c7;
+}
+
+.retard-row.justifie {
+    background-color: #f0fdf4;
+}
+
+.retard-row.justifie:hover {
+    background-color: #d1fae5;
+}
+
+/* ============================================================
+   4. BOUTONS D'ACTION
+   ============================================================ */
+.btn-enregistrer-retard,
+.btn-modifier-retard,
+.btn-justifier-retard,
+.btn-supprimer-retard {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    font-size: 0.74rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+    white-space: nowrap;
+}
+
+.btn-enregistrer-retard {
+    background-color: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+}
+
+.btn-enregistrer-retard:hover {
+    background-color: #fde68a;
+    border-color: #fcd34d;
+    transform: translateY(-1px);
+}
+
+.btn-modifier-retard {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-color: #bfdbfe;
+}
+
+.btn-modifier-retard:hover {
+    background-color: #bfdbfe;
+    border-color: #93c5fd;
+    transform: translateY(-1px);
+}
+
+.btn-justifier-retard {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+
+.btn-justifier-retard:hover {
+    background-color: #a7f3d0;
+    border-color: #6ee7b7;
+    transform: translateY(-1px);
+}
+
+.btn-supprimer-retard {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.btn-supprimer-retard:hover {
+    background-color: #fecaca;
+    border-color: #fca5a5;
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   5. FILTRES
+   ============================================================ */
+.retards-filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 16px 20px;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-xs);
+}
+
+.retards-filters .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 150px;
+}
+
+.retards-filters .filter-group label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.retards-filters .filter-group label i {
+    font-size: 0.7rem;
+    color: #f59e0b;
+}
+
+.retards-filters .filter-group select,
+.retards-filters .filter-group input {
+    padding: 9px 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-family: var(--font-primary);
+    font-size: 0.82rem;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    transition: all 0.2s ease;
+}
+
+.retards-filters .filter-group select:focus,
+.retards-filters .filter-group input:focus {
+    outline: none;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+/* ============================================================
+   6. TABLEAU DES RETARDS
+   ============================================================ */
+.retards-table-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+/* ============================================================
+   7. MODALES
+   ============================================================ */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 1060;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 520px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideUp 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 14px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.modal-header h5 {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-dark);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-header h5 i {
+    color: #f59e0b;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--color-error);
+    background-color: var(--color-error-light);
+}
+
+.modal-body {
+    padding: 20px 24px;
+}
+
+.modal-footer {
+    padding: 14px 24px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid var(--border-color-light);
+}
+
+/* ============================================================
+   8. ALERTE RETARD
+   ============================================================ */
+#retardAlerte {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+#retardAlerte.warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+#retardAlerte.danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* ============================================================
+   9. STATISTIQUES RETARDS
+   ============================================================ */
+.retards-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.retard-stat-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.retard-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.retard-stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.retard-stat-icon.orange {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+
+.retard-stat-icon.red {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.retard-stat-icon.blue {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.retard-stat-icon.green {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.retard-stat-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.retard-stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.retard-stat-label {
+    font-size: 0.78rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+/* ============================================================
+   10. TOP RETARDS
+   ============================================================ */
+.top-retards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.top-retard-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: var(--color-gray-50);
+    border-radius: 10px;
+    border: 1px solid var(--border-color-light);
+    transition: all 0.2s ease;
+}
+
+.top-retard-item:hover {
+    background-color: #fffbeb;
+    border-color: #fde68a;
+}
+
+.top-retard-eleve {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-retard-rang {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #f59e0b;
+    min-width: 24px;
+}
+
+.top-retard-nom {
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.top-retard-classe {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+.top-retard-stats {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.top-retard-nb {
+    font-weight: 700;
+    color: #f59e0b;
+    font-size: 0.9rem;
+}
+
+.top-retard-duree {
+    font-size: 0.72rem;
+    color: var(--color-gray-500);
+}
+
+/* ============================================================
+   11. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .retard-info-bar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 16px;
+    }
+
+    .retards-filters {
+        flex-direction: column;
+    }
+
+    .retards-filters .filter-group {
+        min-width: 100%;
+    }
+
+    .retard-stat-card {
+        padding: 16px;
+    }
+
+    .retard-stat-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
+    .retard-stat-value {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .retard-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-enregistrer-retard,
+    .btn-modifier-retard,
+    .btn-justifier-retard,
+    .btn-supprimer-retard {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+
+    .top-retard-stats {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .retard-stat-card {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .retard-stat-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .retard-stat-value {
+        font-size: 1.1rem;
+    }
+
+    .retard-stat-label {
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================================
+   12. IMPRESSION
+   ============================================================ */
+@media print {
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .resultats-selectors,
+    .retard-list-header,
+    .btn-enregistrer-retard,
+    .btn-modifier-retard,
+    .btn-justifier-retard,
+    .btn-supprimer-retard {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff !important;
+        font-size: 10px;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .retard-list-card,
+    .retards-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .retard-row.has-retard {
+        background-color: #fffbeb !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .retard-row.justifie {
+        background-color: #f0fdf4 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 10mm;
+    }
+}

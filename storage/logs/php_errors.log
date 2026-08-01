@@ -1494,3 +1494,182 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 18:28:07 Africa/Lubumbashi] [2026-08-01 18:28:07] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:28:07 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:28:13 Africa/Lubumbashi] [2026-08-01 18:28:13] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:28:13 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:28:18 Africa/Lubumbashi] [2026-08-01 18:28:18] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:28:18 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:28:41 Africa/Lubumbashi] [2026-08-01 18:28:41] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:28:41 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:29:13 Africa/Lubumbashi] [2026-08-01 18:29:13] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:29:13 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:54 Africa/Lubumbashi] [2026-08-01 18:33:54] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:54 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:56 Africa/Lubumbashi] [2026-08-01 18:33:56] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:56 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:56 Africa/Lubumbashi] [2026-08-01 18:33:56] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:56 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:56 Africa/Lubumbashi] [2026-08-01 18:33:56] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:56 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] [2026-08-01 18:33:57] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] [2026-08-01 18:33:57] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] [2026-08-01 18:33:57] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] [2026-08-01 18:33:57] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:33:57 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:34:30 Africa/Lubumbashi] [2026-08-01 18:34:30] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:34:30 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:34:43 Africa/Lubumbashi] [2026-08-01 18:34:43] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:34:43 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:02 Africa/Lubumbashi] [2026-08-01 18:37:02] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:02 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:05 Africa/Lubumbashi] [2026-08-01 18:37:05] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:05 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] [2026-08-01 18:37:06] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] [2026-08-01 18:37:06] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] [2026-08-01 18:37:06] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] [2026-08-01 18:37:06] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:06 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:07 Africa/Lubumbashi] [2026-08-01 18:37:07] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:07 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:25 Africa/Lubumbashi] [2026-08-01 18:37:25] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:25 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:31 Africa/Lubumbashi] [2026-08-01 18:37:31] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:31 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:37:31 Africa/Lubumbashi] [2026-08-01 18:37:31] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                     matiere_id, enseignant_id, type_creneau, libelle)
+                     VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:37:31 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:41:08 Africa/Lubumbashi] [2026-08-01 18:41:08] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                 matiere_id, enseignant_id, type_creneau, libelle)
+                 VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:41:08 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:41:40 Africa/Lubumbashi] [2026-08-01 18:41:40] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                 matiere_id, enseignant_id, type_creneau, libelle)
+                 VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:41:40 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type_creneau' in 'field list'
+[01-Aug-2026 18:43:59 Africa/Lubumbashi] [2026-08-01 18:43:59] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '21-Lundi-07:30:00-5' for key 'uk_creneau' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                 matiere_id, enseignant_id, type_creneau, libelle)
+                 VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:43:59 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '21-Lundi-07:30:00-5' for key 'uk_creneau'
+[01-Aug-2026 18:44:09 Africa/Lubumbashi] [2026-08-01 18:44:09] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '21-Lundi-07:30:00-5' for key 'uk_creneau' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                 matiere_id, enseignant_id, type_creneau, libelle)
+                 VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:44:09 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '21-Lundi-07:30:00-5' for key 'uk_creneau'
+[01-Aug-2026 18:44:16 Africa/Lubumbashi] [2026-08-01 18:44:16] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '21-Lundi-07:30:00-5' for key 'uk_creneau' | SQL: INSERT INTO emploi_du_temps (classe_id, annee_scolaire_id, jour, heure_debut, heure_fin, 
+                 matiere_id, enseignant_id, type_creneau, libelle)
+                 VALUES (:cid, :aid, :jour, :debut, :fin, :mid, :eid, :type, :libelle)
+[01-Aug-2026 18:44:16 Africa/Lubumbashi] Erreur sauvegarde créneau: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '21-Lundi-07:30:00-5' for key 'uk_creneau'
+[01-Aug-2026 19:51:55 Africa/Lubumbashi] [2026-08-01 19:51:55] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ev.matiere_id' in 'on clause' | SQL: SELECT n.valeur, ev.type_evaluation, DATE_FORMAT(ev.date_evaluation, '%d/%m/%Y') AS date_eval, 
+            m.libelle AS matiere, t.libelle AS trimestre
+     FROM notes n
+     INNER JOIN evaluations ev ON n.evaluation_id = ev.id
+     INNER JOIN matieres m ON ev.matiere_id = m.id
+     INNER JOIN trimestres t ON ev.trimestre_id = t.id
+     WHERE n.eleve_id = :eid
+     ORDER BY ev.date_evaluation DESC
+     LIMIT 15
+[01-Aug-2026 19:51:55 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ev.matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT n.valeur...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT n.valeur...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\eleves\fiche.php(54): Database->fetchAll('SELECT n.valeur...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(197): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(281): {closure}(Array)
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[01-Aug-2026 19:53:21 Africa/Lubumbashi] [2026-08-01 19:53:21] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ev.matiere_id' in 'on clause' | SQL: SELECT n.valeur, ev.type_evaluation, DATE_FORMAT(ev.date_evaluation, '%d/%m/%Y') AS date_eval, 
+            m.libelle AS matiere, t.libelle AS trimestre
+     FROM notes n
+     INNER JOIN evaluations ev ON n.evaluation_id = ev.id
+     INNER JOIN matieres m ON ev.matiere_id = m.id
+     INNER JOIN trimestres t ON ev.trimestre_id = t.id
+     WHERE n.eleve_id = :eid
+     ORDER BY ev.date_evaluation DESC
+     LIMIT 15
+[01-Aug-2026 19:53:21 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ev.matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT n.valeur...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT n.valeur...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\eleves\fiche.php(54): Database->fetchAll('SELECT n.valeur...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(197): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(281): {closure}(Array)
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[01-Aug-2026 19:53:32 Africa/Lubumbashi] [2026-08-01 19:53:32] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ev.matiere_id' in 'on clause' | SQL: SELECT n.valeur, ev.type_evaluation, DATE_FORMAT(ev.date_evaluation, '%d/%m/%Y') AS date_eval, 
+            m.libelle AS matiere, t.libelle AS trimestre
+     FROM notes n
+     INNER JOIN evaluations ev ON n.evaluation_id = ev.id
+     INNER JOIN matieres m ON ev.matiere_id = m.id
+     INNER JOIN trimestres t ON ev.trimestre_id = t.id
+     WHERE n.eleve_id = :eid
+     ORDER BY ev.date_evaluation DESC
+     LIMIT 15
+[01-Aug-2026 19:53:32 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ev.matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT n.valeur...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT n.valeur...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\eleves\fiche.php(54): Database->fetchAll('SELECT n.valeur...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(197): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(281): {closure}(Array)
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[01-Aug-2026 20:56:22 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/frais/liste.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 20:56:22 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/frais/liste.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:276
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276

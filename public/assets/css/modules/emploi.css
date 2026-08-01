@@ -1,0 +1,535 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/emploi.css
+   Rôle    : Styles de l'emploi du temps hebdomadaire
+   Système : École primaire congolaise
+   Version : 1.0
+   ============================================================ */
+
+/* ============================================================
+   1. BARRE D'OUTILS
+   ============================================================ */
+.emploi-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: var(--shadow-xs);
+}
+
+.emploi-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.emploi-info {
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.emploi-info i {
+    color: var(--color-primary);
+    font-size: 0.85rem;
+}
+
+.emploi-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   2. GRILLE EMPLOI DU TEMPS
+   ============================================================ */
+.emploi-grid-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+/* ============================================================
+   3. ÉTAT VIDE INITIAL
+   ============================================================ */
+.emploi-vide-initial {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.emploi-vide-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    margin: 0 auto 20px;
+}
+
+.emploi-vide-initial h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0 0 8px 0;
+}
+
+.emploi-vide-initial p {
+    font-size: 0.84rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* ============================================================
+   4. TABLEAU EMPLOI DU TEMPS
+   ============================================================ */
+.emploi-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.emploi-table thead th {
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 14px 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.emploi-table thead th.col-horaire {
+    width: 120px;
+    min-width: 120px;
+    background: linear-gradient(135deg, #1a274f 0%, #2c3e90 100%);
+}
+
+.emploi-table thead th.col-jour {
+    min-width: 140px;
+}
+
+.emploi-table thead th.samedi {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c3e90 100%);
+}
+
+/* ============================================================
+   5. CELLULES HORAIRES
+   ============================================================ */
+.emploi-table tbody td {
+    padding: 6px;
+    text-align: center;
+    border: 1px solid var(--border-color-light);
+    vertical-align: middle;
+}
+
+.emploi-table tbody td.col-horaire {
+    background-color: #f1f5f9;
+    padding: 8px 6px;
+    border-right: 2px solid var(--border-color);
+}
+
+.horaire-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    position: relative;
+}
+
+.horaire-debut,
+.horaire-fin {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.horaire-separateur {
+    font-size: 0.6rem;
+    color: var(--color-gray-400);
+}
+
+.btn-supprimer-horaire {
+    position: absolute;
+    top: -8px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fee2e2;
+    border: none;
+    color: #ef4444;
+    font-size: 0.6rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.emploi-table tbody tr:hover .btn-supprimer-horaire {
+    display: flex;
+}
+
+.btn-supprimer-horaire:hover {
+    background: #ef4444;
+    color: #fff;
+}
+
+/* ============================================================
+   6. CELLULES CRÉNEAUX
+   ============================================================ */
+.emploi-table tbody td.col-jour {
+    padding: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.emploi-table tbody td.col-jour:hover {
+    background-color: #f8fafc;
+}
+
+/* Créneau rempli */
+.creneau-cell {
+    position: relative;
+    padding: 10px 8px;
+    border-radius: 8px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.creneau-cell.cours {
+    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+    border-color: #bfdbfe;
+}
+
+.creneau-cell.cours:hover {
+    background: linear-gradient(135deg, #bfdbfe 0%, #dbeafe 100%);
+    border-color: #93c5fd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.creneau-cell.recréation {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border-color: #fde68a;
+}
+
+.creneau-cell.recréation:hover {
+    background: linear-gradient(135deg, #fde68a 0%, #fef3c7 100%);
+    border-color: #fcd34d;
+}
+
+.creneau-cell.cernafor {
+    background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%);
+    border-color: #f9a8d4;
+}
+
+.creneau-cell.cernafor:hover {
+    background: linear-gradient(135deg, #f9a8d4 0%, #fce7f3 100%);
+    border-color: #f472b6;
+}
+
+.creneau-matiere {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.creneau-enseignant {
+    font-size: 0.68rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.creneau-libelle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-gray-700);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Bouton supprimer créneau */
+.btn-supprimer-creneau {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fee2e2;
+    border: 2px solid #fff;
+    color: #ef4444;
+    font-size: 0.6rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.creneau-cell:hover .btn-supprimer-creneau {
+    display: flex;
+}
+
+.btn-supprimer-creneau:hover {
+    background: #ef4444;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   7. CELLULE VIDE (cliquable)
+   ============================================================ */
+.creneau-vide {
+    padding: 10px 8px;
+    border-radius: 8px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border-color);
+    color: var(--color-gray-300);
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.creneau-vide:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+.creneau-vide i {
+    font-size: 1rem;
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+    .emploi-table {
+        min-width: 800px;
+    }
+
+    .emploi-table thead th {
+        font-size: 0.72rem;
+        padding: 10px 6px;
+    }
+
+    .emploi-table thead th.col-horaire {
+        width: 100px;
+        min-width: 100px;
+    }
+
+    .emploi-table thead th.col-jour {
+        min-width: 110px;
+    }
+
+    .creneau-matiere {
+        font-size: 0.7rem;
+    }
+
+    .creneau-enseignant {
+        font-size: 0.62rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .emploi-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .emploi-toolbar-right {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .emploi-table {
+        min-width: 700px;
+    }
+
+    .creneau-cell {
+        min-height: 50px;
+        padding: 8px 6px;
+    }
+
+    .creneau-vide {
+        min-height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .emploi-table {
+        min-width: 600px;
+    }
+
+    .emploi-table thead th {
+        font-size: 0.65rem;
+        padding: 8px 4px;
+    }
+
+    .emploi-table thead th.col-horaire {
+        width: 80px;
+        min-width: 80px;
+    }
+
+    .emploi-table thead th.col-jour {
+        min-width: 90px;
+    }
+
+    .horaire-debut,
+    .horaire-fin {
+        font-size: 0.68rem;
+    }
+
+    .creneau-cell {
+        min-height: 44px;
+        padding: 6px 4px;
+    }
+
+    .creneau-matiere {
+        font-size: 0.65rem;
+    }
+
+    .creneau-enseignant {
+        font-size: 0.58rem;
+    }
+
+    .creneau-libelle {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .emploi-table {
+        min-width: 500px;
+    }
+
+    .emploi-table thead th {
+        font-size: 0.6rem;
+        padding: 6px 2px;
+    }
+
+    .emploi-table thead th.col-horaire {
+        width: 65px;
+        min-width: 65px;
+    }
+
+    .creneau-cell {
+        min-height: 38px;
+        padding: 4px 2px;
+    }
+
+    .creneau-vide {
+        min-height: 38px;
+    }
+
+    .btn-supprimer-creneau,
+    .btn-supprimer-horaire {
+        width: 18px;
+        height: 18px;
+        font-size: 0.5rem;
+    }
+}
+
+/* ============================================================
+   9. IMPRESSION
+   ============================================================ */
+@media print {
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .resultats-selectors,
+    .emploi-toolbar,
+    .btn-supprimer-creneau,
+    .btn-supprimer-horaire {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff !important;
+        font-size: 10px;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .emploi-grid-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+    }
+
+    .emploi-table thead th {
+        background: #000 !important;
+        color: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .emploi-table tbody td.col-horaire {
+        background: #f1f5f9 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .creneau-cell.cours {
+        background: #dbeafe !important;
+        border: 1px solid #bfdbfe !important;
+    }
+
+    .creneau-cell.recréation {
+        background: #fef3c7 !important;
+        border: 1px solid #fde68a !important;
+    }
+
+    .creneau-cell.cernafor {
+        background: #fce7f3 !important;
+        border: 1px solid #f9a8d4 !important;
+    }
+
+    .creneau-vide {
+        border: 1px dashed #ccc;
+    }
+
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+}

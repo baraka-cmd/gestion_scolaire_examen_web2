@@ -46,7 +46,7 @@ $notes = $db->fetchAll(
             m.libelle AS matiere, t.libelle AS trimestre
      FROM notes n
      INNER JOIN evaluations ev ON n.evaluation_id = ev.id
-     INNER JOIN matieres m ON ev.matiere_id = m.id
+     INNER JOIN matieres m ON n.sous_matiere_id = m.id
      INNER JOIN trimestres t ON ev.trimestre_id = t.id
      WHERE n.eleve_id = :eid
      ORDER BY ev.date_evaluation DESC
