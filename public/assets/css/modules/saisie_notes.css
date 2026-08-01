@@ -1,0 +1,1049 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/saisie_notes.css
+   Rôle    : Styles de la grille de saisie des notes
+   Système : Bulletin congolais — Grille Élèves × Sous-matières
+   Version : 2.0 — Refonte complète
+   ============================================================ */
+
+/* ============================================================
+   1. CARTE EN-TÊTE D'ÉVALUATION
+   ============================================================ */
+.saisie-header-card {
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 20px;
+    padding: 28px 32px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.saisie-header-card::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -5%;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.saisie-header-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: 10%;
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.saisie-header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 300px;
+}
+
+.saisie-header-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.saisie-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.saisie-header-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-white);
+    letter-spacing: -0.3px;
+}
+
+.saisie-header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.saisie-header-meta span {
+    font-size: 0.8rem;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.saisie-header-meta i {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.saisie-header-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.saisie-header-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.saisie-header-actions .btn {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    font-size: 0.78rem;
+    padding: 8px 16px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.saisie-header-actions .btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+/* Cercle de progression */
+.saisie-progression-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.saisie-progression-circle {
+    width: 56px;
+    height: 56px;
+    position: relative;
+}
+
+.saisie-progression-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.saisie-progression-circle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+/* ============================================================
+   2. BARRE D'OUTILS
+   ============================================================ */
+.saisie-toolbar {
+    background-color: var(--color-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: var(--shadow-xs);
+}
+
+.saisie-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.saisie-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.legend-dot.saisie {
+    background-color: #d1fae5;
+    border: 1.5px solid #10b981;
+}
+
+.legend-dot.absent {
+    background-color: #fee2e2;
+    border: 1.5px solid #ef4444;
+}
+
+.legend-dot.vide {
+    background-color: #f1f5f9;
+    border: 1.5px solid #cbd5e1;
+}
+
+.legend-dot.modifie {
+    background-color: #fef3c7;
+    border: 1.5px solid #f59e0b;
+}
+
+.saisie-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.saisie-shortcut {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--color-gray-400);
+}
+
+.saisie-shortcut kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 22px;
+    padding: 0 6px;
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================
+   3. CARTE GRILLE DE NOTES
+   ============================================================ */
+.notes-grid-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.notes-grid-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.notes-grid-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background-color: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.notes-grid-header h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0 0 2px 0;
+}
+
+.notes-grid-header p {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.notes-grid-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.notes-grid-body {
+    overflow-x: auto;
+}
+
+/* ============================================================
+   4. TABLEAU DE SAISIE
+   ============================================================ */
+.notes-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.notes-grid-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: var(--color-gray-50);
+    border-bottom: 2px solid var(--border-color);
+    padding: 0;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.notes-grid-table thead th.eleve-col {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: var(--color-gray-50);
+    min-width: 200px;
+    max-width: 220px;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-gray-500);
+    border-right: 2px solid var(--border-color);
+}
+
+.notes-grid-table thead th.matiere-col {
+    min-width: 90px;
+    max-width: 110px;
+    padding: 8px 6px;
+}
+
+.matiere-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 4px;
+}
+
+.matiere-nom {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    text-align: center;
+    line-height: 1.2;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.matiere-maxima {
+    font-size: 0.62rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+    padding: 1px 8px;
+    border-radius: 10px;
+}
+
+/* ============================================================
+   5. LIGNES DU TABLEAU
+   ============================================================ */
+.notes-grid-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.notes-grid-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.notes-grid-table tbody tr:nth-child(even) {
+    background-color: #fafbfc;
+}
+
+.notes-grid-table tbody tr:nth-child(even):hover {
+    background-color: #f1f5f9;
+}
+
+/* Colonne élève */
+.notes-grid-table tbody td.eleve-col {
+    position: sticky;
+    left: 0;
+    z-index: 5;
+    background-color: var(--color-white);
+    border-right: 2px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color-light);
+    padding: 8px 16px;
+}
+
+.notes-grid-table tbody tr:nth-child(even) td.eleve-col {
+    background-color: #fafbfc;
+}
+
+.notes-grid-table tbody tr:hover td.eleve-col {
+    background-color: #f8fafc;
+}
+
+.eleve-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.eleve-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.eleve-avatar.male {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.eleve-avatar.female {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+}
+
+.eleve-info {
+    min-width: 0;
+}
+
+.eleve-nom {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eleve-matricule {
+    font-size: 0.68rem;
+    color: var(--color-gray-400);
+    white-space: nowrap;
+}
+
+/* ============================================================
+   6. CELLULES DE NOTES
+   ============================================================ */
+.notes-grid-table tbody td.note-cell {
+    border-bottom: 1px solid var(--border-color-light);
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.note-input {
+    width: 100%;
+    max-width: 80px;
+    height: 38px;
+    text-align: center;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 4px 6px;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.note-input::placeholder {
+    color: var(--color-gray-300);
+    font-weight: 400;
+    font-size: 0.75rem;
+}
+
+.note-input:focus {
+    border-color: var(--color-primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.1);
+    z-index: 2;
+    position: relative;
+}
+
+/* État saisi */
+.note-input.saisie {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+}
+
+.note-input.saisie:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+/* État absent */
+.note-input.absent {
+    border-color: #ef4444;
+    background-color: #fff5f5;
+    color: #ef4444;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.note-input.absent:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+/* État modifié non sauvegardé */
+.note-input.modified {
+    border-color: #f59e0b;
+    background-color: #fffbeb;
+    animation: modifiedPulse 2s ease-in-out infinite;
+}
+
+@keyframes modifiedPulse {
+    0%, 100% { border-color: #f59e0b; }
+    50% { border-color: #fbbf24; }
+}
+
+/* État erreur (note > maxima) */
+.note-input.error {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+    animation: errorShake 0.5s ease;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+/* ============================================================
+   7. RÉSUMÉ PAR SOUS-MATIÈRE
+   ============================================================ */
+.saisie-summary {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-xs);
+}
+
+.saisie-summary-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.saisie-summary-title i {
+    color: var(--color-primary);
+}
+
+.saisie-summary-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.summary-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.summary-item-name {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+}
+
+.summary-item-count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+}
+
+.summary-item-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--color-gray-100);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.summary-item-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #34d399);
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+/* ============================================================
+   8. MODE LECTURE SEULE
+   ============================================================ */
+.notes-grid-card.readonly .note-input {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.notes-grid-card.readonly .note-input.saisie {
+    background-color: #f0fdf4;
+}
+
+.notes-grid-card.readonly .note-input.absent {
+    background-color: #fff5f5;
+}
+
+/* ============================================================
+   9. BOUTON VIDER
+   ============================================================ */
+#btnToutVider {
+    color: var(--color-gray-500);
+    border-color: var(--border-color);
+    background-color: var(--color-white);
+    font-size: 0.78rem;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-weight: 500;
+}
+
+#btnToutVider:hover {
+    color: var(--color-error);
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+/* ============================================================
+   10. ÉTAT DE CHARGEMENT
+   ============================================================ */
+.notes-grid-card.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.notes-grid-card.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    z-index: 20;
+}
+
+/* ============================================================
+   11. TOAST DE SAUVEGARDE
+   ============================================================ */
+.save-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-toast);
+    animation: toastSlideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+.save-toast.success {
+    background-color: #065f46;
+}
+
+.save-toast.error {
+    background-color: #991b1b;
+}
+
+.save-toast i {
+    font-size: 1rem;
+}
+
+@keyframes toastSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   12. RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+    .notes-grid-table thead th.eleve-col {
+        min-width: 170px;
+        max-width: 180px;
+    }
+
+    .notes-grid-table thead th.matiere-col {
+        min-width: 75px;
+        max-width: 90px;
+    }
+
+    .note-input {
+        max-width: 70px;
+        height: 34px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .saisie-header-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 24px;
+    }
+
+    .saisie-header-left {
+        min-width: auto;
+    }
+
+    .saisie-header-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.3rem;
+        border-radius: 14px;
+    }
+
+    .saisie-header-title {
+        font-size: 1.1rem;
+    }
+
+    .saisie-header-meta {
+        gap: 10px;
+    }
+
+    .saisie-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notes-grid-table {
+        min-width: 600px;
+    }
+
+    .notes-grid-table thead th.eleve-col {
+        min-width: 140px;
+        max-width: 150px;
+    }
+
+    .notes-grid-table thead th.matiere-col {
+        min-width: 65px;
+        max-width: 80px;
+    }
+
+    .eleve-nom {
+        font-size: 0.75rem;
+    }
+
+    .eleve-matricule {
+        font-size: 0.65rem;
+    }
+
+    .note-input {
+        max-width: 60px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .saisie-header-card {
+        padding: 16px 20px;
+        border-radius: 14px;
+    }
+
+    .saisie-header-left {
+        gap: 12px;
+    }
+
+    .saisie-header-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .saisie-header-title {
+        font-size: 1rem;
+    }
+
+    .saisie-header-meta span {
+        font-size: 0.72rem;
+    }
+
+    .notes-grid-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notes-grid-actions {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .notes-grid-table {
+        min-width: 500px;
+    }
+
+    .notes-grid-table thead th.eleve-col {
+        min-width: 120px;
+        max-width: 130px;
+        font-size: 0.65rem;
+        padding: 8px 10px;
+    }
+
+    .notes-grid-table thead th.matiere-col {
+        min-width: 55px;
+        max-width: 70px;
+    }
+
+    .matiere-nom {
+        font-size: 0.6rem;
+    }
+
+    .matiere-maxima {
+        font-size: 0.55rem;
+    }
+
+    .eleve-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.65rem;
+        border-radius: 8px;
+    }
+
+    .eleve-nom {
+        font-size: 0.7rem;
+    }
+
+    .eleve-matricule {
+        font-size: 0.6rem;
+    }
+
+    .note-input {
+        max-width: 50px;
+        height: 30px;
+        font-size: 0.7rem;
+        border-radius: 6px;
+    }
+
+    .saisie-shortcut {
+        display: none;
+    }
+
+    .saisie-summary {
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .saisie-header-card {
+        padding: 14px 16px;
+        border-radius: 12px;
+    }
+
+    .saisie-header-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .saisie-header-title {
+        font-size: 0.9rem;
+    }
+
+    .saisie-header-meta {
+        gap: 6px;
+    }
+
+    .saisie-header-meta span {
+        font-size: 0.68rem;
+    }
+
+    .saisie-progression-circle {
+        width: 44px;
+        height: 44px;
+    }
+
+    .saisie-toolbar {
+        padding: 10px 14px;
+        border-radius: 10px;
+    }
+
+    .saisie-legend {
+        font-size: 0.68rem;
+    }
+
+    .legend-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .notes-grid-table {
+        min-width: 400px;
+    }
+
+    .notes-grid-table thead th.eleve-col {
+        min-width: 100px;
+        max-width: 110px;
+        padding: 6px 8px;
+    }
+
+    .notes-grid-table thead th.matiere-col {
+        min-width: 48px;
+        max-width: 60px;
+    }
+
+    .note-input {
+        max-width: 44px;
+        height: 28px;
+        font-size: 0.68rem;
+        border-radius: 5px;
+    }
+}
+
+/* ============================================================
+   13. IMPRESSION
+   ============================================================ */
+@media print {
+    .saisie-toolbar,
+    .notes-grid-actions,
+    .saisie-header-actions,
+    .saisie-header-right,
+    .breadcrumb,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .info-card-custom,
+    .saisie-summary,
+    #btnToutVider,
+    #btnSaveNotes {
+        display: none !important;
+    }
+
+    .saisie-header-card {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+        padding: 16px;
+    }
+
+    .saisie-header-title {
+        color: #000 !important;
+    }
+
+    .saisie-header-meta span {
+        color: #475569 !important;
+    }
+
+    .notes-grid-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .notes-grid-table thead th {
+        background-color: #f1f5f9 !important;
+    }
+
+    .note-input {
+        border: 1px solid #ddd !important;
+        background-color: #fff !important;
+    }
+
+    .note-input.saisie {
+        background-color: #f0fdf4 !important;
+    }
+
+    .note-input.absent {
+        background-color: #fff5f5 !important;
+    }
+}

@@ -8,7 +8,7 @@
 defined('ACCESS') or define('ACCESS', true);
 
 // Charger la configuration
-require_once __DIR__ . '/config/app.php';
+require_once __DIR__ . '/src/config/app.php';
 
 // ============================================================
 // ROUTAGE SIMPLE
@@ -27,12 +27,11 @@ $route = '/' . trim($route, '/');
 // Si la racine est demandée
 if ($route === '/' || $route === '/index.php') {
     if (isLoggedIn()) {
-        redirect(BASE_URL . 'dashboard/');
+        redirect('/gestion_scolaire/dashboard');
     } else {
-        redirect(BASE_URL . 'auth/login.php');
+        redirect('/gestion_scolaire/login');
     }
 }
-
 // Si un fichier physique existe, le servir directement (CSS, JS, images, etc.)
 $filePath = __DIR__ . $route;
 if (file_exists($filePath) && is_file($filePath)) {

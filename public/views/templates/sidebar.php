@@ -126,68 +126,56 @@ function submenuLink($url, $icon, $label, $permission = null)
     </div>
     <?php endif; ?>
 
-    <?php if (can('evaluations.consulter') || can('notes.consulter') || can('resultats.consulter') || can('bulletins.consulter')): ?>
-    <div class="menu-section">
-        <span class="menu-title">Pédagogie</span>
-        <ul class="menu-list">
-            <?php if (can('evaluations.consulter')): ?>
-            <li class="menu-item has-submenu">
-                <a href="#" class="menu-link">
-                    <i class="fa-solid fa-clipboard-list"></i>
-                    <span class="link-text">Évaluations</span>
-                    <i class="fa-solid fa-chevron-down submenu-arrow"></i>
-                </a>
-                <ul class="submenu">
-                    <?= submenuLink($baseUrl . '/evaluations', 'fa-list', 'Toutes les évaluations', 'evaluations.consulter') ?>
-                    <?= submenuLink($baseUrl . '/evaluations/ajouter', 'fa-plus', 'Créer une évaluation', 'evaluations.creer') ?>
-                </ul>
-            </li>
-            <?php endif; ?>
-            
-            <?php if (can('notes.consulter')): ?>
-            <li class="menu-item has-submenu">
-                <a href="#" class="menu-link">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <span class="link-text">Notes</span>
-                    <i class="fa-solid fa-chevron-down submenu-arrow"></i>
-                </a>
-                <ul class="submenu">
-                    <?= submenuLink($baseUrl . '/notes/saisie', 'fa-pencil', 'Saisir des notes', 'notes.saisir') ?>
-                    <?= submenuLink($baseUrl . '/notes/consulter', 'fa-magnifying-glass', 'Consulter', 'notes.consulter') ?>
-                </ul>
-            </li>
-            <?php endif; ?>
-            
-            <?php if (can('resultats.consulter')): ?>
-            <li class="menu-item has-submenu">
-                <a href="#" class="menu-link">
-                    <i class="fa-solid fa-square-poll-vertical"></i>
-                    <span class="link-text">Résultats</span>
-                    <i class="fa-solid fa-chevron-down submenu-arrow"></i>
-                </a>
-                <ul class="submenu">
-                    <?= submenuLink($baseUrl . '/resultats', 'fa-list', 'Consulter', 'resultats.consulter') ?>
-                    <?= submenuLink($baseUrl . '/resultats/proces-verbaux', 'fa-file-contract', 'Procès-verbaux', 'resultats.exporter') ?>
-                </ul>
-            </li>
-            <?php endif; ?>
-            
-            <?php if (can('bulletins.consulter')): ?>
-            <li class="menu-item has-submenu">
-                <a href="#" class="menu-link">
-                    <i class="fa-solid fa-file-invoice"></i>
-                    <span class="link-text">Bulletins</span>
-                    <i class="fa-solid fa-chevron-down submenu-arrow"></i>
-                </a>
-                <ul class="submenu">
-                    <?= submenuLink($baseUrl . '/bulletins', 'fa-list', 'Consulter', 'bulletins.consulter') ?>
-                    <?= submenuLink($baseUrl . '/bulletins/generer', 'fa-gear', 'Générer', 'bulletins.generer') ?>
-                    <?= submenuLink($baseUrl . '/bulletins/imprimer', 'fa-print', 'Imprimer', 'bulletins.imprimer') ?>
-                </ul>
-            </li>
-            <?php endif; ?>
-        </ul>
-    </div>
+    <?php if (can('notes.consulter') || can('resultats.consulter') || can('bulletins.consulter')): ?>
+        <div class="menu-section">
+            <span class="menu-title">Pédagogie</span>
+            <ul class="menu-list">
+                <?php if (can('notes.consulter')): ?>
+                <li class="menu-item has-submenu">
+                    <a href="#" class="menu-link">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="link-text">Notes</span>
+                        <i class="fa-solid fa-chevron-down submenu-arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <?= submenuLink($baseUrl . '/notes', 'fa-list', 'Toutes les évaluations', 'notes.consulter') ?>
+                        <?= submenuLink($baseUrl . '/notes/ajouter', 'fa-plus', 'Nouvelle évaluation', 'notes.creer') ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
+                
+                <?php if (can('resultats.consulter')): ?>
+                <li class="menu-item has-submenu">
+                    <a href="#" class="menu-link">
+                        <i class="fa-solid fa-square-poll-vertical"></i>
+                        <span class="link-text">Résultats</span>
+                        <i class="fa-solid fa-chevron-down submenu-arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <?= submenuLink($baseUrl . '/resultats', 'fa-list', 'Consulter', 'resultats.consulter') ?>
+                        <?= submenuLink($baseUrl . '/resultats/proces-verbaux', 'fa-file-contract', 'Procès-verbaux', 'resultats.exporter') ?>
+                        <?= submenuLink($baseUrl . '/resultats/proclamation', 'fa-list-ol', 'Proclamation', 'resultats.consulter') ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
+                
+                <?php if (can('bulletins.consulter')): ?>
+                <li class="menu-item has-submenu">
+                    <a href="#" class="menu-link">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span class="link-text">Bulletins</span>
+                        <i class="fa-solid fa-chevron-down submenu-arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <?= submenuLink($baseUrl . '/bulletins', 'fa-list', 'Consulter', 'bulletins.consulter') ?>
+                        <?= submenuLink($baseUrl . '/bulletins/generer', 'fa-gear', 'Générer', 'bulletins.generer') ?>
+                        <?= submenuLink($baseUrl . '/bulletins/imprimer', 'fa-print', 'Imprimer', 'bulletins.imprimer') ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+   
     <?php endif; ?>
 
     <?php if (can('emploi.consulter') || can('absences.consulter') || can('retards.consulter') || can('discipline.consulter')): ?>
@@ -415,7 +403,7 @@ function submenuLink($url, $icon, $label, $permission = null)
                     <i class="fa-solid fa-chevron-down submenu-arrow"></i>
                 </a>
                 <ul class="submenu">
-                    <?= submenuLink($baseUrl . '/notes/saisie', 'fa-pencil', 'Saisir des notes', 'notes.saisir') ?>
+                    <?= submenuLink($baseUrl . '/notes', 'fa-pencil', 'Saisir des notes', 'notes.saisir') ?>
                     <?= submenuLink($baseUrl . '/notes/consulter', 'fa-magnifying-glass', 'Consulter', 'notes.consulter') ?>
                 </ul>
             </li>

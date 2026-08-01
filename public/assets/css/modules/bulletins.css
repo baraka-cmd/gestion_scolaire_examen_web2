@@ -1,0 +1,795 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/bulletins.css
+   Rôle    : Styles du bulletin scolaire officiel congolais (EPST/RDC)
+   Système : Bulletin avec 6 périodes, 3 examens, 3 trimestres, total annuel
+   Version : 3.0 — Grille complète Max/OBT
+   ============================================================ */
+
+/* ============================================================
+   1. SÉLECTEURS
+   ============================================================ */
+.bulletin-selectors {
+    margin-bottom: 24px;
+}
+
+.bulletin-selector-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.bulletin-selector-header {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--border-color-light);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bulletin-selector-header i {
+    color: var(--color-primary);
+}
+
+.bulletin-selector-body {
+    padding: 20px;
+}
+
+.bulletin-selector-form .form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.bulletin-selector-form .form-group {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 0;
+}
+
+.bulletin-selector-form .form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+    color: var(--color-gray-600);
+}
+
+.bulletin-selector-form .form-label i {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+}
+
+.bulletin-selector-form .form-control {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: var(--font-primary);
+    font-size: 0.84rem;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.bulletin-selector-form .form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+/* ============================================================
+   2. DOCUMENT BULLETIN
+   ============================================================ */
+.bulletin-document {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+/* ============================================================
+   3. EN-TÊTE OFFICIEL RDC
+   ============================================================ */
+.bulletin-rdc-header {
+    padding: 20px 24px;
+    border-bottom: 3px double var(--color-dark);
+    background: linear-gradient(180deg, #fafbfc 0%, #fff 100%);
+}
+
+.rdc-pays {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.rdc-ministere {
+    text-align: center;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-gray-700);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.rdc-id {
+    text-align: right;
+    font-size: 0.65rem;
+    color: var(--color-gray-500);
+    margin-bottom: 8px;
+}
+
+.rdc-ecole {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.74rem;
+    color: var(--color-gray-700);
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background-color: var(--color-gray-50);
+    border-radius: 4px;
+    border: 1px solid var(--border-color-light);
+}
+
+.rdc-ecole-ligne {
+    white-space: nowrap;
+}
+
+.rdc-label {
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.rdc-valeur {
+    color: var(--color-gray-700);
+}
+
+.rdc-eleve {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.74rem;
+    color: var(--color-gray-700);
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    background-color: var(--color-gray-50);
+    border-radius: 4px;
+    border: 1px solid var(--border-color-light);
+}
+
+.rdc-eleve-ligne {
+    white-space: nowrap;
+}
+
+.rdc-titre-bulletin {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 10px 0 2px 0;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+.rdc-titre-bulletin::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #2c3e90, #f59e0b, #2c3e90);
+    border-radius: 2px;
+}
+
+.rdc-annee-scolaire {
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   4. TABLEAU DU BULLETIN
+   ============================================================ */
+.bulletin-table-wrapper {
+    overflow-x: auto;
+    padding: 0;
+}
+
+.bulletin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.62rem;
+    min-width: 1600px;
+}
+
+/* En-têtes principaux */
+.bulletin-table thead th {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 5px 2px;
+    text-align: center;
+    border: 1px solid #1a274f;
+    font-size: 0.58rem;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.bulletin-table .col-branches {
+    text-align: left;
+    padding-left: 6px;
+    min-width: 140px;
+    max-width: 160px;
+    font-size: 0.62rem;
+}
+
+.bulletin-table .col-trimestre {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bulletin-table .trimestre-1 {
+    background-color: #1e3a5f;
+}
+
+.bulletin-table .trimestre-2 {
+    background-color: #1a274f;
+}
+
+.bulletin-table .trimestre-3 {
+    background-color: #152040;
+}
+
+.bulletin-table .col-annuel {
+    background-color: #0f172a;
+    font-weight: 700;
+}
+
+/* Sous-en-tête (P1, P2, EX1, T1...) */
+.bulletin-table .sub-header th {
+    background-color: #334155;
+    color: #e2e8f0;
+    font-size: 0.55rem;
+    font-weight: 600;
+    padding: 4px 1px;
+}
+
+/* Colonnes Max et Obt */
+.bulletin-table .col-m {
+    background-color: #f1f5f9;
+    color: var(--color-gray-500);
+    font-size: 0.55rem;
+    width: 28px;
+    min-width: 28px;
+    max-width: 30px;
+}
+
+.bulletin-table .col-o {
+    width: 30px;
+    min-width: 30px;
+    max-width: 32px;
+    font-size: 0.6rem;
+}
+
+.bulletin-table .col-total {
+    background-color: #e8eaf6;
+    font-weight: 700;
+}
+
+/* ============================================================
+   5. LIGNES DU TABLEAU
+   ============================================================ */
+.bulletin-table tbody td {
+    padding: 4px 2px;
+    text-align: center;
+    border: 1px solid var(--border-color-light);
+    vertical-align: middle;
+    font-size: 0.6rem;
+    color: var(--color-gray-700);
+}
+
+.bulletin-table tbody .col-branches {
+    text-align: left;
+    padding-left: 6px;
+    font-size: 0.62rem;
+    font-weight: 500;
+}
+
+/* Ligne groupe */
+.groupe-row {
+    background-color: #e8eaf6;
+}
+
+.groupe-row td {
+    padding: 6px 6px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.68rem;
+}
+
+/* Ligne sous-matière */
+.sous-matiere-row {
+    transition: background-color 0.2s ease;
+}
+
+.sous-matiere-row:hover {
+    background-color: #f8fafc;
+}
+
+.sous-matiere-row:nth-child(even) {
+    background-color: #fcfdfe;
+}
+
+/* Ligne sous-total */
+.sous-total-row {
+    background-color: #f1f5f9;
+    border-top: 2px solid var(--color-gray-400);
+}
+
+.sous-total-row td {
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+/* Ligne total général */
+.total-general-row {
+    background-color: var(--color-dark);
+    border-top: 3px solid #000;
+}
+
+.total-general-row td {
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 0.66rem;
+    padding: 6px 2px;
+}
+
+/* Ligne pourcentage */
+.pourcentage-row {
+    background-color: #fef3c7;
+}
+
+.pourcentage-row td {
+    font-weight: 700;
+    color: #92400e;
+    font-size: 0.62rem;
+    padding: 6px 2px;
+}
+
+/* Ligne mention */
+.mention-row {
+    background-color: #dbeafe;
+}
+
+.mention-row td {
+    font-weight: 700;
+    color: #1e40af;
+    font-size: 0.64rem;
+    padding: 6px 2px;
+}
+
+.mention-value {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Ligne décision */
+.decision-row {
+    background-color: #f0fdf4;
+}
+
+.decision-row td {
+    font-weight: 700;
+    font-size: 0.66rem;
+    padding: 6px 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.decision-value.admis {
+    color: #065f46;
+}
+
+.decision-value.ajourne {
+    color: #991b1b;
+    background-color: #fee2e2;
+}
+
+/* Ligne rang */
+.rang-row {
+    background-color: #f1f5f9;
+}
+
+.rang-row td {
+    font-weight: 600;
+    color: var(--color-gray-700);
+    font-size: 0.62rem;
+    padding: 6px 2px;
+}
+
+/* ============================================================
+   6. SIGNATURES
+   ============================================================ */
+.bulletin-signatures {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px;
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.signature-block {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.signature-line {
+    width: 100%;
+    border-bottom: 1px solid var(--color-gray-400);
+    margin-bottom: 8px;
+    padding-top: 32px;
+}
+
+.signature-block span {
+    font-size: 0.72rem;
+    color: var(--color-gray-600);
+    font-weight: 500;
+}
+
+/* ============================================================
+   7. BOUTONS D'ACTION
+   ============================================================ */
+.bulletin-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bulletin-actions .btn {
+    min-width: 160px;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+/* ============================================================
+   8. ÉTAT VIDE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--color-gray-300);
+    display: block;
+    margin-bottom: 16px;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* ============================================================
+   9. OPTIONS D'IMPRESSION
+   ============================================================ */
+.imprimer-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.imprimer-option-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+.imprimer-option-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-light);
+}
+
+.imprimer-option-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.imprimer-option-icon.blue {
+    background: linear-gradient(135deg, #2c3e90, #3b4fa0);
+}
+
+.imprimer-option-icon.green {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.imprimer-option-content {
+    flex: 1;
+}
+
+.imprimer-option-content h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0 0 4px 0;
+}
+
+.imprimer-option-content p {
+    font-size: 0.78rem;
+    color: var(--color-gray-500);
+    margin: 0 0 12px 0;
+}
+
+.imprimer-option-form .form-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.imprimer-option-form .form-group {
+    flex: 1;
+    min-width: 130px;
+    margin-bottom: 0;
+}
+
+.imprimer-option-form .form-control {
+    width: 100%;
+    padding: 8px 10px;
+    font-family: var(--font-primary);
+    font-size: 0.78rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* ============================================================
+   10. RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+    .bulletin-table {
+        min-width: 1400px;
+        font-size: 0.58rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .imprimer-options {
+        grid-template-columns: 1fr;
+    }
+
+    .bulletin-rdc-header {
+        padding: 14px 16px;
+    }
+
+    .rdc-ecole,
+    .rdc-eleve {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .bulletin-signatures {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .signature-block {
+        min-width: 120px;
+    }
+
+    .bulletin-actions .btn {
+        min-width: 130px;
+        font-size: 0.76rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .bulletin-table {
+        min-width: 1200px;
+        font-size: 0.55rem;
+    }
+
+    .rdc-titre-bulletin {
+        font-size: 0.85rem;
+    }
+
+    .bulletin-signatures {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .signature-block {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .bulletin-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bulletin-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bulletin-rdc-header {
+        padding: 10px 12px;
+    }
+
+    .rdc-pays {
+        font-size: 0.7rem;
+    }
+
+    .rdc-ministere {
+        font-size: 0.6rem;
+    }
+
+    .rdc-titre-bulletin {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    .imprimer-option-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* ============================================================
+   11. IMPRESSION — Format duplicateur A4 paysage
+   ============================================================ */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 6mm;
+    }
+
+    body {
+        background-color: #fff !important;
+        font-size: 7px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .bulletin-selectors,
+    .bulletin-actions {
+        display: none !important;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .bulletin-document {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        max-width: 100%;
+    }
+
+    .bulletin-rdc-header {
+        padding: 6px 0;
+        border-bottom: 2px double #000;
+    }
+
+    .bulletin-table {
+        font-size: 6px;
+        min-width: 100%;
+    }
+
+    .bulletin-table thead th {
+        background-color: #000 !important;
+        color: #fff !important;
+        font-size: 5px;
+        padding: 3px 1px;
+    }
+
+    .bulletin-table .sub-header th {
+        background-color: #333 !important;
+        font-size: 5px;
+    }
+
+    .bulletin-table tbody td {
+        font-size: 5.5px;
+        padding: 2px 1px;
+    }
+
+    .bulletin-table .col-m {
+        font-size: 5px;
+        width: 22px;
+        min-width: 22px;
+    }
+
+    .bulletin-table .col-o {
+        width: 24px;
+        min-width: 24px;
+    }
+
+    .total-general-row td {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+    .pourcentage-row td {
+        background-color: #fef3c7 !important;
+    }
+
+    .mention-row td {
+        background-color: #dbeafe !important;
+    }
+
+    .decision-row td {
+        background-color: #f0fdf4 !important;
+    }
+
+    .bulletin-signatures {
+        padding: 10px 0;
+    }
+
+    .signature-line {
+        border-bottom: 1px solid #000;
+    }
+}

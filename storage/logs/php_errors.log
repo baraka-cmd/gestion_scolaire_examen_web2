@@ -1331,3 +1331,166 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 01:44:35 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 01:44:35 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 01:45:02 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/parents/mes_enfants.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 01:45:02 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/parents/mes_enfants.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 16:01:26 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 16:01:26 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 16:01:32 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/saisie.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 16:01:32 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/saisie.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 16:07:24 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/ajouter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 16:07:24 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/ajouter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 266
+[31-Jul-2026 16:16:00 Africa/Lubumbashi] [2026-07-31 16:16:00] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:16:00 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note'
+[31-Jul-2026 16:19:17 Africa/Lubumbashi] [2026-07-31 16:19:17] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:19:18 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note'
+[31-Jul-2026 16:19:30 Africa/Lubumbashi] [2026-07-31 16:19:30] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:19:30 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note'
+[31-Jul-2026 16:19:38 Africa/Lubumbashi] [2026-07-31 16:19:38] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:19:38 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note'
+[31-Jul-2026 16:24:08 Africa/Lubumbashi] [2026-07-31 16:24:08] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:24:08 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note'
+[31-Jul-2026 16:24:23 Africa/Lubumbashi] [2026-07-31 16:24:23] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:24:24 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note'
+[31-Jul-2026 16:26:20 Africa/Lubumbashi] [2026-07-31 16:26:20] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '9-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:26:20 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '9-50' for key 'uk_note'
+[31-Jul-2026 16:35:20 Africa/Lubumbashi] [2026-07-31 16:35:20] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note' | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                         VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 16:35:20 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '97-50' for key 'uk_note'
+[31-Jul-2026 22:47:21 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/emploi/consulter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 22:47:21 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/emploi/consulter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:273
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 23:18:20 Africa/Lubumbashi] [2026-07-31 23:18:20] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 4025 CONSTRAINT `notes.valeur` failed for `gestion_scolaire`.`notes` | SQL: INSERT INTO notes (eleve_id, evaluation_id, sous_matiere_id, valeur, absence, saisie_par, date_saisie)
+                             VALUES (:elid, :eid, :smid, :val, :abs, :uid, NOW())
+[31-Jul-2026 23:18:20 Africa/Lubumbashi] Erreur sauvegarde notes: SQLSTATE[23000]: Integrity constraint violation: 4025 CONSTRAINT `notes.valeur` failed for `gestion_scolaire`.`notes`
+[31-Jul-2026 23:24:13 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/saisie.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 23:24:13 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/saisie.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:273
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 23:27:55 Africa/Lubumbashi] PHP Parse error:  syntax error, unexpected token "elseif", expecting end of file in C:\xampp\htdocs\gestion_scolaire\public\views\templates\sidebar.php on line 288
+[31-Jul-2026 23:27:56 Africa/Lubumbashi] PHP Parse error:  syntax error, unexpected token "elseif", expecting end of file in C:\xampp\htdocs\gestion_scolaire\public\views\templates\sidebar.php on line 288
+[31-Jul-2026 23:28:32 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 23:28:32 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:273
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 23:31:19 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 23:31:19 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:273
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 273
+[31-Jul-2026 23:46:42 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[31-Jul-2026 23:46:42 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:261
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(276): {closure}(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[31-Jul-2026 23:48:05 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[31-Jul-2026 23:48:05 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:261
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(276): {closure}(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[31-Jul-2026 23:49:23 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[31-Jul-2026 23:49:23 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:261
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(276): {closure}(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[31-Jul-2026 23:50:02 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[31-Jul-2026 23:50:02 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/evaluations/saisie.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:261
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(276): {closure}(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 261
+[01-Aug-2026 00:31:40 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Class "NoteController" not found in C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\liste.php:23
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(283): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\liste.php on line 23
+[01-Aug-2026 00:33:10 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Class "EvaluationController" not found in C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\ajouter.php:23
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(283): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\ajouter.php on line 23
+[01-Aug-2026 00:34:28 Africa/Lubumbashi] PHP Warning:  Undefined variable $noteController in C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\ajouter.php on line 26
+[01-Aug-2026 00:34:28 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Call to a member function getClassesActives() on null in C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\ajouter.php:26
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(283): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\ajouter.php on line 26
+[01-Aug-2026 00:44:14 Africa/Lubumbashi] [2026-08-01 00:44:14] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2-1-Période 1' for key 'uk_eval_unique' | SQL: INSERT INTO evaluations (trimestre_id, groupe_id, classe_id, type_evaluation, date_evaluation)
+                     VALUES (:tid, :gid, :cid, :type, :date_eval)
+[01-Aug-2026 00:44:14 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2-1-Période 1' for key 'uk_eval_unique' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:76
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(76): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(115): Database->query('INSERT INTO eva...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\src\controllers\NoteController.php(341): Database->insert('INSERT INTO eva...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\src\controllers\NoteController.php(55): NoteController->genererEvaluations()
+#4 C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\liste.php(27): NoteController->handleAjax()
+#5 C:\xampp\htdocs\gestion_scolaire\public\index.php(283): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 76
+[01-Aug-2026 00:49:04 Africa/Lubumbashi] [2026-08-01 00:49:04] Erreur SQL : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1-1-Période 1' for key 'uk_eval_unique' | SQL: INSERT INTO evaluations (trimestre_id, groupe_id, classe_id, type_evaluation, date_evaluation)
+                     VALUES (:tid, :gid, :cid, :type, :date_eval)
+[01-Aug-2026 00:49:04 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1-1-Période 1' for key 'uk_eval_unique' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:76
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(76): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(115): Database->query('INSERT INTO eva...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\src\controllers\NoteController.php(341): Database->insert('INSERT INTO eva...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\src\controllers\NoteController.php(55): NoteController->genererEvaluations()
+#4 C:\xampp\htdocs\gestion_scolaire\public\views\modules\notes\liste.php(27): NoteController->handleAjax()
+#5 C:\xampp\htdocs\gestion_scolaire\public\index.php(283): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 76
+[01-Aug-2026 16:27:05 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/effectifs.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 16:27:05 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/effectifs.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:31:11 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/emploi/consulter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:31:11 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/emploi/consulter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:32:18 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/parents/mes_enfants.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:32:18 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/parents/mes_enfants.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:32:34 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:32:34 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/notes/consulter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:32:37 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/absences/liste.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290
+[01-Aug-2026 17:32:37 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/absences/liste.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 290

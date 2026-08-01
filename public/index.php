@@ -62,26 +62,26 @@ $routes = [
     '/inscriptions/nouvelle'     => 'views/modules/inscriptions/nouvelle.php',
     '/inscriptions/reinscription' => 'views/modules/inscriptions/reinscription.php',
     
-    // Évaluations
-    '/evaluations'               => 'views/modules/evaluations/liste.php',
-    '/evaluations/ajouter'       => 'views/modules/evaluations/ajouter.php',
-    '/evaluations/types'         => 'views/modules/evaluations/types.php',
+   
+
+// ============================================================
+// APRÈS (nouvelles routes à AJOUTER)
+// ============================================================
+'/notes'                     => 'views/modules/notes/liste.php',
+'/notes/ajouter'             => 'views/modules/notes/ajouter.php',
+'/notes/saisie'              => 'views/modules/notes/saisie.php',
+'/notes/consulter'           => 'views/modules/notes/consulter.php',
     
-    // Notes
-    '/notes'                     => 'views/modules/notes/consulter.php',
-    '/notes/saisie'              => 'views/modules/notes/saisie.php',
-    '/notes/consulter'           => 'views/modules/notes/consulter.php',
-    '/notes/releves'             => 'views/modules/notes/releves.php',
-    
-    // Résultats
-    '/resultats'                 => 'views/modules/resultats/consulter.php',
-    '/resultats/proces-verbaux'  => 'views/modules/resultats/proces_verbaux.php',
-    '/resultats/deliberations'   => 'views/modules/resultats/deliberations.php',
-    
-    // Bulletins
-    '/bulletins'                 => 'views/modules/bulletins/consulter.php',
-    '/bulletins/generer'         => 'views/modules/bulletins/generer.php',
-    '/bulletins/imprimer'        => 'views/modules/bulletins/imprimer.php',
+    // Ajouter dans les routes statiques
+'/resultats'                 => 'views/modules/resultats/consulter.php',
+'/resultats/consulter'       => 'views/modules/resultats/consulter.php',
+'/resultats/proclamation'    => 'views/modules/resultats/proclamation.php',
+'/resultats/proces-verbaux'  => 'views/modules/resultats/proces_verbaux.php',
+'/resultats/deliberations'   => 'views/modules/resultats/deliberations.php',
+'/bulletins'                 => 'views/modules/bulletins/consulter.php',
+'/bulletins/consulter'       => 'views/modules/bulletins/consulter.php',
+'/bulletins/generer'         => 'views/modules/bulletins/generer.php',
+'/bulletins/imprimer'        => 'views/modules/bulletins/imprimer.php',
     
     // Emploi du temps
     '/emploi-du-temps'           => 'views/modules/emploi/consulter.php',
@@ -250,10 +250,34 @@ $dynamicRoutes = [
         $_GET['id'] = $matches[1];
         require_once __DIR__ . '/views/modules/paiements/recu.php';
     },
-    // Bulletin élève : /bulletins/eleve/25
-    '#^/bulletins/eleve/(\d+)$#' => function($matches) {
+    // Routes dynamiques — remplacer les anciennes
+'#^/bulletins/consulter\?eleve_id=(\d+)&annee_id=(\d+)$#' => function($matches) {
+    $_GET['eleve_id'] = $matches[1];
+    $_GET['annee_id'] = $matches[2];
+    require_once __DIR__ . '/views/modules/bulletins/consulter.php';
+},
+
+'#^/bulletins/eleve/(\d+)$#' => function($matches) {
+    $_GET['eleve_id'] = $matches[1];
+    require_once __DIR__ . '/views/modules/bulletins/consulter.php';
+},
+
+    // Évaluation : saisie notes /evaluations/notes/5
+    '#^/notes/notes/(\d+)$#' => function($matches) {
         $_GET['id'] = $matches[1];
-        require_once __DIR__ . '/views/modules/bulletins/eleve.php';
+        require_once __DIR__ . '/views/modules/notes/saisie.php';
+    },
+
+    // Route dynamique : /notes/saisie/113
+    '#^/notes/saisie/(\d+)$#' => function($matches) {
+        $_GET['id'] = $matches[1];
+        require_once __DIR__ . '/views/modules/notes/saisie.php';
+    },
+
+    // Route pour modifier une évaluation (réutilise ajouter.php avec un ID)
+    '#^/notes/ajouter/(\d+)$#' => function($matches) {
+        $_GET['id'] = $matches[1];
+        require_once __DIR__ . '/views/modules/notes/ajouter.php';
     },
 ];
 
