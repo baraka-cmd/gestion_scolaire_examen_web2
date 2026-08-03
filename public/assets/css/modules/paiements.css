@@ -1,0 +1,852 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/paiements.css
+   Rôle    : Styles des interfaces de gestion financière
+   Système : École primaire congolaise
+   Version : 1.0
+   ============================================================ */
+
+/* ============================================================
+   1. GRILLE FORMULAIRE
+   ============================================================ */
+.paiement-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .paiement-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   2. CARTE FORMULAIRE
+   ============================================================ */
+.paiement-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.paiement-form-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.paiement-form-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.paiement-form-icon i {
+    color: #f59e0b;
+}
+
+.paiement-form-header h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--color-white);
+}
+
+.paiement-form-header p {
+    font-size: 0.78rem;
+    margin: 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+.paiement-form-body {
+    padding: 28px;
+}
+
+.paiement-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   3. SECTIONS FORMULAIRE
+   ============================================================ */
+.form-section {
+    margin-bottom: 4px;
+}
+
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-lighter);
+}
+
+.form-section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.form-section-icon i {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.form-section-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.form-section-subtitle {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 2px;
+}
+
+/* ============================================================
+   4. RECHERCHE ÉLÈVE
+   ============================================================ */
+.recherche-eleve-container {
+    position: relative;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 14px;
+    color: var(--color-gray-400);
+    font-size: 0.9rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.search-wrapper .form-control {
+    padding-left: 40px;
+}
+
+.resultats-recherche {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 50;
+    display: none;
+    margin-top: 4px;
+}
+
+.resultats-recherche.show {
+    display: block;
+}
+
+.resultat-eleve-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.resultat-eleve-item:last-child {
+    border-bottom: none;
+}
+
+.resultat-eleve-item:hover {
+    background-color: var(--color-primary-lighter);
+}
+
+.resultat-eleve-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.resultat-eleve-avatar.male {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.resultat-eleve-avatar.female {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+}
+
+.resultat-eleve-info {
+    min-width: 0;
+}
+
+.resultat-eleve-info strong {
+    font-size: 0.85rem;
+    color: var(--color-dark);
+    display: block;
+}
+
+.resultat-eleve-info span {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+}
+
+/* Élève trouvé (carte confirmée) */
+.eleve-trouve-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%);
+    border: 1px solid #a7f3d0;
+    border-radius: 14px;
+}
+
+.eleve-trouve-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.eleve-trouve-avatar.male {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.eleve-trouve-avatar.female {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+}
+
+.eleve-trouve-info {
+    flex: 1;
+}
+
+.eleve-trouve-info strong {
+    font-size: 0.9rem;
+    color: #065f46;
+    display: block;
+}
+
+.eleve-trouve-info span {
+    font-size: 0.76rem;
+    color: #047857;
+}
+
+/* ============================================================
+   5. MONTANT ATTENDU
+   ============================================================ */
+.paiement-montant-attendu {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border: 1px solid #fde68a;
+    border-radius: 14px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.montant-attendu-label {
+    font-size: 0.76rem;
+    color: #92400e;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.montant-attendu-valeur {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #92400e;
+}
+
+/* ============================================================
+   6. REÇU IMPRIMABLE
+   ============================================================ */
+.recu-document {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.recu-header {
+    padding: 24px 28px;
+    border-bottom: 3px double var(--color-dark);
+    background: linear-gradient(180deg, #fafbfc 0%, #fff 100%);
+}
+
+.recu-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.recu-logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2c3e90, #3b4fa0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #f59e0b;
+    flex-shrink: 0;
+    border: 2px solid #2c3e90;
+}
+
+.recu-ecole-info {
+    flex: 1;
+}
+
+.recu-ecole-info h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 0 0 4px 0;
+    text-transform: uppercase;
+}
+
+.recu-ecole-info p {
+    font-size: 0.76rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.recu-titre-wrapper {
+    text-align: right;
+}
+
+.recu-titre {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-dark);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.recu-numero {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 4px;
+}
+
+/* Corps */
+.recu-body {
+    padding: 24px 28px;
+}
+
+.recu-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.recu-section {
+    background-color: var(--color-gray-50);
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid var(--border-color-light);
+}
+
+.recu-section-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-primary-lighter);
+}
+
+.recu-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--border-color-light);
+}
+
+.recu-field:last-child {
+    border-bottom: none;
+}
+
+.recu-field.highlight {
+    background-color: #fef3c7;
+    margin: 4px -8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.recu-field-label {
+    font-size: 0.78rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.recu-field-value {
+    font-size: 0.82rem;
+    color: var(--color-dark);
+    font-weight: 500;
+    text-align: right;
+}
+
+.recu-montant {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #065f46;
+}
+
+.recu-statut-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.recu-statut-paye {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.recu-statut-partiel {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.recu-statut-impaye {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Méta */
+.recu-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 12px 16px;
+    background-color: var(--color-gray-50);
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+.recu-meta-item {
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.recu-meta-item i {
+    color: var(--color-primary);
+}
+
+/* Signatures */
+.recu-signatures {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 28px;
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.recu-signature-block {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.recu-signature-line {
+    width: 100%;
+    border-bottom: 1px solid var(--color-gray-400);
+    margin-bottom: 8px;
+    padding-top: 40px;
+}
+
+.recu-signature-block span {
+    font-size: 0.78rem;
+    color: var(--color-gray-600);
+    font-weight: 500;
+}
+
+/* Footer */
+.recu-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    background-color: var(--color-gray-50);
+}
+
+.recu-footer p {
+    font-size: 0.74rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* ============================================================
+   7. TABLEAU IMPAYÉS
+   ============================================================ */
+.retards-table-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.retards-filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 18px 20px;
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.retards-filters .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 140px;
+}
+
+.retards-filters .filter-group label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.retards-filters .filter-group label i {
+    font-size: 0.7rem;
+    color: var(--color-primary);
+}
+
+.retards-filters .filter-group select,
+.retards-filters .filter-group input {
+    padding: 9px 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-family: var(--font-primary);
+    font-size: 0.82rem;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    transition: all 0.3s ease;
+}
+
+.retards-filters .filter-group select:focus,
+.retards-filters .filter-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .paiement-form-body {
+        padding: 20px;
+    }
+
+    .paiement-form-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .paiement-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .recu-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recu-header-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .recu-logo {
+        margin: 0 auto;
+    }
+
+    .recu-titre-wrapper {
+        text-align: center;
+    }
+
+    .recu-signatures {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .recu-signature-block {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .paiement-form-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .paiement-form-body {
+        padding: 16px;
+    }
+
+    .paiement-form-footer {
+        padding: 12px 16px;
+    }
+
+    .montant-attendu-valeur {
+        font-size: 1.4rem;
+    }
+
+    .recu-header {
+        padding: 16px;
+    }
+
+    .recu-body {
+        padding: 16px;
+    }
+
+    .recu-section {
+        padding: 12px 14px;
+    }
+
+    .recu-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ============================================================
+   9. IMPRESSION
+   ============================================================ */
+@media print {
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff !important;
+        font-size: 11px;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .recu-document {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        max-width: 100%;
+    }
+
+    .recu-header {
+        border-bottom: 2px double #000;
+        padding: 10px 0;
+    }
+
+    .recu-section {
+        background: #fff !important;
+        border: 1px solid #ccc;
+    }
+
+    .recu-signature-line {
+        border-bottom: 1px solid #000;
+    }
+
+    @page {
+        size: A5 portrait;
+        margin: 8mm;
+    }
+}
+
+
+
+
+
+
+/* ============================================================
+   10. STATISTIQUES GLOBALES (retards-stats)
+   ============================================================ */
+.retards-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.retard-stat-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: default;
+}
+
+.retard-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.retard-stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.retard-stat-icon.green {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.retard-stat-icon.blue {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.retard-stat-icon.orange {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+
+.retard-stat-icon.red {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.retard-stat-icon.purple {
+    background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+}
+
+.retard-stat-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.retard-stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.retard-stat-label {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.stat-change {
+    font-size: 0.72rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-change.up {
+    color: #10b981;
+}
+
+.stat-change.down {
+    color: #ef4444;
+}
+
+.stat-change.neutral {
+    color: var(--color-gray-400);
+}

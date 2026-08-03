@@ -419,6 +419,106 @@ class AuthController
         }
     }
 
+        /**
+     * Traite l'authentification / Inscription via Google
+     */
+        /**
+     * Traite l'authentification / Inscription via Google
+     */
+    public function handleGoogleCallback(array $googleUser): void
+    {
+        $googleId = $googleUser['sub'] ?? null;
+        $email    = mb_strtolower(trim($googleUser['email'] ?? ''));
+        $nom      = $googleUser['family_name'] ?? 'Utilisateur';
+        $prenom   = $googleUser['given_name'] ?? 'Google';
+        $picture  = $googleUser['picture'] ?? null;
+
+        if (!$googleId || !$email) {
+            header('Location: ' . BASE_URL . 'views/auth/login.php?error=google_data_missing');
+            exit();
+        }
+
+        try {
+            // 1. Chercher si l'utilisateur existe déjà via son google_id
+            $sql = "SELECT u.id, u.nom, u.prenom, u.email, u.login, u.photo, u.est_actif, 
+                           u.tentatives_echecs, u.bloque_jusqua, r.nom AS role_nom, r.niveau_acces
+                    FROM utilisateurs u
+                    LEFT JOIN roles r ON u.role_id = r.id
+                    WHERE u.google_id = :google_id LIMIT 1";
+
+            $utilisateur = $this->db->fetchOne($sql, ['google_id' => $googleId]);
+
+            // 2. Si non trouvé par google_id, vérifier par adresse email
+            if (!$utilisateur) {
+                $sqlByEmail = "SELECT u.id, u.nom, u.prenom, u.email, u.login, u.photo, u.est_actif, 
+                                      u.tentatives_echecs, u.bloque_jusqua, r.nom AS role_nom, r.niveau_acces
+                               FROM utilisateurs u
+                               LEFT JOIN roles r ON u.role_id = r.id
+                               WHERE u.email = :email LIMIT 1";
+
+                $utilisateur = $this->db->fetchOne($sqlByEmail, ['email' => $email]);
+
+                if ($utilisateur) {
+                    // Compte existe : Lier le google_id et mettre à jour la photo si absente
+                    $this->db->update(
+                        "UPDATE utilisateurs SET google_id = :google_id WHERE id = :id",
+                        ['google_id' => $googleId, 'id' => $utilisateur['id']]
+                    );
+                } else {
+                    // 3. Aucun compte n'existe : CRÉATION AUTOMATIQUE (Inscription)
+                    $this->db->beginTransaction();
+
+                    $login  = $this->generateUniqueLogin($nom, $prenom);
+                    $roleId = 6; // Assure-toi que l'ID de rôle 6 existe bien dans la table `roles` !
+
+                    $userId = $this->db->insert(
+                        "INSERT INTO utilisateurs (nom, prenom, email, login, google_id, photo, role_id, est_actif)
+                         VALUES (:nom, :prenom, :email, :login, :google_id, :photo, :role_id, 1)",
+                        [
+                            'nom'       => formatNom($nom),
+                            'prenom'    => formatNom($prenom),
+                            'email'     => $email,
+                            'login'     => $login,
+                            'google_id' => $googleId,
+                            'photo'     => $picture,
+                            'role_id'   => $roleId
+                        ]
+                    );
+
+                    $this->db->commit();
+                    logActivity('Création via Google', 'utilisateurs', $userId, "Nouvelle inscription Google : {$email}");
+
+                    // Récupérer les données complètes avec le rôle
+                    $utilisateur = $this->db->fetchOne($sql, ['google_id' => $googleId]);
+                }
+            }
+
+            // Vérification de la validité du compte
+            if (isset($utilisateur['est_actif']) && !$utilisateur['est_actif']) {
+                header('Location: ' . BASE_URL . 'views/auth/login.php?error=account_disabled');
+                exit();
+            }
+
+            // Connexion effective (Remplissage de la SESSION)
+            $this->handleSuccessfulLogin($utilisateur, true);
+            logActivity('Connexion Google', 'utilisateurs', $utilisateur['id'], 'Connexion réussie via Google OAuth');
+
+            // Redirection vers le tableau de bord
+            header('Location: ' . BASE_URL . 'views/dashboard/');
+            exit();
+
+        } catch (Exception $e) {
+            if ($this->db->inTransaction()) {
+                $this->db->rollback();
+            }
+            error_log('Erreur handleGoogleCallback : ' . $e->getMessage());
+            header('Location: ' . BASE_URL . 'views/auth/login.php?error=technical');
+            exit();
+        }
+    }
+
+
+
     private function setRememberMeCookie(int $userId): void
     {
         $token = bin2hex(random_bytes(32));
@@ -464,4 +564,20 @@ class AuthController
 
         return $login;
     }
+
+
+    /**
+ * Redirige l'utilisateur vers la page d'authentification de Google
+ */
+public function redirectToGoogle(): void
+{
+    require_once SRC_PATH . 'services/GoogleAuthService.php';
+    $googleService = new GoogleAuthService();
+    $authUrl = $googleService->getAuthUrl();
+
+    header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+    exit();
+}
+
+
 }

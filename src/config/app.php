@@ -60,6 +60,15 @@ define('MAX_LOGIN_ATTEMPTS', 5);
 define('LOGIN_BLOCK_DURATION', 900);
 
 // ============================================================
+// CONFIGURATION SMTP / MAIL
+// ============================================================
+define('SMTP_HOST', 'smtp.gmail.com');
+define('SMTP_USER', 'barakantwali06@gmail.com');     // <-- Ton adresse Gmail d'envoi
+define('SMTP_PASS', 'iqrhxcjkllywytwo');
+    // <-- Ton mot de passe d'application Gmail (16 caractères)
+define('SMTP_PORT', 587);
+
+// ============================================================
 // PAGINATION
 // ============================================================
 define('ITEMS_PER_PAGE', 15);
@@ -69,6 +78,19 @@ define('ITEMS_PER_PAGE', 15);
 // ============================================================
 define('MAX_UPLOAD_SIZE', 5 * 1024 * 1024);
 define('ALLOWED_EXTENSIONS', 'jpg,jpeg,png,gif,pdf,doc,docx,xls,xlsx,csv');
+
+
+// ID Client EXACT copié depuis la popup Google Cloud
+define('GOOGLE_CLIENT_ID', '478956496236-h5t4ok1s614944esk2nssl9kbi1ffhmh.apps.googleusercontent.com');
+
+// Client Secret
+define('GOOGLE_CLIENT_SECRET', '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');
+
+// URI de redirection (URL fixe conforme à Google Cloud)
+define('GOOGLE_REDIRECT_URI', 'http://localhost/gestion_scolaire/auth/google-callback');
+
+
+
 
 // ============================================================
 // ÉCOLE (valeurs par défaut)

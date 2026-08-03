@@ -1,2 +1,2 @@
 <?php
-echo password_hash('Admin@2025', PASSWORD_BCRYPT, ['cost' => 10]);
+echo password_hash('Password123!', PASSWORD_BCRYPT, ['cost' => 10]);

@@ -1673,3 +1673,209 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 21:35:15 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/paiements/factures.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 21:35:15 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/paiements/factures.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:276
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 21:35:44 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/paiements/factures.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 21:35:44 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/paiements/factures.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:276
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 21:37:49 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/paiements/factures.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 21:37:49 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/paiements/factures.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:276
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 276
+[01-Aug-2026 22:36:18 Africa/Lubumbashi] [2026-08-01 22:36:18] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant WHERE id = :id
+[01-Aug-2026 22:36:18 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[01-Aug-2026 22:36:18 Africa/Lubumbashi] [2026-08-01 22:36:18] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant WHERE id = :id
+[01-Aug-2026 22:36:18 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[01-Aug-2026 22:37:38 Africa/Lubumbashi] [2026-08-01 22:37:38] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant WHERE id = :id
+[01-Aug-2026 22:37:38 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[01-Aug-2026 22:37:38 Africa/Lubumbashi] [2026-08-01 22:37:38] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant WHERE id = :id
+[01-Aug-2026 22:37:38 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:19:32 Africa/Lubumbashi] [2026-08-02 10:19:32] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:19:32 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:19:32 Africa/Lubumbashi] [2026-08-02 10:19:32] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:19:32 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:19:50 Africa/Lubumbashi] [2026-08-02 10:19:50] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:19:50 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:19:50 Africa/Lubumbashi] [2026-08-02 10:19:50] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:19:50 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:20:28 Africa/Lubumbashi] [2026-08-02 10:20:28] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:20:28 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:20:28 Africa/Lubumbashi] [2026-08-02 10:20:28] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:20:28 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:21:38 Africa/Lubumbashi] DEBUG PAIEMENT: eleve_id=109 frais_id=15 montant=30
+[02-Aug-2026 10:21:38 Africa/Lubumbashi] [2026-08-02 10:21:38] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:21:38 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 10:21:38 Africa/Lubumbashi] DEBUG PAIEMENT: eleve_id=109 frais_id=15 montant=30
+[02-Aug-2026 10:21:38 Africa/Lubumbashi] [2026-08-02 10:21:38] Erreur SQL : SQLSTATE[HY093]: Invalid parameter number | SQL: UPDATE factures SET montant_HT = montant_HT + :montant, montant_TTC = montant_TTC + :montant, date_emission = CURDATE() WHERE id = :id
+[02-Aug-2026 10:21:38 Africa/Lubumbashi] Erreur enregistrement paiement: SQLSTATE[HY093]: Invalid parameter number
+[02-Aug-2026 11:33:25 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 277
+[02-Aug-2026 11:33:25 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:277
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 277
+[02-Aug-2026 11:33:40 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 277
+[02-Aug-2026 11:33:40 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:277
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 277
+[02-Aug-2026 11:34:20 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 277
+[02-Aug-2026 11:34:20 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:277
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 277
+[02-Aug-2026 13:58:38 Africa/Lubumbashi] Erreur envoi email à marc.lukusa@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:38 Africa/Lubumbashi] Erreur envoi email à marie.kabongo@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:39 Africa/Lubumbashi] Erreur envoi email à jean.mulonda@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:39 Africa/Lubumbashi] Erreur envoi email à sarah.tshibola@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:41 Africa/Lubumbashi] Erreur envoi email à paul.kanku@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:42 Africa/Lubumbashi] Erreur envoi email à marc.lukusa@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:43 Africa/Lubumbashi] Erreur envoi email à marie.kabongo@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:43 Africa/Lubumbashi] Erreur envoi email à jean.mulonda@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:43 Africa/Lubumbashi] Erreur envoi email à sarah.tshibola@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 13:58:44 Africa/Lubumbashi] Erreur envoi email à paul.kanku@gmail.com: Erreur SMTP : impossible de se connecter au serveur SMTP.
+[02-Aug-2026 17:30:21 Africa/Lubumbashi] Erreur envoi email à paul.kanku@gmail.com: Erreur SMTP : échec de l’authentification.
+[02-Aug-2026 17:30:23 Africa/Lubumbashi] Erreur envoi email à paul.kanku@gmail.com: Erreur SMTP : échec de l’authentification.
+[02-Aug-2026 17:50:17 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Object of class Closure could not be converted to string in C:\xampp\htdocs\gestion_scolaire\public\index.php:327
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 327
+[02-Aug-2026 17:52:39 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Object of class Closure could not be converted to string in C:\xampp\htdocs\gestion_scolaire\public\index.php:333
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 333
+[02-Aug-2026 19:06:50 Africa/Lubumbashi] Erreur envoi email à paul.kanku@gmail.com: Erreur SMTP : échec de l’authentification.
+[02-Aug-2026 19:06:54 Africa/Lubumbashi] Erreur envoi email à paul.kanku@gmail.com: Erreur SMTP : échec de l’authentification.
+[02-Aug-2026 19:33:05 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:313) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 19:33:12 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:317) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 19:33:20 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:317) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 19:33:27 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:313) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 19:33:35 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:313) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 19:35:47 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:317) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 19:35:55 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:313) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 19:36:01 Africa/Lubumbashi] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestion_scolaire\src\PHPMailer\PHPMailer-master\src\SMTP.php:317) in C:\xampp\htdocs\gestion_scolaire\src\helpers\functions.php on line 332
+[02-Aug-2026 22:35:58 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Undefined constant "SMTP_HOST" in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php:344
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(84): NotificationController->testEmail()
+#1 C:\xampp\htdocs\gestion_scolaire\public\index.php(400): {closure}()
+#2 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php on line 344
+[02-Aug-2026 22:37:12 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Undefined constant "SMTP_HOST" in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php:349
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(84): NotificationController->testEmail()
+#1 C:\xampp\htdocs\gestion_scolaire\public\index.php(400): {closure}()
+#2 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php on line 349
+[02-Aug-2026 22:37:13 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Undefined constant "SMTP_HOST" in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php:349
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(84): NotificationController->testEmail()
+#1 C:\xampp\htdocs\gestion_scolaire\public\index.php(400): {closure}()
+#2 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php on line 349
+[02-Aug-2026 22:37:14 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Undefined constant "SMTP_HOST" in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php:349
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(84): NotificationController->testEmail()
+#1 C:\xampp\htdocs\gestion_scolaire\public\index.php(400): {closure}()
+#2 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php on line 349
+[02-Aug-2026 22:37:15 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Undefined constant "SMTP_HOST" in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php:349
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(84): NotificationController->testEmail()
+#1 C:\xampp\htdocs\gestion_scolaire\public\index.php(400): {closure}()
+#2 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php on line 349
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] === DÉBUT ENVOI NOTIFICATION (CONTROLLER) ===
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] Données reçues : {"destinataire_type":"parent","classe_id":21,"parent_id":54,"titre":"cccccccccccc","type_notification":"Information","envoyer_email":"1"}
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] Recherche du parent ID = 54
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] Parents trouvés (spécifique) : 1
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] Tentative d'instanciation EmailService pour l'envoi d'emails...
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] EmailService instancié avec succès.
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] Notification DB créée pour utilisateur ID 33
+[02-Aug-2026 23:25:55 Africa/Lubumbashi] Tentative d'envoi d'email à paul.kanku@gmail.com...
+[02-Aug-2026 23:25:59 Africa/Lubumbashi] ✅ Email envoyé avec succès à paul.kanku@gmail.com
+[02-Aug-2026 23:25:59 Africa/Lubumbashi] Transaction commitée.
+[02-Aug-2026 23:25:59 Africa/Lubumbashi] 1 notification(s) envoyée(s) avec succès. 1 email(s) envoyé(s).
+[02-Aug-2026 23:25:59 Africa/Lubumbashi] === FIN ENVOI NOTIFICATION (SUCCÈS) ===
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] === DÉBUT ENVOI NOTIFICATION (CONTROLLER) ===
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] Données reçues : {"destinataire_type":"parent","classe_id":21,"parent_id":54,"titre":"hhhhhhh","type_notification":"Information","envoyer_email":"1"}
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] Recherche du parent ID = 54
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] Parents trouvés (spécifique) : 1
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] Tentative d'instanciation EmailService pour l'envoi d'emails...
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] EmailService instancié avec succès.
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] Notification DB créée pour utilisateur ID 33
+[02-Aug-2026 23:34:10 Africa/Lubumbashi] Tentative d'envoi d'email à barakantwali06@gmail.com...
+[02-Aug-2026 23:34:17 Africa/Lubumbashi] ✅ Email envoyé avec succès à barakantwali06@gmail.com
+[02-Aug-2026 23:34:17 Africa/Lubumbashi] Transaction commitée.
+[02-Aug-2026 23:34:17 Africa/Lubumbashi] 1 notification(s) envoyée(s) avec succès. 1 email(s) envoyé(s).
+[02-Aug-2026 23:34:17 Africa/Lubumbashi] === FIN ENVOI NOTIFICATION (SUCCÈS) ===
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] === DÉBUT ENVOI NOTIFICATION (CONTROLLER) ===
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] Données reçues : {"destinataire_type":"parent","classe_id":21,"parent_id":53,"titre":"hhhhhhhhh","type_notification":"Information","envoyer_email":"1"}
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] Recherche du parent ID = 53
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] Parents trouvés (spécifique) : 1
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] Tentative d'instanciation EmailService pour l'envoi d'emails...
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] EmailService instancié avec succès.
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] Notification DB créée pour utilisateur ID 32
+[02-Aug-2026 23:37:42 Africa/Lubumbashi] Tentative d'envoi d'email à felixbaraka002@gmail.com...
+[02-Aug-2026 23:37:46 Africa/Lubumbashi] ✅ Email envoyé avec succès à felixbaraka002@gmail.com
+[02-Aug-2026 23:37:46 Africa/Lubumbashi] Transaction commitée.
+[02-Aug-2026 23:37:46 Africa/Lubumbashi] 1 notification(s) envoyée(s) avec succès. 1 email(s) envoyé(s).
+[02-Aug-2026 23:37:46 Africa/Lubumbashi] === FIN ENVOI NOTIFICATION (SUCCÈS) ===
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] === DÉBUT ENVOI NOTIFICATION (CONTROLLER) ===
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] Données reçues : {"destinataire_type":"parent","classe_id":21,"parent_id":54,"titre":"retard","type_notification":"Alerte","envoyer_email":"1"}
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] Recherche du parent ID = 54
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] Parents trouvés (spécifique) : 1
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] Tentative d'instanciation EmailService pour l'envoi d'emails...
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] EmailService instancié avec succès.
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] Notification DB créée pour utilisateur ID 33
+[02-Aug-2026 23:40:15 Africa/Lubumbashi] Tentative d'envoi d'email à barakantwali06@gmail.com...
+[02-Aug-2026 23:40:18 Africa/Lubumbashi] ✅ Email envoyé avec succès à barakantwali06@gmail.com
+[02-Aug-2026 23:40:19 Africa/Lubumbashi] Transaction commitée.
+[02-Aug-2026 23:40:19 Africa/Lubumbashi] 1 notification(s) envoyée(s) avec succès. 1 email(s) envoyé(s).
+[02-Aug-2026 23:40:19 Africa/Lubumbashi] === FIN ENVOI NOTIFICATION (SUCCÈS) ===
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] === DÉBUT ENVOI NOTIFICATION (CONTROLLER) ===
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] Données reçues : {"destinataire_type":"parent","classe_id":21,"parent_id":54,"titre":"absent","type_notification":"Alerte","envoyer_email":"1"}
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] Recherche du parent ID = 54
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] Parents trouvés (spécifique) : 1
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] Tentative d'instanciation EmailService pour l'envoi d'emails...
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] EmailService instancié avec succès.
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] Notification DB créée pour utilisateur ID 33
+[02-Aug-2026 23:43:10 Africa/Lubumbashi] Tentative d'envoi d'email à barakantwali06@gmail.com...
+[02-Aug-2026 23:43:16 Africa/Lubumbashi] ✅ Email envoyé avec succès à barakantwali06@gmail.com
+[02-Aug-2026 23:43:16 Africa/Lubumbashi] Transaction commitée.
+[02-Aug-2026 23:43:16 Africa/Lubumbashi] 1 notification(s) envoyée(s) avec succès. 1 email(s) envoyé(s).
+[02-Aug-2026 23:43:16 Africa/Lubumbashi] === FIN ENVOI NOTIFICATION (SUCCÈS) ===
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] === DÉBUT ENVOI NOTIFICATION (CONTROLLER) ===
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] Données reçues : {"destinataire_type":"parent","classe_id":21,"parent_id":53,"titre":"urgence grave","type_notification":"Urgence","envoyer_email":"1"}
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] Recherche du parent ID = 53
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] Parents trouvés (spécifique) : 1
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] Tentative d'instanciation EmailService pour l'envoi d'emails...
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] EmailService instancié avec succès.
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] Notification DB créée pour utilisateur ID 32
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] Tentative d'envoi d'email à felixbaraka002@gmail.com...
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] PHP Warning:  Undefined variable $contenuEmail in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php on line 349
+[02-Aug-2026 23:46:26 Africa/Lubumbashi] PHP Warning:  Undefined variable $contenuEmail in C:\xampp\htdocs\gestion_scolaire\src\controllers\NotificationController.php on line 350
+[02-Aug-2026 23:46:30 Africa/Lubumbashi] ✅ Email envoyé avec succès à felixbaraka002@gmail.com
+[02-Aug-2026 23:46:30 Africa/Lubumbashi] Transaction commitée.
+[02-Aug-2026 23:46:30 Africa/Lubumbashi] 1 notification(s) envoyée(s) avec succès. 1 email(s) envoyé(s).
+[02-Aug-2026 23:46:30 Africa/Lubumbashi] === FIN ENVOI NOTIFICATION (SUCCÈS) ===
+[03-Aug-2026 20:42:41 Africa/Lubumbashi] [2026-08-03 20:42:41] Erreur BDD : SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[03-Aug-2026 23:28:00 Africa/Lubumbashi] [2026-08-03 23:28:00] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' | SQL: SELECT ev.type_evaluation, ev.date_evaluation, m.libelle as matiere
+     FROM evaluations ev
+     INNER JOIN matieres m ON n.sous_matiere_id = m.id
+     WHERE ev.classe_id = :cid AND ev.date_evaluation >= CURDATE()
+     ORDER BY ev.date_evaluation ASC
+     LIMIT 5
+[03-Aug-2026 23:28:00 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT ev.type_...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT ev.type_...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\enseignant.php(122): Database->fetchAll('SELECT ev.type_...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\index.php(17): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(404): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75

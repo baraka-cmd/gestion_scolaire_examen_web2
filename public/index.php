@@ -4,9 +4,20 @@
  * Rôle    : Routeur frontal — Point d'entrée unique
  */
 
+
+ob_start(); // Empêche les erreurs "Cannot modify header information"
+
+// Reste de ton code dans index.php...
+
 define('ACCESS', true);
 
 require_once __DIR__ . '/../src/config/app.php';
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 // Récupérer l'URL
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -17,7 +28,62 @@ $route = '/' . trim($route, '/');
 // ============================================================
 // ROUTES
 // ============================================================
+// ============================================================
+// ROUTES
+// ============================================================
 $routes = [
+
+    // Ajoute le slash '/' au début ici :
+    '/test-email-direct' => function() {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+
+        echo "<h2>--- DÉBUT DU TEST SMTP EN DIRECT ---</h2>";
+
+        try {
+            require_once SRC_PATH . 'services/EmailService.php';
+            echo "<p>1. Chargement de EmailService : <strong>OK</strong></p>";
+
+            $emailService = new EmailService();
+
+            $destinataire = "barakantwali06@gmail.com"; 
+            $sujet = "Test SMTP Direct";
+            $message = "Ceci est un test en direct pour vérifier SMTP.";
+
+            echo "<p>2. Connexion et envoi à <strong>{$destinataire}</strong> en cours...</p>";
+
+            $resultat = $emailService->envoyerTemplate($destinataire, $sujet, $message);
+
+            if ($resultat) {
+                echo "<h3 style='color:green;'>SUCCESS ! L'e-mail a été envoyé avec succès !</h3>";
+            } else {
+                echo "<h3 style='color:red;'>ÉCHEC ! L'e-mail n'a pas pu être envoyé.</h3>";
+            }
+
+        } catch (Throwable $e) {
+            echo "<h3 style='color:red;'>EXCEPTION CRASH DÉTECTÉE :</h3>";
+            echo "<pre style='background:#f8d7da; color:#721c24; padding:15px; border-radius:5px;'>";
+            echo "Message : " . $e->getMessage() . "\n";
+            echo "Fichier : " . $e->getFile() . " (Ligne " . $e->getLine() . ")\n\n";
+            echo "Trace :\n" . $e->getTraceAsString();
+            echo "</pre>";
+        }
+
+        echo "<h2>--- FIN DU TEST ---</h2>";
+        exit;
+    },
+
+    
+        // ============================================================
+    // ROUTE DE TEST EMAIL VIA LE CONTROLEUR
+    // ============================================================
+    '/test-email' => function() {
+        require_once SRC_PATH . 'controllers/NotificationController.php';
+        $controller = new NotificationController();
+        $controller->testEmail();
+    },
+
     // Auth
     '/'                          => 'views/auth/login.php',
     '/login'                     => 'views/auth/login.php',
@@ -107,6 +173,7 @@ $routes = [
     '/paiements/enregistrer'     => 'views/modules/paiements/enregistrer.php',
     '/paiements/impayes'         => 'views/modules/paiements/impayes.php',
     '/paiements/factures'        => 'views/modules/paiements/factures.php',
+    '/paiements/recu'            => 'views/modules/paiements/recu.php',
     
     // Frais scolaires
     '/frais-scolaires'           => 'views/modules/frais/liste.php',
@@ -131,6 +198,7 @@ $routes = [
     
     // Notifications
     '/notifications'             => 'views/modules/notifications/liste.php',
+    '/notifications/envoyer'     => 'views/modules/notifications/envoyer.php',
     
     // Rapports
     '/rapports/effectifs'        => 'views/modules/rapports/effectifs.php',
@@ -170,6 +238,55 @@ $routes = [
     
     // Mes enfants (parent)
     '/mes-enfants'               => 'views/modules/parents/mes_enfants.php',
+
+ 
+    
+    // --- AJOUTE TES ROUTES GOOGLE ICI ---
+    '/auth/google' => function() {
+        require_once SRC_PATH . 'controllers/AuthController.php';
+        $authController = new AuthController();
+        $authController->redirectToGoogle();
+    },
+    
+    '/auth/google-callback' => function() {
+        require_once SRC_PATH . 'services/GoogleAuthService.php';
+        require_once SRC_PATH . 'controllers/AuthController.php';
+
+        if (isset($_GET['error'])) {
+            redirect(BASE_URL . 'views/auth/login.php?error=google_cancelled');
+        }
+
+        $state = $_GET['state'] ?? '';
+        if (empty($state) || $state !== ($_SESSION['oauth2state'] ?? '')) {
+            unset($_SESSION['oauth2state']);
+            redirect(BASE_URL . 'views/auth/login.php?error=invalid_state');
+        }
+        unset($_SESSION['oauth2state']);
+
+        $code = $_GET['code'] ?? '';
+        if (empty($code)) {
+            redirect(BASE_URL . 'views/auth/login.php?error=no_code');
+        }
+
+        $googleService = new GoogleAuthService();
+        $accessToken   = $googleService->getAccessToken($code);
+
+        if (!$accessToken) {
+            redirect(BASE_URL . 'views/auth/login.php?error=token_failed');
+        }
+
+        $googleUser = $googleService->getUserInfo($accessToken);
+
+        if (!$googleUser) {
+            redirect(BASE_URL . 'views/auth/login.php?error=userinfo_failed');
+        }
+
+        $authController = new AuthController();
+        $authController->handleGoogleCallback($googleUser);
+    }
+
+
+
 ];
 
 // ============================================================
@@ -272,18 +389,38 @@ $dynamicRoutes = [
 // ============================================================
 // ROUTAGE
 // ============================================================
+// ============================================================
+// ROUTAGE (CORRIGÉ)
+// ============================================================
 if (isset($routes[$route])) {
-    require_once __DIR__ . '/' . $routes[$route];
+    $target = $routes[$route];
+
+    // Si la route est une fonction anonyme (Closure) comme pour Google OAuth
+    if (is_callable($target)) {
+        $target();
+    } 
+    // Si la route est un chemin vers un fichier PHP statique
+    elseif (is_string($target)) {
+        require_once __DIR__ . '/' . $target;
+    }
 } else {
     $matched = false;
     foreach ($dynamicRoutes as $pattern => $handler) {
         if (preg_match($pattern, $route, $matches)) {
-            $handler($matches);
+            // Si c'est une fonction (Closure)
+            if (is_callable($handler)) {
+                $handler($matches);
+            } 
+            // Si c'est un chemin vers un fichier PHP statique (string)
+            elseif (is_string($handler)) {
+                $_GET['matches'] = $matches; // Passe les paramètres regex
+                require_once __DIR__ . '/' . $handler;
+            }
+            
             $matched = true;
             break;
         }
     }
-
     if (!$matched) {
         // Servir les fichiers statiques
         $filePath = __DIR__ . $route;

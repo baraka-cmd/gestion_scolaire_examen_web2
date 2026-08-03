@@ -335,16 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ============================================================
-    // 10. GESTION DU BOUTON GOOGLE
-    // ============================================================
-    const googleButton = document.getElementById('googleButton') || document.querySelector('.btn-google');
-    if (googleButton) {
-        googleButton.addEventListener('click', () => {
-            showLoginError('La connexion avec Google sera disponible prochainement.');
-            setTimeout(() => hideMessages(), 4000);
-        });
-    }
 
     // ============================================================
     // 11. LIEN MOT DE PASSE OUBLIÉ

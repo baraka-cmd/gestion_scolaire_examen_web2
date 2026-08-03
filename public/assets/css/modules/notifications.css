@@ -1,0 +1,961 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/notifications.css
+   Rôle    : Styles des interfaces de notifications
+   Système : École primaire congolaise — Communication
+   Version : 1.0
+   ============================================================ */
+
+/* ============================================================
+   1. LISTE DES NOTIFICATIONS
+   ============================================================ */
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+/* ============================================================
+   2. ITEM NOTIFICATION
+   ============================================================ */
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item:hover {
+    background-color: #f8fafc;
+}
+
+.notification-item.non-lue {
+    background-color: #eff6ff;
+    border-left: 4px solid #3b82f6;
+}
+
+.notification-item.non-lue:hover {
+    background-color: #dbeafe;
+}
+
+/* ============================================================
+   3. ICÔNE NOTIFICATION
+   ============================================================ */
+.notification-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.notification-item:hover .notification-icon {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   4. CONTENU NOTIFICATION
+   ============================================================ */
+.notification-content {
+    flex: 1;
+    min-width: 0;
+    cursor: default;
+}
+
+.notification-item.non-lue .notification-content {
+    cursor: pointer;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.notification-titre {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.notification-item.non-lue .notification-titre {
+    color: #1e40af;
+}
+
+.notification-badge-non-lue {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.notification-message {
+    font-size: 0.84rem;
+    color: var(--color-gray-600);
+    margin: 0 0 8px 0;
+    line-height: 1.5;
+}
+
+.notification-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.notification-date {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.notification-date i {
+    font-size: 0.65rem;
+}
+
+.notification-date-lecture {
+    font-size: 0.7rem;
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.notification-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+/* ============================================================
+   5. ACTIONS
+   ============================================================ */
+.notification-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.notification-actions .btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+/* ============================================================
+   6. ÉTAT VIDE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--color-gray-300);
+    display: block;
+    margin-bottom: 16px;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* ============================================================
+   7. STATISTIQUES (réutilisation)
+   ============================================================ */
+.retards-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.retard-stat-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: default;
+}
+
+.retard-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.retard-stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.retard-stat-icon.blue {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.retard-stat-icon.red {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.retard-stat-icon.green {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.retard-stat-icon.orange {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+
+.retard-stat-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.retard-stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.retard-stat-label {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+/* ============================================================
+   8. FILTRES
+   ============================================================ */
+.retards-filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 18px 20px;
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.retards-filters .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 150px;
+}
+
+.retards-filters .filter-group label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.retards-filters .filter-group label i {
+    font-size: 0.7rem;
+    color: var(--color-primary);
+}
+
+.retards-filters .filter-group select,
+.retards-filters .filter-group input {
+    padding: 9px 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-family: var(--font-primary);
+    font-size: 0.82rem;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    transition: all 0.3s ease;
+}
+
+.retards-filters .filter-group select:focus,
+.retards-filters .filter-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+/* ============================================================
+   9. FORMULAIRE D'ENVOI
+   ============================================================ */
+.paiement-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    align-items: start;
+}
+
+.paiement-form-card {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.paiement-form-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.paiement-form-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.paiement-form-icon i {
+    color: #f59e0b;
+}
+
+.paiement-form-header h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--color-white);
+}
+
+.paiement-form-header p {
+    font-size: 0.78rem;
+    margin: 0;
+    opacity: 0.75;
+    color: var(--color-white);
+}
+
+.paiement-form-body {
+    padding: 28px;
+}
+
+.paiement-form-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+}
+
+.paiement-form-footer .btn {
+    min-width: 220px;
+    justify-content: center;
+}
+
+/* ============================================================
+   10. SECTIONS FORMULAIRE
+   ============================================================ */
+.form-section {
+    margin-bottom: 4px;
+}
+
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-lighter);
+}
+
+.form-section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.form-section-icon i {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.form-section-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.form-section-subtitle {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 2px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.82rem;
+    margin-bottom: 7px;
+    color: var(--color-gray-700);
+}
+
+.form-label i {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    width: 14px;
+    text-align: center;
+}
+
+.form-label .required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: var(--font-primary);
+    font-size: 0.86rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    background-color: var(--color-gray-50);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8.825L1.175 4 2.238 2.938 6 6.7 9.763 2.937 10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+}
+
+.form-help {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-help i {
+    font-size: 0.7rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 24px 0;
+}
+
+/* ============================================================
+   11. CHECKBOX
+   ============================================================ */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-custom i {
+    font-size: 0.65rem;
+    color: transparent;
+    transition: color 0.2s ease;
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom i {
+    color: #fff;
+}
+
+.checkbox-label {
+    font-size: 0.84rem;
+    color: var(--color-gray-700);
+    font-weight: 500;
+}
+
+/* ============================================================
+   12. CARTES INFO
+   ============================================================ */
+.info-card-custom {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.info-card-custom-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+}
+
+.info-card-custom-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.info-card-custom-icon.blue {
+    background-color: #e8eaf6;
+    color: #2c3e90;
+}
+
+.info-card-custom-icon.orange {
+    background-color: #fef3c7;
+    color: #f59e0b;
+}
+
+.info-card-custom-header h6 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.info-card-custom-body {
+    padding: 16px 20px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-list li {
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.info-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+}
+
+.info-list li strong {
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+/* ============================================================
+   13. RÉSUMÉ DESTINATAIRES
+   ============================================================ */
+#resumeDestinataires {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+/* ============================================================
+   14. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: var(--color-gray-50);
+    border-top: 1px solid var(--border-color-light);
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+    color: var(--color-gray-600);
+    text-decoration: none;
+    background-color: var(--color-white);
+}
+
+.pagination a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.pagination a.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* ============================================================
+   15. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .paiement-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notification-item {
+        padding: 14px 16px;
+    }
+
+    .notification-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .notification-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .notification-actions {
+        flex-direction: column;
+    }
+
+    .paiement-form-body {
+        padding: 20px;
+    }
+
+    .paiement-form-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .paiement-form-footer .btn {
+        width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .notification-item {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 14px;
+    }
+
+    .notification-actions {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .notification-meta {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .retard-stat-card {
+        padding: 16px;
+    }
+
+    .retard-stat-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
+    .retard-stat-value {
+        font-size: 1.4rem;
+    }
+
+    .retards-filters {
+        flex-direction: column;
+    }
+
+    .retards-filters .filter-group {
+        min-width: 100%;
+    }
+}
+
+/* ============================================================
+   16. IMPRESSION
+   ============================================================ */
+@media print {
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .resultats-selectors,
+    .retards-filters,
+    .paiement-form-footer,
+    .notification-actions,
+    .pagination-wrapper {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff !important;
+    }
+
+    .notifications-list {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .notification-item {
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================================
+   17. ANIMATIONS
+   ============================================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+/* ============================================================
+   Ajout à la fin de notifications.css
+   Style pour le destinataire (vu par l'admin)
+   ============================================================ */
+
+/* Destinataire (visible seulement par l'admin) */
+.notification-destinataire {
+    font-size: 0.72rem;
+    color: #8b5cf6;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+}
+
+.notification-destinataire i {
+    font-size: 0.65rem;
+}
+
+/* Animation pour les nouveaux éléments */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Badge de type notification */
+.notification-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Animation de suppression */
+.notification-item.removing {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.3s ease;
+}
+
+/* Style pour le lien de notification */
+.notification-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Responsive pour le destinataire */
+@media (max-width: 768px) {
+    .notification-destinataire {
+        font-size: 0.68rem;
+    }
+}
