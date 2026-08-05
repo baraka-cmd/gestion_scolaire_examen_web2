@@ -233,14 +233,49 @@ $routes = [
     '/conditions'                => 'views/modules/static/conditions.php',
     '/contact'                   => 'views/modules/static/contact.php',
     
-    // Ma classe (enseignant)
-    '/ma-classe/eleves'          => 'views/modules/enseignants/ma_classe.php',
     
-    // Mes enfants (parent)
-    '/mes-enfants'               => 'views/modules/parents/mes_enfants.php',
 
  
-    
+    // ============================================================
+// ROUTES ENSEIGNANT
+// ============================================================
+'/enseignant/eleves'        => 'views/enseignant/modules/eleves.php',
+'/enseignant/notes'         => 'views/enseignant/modules/notes.php',
+'/enseignant/absences'      => 'views/enseignant/modules/absences.php',
+'/enseignant/emploi'        => 'views/enseignant/modules/emploi.php',
+'/enseignant/resultats'     => 'views/enseignant/modules/resultats.php',
+'/enseignant/bulletins'     => 'views/enseignant/modules/bulletins.php',
+
+// ============================================================
+// ROUTES PARENT
+// ============================================================
+'/parent/enfants'       => 'views/parent/modules/enfants.php',
+'/parent/bulletins'     => 'views/parent/modules/bulletins.php',
+'/parent/absences'      => 'views/parent/modules/absences.php',
+'/parent/paiements'     => 'views/parent/modules/paiements.php',
+'/parent/retards'       => 'views/parent/modules/retards.php',
+
+// ============================================================
+// ROUTES COMPTABLE
+// ============================================================
+'/comptable/paiements'  => 'views/comptable/modules/paiements.php',
+'/comptable/enregistrer' => 'views/comptable/modules/enregistrer.php',
+'/comptable/impayes'    => 'views/comptable/modules/impayes.php',
+'/comptable/frais'      => 'views/comptable/modules/frais.php',
+'/comptable/rapport-financier' => 'views/comptable/modules/rapport_financier.php',
+
+
+'/documents/telecharger/(\d+)' => function($matches) {
+    require_once SRC_PATH . 'controllers/DocumentController.php';
+    (new DocumentController())->telecharger((int)$matches[1]);
+},
+
+
+'/sauvegardes/telecharger/(\d+)'  => function($matches) {
+    require_once SRC_PATH . 'controllers/SauvegardeController.php';
+    (new SauvegardeController())->telecharger((int)$matches[1]);
+},
+
     // --- AJOUTE TES ROUTES GOOGLE ICI ---
     '/auth/google' => function() {
         require_once SRC_PATH . 'controllers/AuthController.php';

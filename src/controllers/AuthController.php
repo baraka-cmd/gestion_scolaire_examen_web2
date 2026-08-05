@@ -55,7 +55,7 @@ class AuthController
 
         try {
             $sql = "SELECT u.id, u.nom, u.prenom, u.email, u.login, u.mot_de_passe, 
-                           u.photo, u.est_actif, u.tentatives_echecs, u.bloque_jusqua,
+                           u.photo, u.est_actif, u.tentatives_echecs, u.bloque_jusqua, u.role_id,
                            r.nom AS role_nom, r.niveau_acces
                     FROM utilisateurs u
                     INNER JOIN roles r ON u.role_id = r.id
@@ -352,6 +352,7 @@ class AuthController
         $_SESSION['utilisateur_prenom']   = $utilisateur['prenom'];
         $_SESSION['utilisateur_email']    = $utilisateur['email'];
         $_SESSION['utilisateur_login']    = $utilisateur['login'];
+        $_SESSION['utilisateur_role_id'] = $utilisateur['role_id']; // Correction clé : enregistrement de l'ID du rôle pour Security.php
         $_SESSION['utilisateur_role']     = $utilisateur['role_nom'];
         $_SESSION['utilisateur_photo']    = $utilisateur['photo'];
         $_SESSION['utilisateur_niveau']   = $utilisateur['niveau_acces'];
@@ -419,10 +420,7 @@ class AuthController
         }
     }
 
-        /**
-     * Traite l'authentification / Inscription via Google
-     */
-        /**
+    /**
      * Traite l'authentification / Inscription via Google
      */
     public function handleGoogleCallback(array $googleUser): void
@@ -441,7 +439,7 @@ class AuthController
         try {
             // 1. Chercher si l'utilisateur existe déjà via son google_id
             $sql = "SELECT u.id, u.nom, u.prenom, u.email, u.login, u.photo, u.est_actif, 
-                           u.tentatives_echecs, u.bloque_jusqua, r.nom AS role_nom, r.niveau_acces
+                           u.tentatives_echecs, u.bloque_jusqua, u.role_id, r.nom AS role_nom, r.niveau_acces
                     FROM utilisateurs u
                     LEFT JOIN roles r ON u.role_id = r.id
                     WHERE u.google_id = :google_id LIMIT 1";
@@ -451,7 +449,7 @@ class AuthController
             // 2. Si non trouvé par google_id, vérifier par adresse email
             if (!$utilisateur) {
                 $sqlByEmail = "SELECT u.id, u.nom, u.prenom, u.email, u.login, u.photo, u.est_actif, 
-                                      u.tentatives_echecs, u.bloque_jusqua, r.nom AS role_nom, r.niveau_acces
+                                      u.tentatives_echecs, u.bloque_jusqua, u.role_id, r.nom AS role_nom, r.niveau_acces
                                FROM utilisateurs u
                                LEFT JOIN roles r ON u.role_id = r.id
                                WHERE u.email = :email LIMIT 1";
@@ -517,8 +515,6 @@ class AuthController
         }
     }
 
-
-
     private function setRememberMeCookie(int $userId): void
     {
         $token = bin2hex(random_bytes(32));
@@ -565,19 +561,16 @@ class AuthController
         return $login;
     }
 
-
     /**
- * Redirige l'utilisateur vers la page d'authentification de Google
- */
-public function redirectToGoogle(): void
-{
-    require_once SRC_PATH . 'services/GoogleAuthService.php';
-    $googleService = new GoogleAuthService();
-    $authUrl = $googleService->getAuthUrl();
+     * Redirige l'utilisateur vers la page d'authentification de Google
+     */
+    public function redirectToGoogle(): void
+    {
+        require_once SRC_PATH . 'services/GoogleAuthService.php';
+        $googleService = new GoogleAuthService();
+        $authUrl = $googleService->getAuthUrl();
 
-    header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
-    exit();
-}
-
-
+        header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+        exit();
+    }
 }

@@ -115,7 +115,7 @@ $dernieresAbsences = $db->fetchAll(
 $prochainsExamens = $db->fetchAll(
     "SELECT ev.type_evaluation, ev.date_evaluation, m.libelle as matiere
      FROM evaluations ev
-     INNER JOIN matieres m ON n.sous_matiere_id = m.id
+     INNER JOIN matieres m ON ev.groupe_id = m.id
      WHERE ev.classe_id = :cid AND ev.date_evaluation >= CURDATE()
      ORDER BY ev.date_evaluation ASC
      LIMIT 5",

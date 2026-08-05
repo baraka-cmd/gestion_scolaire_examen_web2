@@ -19,6 +19,15 @@ $utilisateurEmail   = $_SESSION['utilisateur_email']   ?? '';
 $utilisateurPhoto   = $_SESSION['utilisateur_photo']   ?? '';
 $utilisateurRole    = $_SESSION['utilisateur_role']    ?? '';
 
+// Récupérer les paramètres de l'école (avec cache de session)
+if (!isset($_SESSION['ecole_params'])) {
+    $ecoleParams = $db->fetchOne("SELECT nom_ecole, logo, devise FROM parametres_ecole WHERE id = 1");
+    $_SESSION['ecole_params'] = $ecoleParams ?: [];
+}
+$ecoleParams = $_SESSION['ecole_params'] ?? [];
+$ecoleNom = $ecoleParams['nom_ecole'] ?? ECOLE_NOM;
+$ecoleLogo = $ecoleParams['logo'] ?? '';
+
 // Titre et icône de la page
 $pageTitle = $pageTitle ?? 'Tableau de bord';
 $pageIcon  = $pageIcon  ?? 'fa-gauge-high';
@@ -42,7 +51,7 @@ $extraJS  = $extraJS  ?? [];
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="csrf-token" content="<?= $_SESSION[CSRF_TOKEN_NAME] ?? '' ?>">
 
-    <title><?= e($pageTitle) ?> — <?= e(ECOLE_NOM) ?></title>
+    <title><?= e($pageTitle) ?> — <?= e($ecoleNom) ?></title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/gestion_scolaire/public/assets/images/favicon.ico">
@@ -83,25 +92,23 @@ $extraJS  = $extraJS  ?? [];
      ============================================================ -->
 <aside class="sidebar" id="sidebar">
     <!-- Logo -->
-    <div class="sidebar-brand">
-        <a href="/gestion_scolaire/dashboard">
-            <i class="fa-solid fa-school"></i>
-            <span><?= e(ECOLE_NOM) ?></span>
-        </a>
-    </div>
+    
 
     <!-- Profil utilisateur -->
-    <div class="sidebar-user">
-        <img src="<?= !empty($utilisateurPhoto) ? '/gestion_scolaire/public/assets/uploads/photos_utilisateurs/' . $utilisateurPhoto : '/gestion_scolaire/public/assets/images/avatar_default.png' ?>"
-             alt="Photo de profil"
-             class="sidebar-user-avatar"
-             onerror="this.src='/gestion_scolaire/public/assets/images/avatar_default.png'">
-        <div class="sidebar-user-info">
-            <span class="user-name"><?= e($utilisateurPrenom . ' ' . $utilisateurNom) ?></span>
-            <span class="user-role">
-                <i class="fa-solid fa-circle"></i> <?= e($utilisateurRole) ?>
-            </span>
-        </div>
+    <div class="sidebar-brand">
+        <a href="/gestion_scolaire/dashboard">
+            <?php 
+            $logoPath = UPLOADS_PATH . 'logos' . DIRECTORY_SEPARATOR . basename($ecoleLogo);
+            if (!empty($ecoleLogo) && file_exists($logoPath)): 
+            ?>
+                <img src="<?= ASSETS_URL . 'uploads/logos/' . basename($ecoleLogo) ?>" 
+                    alt="Logo" 
+                    style="width:50px;height:50px;border-radius:12px;object-fit:contain;flex-shrink:0;">
+            <?php else: ?>
+                <i class="fa-solid fa-school" style="font-size:1.8rem;"></i>
+            <?php endif; ?>
+            <span><?= e($ecoleNom) ?></span>
+        </a>
     </div>
 
     <!-- Menu de navigation -->

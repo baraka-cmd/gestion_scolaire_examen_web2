@@ -1,0 +1,314 @@
+/* ============================================================
+   Fichier : public/assets/css/modules/sauvegardes.css
+   Rôle    : Styles de la page des sauvegardes
+   Système : École primaire congolaise — Administration
+   Version : 1.0
+   ============================================================ */
+
+/* ============================================================
+   1. CARTE DE SAUVEGARDE
+   ============================================================ */
+.sauvegardes-table-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.table-header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.82rem;
+}
+
+.table-header-info code {
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #2c3e90;
+    font-weight: 600;
+}
+
+/* ============================================================
+   2. ALERTE SAUVEGARDE
+   ============================================================ */
+.alerte-sauvegarde {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    flex-wrap: wrap;
+}
+
+.alerte-sauvegarde.alerte-success {
+    background: #d1fae5;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+.alerte-sauvegarde.alerte-warning {
+    background: #fef3c7;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+.alerte-sauvegarde.alerte-danger {
+    background: #fee2e2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+.alerte-sauvegarde-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.alerte-success .alerte-sauvegarde-icon {
+    background: #a7f3d0;
+    color: #065f46;
+}
+
+.alerte-warning .alerte-sauvegarde-icon {
+    background: #fde68a;
+    color: #92400e;
+}
+
+.alerte-danger .alerte-sauvegarde-icon {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.alerte-sauvegarde-content {
+    flex: 1;
+    min-width: 200px;
+}
+
+.alerte-sauvegarde-content strong {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.alerte-sauvegarde-content span {
+    font-size: 0.78rem;
+    opacity: 0.85;
+}
+
+/* ============================================================
+   3. BOUTON SAUVEGARDE PRINCIPAL
+   ============================================================ */
+.btn-sauvegarde-large {
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 16px;
+    letter-spacing: 0.3px;
+}
+
+.btn-sauvegarde-large i {
+    font-size: 1.1rem;
+}
+
+/* ============================================================
+   4. PROGRESSION DE SAUVEGARDE (LOADER)
+   ============================================================ */
+.sauvegarde-progress {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #dbeafe;
+    border-radius: 12px;
+    margin-top: 16px;
+    color: #1e40af;
+    font-weight: 500;
+    font-size: 0.88rem;
+}
+
+.sauvegarde-progress.show {
+    display: flex;
+}
+
+.sauvegarde-progress i {
+    font-size: 1.2rem;
+}
+
+/* ============================================================
+   5. ÉTAT VIDE
+   ============================================================ */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #cbd5e1;
+    margin-bottom: 16px;
+}
+
+.empty-state p {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* ============================================================
+   6. BADGE STATUT FICHIER
+   ============================================================ */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.badge-status.disponible {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge-status.manquant {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ============================================================
+   7. CONFIRMATION DE RESTAURATION
+   ============================================================ */
+.restauration-warning {
+    background: #fef2f2;
+    border: 2px solid #ef4444;
+    border-radius: 14px;
+    padding: 18px;
+    margin: 12px 0;
+}
+
+.restauration-warning-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #991b1b;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.restauration-warning-header i {
+    color: #ef4444;
+    font-size: 1.2rem;
+}
+
+.restauration-warning-body {
+    font-size: 0.82rem;
+    color: #b91c1c;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   8. ESPACE DISQUE — INDICATEUR
+   ============================================================ */
+.espace-disque-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.espace-disque-bar {
+    flex: 1;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.espace-disque-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.espace-disque-fill.ok      { background: #10b981; }
+.espace-disque-fill.warning { background: #f59e0b; }
+.espace-disque-fill.danger  { background: #ef4444; }
+
+.espace-disque-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .alerte-sauvegarde {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .alerte-sauvegarde-content {
+        min-width: 100%;
+    }
+
+    .btn-sauvegarde-large {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .table-header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .alerte-sauvegarde-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .btn,
+    .alerte-sauvegarde .btn,
+    .no-print,
+    .breadcrumb,
+    .sidebar,
+    .navbar-top,
+    .footer {
+        display: none !important;
+    }
+
+    .sauvegardes-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

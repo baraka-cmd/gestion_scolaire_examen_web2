@@ -1879,3 +1879,601 @@ Stack trace:
 #4 C:\xampp\htdocs\gestion_scolaire\public\index.php(404): require_once('C:\\xampp\\htdocs...')
 #5 {main}
   thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[03-Aug-2026 23:39:30 Africa/Lubumbashi] [2026-08-03 23:39:30] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' | SQL: SELECT ev.type_evaluation, ev.date_evaluation, m.libelle as matiere
+     FROM evaluations ev
+     INNER JOIN matieres m ON n.sous_matiere_id = m.id
+     WHERE ev.classe_id = :cid AND ev.date_evaluation >= CURDATE()
+     ORDER BY ev.date_evaluation ASC
+     LIMIT 5
+[03-Aug-2026 23:39:30 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT ev.type_...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT ev.type_...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\enseignant.php(122): Database->fetchAll('SELECT ev.type_...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\index.php(17): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(404): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[03-Aug-2026 23:39:31 Africa/Lubumbashi] [2026-08-03 23:39:31] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' | SQL: SELECT ev.type_evaluation, ev.date_evaluation, m.libelle as matiere
+     FROM evaluations ev
+     INNER JOIN matieres m ON n.sous_matiere_id = m.id
+     WHERE ev.classe_id = :cid AND ev.date_evaluation >= CURDATE()
+     ORDER BY ev.date_evaluation ASC
+     LIMIT 5
+[03-Aug-2026 23:39:31 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT ev.type_...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT ev.type_...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\enseignant.php(122): Database->fetchAll('SELECT ev.type_...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\index.php(17): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(404): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[03-Aug-2026 23:39:32 Africa/Lubumbashi] [2026-08-03 23:39:32] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' | SQL: SELECT ev.type_evaluation, ev.date_evaluation, m.libelle as matiere
+     FROM evaluations ev
+     INNER JOIN matieres m ON n.sous_matiere_id = m.id
+     WHERE ev.classe_id = :cid AND ev.date_evaluation >= CURDATE()
+     ORDER BY ev.date_evaluation ASC
+     LIMIT 5
+[03-Aug-2026 23:39:32 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT ev.type_...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT ev.type_...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\enseignant.php(122): Database->fetchAll('SELECT ev.type_...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\index.php(17): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(404): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[03-Aug-2026 23:39:32 Africa/Lubumbashi] [2026-08-03 23:39:32] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' | SQL: SELECT ev.type_evaluation, ev.date_evaluation, m.libelle as matiere
+     FROM evaluations ev
+     INNER JOIN matieres m ON n.sous_matiere_id = m.id
+     WHERE ev.classe_id = :cid AND ev.date_evaluation >= CURDATE()
+     ORDER BY ev.date_evaluation ASC
+     LIMIT 5
+[03-Aug-2026 23:39:32 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.sous_matiere_id' in 'on clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT ev.type_...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT ev.type_...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\enseignant.php(122): Database->fetchAll('SELECT ev.type_...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\views\dashboard\index.php(17): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\gestion_scolaire\public\index.php(404): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[03-Aug-2026 23:49:15 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[03-Aug-2026 23:49:15 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:404
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[04-Aug-2026 00:30:16 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[04-Aug-2026 00:30:16 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:404
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[04-Aug-2026 00:30:19 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[04-Aug-2026 00:30:19 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:404
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[04-Aug-2026 00:30:55 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[04-Aug-2026 00:30:55 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:404
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 404
+[04-Aug-2026 00:35:21 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 411
+[04-Aug-2026 00:35:21 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/enseignants/ma_classe.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:411
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 411
+[04-Aug-2026 01:07:07 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 407
+[04-Aug-2026 01:07:07 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:407
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 407
+[04-Aug-2026 01:22:11 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:11 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:17 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:17 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:35 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:35 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:36 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:36 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:36 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:36 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:36 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:22:36 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php on line 15
+[04-Aug-2026 01:23:13 Africa/Lubumbashi] [2026-08-04 01:23:13] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' | SQL: SELECT id FROM classes WHERE titulaire_id = :eid LIMIT 1
+[04-Aug-2026 01:23:13 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT id FROM ...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT id FROM ...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT id FROM ...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:23:14 Africa/Lubumbashi] [2026-08-04 01:23:14] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' | SQL: SELECT id FROM classes WHERE titulaire_id = :eid LIMIT 1
+[04-Aug-2026 01:23:14 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT id FROM ...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT id FROM ...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT id FROM ...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:23:14 Africa/Lubumbashi] [2026-08-04 01:23:14] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' | SQL: SELECT id FROM classes WHERE titulaire_id = :eid LIMIT 1
+[04-Aug-2026 01:23:14 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT id FROM ...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT id FROM ...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT id FROM ...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:23:15 Africa/Lubumbashi] [2026-08-04 01:23:15] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' | SQL: SELECT id FROM classes WHERE titulaire_id = :eid LIMIT 1
+[04-Aug-2026 01:23:15 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT id FROM ...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT id FROM ...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT id FROM ...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:23:15 Africa/Lubumbashi] [2026-08-04 01:23:15] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' | SQL: SELECT id FROM classes WHERE titulaire_id = :eid LIMIT 1
+[04-Aug-2026 01:23:15 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulaire_id' in 'where clause' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT id FROM ...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT id FROM ...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT id FROM ...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:49 Africa/Lubumbashi] [2026-08-04 01:24:49] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:49 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:49 Africa/Lubumbashi] [2026-08-04 01:24:49] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:49 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:50 Africa/Lubumbashi] [2026-08-04 01:24:50] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:50 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:50 Africa/Lubumbashi] [2026-08-04 01:24:50] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:50 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:50 Africa/Lubumbashi] [2026-08-04 01:24:50] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:50 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] [2026-08-04 01:24:51] Erreur SQL : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist | SQL: SELECT DISTINCT classe_id FROM cours WHERE enseignant_id = :eid LIMIT 1
+[04-Aug-2026 01:24:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_scolaire.cours' doesn't exist in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT DISTINCT...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT DISTINCT...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\resultats.php(46): Database->fetchColumn('SELECT DISTINCT...', Array)
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(408): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 01:35:18 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php on line 15
+[04-Aug-2026 01:35:18 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(410): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php on line 15
+[04-Aug-2026 01:35:21 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php on line 15
+[04-Aug-2026 01:35:21 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(410): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php on line 15
+[04-Aug-2026 01:35:22 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php on line 15
+[04-Aug-2026 01:35:22 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php:15
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(410): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\enseignant\modules\bulletins.php on line 15
+[04-Aug-2026 02:31:17 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/cantine/liste.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 418
+[04-Aug-2026 02:31:17 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/cantine/liste.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:418
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 418
+[04-Aug-2026 02:32:02 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 418
+[04-Aug-2026 02:32:02 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:418
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 418
+[04-Aug-2026 02:41:13 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/comptable/modules/impayes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 426
+[04-Aug-2026 02:41:13 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/comptable/modules/impayes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:426
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 426
+[04-Aug-2026 02:41:54 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/comptable/modules/impayes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 426
+[04-Aug-2026 02:41:54 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/comptable/modules/impayes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:426
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 426
+[04-Aug-2026 02:44:18 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 426
+[04-Aug-2026 02:44:18 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:426
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 426
+[04-Aug-2026 02:47:52 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:47:52 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:47:54 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:47:54 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:47:55 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:47:55 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:47:55 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:47:55 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:48:00 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:48:00 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:49:10 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:49:10 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/financiers.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 02:52:00 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports\financiers.php on line 3
+[04-Aug-2026 02:52:00 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports\financiers.php:3
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(427): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports\financiers.php on line 3
+[04-Aug-2026 02:52:01 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports/../../../src/config/app.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports\financiers.php on line 3
+[04-Aug-2026 02:52:01 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports/../../../src/config/app.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports\financiers.php:3
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\public\index.php(427): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\modules\rapports\financiers.php on line 3
+[04-Aug-2026 12:20:18 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/calendrier/index.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 12:20:18 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/calendrier/index.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 12:21:08 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 12:21:08 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/messages/boite.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:427
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 427
+[04-Aug-2026 14:56:01 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/parametres/ecole.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 429
+[04-Aug-2026 14:56:01 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/parametres/ecole.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:429
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 429
+[04-Aug-2026 16:39:03 Africa/Lubumbashi] [2026-08-04 16:39:03] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categorie' in 'field list' | SQL: SELECT categorie, COUNT(*) AS nb FROM documents GROUP BY categorie ORDER BY nb DESC
+[04-Aug-2026 16:39:03 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categorie' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT categori...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT categori...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\src\controllers\DocumentController.php(143): Database->fetchAll('SELECT categori...')
+#3 C:\xampp\htdocs\gestion_scolaire\src\controllers\DocumentController.php(48): DocumentController->getListe()
+#4 C:\xampp\htdocs\gestion_scolaire\public\views\modules\documents\liste.php(25): DocumentController->handleAjax()
+#5 C:\xampp\htdocs\gestion_scolaire\public\index.php(433): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 16:39:03 Africa/Lubumbashi] [2026-08-04 16:39:03] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categorie' in 'field list' | SQL: SELECT categorie, COUNT(*) AS nb FROM documents GROUP BY categorie ORDER BY nb DESC
+[04-Aug-2026 16:39:03 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categorie' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT categori...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(89): Database->query('SELECT categori...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\src\controllers\DocumentController.php(143): Database->fetchAll('SELECT categori...')
+#3 C:\xampp\htdocs\gestion_scolaire\src\controllers\DocumentController.php(48): DocumentController->getListe()
+#4 C:\xampp\htdocs\gestion_scolaire\public\views\modules\documents\liste.php(25): DocumentController->handleAjax()
+#5 C:\xampp\htdocs\gestion_scolaire\public\index.php(433): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[04-Aug-2026 16:40:11 Africa/Lubumbashi] [2026-08-04 16:40:11] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nom' in 'field list' | SQL: INSERT INTO documents (nom, nom_original, description, type_fichier, taille_fichier, 
+                     categorie, chemin_fichier, est_public, utilisateur_id, created_at)
+                     VALUES (:nom, :nom_orig, :desc, :type, :taille, :cat, :chemin, :public, :uid, NOW())
+[04-Aug-2026 16:40:11 Africa/Lubumbashi] Erreur upload document: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nom' in 'field list'
+[04-Aug-2026 17:00:29 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/sauvegardes/liste.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[04-Aug-2026 17:00:29 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/sauvegardes/liste.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:433
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[05-Aug-2026 11:44:36 Africa/Lubumbashi] [2026-08-05 11:44:36] Erreur BDD : SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[05-Aug-2026 11:44:48 Africa/Lubumbashi] [2026-08-05 11:44:48] Erreur BDD : SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[05-Aug-2026 11:48:40 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/calendrier/index.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[05-Aug-2026 11:48:40 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/calendrier/index.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:433
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[05-Aug-2026 12:04:56 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/effectifs.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[05-Aug-2026 12:04:56 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/rapports/effectifs.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:433
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[05-Aug-2026 12:18:39 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/logs/liste.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[05-Aug-2026 12:18:39 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/logs/liste.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:433
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 433
+[05-Aug-2026 13:29:30 Africa/Lubumbashi] [2026-08-05 13:29:30] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:29:30 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:29:34 Africa/Lubumbashi] [2026-08-05 13:29:34] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:29:34 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:29:49 Africa/Lubumbashi] [2026-08-05 13:29:49] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:29:49 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:29:56 Africa/Lubumbashi] [2026-08-05 13:29:56] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:29:56 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:33:46 Africa/Lubumbashi] [2026-08-05 13:33:46] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:33:46 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:33:51 Africa/Lubumbashi] [2026-08-05 13:33:51] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:33:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:33:51 Africa/Lubumbashi] [2026-08-05 13:33:51] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:33:51 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] [2026-08-05 13:33:52] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] [2026-08-05 13:33:52] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] [2026-08-05 13:33:52] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] [2026-08-05 13:33:52] Erreur SQL : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' | SQL: SELECT COALESCE(SUM(taille), 0) FROM sauvegardes
+[05-Aug-2026 13:33:52 Africa/Lubumbashi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'taille' in 'field list' in C:\xampp\htdocs\gestion_scolaire\src\config\database.php:75
+Stack trace:
+#0 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(75): PDO->prepare('SELECT COALESCE...')
+#1 C:\xampp\htdocs\gestion_scolaire\src\config\database.php(106): Database->query('SELECT COALESCE...', Array)
+#2 C:\xampp\htdocs\gestion_scolaire\public\views\modules\sauvegardes\liste.php(30): Database->fetchColumn('SELECT COALESCE...')
+#3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75

@@ -252,30 +252,31 @@ class Security
      * Met à jour toutes les permissions d'un rôle
      */
     public function updateRolePermissions(int $roleId, array $permissionIds): bool
-{
-    try {
-        // Supprimer toutes les permissions actuelles
-        $this->db->query(
-            "DELETE FROM role_permission WHERE role_id = :role_id",
-            ['role_id' => $roleId]
-        );
+    {
+        try {
+            // Supprimer toutes les permissions actuelles
+            $this->db->query(
+                "DELETE FROM role_permission WHERE role_id = :role_id",
+                ['role_id' => $roleId]
+            );
 
-        // Insérer les nouvelles permissions
-        if (!empty($permissionIds)) {
-            foreach ($permissionIds as $permId) {
-                $this->db->query(
-                    "INSERT INTO role_permission (role_id, permission_id) VALUES (:role_id, :perm_id)",
-                    ['role_id' => $roleId, 'perm_id' => $permId]
-                );
+            // Insérer les nouvelles permissions
+            if (!empty($permissionIds)) {
+                foreach ($permissionIds as $permId) {
+                    $this->db->query(
+                        "INSERT INTO role_permission (role_id, permission_id) VALUES (:role_id, :perm_id)",
+                        ['role_id' => $roleId, 'perm_id' => $permId]
+                    );
+                }
             }
-        }
 
-        return true;
-    } catch (Exception $e) {
-        error_log('Erreur updateRolePermissions: ' . $e->getMessage());
-        return false;
+            return true;
+        } catch (Exception $e) {
+            error_log('Erreur updateRolePermissions: ' . $e->getMessage());
+            return false;
+        }
     }
-}
+
     /**
      * Crée un nouveau rôle
      */
