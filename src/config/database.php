@@ -9,10 +9,10 @@ defined('ACCESS') or die('Accès interdit');
 
 class Database
 {
-    private string $host     = 'localhost';
-    private string $dbname   = 'gestion_scolaire';
-    private string $username = 'root';
-    private string $password = '';
+    private string $host     = 'sql200.infinityfree.com';
+    private string $dbname   = 'if0_42591333_gestion_scolaire';
+    private string $username = 'if0_42591333';
+    private string $password = 'Baraka006';
     private string $charset  = 'utf8mb4';
 
     private static ?Database $instance = null;
