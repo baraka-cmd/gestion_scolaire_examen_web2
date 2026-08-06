@@ -677,3 +677,664 @@
         border: 1px solid #ddd;
     }
 }
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS IMPORT_ELEVE.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    50%      { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES CARTES
+   ============================================================ */
+.import-card {
+    animation: slideInLeft 0.5s ease-out 0.1s both;
+}
+
+.guide-card {
+    animation: slideInRight 0.5s ease-out 0.15s both;
+}
+
+.results-card {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* ============================================================
+   3. CARTE D'IMPORT — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.import-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.import-card:hover {
+    transform: translateY(-3px);
+}
+
+.import-card-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.import-card:hover .import-card-icon {
+    transform: scale(1.1) rotate(-8deg);
+}
+
+/* ============================================================
+   4. ZONE DE DROP — EFFETS SUPPLÉMENTAIRES
+   ============================================================ */
+.dropzone {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropzone:hover {
+    transform: translateY(-3px);
+}
+
+.dropzone.dragover {
+    animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+.dropzone-icon i {
+    transition: all 0.4s ease;
+}
+
+.dropzone:hover .dropzone-icon i {
+    transform: translateY(-8px);
+}
+
+.dropzone.dragover .dropzone-icon i {
+    animation: fadeInScale 0.5s ease;
+}
+
+/* ============================================================
+   5. CARTE GUIDE — EFFETS DE SURVOL
+   ============================================================ */
+.guide-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.guide-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.guide-card-icon {
+    transition: all 0.3s ease;
+}
+
+.guide-card:hover .guide-card-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* Sections du guide */
+.guide-section-title i {
+    transition: transform 0.3s ease;
+}
+
+.guide-section:hover .guide-section-title i {
+    transform: scale(1.2);
+}
+
+/* Tableau du guide */
+.guide-table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.guide-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.guide-table td:first-child {
+    transition: color 0.3s ease;
+}
+
+.guide-table tbody tr:hover td:first-child {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   6. CONSEILS — EFFETS
+   ============================================================ */
+.tips-box {
+    transition: all 0.3s ease;
+}
+
+.tips-box:hover {
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.12);
+    transform: translateY(-2px);
+}
+
+.tips-list li {
+    transition: all 0.25s ease;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin: -2px -8px;
+}
+
+.tips-list li:hover {
+    background-color: rgba(245, 158, 11, 0.08);
+}
+
+/* ============================================================
+   7. BOUTON MODÈLE — EFFETS
+   ============================================================ */
+.btn-template {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-template:hover {
+    transform: translateY(-2px);
+}
+
+.btn-template:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* ============================================================
+   8. RÉSULTATS D'IMPORT — EFFETS
+   ============================================================ */
+.results-header .results-icon {
+    transition: all 0.3s ease;
+}
+
+.results-card:hover .results-icon {
+    transform: scale(1.1);
+}
+
+.import-stat-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.import-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.import-stat-icon {
+    transition: all 0.3s ease;
+}
+
+.import-stat-card:hover .import-stat-icon {
+    transform: scale(1.1);
+}
+
+/* Tableau des erreurs */
+.error-row-badge {
+    transition: all 0.3s ease;
+}
+
+.errors-table-wrapper .table tbody tr:hover .error-row-badge {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================================
+   9. SÉLECTEUR DE CLASSE — EFFETS
+   ============================================================ */
+.classe-selector select.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.classe-selector select.form-control:hover {
+    border-color: var(--color-primary);
+    background-color: #fafbfc;
+}
+
+.classe-selector select.form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   10. BOUTONS GÉNÉRAUX — EFFETS
+   ============================================================ */
+.import-card-footer .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.import-card-footer .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.import-card-footer .btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* ============================================================
+   11. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-card {
+    height: 300px;
+    border-radius: 20px;
+}
+
+/* ============================================================
+   12. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   13. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .import-grid {
+        gap: 28px;
+    }
+
+    .import-container {
+        max-width: 1100px;
+    }
+}
+
+/* Petit desktop */
+@media (max-width: 1199px) {
+    .import-grid {
+        gap: 20px;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .import-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .import-card-header,
+    .guide-card-header {
+        padding: 18px 22px;
+    }
+
+    .import-card-body,
+    .guide-card-body {
+        padding: 20px 22px;
+    }
+
+    .dropzone {
+        padding: 32px 20px;
+    }
+
+    .dropzone-icon {
+        font-size: 2.8rem;
+    }
+}
+
+/* Tablette verticale */
+@media (max-width: 768px) {
+    .import-card-header,
+    .guide-card-header,
+    .results-header {
+        padding: 16px 18px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .import-card-icon,
+    .guide-card-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .import-card-body,
+    .guide-card-body,
+    .results-body {
+        padding: 16px 18px;
+    }
+
+    .import-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .import-stat-card {
+        padding: 14px 16px;
+    }
+
+    .import-stat-value {
+        font-size: 1.3rem;
+    }
+
+    .dropzone {
+        padding: 28px 16px;
+        border-radius: 16px;
+    }
+
+    .dropzone-title {
+        font-size: 0.95rem;
+    }
+
+    .import-card-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .import-card-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .import-card {
+        border-radius: 14px;
+    }
+
+    .import-card-header {
+        padding: 14px;
+    }
+
+    .import-card-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .import-card-header h5 {
+        font-size: 0.9rem;
+    }
+
+    .import-card-body {
+        padding: 14px;
+    }
+
+    .dropzone {
+        padding: 24px 12px;
+        border-radius: 14px;
+        border-width: 2px;
+    }
+
+    .dropzone-icon {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .dropzone-title {
+        font-size: 0.85rem;
+    }
+
+    .dropzone-text {
+        font-size: 0.75rem;
+        margin-bottom: 14px;
+    }
+
+    .guide-card {
+        border-radius: 14px;
+    }
+
+    .guide-card-header {
+        padding: 14px;
+    }
+
+    .guide-card-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+
+    .guide-card-header h5 {
+        font-size: 0.88rem;
+    }
+
+    .guide-card-body {
+        padding: 14px;
+    }
+
+    .guide-section-title {
+        font-size: 0.8rem;
+    }
+
+    .guide-table td,
+    .guide-table th {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+    }
+
+    .tips-box {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .tips-list li {
+        font-size: 0.74rem;
+    }
+
+    .btn-template {
+        padding: 8px 14px;
+        font-size: 0.76rem;
+    }
+
+    .results-card {
+        border-radius: 14px;
+    }
+
+    .results-header {
+        padding: 14px;
+    }
+
+    .results-body {
+        padding: 14px;
+    }
+
+    .import-stats {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .import-stat-card {
+        padding: 12px 14px;
+        border-radius: 12px;
+    }
+
+    .import-stat-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .dropzone {
+        padding: 20px 10px;
+    }
+
+    .dropzone-icon {
+        font-size: 1.8rem;
+    }
+
+    .dropzone-title {
+        font-size: 0.8rem;
+    }
+
+    .import-card-body {
+        padding: 10px;
+    }
+
+    .guide-card-body {
+        padding: 10px;
+    }
+}
+
+/* ============================================================
+   14. IMPRESSION
+   ============================================================ */
+@media print {
+    .dropzone,
+    .btn-template,
+    .classe-selector,
+    .import-card-footer,
+    .btn,
+    .toast-container,
+    .no-print,
+    .breadcrumb {
+        display: none !important;
+    }
+
+    .import-card,
+    .guide-card,
+    .results-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .import-card-header,
+    .guide-card-header,
+    .results-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .import-card-header h5,
+    .guide-card-header h5,
+    .results-header h5,
+    .import-card-header p,
+    .results-header p {
+        color: #000 !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}

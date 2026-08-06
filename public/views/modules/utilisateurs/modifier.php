@@ -209,7 +209,7 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
         </h5>
     </div>
     <div class="user-form-body">
-        <form method="POST" action="" autocomplete="off" novalidate>
+        <form id="formUpdateUser" method="POST" action="" autocomplete="off" novalidate>
 
             <!-- Section Identité -->
             <p class="form-section-title">
@@ -390,3 +390,5 @@ document.querySelectorAll('.toggle-password').forEach(btn => {
 <?php
 require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'footer.php';
 ?>
+
+

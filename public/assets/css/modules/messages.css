@@ -1146,3 +1146,1334 @@
         color: #64748b !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS MESSAGES.CSS — Animations, finesses UI, pagination, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes bounceIn {
+    0%   { transform: scale(0.3); opacity: 0; }
+    50%  { transform: scale(1.05); }
+    70%  { transform: scale(0.95); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes newMessageGlow {
+    0%   { background-color: #eff6ff; }
+    50%  { background-color: #dbeafe; }
+    100% { background-color: #eff6ff; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.messages-container {
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.message-form-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.info-card-custom:nth-child(1) { animation: slideInRight 0.5s ease-out 0.15s both; }
+.info-card-custom:nth-child(2) { animation: slideInRight 0.5s ease-out 0.25s both; }
+
+.conversation-header-card {
+    animation: fadeInUp 0.4s ease-out both;
+}
+
+.conversation-container {
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.conversation-reponse {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+/* ============================================================
+   3. ONGLETS — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.message-tab {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message-tab:hover {
+    background: #e8eaf6;
+    color: #2c3e90;
+    transform: translateY(-1px);
+}
+
+.message-tab.active {
+    background: #2c3e90;
+    color: #ffffff;
+}
+
+.message-tab.active:hover {
+    background: #1a274f;
+}
+
+.tab-badge {
+    animation: bounceIn 0.5s ease;
+    transition: all 0.3s ease;
+}
+
+.message-tab:hover .tab-badge {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   4. BARRE DE FILTRES — EFFETS
+   ============================================================ */
+.messages-filters .search-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.messages-filters .search-input:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.messages-filters .search-input:focus {
+    border-color: #2c3e90;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+.messages-filters .search-wrapper i {
+    transition: color 0.3s ease;
+}
+
+.messages-filters .search-input:focus ~ i {
+    color: #2c3e90;
+}
+
+/* ============================================================
+   5. CONVERSATION ITEM — EFFETS DE SURVOL
+   ============================================================ */
+.conversation-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.conversation-item:hover {
+    background: #f8fafc;
+    transform: translateX(2px);
+}
+
+.conversation-item:last-child {
+    border-bottom: none;
+}
+
+.conversation-item.non-lue {
+    background: #eff6ff;
+    border-left: 3px solid #2c3e90;
+}
+
+.conversation-item.non-lue:hover {
+    background: #dbeafe;
+}
+
+/* Avatar conversation */
+.conversation-item-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.conversation-avatar-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.conversation-item:hover .conversation-avatar-placeholder {
+    transform: scale(1.08);
+}
+
+.conversation-badge-non-lu {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    border: 2px solid #ffffff;
+    animation: bounceIn 0.4s ease;
+}
+
+/* Contenu conversation */
+.conversation-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.conversation-item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.conversation-item-nom {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #1e293b;
+    transition: color 0.3s ease;
+}
+
+.conversation-item:hover .conversation-item-nom {
+    color: #2c3e90;
+}
+
+.conversation-item-role {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.conversation-item-dernier-message {
+    margin-top: 2px;
+}
+
+.dernier-message-texte {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.dernier-message-texte.non-lu {
+    color: #334155;
+    font-weight: 500;
+}
+
+/* Méta conversation */
+.conversation-item-meta {
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.conversation-item-date {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    display: block;
+}
+
+.conversation-item-heure {
+    font-size: 0.68rem;
+    color: #cbd5e1;
+    display: block;
+    margin-top: 2px;
+}
+
+/* Actions conversation */
+.conversation-item-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.conversation-item:hover .conversation-item-actions {
+    opacity: 1;
+}
+
+/* ============================================================
+   6. MESSAGE ITEM — EFFETS (LISTE SIMPLE)
+   ============================================================ */
+.message-item {
+    transition: all 0.25s ease;
+}
+
+.message-item:hover {
+    background: #f8fafc;
+}
+
+.message-item.non-lu {
+    background: #eff6ff;
+    border-left: 3px solid #2c3e90;
+}
+
+.message-item.non-lu:hover {
+    background: #dbeafe;
+}
+
+.message-avatar-placeholder {
+    transition: transform 0.3s ease;
+}
+
+.message-item:hover .message-avatar-placeholder {
+    transform: scale(1.08);
+}
+
+.message-item-nom {
+    transition: color 0.3s ease;
+}
+
+.message-item:hover .message-item-nom {
+    color: #2c3e90;
+}
+
+/* ============================================================
+   7. BULLES DE MESSAGE — EFFETS
+   ============================================================ */
+.message-bulle {
+    transition: all 0.3s ease;
+}
+
+.message-bulle-wrapper:hover .message-bulle {
+    transform: translateY(-1px);
+}
+
+.message-bulle.moi:hover {
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.2);
+}
+
+.message-bulle.autre:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Animation d'apparition des bulles */
+.message-bulle-wrapper {
+    animation: fadeInUp 0.3s ease both;
+}
+
+/* Avatar bulle */
+.message-bulle-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2c3e90, #4a6cf7);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.message-bulle-avatar-spacer {
+    width: 32px;
+    flex-shrink: 0;
+}
+
+.message-bulle-wrapper:hover .message-bulle-avatar {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   8. FORMULAIRE D'ENVOI — EFFETS
+   ============================================================ */
+.message-form-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message-form-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.message-form-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message-form-card:hover .message-form-icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* ============================================================
+   9. CARTES TYPE DESTINATAIRE — EFFETS
+   ============================================================ */
+.destinataire-type-content {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.destinataire-type-card:hover .destinataire-type-content {
+    border-color: #2c3e90;
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.08);
+}
+
+.destinataire-type-card.active .destinataire-type-content {
+    border-color: #2c3e90;
+    background: #e8eaf6;
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.1);
+}
+
+.destinataire-type-icon {
+    transition: all 0.3s ease;
+}
+
+.destinataire-type-card:hover .destinataire-type-icon {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   10. DESTINATAIRE TROUVÉ — EFFETS
+   ============================================================ */
+.destinataire-trouve-card {
+    transition: all 0.3s ease;
+}
+
+.destinataire-trouve-card:hover {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+    transform: translateY(-1px);
+}
+
+.destinataire-trouve-avatar {
+    transition: transform 0.3s ease;
+}
+
+.destinataire-trouve-card:hover .destinataire-trouve-avatar {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   11. RÉPONSE ORIGINALE — EFFETS
+   ============================================================ */
+.message-reponse-original {
+    transition: all 0.3s ease;
+}
+
+.message-reponse-original:hover {
+    border-left-color: #1a274f;
+    box-shadow: 0 2px 8px rgba(44, 62, 144, 0.08);
+}
+
+/* ============================================================
+   12. RÉSULTATS RECHERCHE — EFFETS
+   ============================================================ */
+.resultat-eleve-item {
+    transition: all 0.2s ease;
+}
+
+.resultat-eleve-item:hover {
+    background: #f1f5f9;
+    padding-left: 20px;
+}
+
+.resultat-eleve-avatar {
+    transition: transform 0.3s ease;
+}
+
+.resultat-eleve-item:hover .resultat-eleve-avatar {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   13. CONVERSATION HEADER — EFFETS
+   ============================================================ */
+.conversation-header-card {
+    transition: all 0.3s ease;
+}
+
+.conversation-header-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.conversation-avatar {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.conversation-avatar:hover {
+    transform: scale(1.1);
+}
+
+.conversation-back-btn {
+    transition: all 0.3s ease;
+}
+
+.conversation-back-btn:hover {
+    transform: translateX(-3px);
+}
+
+/* ============================================================
+   14. SECTION FORMULAIRE — EFFETS
+   ============================================================ */
+.form-section-icon {
+    transition: all 0.3s ease;
+}
+
+.form-section-header:hover .form-section-icon {
+    transform: scale(1.1);
+    background: #2c3e90;
+    color: #ffffff;
+}
+
+.form-section-title {
+    transition: color 0.3s ease;
+}
+
+.form-section-header:hover .form-section-title {
+    color: #2c3e90;
+}
+
+.form-divider {
+    transition: border-color 0.3s ease;
+}
+
+.form-divider:hover {
+    border-color: #2c3e90;
+}
+
+/* ============================================================
+   15. BOUTONS — EFFETS
+   ============================================================ */
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-outline-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================================
+   16. BOUTONS ICÔNES — EFFETS
+   ============================================================ */
+.btn-icon {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.btn-icon:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.btn-icon-danger:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.15);
+}
+
+/* ============================================================
+   17. CARTES INFO — EFFETS DE SURVOL
+   ============================================================ */
+.info-card-custom {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-card-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.info-card-custom-icon {
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover .info-card-custom-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* ============================================================
+   18. INFO LIST — EFFETS
+   ============================================================ */
+.info-list {
+    font-size: 0.82rem;
+    color: #64748b;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.6;
+}
+
+.info-list li {
+    transition: all 0.25s ease;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.info-list li:hover {
+    background-color: #f8fafc;
+    transform: translateX(4px);
+}
+
+.info-list li::marker {
+    color: #2c3e90;
+}
+
+.info-list li strong {
+    color: #1e293b;
+}
+
+/* ============================================================
+   19. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    margin-top: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: #1e293b;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover {
+    background: #e8eaf6;
+    border-color: #2c3e90;
+    color: #2c3e90;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.15);
+}
+
+.pagination a.active {
+    background: #2c3e90;
+    color: #ffffff;
+    border-color: #2c3e90;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.3);
+}
+
+.pagination a.active:hover {
+    background: #1a274f;
+    color: #ffffff;
+}
+
+.pagination a.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #f1f5f9;
+}
+
+.pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+/* ============================================================
+   20. SCROLLBAR STYLÉE (CONVERSATION)
+   ============================================================ */
+.conversation-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.conversation-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.conversation-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+}
+
+.conversation-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #1a274f, #3b4fa0);
+}
+
+.conversation-container {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+/* ============================================================
+   21. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: #2c3e90;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   22. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-conversation {
+    height: 70px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+}
+
+.skeleton-message {
+    height: 50px;
+    margin-bottom: 8px;
+    border-radius: 18px;
+    width: 70%;
+}
+
+.skeleton-message.moi {
+    margin-left: auto;
+    width: 50%;
+}
+
+/* ============================================================
+   23. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   24. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .message-form-grid {
+        grid-template-columns: 1fr 400px;
+        gap: 28px;
+    }
+
+    .conversation-container {
+        max-height: 65vh;
+    }
+}
+
+/* Petit desktop */
+@media (max-width: 1199px) {
+    .message-form-grid {
+        grid-template-columns: 1fr 360px;
+        gap: 20px;
+    }
+
+    .message-bulle-wrapper {
+        max-width: 85%;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .message-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destinataire-type-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .conversation-container {
+        max-height: 50vh;
+    }
+
+    .message-bulle-wrapper {
+        max-width: 90%;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagination-info {
+        text-align: center;
+    }
+}
+
+/* Tablette verticale / Grand mobile */
+@media (max-width: 768px) {
+    .messages-tabs {
+        flex-direction: column;
+        gap: 2px;
+        padding: 4px;
+    }
+
+    .message-tab {
+        justify-content: flex-start;
+        padding: 10px 16px;
+        border-radius: 10px;
+    }
+
+    .messages-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .messages-filters .filter-group {
+        width: 100%;
+    }
+
+    .messages-filters .search-wrapper {
+        width: 100%;
+    }
+
+    .conversation-item-meta,
+    .message-item-meta {
+        display: none;
+    }
+
+    .conversation-item-actions,
+    .message-item-actions {
+        opacity: 1;
+    }
+
+    .message-preview-card {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .conversation-header-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .conversation-header-left {
+        width: 100%;
+    }
+
+    .conversation-header-right {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .conversation-container {
+        padding: 16px;
+        max-height: 45vh;
+        border-radius: 14px;
+    }
+
+    .message-bulle-wrapper {
+        max-width: 95%;
+    }
+
+    .message-bulle {
+        padding: 12px 14px;
+    }
+
+    .message-bulle-contenu {
+        font-size: 0.84rem;
+    }
+
+    .message-form-body {
+        padding: 16px;
+    }
+
+    .message-form-header {
+        padding: 16px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .message-form-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .message-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .conversation-reponse {
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+
+    .reponse-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .reponse-shortcut {
+        text-align: center;
+    }
+
+    .pagination a {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .message-tab {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+    }
+
+    .message-tab span {
+        display: inline;
+    }
+
+    .conversation-item {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .conversation-avatar-placeholder {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+    }
+
+    .conversation-item-nom {
+        font-size: 0.82rem;
+    }
+
+    .conversation-item-role {
+        font-size: 0.65rem;
+    }
+
+    .dernier-message-texte {
+        font-size: 0.74rem;
+    }
+
+    .conversation-header-card {
+        padding: 12px 14px;
+    }
+
+    .conversation-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+
+    .conversation-header-info h5 {
+        font-size: 0.9rem;
+    }
+
+    .conversation-container {
+        padding: 12px;
+        max-height: 40vh;
+    }
+
+    .message-bulle {
+        padding: 10px 12px;
+        border-radius: 14px;
+    }
+
+    .message-bulle-contenu {
+        font-size: 0.8rem;
+    }
+
+    .message-bulle-heure {
+        font-size: 0.62rem;
+    }
+
+    .destinataire-type-content {
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
+
+    .destinataire-type-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .destinataire-type-text strong {
+        font-size: 0.76rem;
+    }
+
+    .destinataire-type-text span {
+        font-size: 0.66rem;
+    }
+
+    .destinataire-trouve-card {
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .destinataire-trouve-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 0.85rem;
+    }
+
+    .message-form-body {
+        padding: 14px;
+    }
+
+    .message-form-footer {
+        padding: 10px 14px;
+    }
+
+    .form-section-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .form-section-title {
+        font-size: 0.82rem;
+    }
+
+    .form-section-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .info-card-custom {
+        border-radius: 14px;
+    }
+
+    .info-card-custom-header {
+        padding: 12px 14px;
+    }
+
+    .info-card-custom-body {
+        padding: 14px;
+    }
+
+    .info-card-custom-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .info-card-custom-header h6 {
+        font-size: 0.82rem;
+    }
+
+    .pagination a {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .pagination-wrapper {
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .message-bulle-wrapper {
+        max-width: 98%;
+    }
+
+    .conversation-container {
+        padding: 10px;
+    }
+
+    .message-bulle {
+        padding: 8px 10px;
+    }
+
+    .message-bulle-contenu {
+        font-size: 0.76rem;
+    }
+
+    .conversation-header-card {
+        padding: 10px;
+    }
+}
+
+/* ============================================================
+   25. IMPRESSION
+   ============================================================ */
+@media print {
+    .messages-tabs,
+    .messages-filters,
+    .message-item-actions,
+    .message-bulle-actions,
+    .conversation-reponse,
+    .message-preview-footer,
+    .conversation-back-btn,
+    .conversation-header-right,
+    .btn,
+    .no-print,
+    .breadcrumb,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .pagination-wrapper,
+    .toast-container,
+    #flashMessage,
+    .conversation-item-actions {
+        display: none !important;
+    }
+
+    .conversation-container {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        max-height: none;
+        overflow: visible;
+        border-radius: 0;
+    }
+
+    .message-bulle.moi {
+        background: #e8eaf6 !important;
+        color: #1e293b !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .message-bulle.moi .message-bulle-contenu {
+        color: #1e293b !important;
+    }
+
+    .message-bulle.moi .message-bulle-heure {
+        color: #64748b !important;
+    }
+
+    .message-bulle.moi .message-bulle-sujet {
+        border-bottom-color: #cbd5e1 !important;
+    }
+
+    .conversation-header-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 10px;
+    }
+}

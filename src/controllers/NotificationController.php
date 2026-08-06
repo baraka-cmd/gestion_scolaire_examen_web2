@@ -71,7 +71,7 @@ class NotificationController
     $page    = max(1, (int) post('page', 1));
     $type    = post('type', '');
     $lu      = post('lu', '');
-    $parPage = ITEMS_PER_PAGE;
+    $parPage = ITEMS_PER_PAGE; // 15 depuis app.php
 
     $userId = $_SESSION['utilisateur_id'];
     $isAdmin = hasRole(['Admin', 'Directeur']);
@@ -79,7 +79,6 @@ class NotificationController
     $where = [];
     $params = [];
 
-    // Si admin, voir toutes les notifications. Sinon, voir seulement les siennes.
     if (!$isAdmin) {
         $where[] = "n.utilisateur_id = :uid";
         $params['uid'] = $userId;
@@ -97,13 +96,19 @@ class NotificationController
 
     $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
+    // Compter le total
     $total = (int) $this->db->fetchColumn(
-        "SELECT COUNT(*) FROM notifications n {$whereClause}",
+        "SELECT COUNT(*) FROM notifications n
+         LEFT JOIN utilisateurs u ON n.utilisateur_id = u.id
+         {$whereClause}",
         $params
     );
 
+    // Calculer l'offset
     $offset = ($page - 1) * $parPage;
+    $pages = ceil($total / $parPage);
 
+    // Ajouter limit et offset directement dans la requête (pas en paramètres liés)
     $notifications = $this->db->fetchAll(
         "SELECT n.*, 
                 DATE_FORMAT(n.date_envoi, '%d/%m/%Y') AS date_format,
@@ -115,15 +120,15 @@ class NotificationController
          LEFT JOIN utilisateurs u ON n.utilisateur_id = u.id
          {$whereClause}
          ORDER BY n.date_envoi DESC
-         LIMIT :limit OFFSET :offset",
-        array_merge($params, ['limit' => $parPage, 'offset' => $offset])
+         LIMIT {$offset}, {$parPage}",
+        $params
     );
 
     jsonResponse(true, 'Liste récupérée.', [
         'notifications' => $notifications,
         'total'         => $total,
         'page'          => $page,
-        'pages'         => ceil($total / $parPage),
+        'pages'         => $pages,
         'is_admin'      => $isAdmin
     ]);
 }

@@ -623,3 +623,997 @@
         margin: 10mm;
     }
 }
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS RETARDS.CSS — Animations, finesses UI, pagination, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes progressGrow {
+    from { width: 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.retards-stats .retard-stat-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.05s both; }
+.retards-stats .retard-stat-card:nth-child(2) { animation: slideInLeft 0.5s ease-out 0.12s both; }
+.retards-stats .retard-stat-card:nth-child(3) { animation: slideInLeft 0.5s ease-out 0.19s both; }
+.retards-stats .retard-stat-card:nth-child(4) { animation: slideInLeft 0.5s ease-out 0.26s both; }
+
+.retards-table-card {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.retard-list-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+/* ============================================================
+   3. STATS CARDS — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.retard-stat-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.retard-stat-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(245,158,11,0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.retard-stat-card:hover::after {
+    opacity: 1;
+}
+
+.retard-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.retard-stat-card:hover .retard-stat-icon {
+    transform: rotate(-5deg) scale(1.1);
+    animation: float 2s ease-in-out infinite;
+}
+
+.retard-stat-card:hover .retard-stat-value {
+    transform: scale(1.05);
+}
+
+.retard-stat-icon,
+.retard-stat-value {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   4. BARRE D'INFO — EFFETS
+   ============================================================ */
+.retard-info-bar {
+    transition: all 0.3s ease;
+}
+
+.retard-info-bar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+}
+
+.retard-info-item i {
+    transition: transform 0.3s ease;
+}
+
+.retard-info-item:hover i {
+    transform: scale(1.15);
+}
+
+/* ============================================================
+   5. FILTRES — EFFETS DE SURVOL ET FOCUS
+   ============================================================ */
+.retards-filters {
+    transition: all 0.3s ease;
+}
+
+.retards-filters:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.retards-filters .filter-group select,
+.retards-filters .filter-group input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.retards-filters .filter-group select:hover,
+.retards-filters .filter-group input:hover {
+    border-color: #fcd34d;
+    background-color: #fffbeb;
+}
+
+.retards-filters .filter-group select:focus,
+.retards-filters .filter-group input:focus {
+    border-color: #f59e0b;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   6. TABLEAU — SURVOL DES LIGNES (CORRIGÉ SANS DÉCALAGE)
+   ============================================================ */
+.retards-table-card .table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.retards-table-card .table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(245,158,11,0.03) 0%, rgba(245,158,11,0.01) 50%, transparent 100%);
+}
+
+.retards-table-card .table tbody tr td:first-child {
+    position: relative;
+}
+
+.retards-table-card .table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #f59e0b;
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.retards-table-card .table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.retards-table-card .table tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.retards-table-card .table tbody tr:hover strong {
+    color: #f59e0b;
+}
+
+/* Lignes avec retard grave (+30 min) */
+.retards-table-card .table tbody tr.retard-grave {
+    background-color: #fff5f5;
+}
+
+.retards-table-card .table tbody tr.retard-grave:hover {
+    background-color: #fef2f2;
+}
+
+/* Lignes avec retard justifié */
+.retards-table-card .table tbody tr.retard-justifie {
+    background-color: #f0fdf4;
+}
+
+.retards-table-card .table tbody tr.retard-justifie:hover {
+    background-color: #d1fae5;
+}
+
+/* ============================================================
+   7. LIGNES RETARD (ENREGISTREMENT) — EFFETS
+   ============================================================ */
+.retard-row {
+    transition: all 0.3s ease;
+}
+
+.retard-row.has-retard {
+    background-color: #fffbeb;
+}
+
+.retard-row.has-retard:hover {
+    background-color: #fef3c7;
+}
+
+.retard-row.justifie {
+    background-color: #f0fdf4;
+}
+
+.retard-row.justifie:hover {
+    background-color: #d1fae5;
+}
+
+/* ============================================================
+   8. BOUTONS D'ACTION — EFFETS
+   ============================================================ */
+.btn-enregistrer-retard,
+.btn-modifier-retard,
+.btn-justifier-retard,
+.btn-supprimer-retard {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-enregistrer-retard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.btn-modifier-retard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.btn-justifier-retard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.btn-supprimer-retard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.btn-enregistrer-retard:active,
+.btn-modifier-retard:active,
+.btn-justifier-retard:active,
+.btn-supprimer-retard:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* ============================================================
+   9. MODALES — ANIMATION
+   ============================================================ */
+.modal-overlay.show {
+    animation: fadeInUp 0.3s ease;
+}
+
+.modal-content {
+    animation: fadeInScale 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   10. TOP RETARDS — EFFETS
+   ============================================================ */
+.top-retard-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-retard-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+}
+
+.top-retard-item.danger {
+    border-left: 3px solid #ef4444;
+}
+
+.top-retard-item.warning {
+    border-left: 3px solid #f59e0b;
+}
+
+.top-retard-rang {
+    transition: all 0.3s ease;
+}
+
+.top-retard-item:hover .top-retard-rang {
+    transform: scale(1.2);
+    color: #d97706;
+}
+
+.top-retard-nb {
+    transition: all 0.3s ease;
+}
+
+.top-retard-item:hover .top-retard-nb {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   11. ALERTE RETARD — EFFETS
+   ============================================================ */
+#retardAlerte {
+    transition: all 0.3s ease;
+}
+
+#retardAlerte.warning {
+    border-left: 3px solid #f59e0b;
+}
+
+#retardAlerte.danger {
+    border-left: 3px solid #ef4444;
+}
+
+/* ============================================================
+   12. CHECKBOX — EFFETS
+   ============================================================ */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    padding: 4px 0;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-custom i {
+    font-size: 0.65rem;
+    color: #ffffff;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.25s ease;
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom {
+    background-color: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.checkbox-wrapper:hover .checkbox-custom {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.checkbox-label {
+    font-size: 0.84rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+/* ============================================================
+   13. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid #f1f5f9;
+    background-color: #f8fafc;
+    border-radius: 0 0 20px 20px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: #1e293b;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover {
+    background: #fef3c7;
+    border-color: #f59e0b;
+    color: #92400e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.pagination a.active {
+    background: #f59e0b;
+    color: #ffffff;
+    border-color: #f59e0b;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.pagination a.active:hover {
+    background: #d97706;
+    color: #ffffff;
+}
+
+.pagination a.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #f1f5f9;
+}
+
+.pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+/* ============================================================
+   14. TABLE HEADER INFO — STYLE AMÉLIORÉ
+   ============================================================ */
+.table-header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.table-header-info strong {
+    color: #f59e0b;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   15. SCROLLBAR HORIZONTALE STYLÉE
+   ============================================================ */
+.retards-table-card .table-responsive,
+.retard-list-card .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar,
+.retard-list-card .table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-track,
+.retard-list-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-thumb,
+.retard-list-card .table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-thumb:hover,
+.retard-list-card .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+
+.retards-table-card .table-responsive,
+.retard-list-card .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #f59e0b #f1f5f9;
+}
+
+@media (max-width: 768px) {
+    .retards-table-card .table-responsive::-webkit-scrollbar,
+    .retard-list-card .table-responsive::-webkit-scrollbar {
+        height: 4px;
+    }
+    .retards-table-card .table-responsive::-webkit-scrollbar-track,
+    .retard-list-card .table-responsive::-webkit-scrollbar-track {
+        margin: 0 10px;
+    }
+}
+
+/* ============================================================
+   16. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: #f59e0b;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   17. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-row {
+    height: 50px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+}
+
+/* ============================================================
+   18. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   19. RESPONSIVE COMPLET
+   ============================================================ */
+
+@media (min-width: 1400px) {
+    .retards-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1199px) {
+    .retards-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .retard-info-bar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 16px;
+    }
+
+    .retards-filters {
+        flex-direction: column;
+        padding: 14px 16px;
+    }
+
+    .retards-filters .filter-group {
+        min-width: 100%;
+    }
+
+    .retards-filters .filter-group select,
+    .retards-filters .filter-group input {
+        width: 100%;
+    }
+
+    .retard-stat-card {
+        padding: 16px;
+    }
+
+    .retard-stat-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
+    .retard-stat-value {
+        font-size: 1.3rem;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagination-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .retard-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+    }
+
+    .retard-list-header h5 {
+        font-size: 0.88rem;
+    }
+
+    .btn-enregistrer-retard,
+    .btn-modifier-retard,
+    .btn-justifier-retard,
+    .btn-supprimer-retard {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+
+    .top-retard-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .top-retard-stats {
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .table-header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .table-header-info strong {
+        font-size: 0.82rem;
+    }
+
+    .pagination a {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 575px) {
+    .retards-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .retard-stat-card {
+        padding: 14px;
+        gap: 10px;
+        border-radius: 14px;
+    }
+
+    .retard-stat-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .retard-stat-value {
+        font-size: 1.1rem;
+    }
+
+    .retard-stat-label {
+        font-size: 0.7rem;
+    }
+
+    .retard-info-bar {
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .retard-info-item {
+        font-size: 0.76rem;
+    }
+
+    .retards-filters {
+        padding: 10px 12px;
+        border-radius: 12px;
+        gap: 8px;
+    }
+
+    .retards-filters .filter-group label {
+        font-size: 0.68rem;
+    }
+
+    .retards-filters .filter-group select,
+    .retards-filters .filter-group input {
+        padding: 7px 10px;
+        font-size: 0.76rem;
+        border-radius: 8px;
+    }
+
+    .retard-list-card {
+        border-radius: 14px;
+    }
+
+    .modal-content {
+        width: 95%;
+        border-radius: 14px;
+    }
+
+    .modal-header {
+        padding: 16px 18px 12px;
+    }
+
+    .modal-body {
+        padding: 16px 18px;
+    }
+
+    .modal-footer {
+        padding: 12px 18px 16px;
+    }
+
+    .pagination a {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .pagination-wrapper {
+        padding: 10px 12px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .retards-stats {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .retard-stat-card {
+        padding: 12px;
+    }
+
+    .btn-enregistrer-retard,
+    .btn-modifier-retard,
+    .btn-justifier-retard,
+    .btn-supprimer-retard {
+        font-size: 0.64rem;
+        padding: 3px 6px;
+    }
+}
+
+/* ============================================================
+   20. IMPRESSION
+   ============================================================ */
+@media print {
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .resultats-selectors,
+    .retard-list-header,
+    .btn-enregistrer-retard,
+    .btn-modifier-retard,
+    .btn-justifier-retard,
+    .btn-supprimer-retard,
+    .pagination-wrapper,
+    .toast-container,
+    #flashMessage {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff !important;
+        font-size: 10px;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .retard-list-card,
+    .retards-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+    }
+
+    .retard-row.has-retard {
+        background-color: #fffbeb !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .retard-row.justifie {
+        background-color: #f0fdf4 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .retard-info-bar {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .retard-info-item {
+        color: #000 !important;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 10mm;
+    }
+}

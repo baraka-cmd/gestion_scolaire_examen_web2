@@ -254,6 +254,13 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
 var isAdmin = <?= $isAdmin ? 'true' : 'false' ?>;
 
 // ============================================================
+// CHARGEMENT INITIAL
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    chargerNotifications(1);
+});
+
+// ============================================================
 // FILTRES
 // ============================================================
 function getFiltres() {
@@ -280,7 +287,7 @@ function reinitialiserFiltres() {
 }
 
 // ============================================================
-// CHARGEMENT
+// CHARGEMENT AJAX
 // ============================================================
 function chargerNotifications(page) {
     var formData = new FormData();
@@ -292,6 +299,10 @@ function chargerNotifications(page) {
         if (filtres[key] !== '') formData.append(key, filtres[key]);
     });
 
+    // Afficher un loader
+    var container = document.getElementById('notificationsList');
+    container.innerHTML = '<div class="empty-state" style="padding:40px;"><i class="fa-solid fa-spinner fa-spin"></i><p>Chargement...</p></div>';
+
     fetch('/gestion_scolaire/notifications', {
         method: 'POST', body: formData,
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
@@ -299,6 +310,9 @@ function chargerNotifications(page) {
     .then(res => res.json())
     .then(data => {
         if (data.success) afficherNotifications(data);
+    })
+    .catch(function() {
+        container.innerHTML = '<div class="empty-state" style="padding:40px;"><i class="fa-solid fa-exclamation-circle"></i><p>Erreur de chargement.</p></div>';
     });
 }
 
@@ -359,16 +373,39 @@ function afficherNotifications(data) {
         </div>`;
     }).join('');
 
-    // Pagination
+    // ============================================================
+    // PAGINATION
+    // ============================================================
     var paginationWrapper = document.getElementById('paginationWrapper');
+    var paginationDiv = document.getElementById('paginationNotifications');
+    var paginationInfo = document.getElementById('paginationInfo');
+
     if (data.pages > 1) {
         paginationWrapper.style.display = 'flex';
         var html = '';
-        for (var i = 1; i <= data.pages; i++) {
-            html += '<a href="#" onclick="chargerNotifications(' + i + '); return false;" class="' + (i === data.page ? 'active' : '') + '">' + i + '</a>';
+        
+        // Bouton précédent
+        if (data.page > 1) {
+            html += '<a href="#" onclick="chargerNotifications(' + (data.page - 1) + '); return false;" class="prev"><i class="fa-solid fa-chevron-left"></i></a>';
         }
-        document.getElementById('paginationNotifications').innerHTML = html;
-        document.getElementById('paginationInfo').textContent = 'Page ' + data.page + ' / ' + data.pages + ' — ' + data.total + ' notification(s)';
+        
+        // Pages
+        for (var i = 1; i <= data.pages; i++) {
+            // Afficher première, dernière, et pages autour de la page courante
+            if (i === 1 || i === data.pages || (i >= data.page - 1 && i <= data.page + 1)) {
+                html += '<a href="#" onclick="chargerNotifications(' + i + '); return false;" class="' + (i === data.page ? 'active' : '') + '">' + i + '</a>';
+            } else if (i === data.page - 2 || i === data.page + 2) {
+                html += '<span class="pagination-dots">...</span>';
+            }
+        }
+        
+        // Bouton suivant
+        if (data.page < data.pages) {
+            html += '<a href="#" onclick="chargerNotifications(' + (data.page + 1) + '); return false;" class="next"><i class="fa-solid fa-chevron-right"></i></a>';
+        }
+        
+        paginationDiv.innerHTML = html;
+        paginationInfo.innerHTML = 'Page <strong>' + data.page + '</strong> / ' + data.pages + ' — <strong>' + data.total + '</strong> notification(s)';
     } else {
         paginationWrapper.style.display = 'none';
     }
@@ -451,7 +488,7 @@ document.getElementById('btnMarquerToutesLues')?.addEventListener('click', funct
     .then(data => {
         if (data.success) {
             showToast(data.message, 'success');
-            setTimeout(function() { location.reload(); }, 500);
+            setTimeout(function() { chargerNotifications(1); }, 500);
         }
     });
 });

@@ -596,3 +596,529 @@ select.form-control optgroup {
         page-break-inside: avoid;
     }
 }
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS AJOUTER_PARENT.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes checkBounce {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.3); }
+    50%  { transform: scale(0.85); }
+    70%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* ============================================================
+   2. CARTE DE SECTION — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.parent-form-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parent-form-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.parent-form-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parent-form-card:hover .parent-form-icon {
+    transform: scale(1.1) rotate(-8deg);
+    animation: float 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   3. CHAMPS DE FORMULAIRE — EFFETS ENRICHIS
+   ============================================================ */
+.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.1);
+    transform: translateY(-1px);
+}
+
+.input-icon {
+    transition: all 0.3s ease;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+    transform: scale(1.15);
+}
+
+select.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+select.form-control:hover {
+    cursor: pointer;
+    border-color: var(--color-primary);
+}
+
+textarea.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+textarea.form-control:focus {
+    min-height: 85px;
+}
+
+/* ============================================================
+   4. VALIDATION — FEEDBACK ANIMÉ
+   ============================================================ */
+.invalid-feedback {
+    animation: feedbackShake 0.5s ease;
+}
+
+.form-control.is-invalid {
+    animation: feedbackShake 0.4s ease;
+}
+
+.form-control.is-valid {
+    transition: all 0.3s ease;
+}
+
+/* ============================================================
+   5. CHECKBOX — ANIMATION COCHÉE
+   ============================================================ */
+.checkbox-wrapper input:checked + .checkbox-custom {
+    animation: checkBounce 0.4s ease;
+}
+
+.checkbox-wrapper:hover .checkbox-custom {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+/* ============================================================
+   6. SÉLECTION D'ÉLÈVES — EFFETS
+   ============================================================ */
+.eleves-selection {
+    transition: all 0.3s ease;
+}
+
+.eleves-selection:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+}
+
+.eleves-selection-item {
+    transition: all 0.25s ease;
+}
+
+.eleves-selection-item:hover {
+    background-color: var(--color-primary-lighter);
+    padding-left: 20px;
+}
+
+.eleves-selection-item.selected {
+    background-color: #d1fae5;
+    border-left: 3px solid #10b981;
+}
+
+.eleves-selection-item.selected:hover {
+    background-color: #a7f3d0;
+}
+
+/* ============================================================
+   7. SÉPARATEUR DE SECTION — EFFET
+   ============================================================ */
+.form-divider {
+    transition: all 0.3s ease;
+}
+
+.form-divider:hover {
+    border-color: var(--color-primary);
+}
+
+.form-divider::after {
+    transition: all 0.3s ease;
+}
+
+.form-divider:hover::after {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   8. HELP TEXT — EFFET
+   ============================================================ */
+.form-help {
+    transition: all 0.3s ease;
+}
+
+.form-help i {
+    transition: transform 0.3s ease;
+}
+
+.form-help:hover i {
+    transform: scale(1.2);
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   9. BOUTONS — EFFETS
+   ============================================================ */
+.form-actions .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.form-actions .btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.form-actions .btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   10. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   11. RESPONSIVE COMPLET
+   ============================================================ */
+
+@media (min-width: 1400px) {
+    .add-parent-container {
+        max-width: 950px;
+    }
+}
+
+@media (max-width: 992px) {
+    .parent-form-header {
+        padding: 18px 22px;
+    }
+
+    .parent-form-body {
+        padding: 22px;
+    }
+
+    .form-progress {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 0 10px;
+    }
+
+    .progress-line {
+        display: none;
+    }
+
+    .progress-label {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .parent-form-header {
+        padding: 16px 18px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .parent-form-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .parent-form-header h5 {
+        font-size: 0.95rem;
+    }
+
+    .parent-form-body {
+        padding: 18px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .eleves-selection {
+        max-height: 220px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 575px) {
+    .parent-form-card {
+        border-radius: 14px;
+        margin-bottom: 16px;
+    }
+
+    .parent-form-header {
+        padding: 14px;
+    }
+
+    .parent-form-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .parent-form-header h5 {
+        font-size: 0.88rem;
+    }
+
+    .parent-form-header p {
+        font-size: 0.7rem;
+    }
+
+    .parent-form-body {
+        padding: 14px;
+    }
+
+    .form-control {
+        padding: 10px 12px 10px 36px;
+        font-size: 0.82rem;
+        border-radius: 10px;
+    }
+
+    .input-icon {
+        left: 12px;
+        font-size: 0.78rem;
+    }
+
+    .form-label {
+        font-size: 0.78rem;
+    }
+
+    .form-help {
+        font-size: 0.68rem;
+    }
+
+    .checkbox-custom {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+    }
+
+    .checkbox-label {
+        font-size: 0.78rem;
+    }
+
+    .eleves-selection-item {
+        padding: 10px 12px;
+    }
+
+    .eleves-selection-name {
+        font-size: 0.8rem;
+    }
+
+    .eleves-selection-detail {
+        font-size: 0.7rem;
+    }
+
+    .progress-dot {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .parent-form-header {
+        padding: 12px;
+    }
+
+    .parent-form-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .parent-form-body {
+        padding: 12px;
+    }
+
+    .form-control {
+        padding: 9px 10px 9px 32px;
+        font-size: 0.78rem;
+    }
+}
+
+/* ============================================================
+   12. IMPRESSION
+   ============================================================ */
+@media print {
+    .form-actions,
+    .btn,
+    .toast-container,
+    .breadcrumb,
+    .no-print {
+        display: none !important;
+    }
+
+    .parent-form-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .parent-form-header h5,
+    .parent-form-header p {
+        color: #000 !important;
+    }
+
+    .parent-form-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}

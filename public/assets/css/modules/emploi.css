@@ -533,3 +533,938 @@
         margin: 8mm;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS EMPLOI.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes bounceIn {
+    0%   { transform: scale(0.3); opacity: 0; }
+    50%  { transform: scale(1.05); }
+    70%  { transform: scale(0.95); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.emploi-grid-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.resultats-selector-card {
+    animation: fadeInUp 0.4s ease-out both;
+}
+
+/* ============================================================
+   3. BARRE D'OUTILS — STYLE AMÉLIORÉ
+   ============================================================ */
+.emploi-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+    border: none;
+}
+
+/* Cercles décoratifs */
+.emploi-toolbar::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.emploi-toolbar::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.emploi-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.emploi-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* Infos dans la toolbar */
+.emploi-info {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.emploi-info i {
+    color: #f59e0b;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Boutons dans la toolbar */
+.emploi-toolbar-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 8px 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emploi-toolbar-right .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+}
+
+.emploi-toolbar-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: var(--color-white);
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.emploi-toolbar-right .btn-success {
+    background-color: #10b981;
+    color: var(--color-white);
+    border-color: #10b981;
+}
+
+.emploi-toolbar-right .btn-success:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.emploi-toolbar-right .btn-outline-danger {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.emploi-toolbar-right .btn-outline-danger:hover {
+    background-color: #ef4444;
+    color: var(--color-white);
+    border-color: #ef4444;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+/* ============================================================
+   4. GRILLE EMPLOI DU TEMPS — CARTE
+   ============================================================ */
+.emploi-grid-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emploi-grid-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   5. TABLEAU — EFFETS DE SURVOL
+   ============================================================ */
+.emploi-table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.emploi-table tbody tr:hover td {
+    background-color: #fafbfc;
+}
+
+.emploi-table tbody tr:hover td.col-horaire {
+    background-color: #e8eaf6;
+}
+
+/* ============================================================
+   6. CELLULE HORAIRE — EFFETS
+   ============================================================ */
+.horaire-cell {
+    transition: all 0.3s ease;
+}
+
+.horaire-debut,
+.horaire-fin {
+    transition: color 0.3s ease;
+}
+
+.emploi-table tbody tr:hover .horaire-debut,
+.emploi-table tbody tr:hover .horaire-fin {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   7. CELLULE CRÉNEAU — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.creneau-cell {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.creneau-cell.cours:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+}
+
+.creneau-cell.recréation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.2);
+}
+
+.creneau-cell.cernafor:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.2);
+}
+
+/* ============================================================
+   8. CELLULE VIDE — EFFETS
+   ============================================================ */
+.creneau-vide {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.creneau-vide:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+    color: var(--color-primary);
+    transform: scale(1.03);
+}
+
+.creneau-vide i {
+    transition: transform 0.3s ease;
+}
+
+.creneau-vide:hover i {
+    transform: rotate(90deg) scale(1.2);
+}
+
+/* ============================================================
+   9. BOUTONS SUPPRIMER — EFFETS
+   ============================================================ */
+.btn-supprimer-creneau,
+.btn-supprimer-horaire {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-supprimer-creneau:hover,
+.btn-supprimer-horaire:hover {
+    transform: scale(1.2);
+}
+
+/* ============================================================
+   10. ÉTAT VIDE INITIAL — EFFETS
+   ============================================================ */
+.emploi-vide-initial {
+    transition: all 0.3s ease;
+}
+
+.emploi-vide-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emploi-vide-initial:hover .emploi-vide-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(44, 62, 144, 0.15);
+}
+
+/* ============================================================
+   11. SÉLECTEURS — EFFETS DE SURVOL
+   ============================================================ */
+.resultats-selector-card {
+    transition: all 0.3s ease;
+}
+
+.resultats-selector-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+}
+
+.resultats-selector-form .form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resultats-selector-form .form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.resultats-selector-form .form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   12. MODALE — ANIMATION
+   ============================================================ */
+.modal-overlay.show {
+    animation: fadeInUp 0.3s ease;
+}
+
+.modal-content {
+    animation: fadeInScale 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   13. SCROLLBAR HORIZONTALE STYLÉE
+   ============================================================ */
+.emploi-grid-card .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+}
+
+.emploi-grid-card .table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.emploi-grid-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+.emploi-grid-card .table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+}
+
+.emploi-grid-card .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #1a274f, #3b4fa0);
+}
+
+/* Firefox */
+.emploi-grid-card .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+/* Indicateur de scroll sur mobile */
+@media (max-width: 768px) {
+    .emploi-grid-card .table-responsive::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .emploi-grid-card .table-responsive::-webkit-scrollbar-thumb {
+        background: #2c3e90;
+        border-radius: 4px;
+    }
+
+    .emploi-grid-card .table-responsive::-webkit-scrollbar-track {
+        margin: 0 10px;
+    }
+}
+
+/* ============================================================
+   14. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-gray-400);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   15. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   16. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-grid {
+    height: 400px;
+    border-radius: 16px;
+}
+
+/* ============================================================
+   17. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .emploi-table thead th.col-jour {
+        min-width: 160px;
+    }
+
+    .creneau-cell {
+        padding: 14px 10px;
+        min-height: 70px;
+    }
+
+    .creneau-matiere {
+        font-size: 0.82rem;
+    }
+
+    .creneau-enseignant {
+        font-size: 0.72rem;
+    }
+}
+
+/* Petit desktop */
+@media (max-width: 1199px) {
+    .emploi-table thead th.col-jour {
+        min-width: 120px;
+    }
+
+    .creneau-matiere {
+        font-size: 0.72rem;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .emploi-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 16px;
+        border-radius: 12px;
+    }
+
+    .emploi-toolbar-left {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .emploi-toolbar-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .emploi-table {
+        min-width: 700px;
+    }
+
+    .emploi-table thead th {
+        font-size: 0.7rem;
+        padding: 10px 6px;
+    }
+
+    .emploi-table thead th.col-horaire {
+        width: 95px;
+        min-width: 95px;
+    }
+
+    .creneau-cell {
+        min-height: 50px;
+        padding: 8px 6px;
+    }
+
+    .creneau-vide {
+        min-height: 50px;
+    }
+}
+
+/* Tablette verticale / Grand mobile */
+@media (max-width: 768px) {
+    .emploi-toolbar {
+        padding: 12px 14px;
+        border-radius: 10px;
+        gap: 10px;
+    }
+
+    .emploi-info {
+        font-size: 0.76rem;
+    }
+
+    .emploi-toolbar-right .btn {
+        font-size: 0.74rem;
+        padding: 7px 12px;
+    }
+
+    .emploi-table {
+        min-width: 600px;
+    }
+
+    .emploi-table thead th {
+        font-size: 0.65rem;
+        padding: 8px 4px;
+    }
+
+    .emploi-table thead th.col-horaire {
+        width: 80px;
+        min-width: 80px;
+    }
+
+    .emploi-table thead th.col-jour {
+        min-width: 90px;
+    }
+
+    .horaire-debut,
+    .horaire-fin {
+        font-size: 0.68rem;
+    }
+
+    .creneau-cell {
+        min-height: 44px;
+        padding: 6px 4px;
+    }
+
+    .creneau-matiere {
+        font-size: 0.65rem;
+    }
+
+    .creneau-enseignant {
+        font-size: 0.58rem;
+    }
+
+    .creneau-libelle {
+        font-size: 0.7rem;
+    }
+
+    .btn-supprimer-creneau,
+    .btn-supprimer-horaire {
+        width: 18px;
+        height: 18px;
+        font-size: 0.5rem;
+        top: -6px;
+        right: -6px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .emploi-toolbar {
+        padding: 10px 12px;
+        border-radius: 8px;
+        gap: 8px;
+    }
+
+    .emploi-info {
+        font-size: 0.7rem;
+        gap: 4px;
+    }
+
+    .emploi-info i {
+        font-size: 0.7rem;
+    }
+
+    .emploi-toolbar-right .btn {
+        font-size: 0.68rem;
+        padding: 6px 10px;
+        border-radius: 8px;
+    }
+
+    .emploi-grid-card {
+        border-radius: 12px;
+    }
+
+    .emploi-table {
+        min-width: 500px;
+    }
+
+    .emploi-table thead th {
+        font-size: 0.58rem;
+        padding: 6px 2px;
+        letter-spacing: 0.2px;
+    }
+
+    .emploi-table thead th.col-horaire {
+        width: 65px;
+        min-width: 65px;
+    }
+
+    .emploi-table thead th.col-jour {
+        min-width: 75px;
+    }
+
+    .horaire-debut,
+    .horaire-fin {
+        font-size: 0.62rem;
+    }
+
+    .horaire-separateur {
+        font-size: 0.5rem;
+    }
+
+    .creneau-cell {
+        min-height: 38px;
+        padding: 5px 3px;
+        border-radius: 6px;
+        gap: 2px;
+    }
+
+    .creneau-matiere {
+        font-size: 0.58rem;
+    }
+
+    .creneau-enseignant {
+        font-size: 0.52rem;
+    }
+
+    .creneau-libelle {
+        font-size: 0.62rem;
+        letter-spacing: 0.5px;
+    }
+
+    .creneau-vide {
+        min-height: 38px;
+        padding: 6px 3px;
+        font-size: 0.65rem;
+        border-radius: 6px;
+        border-width: 1.5px;
+    }
+
+    .btn-supprimer-creneau,
+    .btn-supprimer-horaire {
+        width: 16px;
+        height: 16px;
+        font-size: 0.45rem;
+        top: -5px;
+        right: -5px;
+    }
+
+    .emploi-vide-initial {
+        padding: 40px 14px;
+    }
+
+    .emploi-vide-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .emploi-vide-initial h5 {
+        font-size: 0.9rem;
+    }
+
+    .emploi-vide-initial p {
+        font-size: 0.76rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .emploi-table {
+        min-width: 420px;
+    }
+
+    .emploi-table thead th {
+        font-size: 0.52rem;
+        padding: 4px 1px;
+    }
+
+    .emploi-table thead th.col-horaire {
+        width: 55px;
+        min-width: 55px;
+    }
+
+    .emploi-table thead th.col-jour {
+        min-width: 65px;
+    }
+
+    .creneau-cell {
+        min-height: 32px;
+        padding: 3px 1px;
+    }
+
+    .creneau-matiere {
+        font-size: 0.5rem;
+    }
+
+    .creneau-enseignant {
+        font-size: 0.46rem;
+    }
+}
+
+/* ============================================================
+   18. IMPRESSION
+   ============================================================ */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 6mm;
+    }
+
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .resultats-selectors,
+    .emploi-toolbar,
+    .btn-supprimer-creneau,
+    .btn-supprimer-horaire,
+    .btn,
+    .toast-container,
+    #flashMessage {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff !important;
+        font-size: 9px;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .emploi-grid-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+    }
+
+    .emploi-table {
+        min-width: 100%;
+    }
+
+    .emploi-table thead th {
+        background: #1e293b !important;
+        color: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-size: 7px;
+        padding: 6px 3px;
+    }
+
+    .emploi-table tbody td.col-horaire {
+        background: #f1f5f9 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .creneau-cell.cours {
+        background: #dbeafe !important;
+        border: 1px solid #bfdbfe !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .creneau-cell.recréation {
+        background: #fef3c7 !important;
+        border: 1px solid #fde68a !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .creneau-cell.cernafor {
+        background: #fce7f3 !important;
+        border: 1px solid #f9a8d4 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .creneau-vide {
+        border: 1px dashed #ccc;
+        color: #ccc;
+    }
+
+    .horaire-debut,
+    .horaire-fin {
+        font-size: 7px;
+    }
+
+    .creneau-matiere {
+        font-size: 6px;
+    }
+
+    .creneau-enseignant {
+        font-size: 5.5px;
+    }
+}

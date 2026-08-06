@@ -574,3 +574,1144 @@
         border: 1px solid #ddd;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS DOCUMENTS.CSS — Animations, finesses UI, pagination, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.7; }
+}
+
+@keyframes bounceIn {
+    0%   { transform: scale(0.3); opacity: 0; }
+    50%  { transform: scale(1.05); }
+    70%  { transform: scale(0.95); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.stats-grid .stat-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.05s both; }
+.stats-grid .stat-card:nth-child(2) { animation: slideInLeft 0.5s ease-out 0.15s both; }
+.stats-grid .stat-card:nth-child(3) { animation: slideInLeft 0.5s ease-out 0.25s both; }
+.stats-grid .stat-card:nth-child(4) { animation: slideInLeft 0.5s ease-out 0.35s both; }
+
+.documents-table-card {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.upload-form-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.info-card-custom:nth-child(1) { animation: slideInRight 0.5s ease-out 0.1s both; }
+.info-card-custom:nth-child(2) { animation: slideInRight 0.5s ease-out 0.2s both; }
+.info-card-custom:nth-child(3) { animation: slideInRight 0.5s ease-out 0.3s both; }
+
+/* ============================================================
+   3. STATS CARDS — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.stat-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44,62,144,0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.stat-card:hover::after {
+    opacity: 1;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+}
+
+.stat-card:hover .stat-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.stat-card:hover .stat-value {
+    transform: scale(1.05);
+}
+
+.stat-icon,
+.stat-value {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   4. FILTRES — EFFETS DE SURVOL ET FOCUS
+   ============================================================ */
+.documents-filters {
+    transition: all 0.3s ease;
+}
+
+.documents-filters:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.documents-filters .form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.documents-filters .form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.documents-filters .form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   5. TABLEAU — SURVOL DES LIGNES (CORRIGÉ SANS DÉCALAGE)
+   ============================================================ */
+.documents-table-card .table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.documents-table-card .table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(44,62,144,0.03) 0%, rgba(44,62,144,0.01) 50%, transparent 100%);
+}
+
+/* Barre latérale sur la première cellule — SANS décalage */
+.documents-table-card .table tbody tr td:first-child {
+    position: relative;
+}
+
+.documents-table-card .table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.documents-table-card .table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.documents-table-card .table tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Icône du fichier */
+.documents-table-card .table tbody tr td:first-child i {
+    transition: transform 0.3s ease;
+}
+
+.documents-table-card .table tbody tr:hover td:first-child i {
+    transform: scale(1.2);
+}
+
+/* Nom du document */
+.document-nom {
+    transition: all 0.25s ease;
+}
+
+.document-nom:hover {
+    color: var(--color-primary);
+    padding-left: 4px;
+}
+
+/* ============================================================
+   6. ZONE DE DROP — ANIMATIONS SUPPLÉMENTAIRES
+   ============================================================ */
+.upload-dropzone {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-dropzone:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(44, 62, 144, 0.1);
+}
+
+.upload-dropzone.dragover {
+    animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+.upload-dropzone-icon i {
+    transition: all 0.4s ease;
+}
+
+.upload-dropzone:hover .upload-dropzone-icon i {
+    transform: translateY(-8px);
+}
+
+.upload-dropzone.dragover .upload-dropzone-icon i {
+    animation: bounceIn 0.5s ease;
+}
+
+.upload-browse-link {
+    transition: all 0.3s ease;
+}
+
+.upload-browse-link:hover {
+    color: var(--color-primary-dark);
+}
+
+/* ============================================================
+   7. LISTE DES FICHIERS — EFFETS
+   ============================================================ */
+.upload-file-item {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-file-item:hover {
+    transform: translateX(4px);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.08);
+}
+
+.upload-file-item .btn-icon {
+    transition: all 0.25s ease;
+}
+
+.upload-file-item .btn-icon:hover {
+    transform: scale(1.15);
+}
+
+/* ============================================================
+   8. BARRE DE PROGRESSION — ANIMATION
+   ============================================================ */
+.upload-progress-fill {
+    animation: progressPulse 1.5s ease-in-out infinite;
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7, #2c3e90);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite, progressPulse 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   9. RÉSULTAT D'UPLOAD — ANIMATION D'APPARITION
+   ============================================================ */
+.upload-result-success,
+.upload-result-error {
+    animation: fadeInScale 0.4s ease;
+}
+
+.upload-result-success i,
+.upload-result-error i {
+    animation: bounceIn 0.6s ease;
+}
+
+/* ============================================================
+   10. FORMULAIRE — SECTIONS
+   ============================================================ */
+.form-section-icon {
+    transition: all 0.3s ease;
+}
+
+.form-section-header:hover .form-section-icon {
+    transform: scale(1.1);
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.form-section-title {
+    transition: color 0.3s ease;
+}
+
+.form-section-header:hover .form-section-title {
+    color: var(--color-primary);
+}
+
+.form-divider {
+    transition: border-color 0.3s ease;
+}
+
+.form-divider:hover {
+    border-color: var(--color-primary);
+}
+
+/* ============================================================
+   11. CARTE FORMULAIRE — EFFETS
+   ============================================================ */
+.upload-form-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-form-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-form-card:hover .upload-form-icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* ============================================================
+   12. CARTES D'INFO — EFFETS DE SURVOL
+   ============================================================ */
+.info-card-custom {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-card-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.info-card-custom-icon {
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover .info-card-custom-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* ============================================================
+   13. MODALE APERÇU — ANIMATION
+   ============================================================ */
+.modal-overlay.show {
+    animation: fadeInUp 0.3s ease;
+}
+
+.modal-content {
+    animation: fadeInScale 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.document-apercu-icon {
+    transition: all 0.3s ease;
+}
+
+.document-apercu-info:hover .document-apercu-icon {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   14. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid #f1f5f9;
+    background-color: #f8fafc;
+    border-radius: 0 0 16px 16px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: #1e293b;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover {
+    background: #e8eaf6;
+    border-color: #2c3e90;
+    color: #2c3e90;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.15);
+}
+
+.pagination a.active {
+    background: #2c3e90;
+    color: #ffffff;
+    border-color: #2c3e90;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.3);
+}
+
+.pagination a.active:hover {
+    background: #1a274f;
+    color: #ffffff;
+}
+
+/* ============================================================
+   15. BOUTONS — EFFETS GÉNÉRAUX
+   ============================================================ */
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-outline-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================================
+   16. BADGES — EFFET SURVOL
+   ============================================================ */
+.badge {
+    transition: all 0.25s ease;
+}
+
+.documents-table-card .table tbody tr:hover .badge {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   17. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   18. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-row {
+    height: 50px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+}
+
+/* ============================================================
+   19. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   20. LISTE D'INFO (GUIDE)
+   ============================================================ */
+.info-list {
+    font-size: 0.82rem;
+    color: #64748b;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.6;
+}
+
+.info-list li {
+    transition: all 0.25s ease;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.info-list li:hover {
+    background-color: #f8fafc;
+    transform: translateX(4px);
+}
+
+.info-list li::marker {
+    color: var(--color-primary);
+}
+
+.info-list li strong {
+    color: #1e293b;
+}
+
+/* ============================================================
+   21. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .upload-form-grid {
+        grid-template-columns: 1fr 400px;
+        gap: 28px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Desktop standard */
+@media (max-width: 1399px) {
+    .upload-form-grid {
+        grid-template-columns: 1fr 360px;
+        gap: 20px;
+    }
+}
+
+/* Petit desktop / Tablette paysage */
+@media (max-width: 1199px) {
+    .upload-form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .upload-form-card {
+        max-width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .upload-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .documents-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 16px;
+    }
+
+    .documents-filters .filter-group {
+        width: 100%;
+    }
+
+    .documents-filters .form-control {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .documents-filters .btn {
+        align-self: stretch;
+        justify-content: center;
+    }
+
+    .upload-dropzone {
+        padding: 35px 25px;
+    }
+
+    .upload-dropzone-icon {
+        font-size: 2.8rem;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagination-info {
+        text-align: center;
+    }
+}
+
+/* Tablette verticale / Grand mobile */
+@media (max-width: 768px) {
+    .upload-dropzone {
+        padding: 28px 18px;
+        border-radius: 16px;
+    }
+
+    .upload-dropzone-icon {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+
+    .upload-dropzone h6 {
+        font-size: 0.9rem;
+    }
+
+    .upload-dropzone p {
+        font-size: 0.78rem;
+    }
+
+    .upload-formats {
+        font-size: 0.68rem;
+    }
+
+    .upload-form-header {
+        padding: 16px 18px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .upload-form-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .upload-form-body {
+        padding: 16px;
+    }
+
+    .upload-form-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .upload-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .form-section-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .upload-file-item {
+        padding: 10px 12px;
+    }
+
+    .upload-file-name {
+        font-size: 0.78rem;
+    }
+
+    .document-apercu-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pagination a {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .stat-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.2rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .documents-filters {
+        padding: 10px 12px;
+        border-radius: 12px;
+        gap: 8px;
+    }
+
+    .documents-filters .filter-group label {
+        font-size: 0.68rem;
+    }
+
+    .documents-filters .form-control {
+        padding: 7px 10px;
+        font-size: 0.76rem;
+        border-radius: 8px;
+    }
+
+    .upload-dropzone {
+        padding: 24px 14px;
+        border-radius: 14px;
+        border-width: 2px;
+    }
+
+    .upload-dropzone-icon {
+        font-size: 1.8rem;
+    }
+
+    .upload-dropzone h6 {
+        font-size: 0.82rem;
+    }
+
+    .upload-dropzone p {
+        font-size: 0.72rem;
+    }
+
+    .upload-formats {
+        font-size: 0.62rem;
+    }
+
+    .upload-form-card {
+        border-radius: 14px;
+    }
+
+    .upload-form-header {
+        padding: 14px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .upload-form-body {
+        padding: 14px;
+    }
+
+    .upload-form-footer {
+        padding: 10px 14px;
+        border-radius: 0 0 14px 14px;
+    }
+
+    .upload-files-list {
+        border-radius: 12px;
+    }
+
+    .upload-files-list-header {
+        padding: 10px 14px;
+        font-size: 0.78rem;
+    }
+
+    .upload-file-item {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .upload-file-name {
+        font-size: 0.72rem;
+    }
+
+    .upload-file-size {
+        font-size: 0.66rem;
+    }
+
+    .upload-progress-container {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .upload-result-success,
+    .upload-result-error {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .upload-result-success i,
+    .upload-result-error i {
+        font-size: 2rem;
+    }
+
+    .upload-result-success h5,
+    .upload-result-error h5 {
+        font-size: 0.95rem;
+    }
+
+    .document-apercu-info {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .document-apercu-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+    }
+
+    .table-header-info {
+        padding: 10px 14px;
+        font-size: 0.74rem;
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    /* Masquer certaines colonnes sur mobile */
+    .documents-table-card .table th:nth-child(5),
+    .documents-table-card .table td:nth-child(5),
+    .documents-table-card .table th:nth-child(7),
+    .documents-table-card .table td:nth-child(7),
+    .documents-table-card .table th:nth-child(9),
+    .documents-table-card .table td:nth-child(9) {
+        display: none;
+    }
+
+    .pagination a {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .pagination-wrapper {
+        padding: 10px 12px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .upload-dropzone {
+        padding: 20px 10px;
+    }
+
+    .upload-dropzone-icon {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .upload-dropzone h6 {
+        font-size: 0.75rem;
+    }
+
+    .upload-form-body {
+        padding: 10px;
+    }
+
+    .upload-files-list-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .upload-files-list-header .btn {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   22. IMPRESSION
+   ============================================================ */
+@media print {
+    .documents-filters,
+    .upload-dropzone,
+    .btn,
+    .upload-form-footer,
+    .no-print,
+    .breadcrumb,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .pagination-wrapper,
+    .resultats-header-right,
+    .toast-container {
+        display: none !important;
+    }
+
+    .documents-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+    }
+
+    .upload-form-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .upload-form-header {
+        background: #f1f5f9 !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+
+    .table thead th {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+}
+
+
+
+
+
+/* ============================================================
+   STATS CARDS — Styles de base (pour les stats des documents)
+   ============================================================ */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e1;
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.stat-icon.blue   { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.stat-icon.green  { background: linear-gradient(135deg, #10b981, #34d399); }
+.stat-icon.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.stat-icon.red    { background: linear-gradient(135deg, #ef4444, #f87171); }
+.stat-icon.cyan   { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+.stat-icon.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+
+.stat-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #64748b;
+}

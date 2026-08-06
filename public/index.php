@@ -87,8 +87,8 @@ $routes = [
     // Auth
     '/'                          => 'views/auth/login.php',
     '/login'                     => 'views/auth/login.php',
-    '/register'                  => 'views/auth/register.php',
     '/logout'                    => 'views/auth/logout.php',
+    '/forgot-password' => 'views/auth/forgot-password.php',
     
     // Dashboard
     '/dashboard'                 => 'views/dashboard/index.php',

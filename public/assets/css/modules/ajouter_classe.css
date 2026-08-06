@@ -463,3 +463,666 @@ select.form-control optgroup {
         border: 1px solid #ddd;
     }
 }
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS AJOUTER_CLASSE.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes checkBounce {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.3); }
+    50%  { transform: scale(0.85); }
+    70%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes feedbackShake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-5px); }
+    40%      { transform: translateX(5px); }
+    60%      { transform: translateX(-3px); }
+    80%      { transform: translateX(3px); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes previewFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   2. ANIMATION D'ENTRÉE DE LA CARTE
+   ============================================================ */
+.add-classe-card,
+.classe-form-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+/* ============================================================
+   3. CARTE FORMULAIRE — EFFETS DE SURVOL
+   ============================================================ */
+.classe-form-card:hover,
+.add-classe-card:hover {
+    transform: translateY(-2px);
+}
+
+.add-classe-card-icon,
+.classe-form-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.classe-form-card:hover .classe-form-icon,
+.add-classe-card:hover .add-classe-card-icon {
+    transform: scale(1.1) rotate(-8deg);
+}
+
+/* ============================================================
+   4. CHAMPS — EFFET FOCUS ET HOVER AMÉLIORÉS
+   ============================================================ */
+.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Input icon */
+.input-icon {
+    transition: all 0.3s ease;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+/* Select */
+select.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+select.form-control:hover {
+    cursor: pointer;
+}
+
+select.form-control option:hover {
+    background-color: var(--color-primary-lighter);
+}
+
+/* Textarea */
+textarea.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+textarea.form-control:focus {
+    min-height: 100px;
+}
+
+/* ============================================================
+   5. VALIDATION — FEEDBACK ANIMÉ
+   ============================================================ */
+.invalid-feedback {
+    animation: feedbackShake 0.5s ease;
+}
+
+.form-control.is-invalid {
+    animation: feedbackShake 0.4s ease;
+}
+
+.form-control.is-valid {
+    transition: all 0.3s ease;
+}
+
+/* ============================================================
+   6. SÉPARATEUR DE SECTION — EFFET
+   ============================================================ */
+.form-divider {
+    transition: all 0.3s ease;
+}
+
+.form-divider:hover {
+    border-color: var(--color-primary);
+}
+
+.form-divider::after {
+    transition: all 0.3s ease;
+}
+
+.form-divider:hover::after {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   7. TITRE DE SECTION — EFFET
+   ============================================================ */
+.form-section-header {
+    transition: all 0.3s ease;
+}
+
+.form-section-header:hover {
+    border-bottom-color: var(--color-primary);
+}
+
+.form-section-icon {
+    transition: all 0.3s ease;
+}
+
+.form-section-header:hover .form-section-icon {
+    transform: scale(1.1);
+    background-color: var(--color-primary);
+}
+
+.form-section-header:hover .form-section-icon i {
+    color: var(--color-white);
+}
+
+/* ============================================================
+   8. APERÇU CLASSE — EFFET D'APPARITION
+   ============================================================ */
+.classe-preview.show {
+    animation: previewFadeIn 0.4s ease;
+}
+
+.classe-preview-item {
+    transition: all 0.3s ease;
+}
+
+.classe-preview-item:hover {
+    transform: translateX(4px);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.08);
+}
+
+.classe-preview-item i {
+    transition: transform 0.3s ease;
+}
+
+.classe-preview-item:hover i {
+    transform: scale(1.2);
+}
+
+/* ============================================================
+   9. BOUTONS — EFFETS
+   ============================================================ */
+.add-classe-card-footer .btn,
+.classe-form-footer .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.add-classe-card-footer .btn-primary:hover,
+.classe-form-footer .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.add-classe-card-footer .btn-primary:active,
+.classe-form-footer .btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.add-classe-card-footer .btn-outline-primary:hover,
+.classe-form-footer .btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   10. HELP TEXT — EFFET
+   ============================================================ */
+.form-help {
+    transition: all 0.3s ease;
+}
+
+.form-help i {
+    transition: transform 0.3s ease;
+}
+
+.form-help:hover i {
+    transform: scale(1.2);
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   11. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: var(--color-white);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: var(--color-dark);
+    background: var(--color-gray-100);
+}
+
+/* ============================================================
+   12. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Desktop large */
+@media (min-width: 1400px) {
+    .add-classe-container {
+        max-width: 800px;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .add-classe-container {
+        max-width: 100%;
+    }
+
+    .classe-form-card {
+        max-width: 100%;
+    }
+}
+
+/* Tablette verticale */
+@media (max-width: 768px) {
+    .add-classe-card-header,
+    .classe-form-header {
+        padding: 18px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .add-classe-card-icon,
+    .classe-form-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+    }
+
+    .add-classe-card-header h5,
+    .classe-form-header h5 {
+        font-size: 0.95rem;
+    }
+
+    .add-classe-card-body,
+    .classe-form-body {
+        padding: 20px;
+    }
+
+    .add-classe-card-footer,
+    .classe-form-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .add-classe-card-footer .btn,
+    .classe-form-footer .btn {
+        width: 100%;
+        min-width: auto;
+        justify-content: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+
+    .form-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .classe-preview-grid {
+        flex-direction: column;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .add-classe-card,
+    .classe-form-card {
+        border-radius: 14px;
+    }
+
+    .add-classe-card-header,
+    .classe-form-header {
+        padding: 14px 16px;
+    }
+
+    .add-classe-card-icon,
+    .classe-form-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .add-classe-card-header h5,
+    .classe-form-header h5 {
+        font-size: 0.88rem;
+    }
+
+    .add-classe-card-header p,
+    .classe-form-header p {
+        font-size: 0.72rem;
+    }
+
+    .add-classe-card-body,
+    .classe-form-body {
+        padding: 14px;
+    }
+
+    .add-classe-card-footer,
+    .classe-form-footer {
+        padding: 12px 14px;
+    }
+
+    .form-control {
+        padding: 10px 12px 10px 36px;
+        font-size: 0.82rem;
+        border-radius: 10px;
+    }
+
+    .input-icon {
+        left: 12px;
+        font-size: 0.78rem;
+    }
+
+    .form-label {
+        font-size: 0.78rem;
+    }
+
+    .form-help {
+        font-size: 0.68rem;
+    }
+
+    .form-section-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+    }
+
+    .form-section-icon i {
+        font-size: 0.78rem;
+    }
+
+    .form-section-title {
+        font-size: 0.82rem;
+    }
+
+    .form-divider::after {
+        font-size: 0.4rem;
+        padding: 0 12px;
+    }
+
+    .classe-preview {
+        padding: 14px;
+    }
+
+    .classe-preview-item {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .add-classe-card-header,
+    .classe-form-header {
+        padding: 12px;
+    }
+
+    .add-classe-card-icon,
+    .classe-form-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .add-classe-card-body,
+    .classe-form-body {
+        padding: 12px;
+    }
+
+    .add-classe-card-footer,
+    .classe-form-footer {
+        padding: 10px 12px;
+    }
+
+    .form-control {
+        padding: 9px 10px 9px 32px;
+        font-size: 0.78rem;
+    }
+
+    .form-section-header {
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+    }
+}
+
+/* ============================================================
+   13. IMPRESSION
+   ============================================================ */
+@media print {
+    .add-classe-card-footer,
+    .classe-form-footer,
+    .btn,
+    .toast-container,
+    .breadcrumb,
+    .no-print {
+        display: none !important;
+    }
+
+    .add-classe-card-header,
+    .classe-form-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .add-classe-card-header h5,
+    .classe-form-header h5,
+    .add-classe-card-header p,
+    .classe-form-header p {
+        color: #000 !important;
+    }
+
+    .add-classe-card,
+    .classe-form-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .form-divider {
+        display: none;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}
+
+
+
+/* ============================================================
+   CORRECTION REDONDANCE — Simplification des sections du formulaire
+   ============================================================ */
+
+/* Supprimer les séparateurs entre les sections pour un flux continu */
+.classe-form-body .form-divider,
+.add-classe-card-body .form-divider {
+    display: none;
+}
+
+/* Simplifier les titres de section pour éviter la redondance avec les labels */
+.classe-form-body .form-section-title,
+.add-classe-card-body .form-section-title {
+    display: none;
+}
+
+/* Réduire l'espace entre les groupes quand les titres sont cachés */
+.classe-form-body .form-group,
+.add-classe-card-body .form-group {
+    margin-bottom: 16px;
+}
+
+/* Ajouter un léger espace avant les sections importantes (organisation, titulaire) */
+.classe-form-body .form-row + .form-group,
+.add-classe-card-body .form-row + .form-group {
+    margin-top: 8px;
+}
+
+/* Style alternatif : si tu veux garder les titres mais les rendre plus discrets */
+/* Décommente ce bloc si tu préfères des titres plus légers */
+/*
+.classe-form-body .form-section-title,
+.add-classe-card-body .form-section-title {
+    display: flex;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-gray-400);
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-color-light);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.classe-form-body .form-section-title i,
+.add-classe-card-body .form-section-title i {
+    font-size: 0.7rem;
+    color: var(--color-gray-400);
+}
+
+.classe-form-body .form-divider,
+.add-classe-card-body .form-divider {
+    display: block;
+    border-top: 1px solid var(--border-color-light);
+    margin: 16px 0;
+}
+
+.classe-form-body .form-divider::after,
+.add-classe-card-body .form-divider::after {
+    display: none;
+}
+*/

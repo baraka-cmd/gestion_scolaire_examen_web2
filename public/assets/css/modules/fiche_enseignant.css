@@ -542,3 +542,628 @@
         display: block !important;
     }
 }
+
+
+
+
+/* ============================================================
+   AJOUTS FICHE_ENSEIGNANT.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE
+   ============================================================ */
+.enseignant-hero {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.enseignant-tabs {
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.enseignant-panel.active {
+    animation: fadeInScale 0.35s ease;
+}
+
+/* ============================================================
+   3. HERO HEADER — EFFETS DE SURVOL
+   ============================================================ */
+.enseignant-hero {
+    transition: all 0.3s ease;
+}
+
+.enseignant-hero:hover {
+    box-shadow: 0 16px 40px rgba(44, 62, 144, 0.3);
+}
+
+.enseignant-hero-avatar {
+    transition: all 0.3s ease;
+}
+
+.enseignant-hero:hover .enseignant-hero-avatar {
+    transform: scale(1.05);
+}
+
+.enseignant-hero-name {
+    transition: color 0.3s ease;
+}
+
+/* Badges dans le hero */
+.hero-badge {
+    transition: all 0.3s ease;
+}
+
+.hero-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-badge.success:hover {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.hero-badge.warning:hover {
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.hero-badge.danger:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Boutons d'action */
+.enseignant-hero-actions .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enseignant-hero-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-print-fiche {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-print-fiche:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   4. ONGLETS — EFFETS
+   ============================================================ */
+.enseignant-tab {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enseignant-tab:hover {
+    background-color: var(--color-primary-lighter);
+}
+
+.enseignant-tab .tab-count {
+    transition: all 0.3s ease;
+}
+
+.enseignant-tab.active .tab-count {
+    animation: fadeInScale 0.3s ease;
+}
+
+/* ============================================================
+   5. CARTES D'INFORMATION — EFFETS DE SURVOL
+   ============================================================ */
+.enseignant-info-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enseignant-info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(44, 62, 144, 0.1);
+}
+
+.enseignant-info-card-icon {
+    transition: all 0.3s ease;
+}
+
+.enseignant-info-card:hover .enseignant-info-card-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.enseignant-info-field {
+    transition: all 0.25s ease;
+    padding: 6px 8px;
+    border-radius: 8px;
+    margin: 0 -8px;
+}
+
+.enseignant-info-field:hover {
+    background-color: #f8fafc;
+}
+
+/* ============================================================
+   6. CLASSE TITULAIRE — EFFETS
+   ============================================================ */
+.classe-titulaire-card {
+    transition: all 0.3s ease;
+}
+
+.classe-titulaire-card:hover {
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+    transform: translateY(-2px);
+}
+
+.classe-titulaire-stat {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.classe-titulaire-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+}
+
+.classe-titulaire-stat-value {
+    transition: all 0.3s ease;
+}
+
+.classe-titulaire-stat:hover .classe-titulaire-stat-value {
+    transform: scale(1.05);
+}
+
+/* Pas de classe */
+.no-classe-card {
+    transition: all 0.3s ease;
+}
+
+.no-classe-card:hover {
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   7. TABLEAU DE DONNÉES — SURVOL DES LIGNES (CORRIGÉ)
+   ============================================================ */
+.data-table-card .table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.data-table-card .table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(44,62,144,0.03) 0%, rgba(44,62,144,0.01) 50%, transparent 100%);
+}
+
+.data-table-card .table tbody tr td:first-child {
+    position: relative;
+}
+
+.data-table-card .table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.data-table-card .table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.data-table-card .table tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   8. SCROLLBAR HORIZONTALE
+   ============================================================ */
+.data-table-card .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 6px;
+}
+
+.data-table-card .table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+
+.data-table-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 16px;
+}
+
+.data-table-card .table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+}
+
+.data-table-card .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+/* ============================================================
+   9. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   10. RESPONSIVE COMPLET
+   ============================================================ */
+
+@media (min-width: 1400px) {
+    .enseignant-info-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .classe-titulaire-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .enseignant-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .enseignant-hero-actions {
+        justify-content: center;
+    }
+
+    .enseignant-hero-meta {
+        justify-content: center;
+    }
+
+    .enseignant-hero-badges {
+        justify-content: center;
+    }
+
+    .enseignant-tabs {
+        overflow-x: auto;
+    }
+
+    .enseignant-tab {
+        flex: none;
+        min-width: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .enseignant-hero {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .enseignant-hero-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8rem;
+        border-radius: 18px;
+    }
+
+    .enseignant-hero-name {
+        font-size: 1.2rem;
+    }
+
+    .enseignant-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .classe-titulaire-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .enseignant-tab span {
+        display: none;
+    }
+
+    .enseignant-tab {
+        min-width: auto;
+        padding: 14px 16px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 575px) {
+    .enseignant-hero {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .enseignant-hero-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 1.4rem;
+        border-radius: 16px;
+    }
+
+    .enseignant-hero-name {
+        font-size: 1.1rem;
+    }
+
+    .enseignant-hero-meta {
+        gap: 8px;
+    }
+
+    .enseignant-hero-meta span {
+        font-size: 0.74rem;
+    }
+
+    .hero-badge {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    .enseignant-info-card {
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .enseignant-info-card-header {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    .enseignant-info-card-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+    }
+
+    .enseignant-info-card-title {
+        font-size: 0.82rem;
+    }
+
+    .enseignant-info-field {
+        padding: 4px 0;
+    }
+
+    .enseignant-info-label {
+        font-size: 0.66rem;
+    }
+
+    .enseignant-info-value {
+        font-size: 0.8rem;
+    }
+
+    .classe-titulaire-card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .classe-titulaire-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .classe-titulaire-stat {
+        padding: 12px;
+    }
+
+    .classe-titulaire-stat-value {
+        font-size: 1.2rem;
+    }
+
+    .data-table-card {
+        border-radius: 14px;
+    }
+
+    .data-table-header {
+        padding: 12px 14px;
+    }
+
+    .data-table-title {
+        font-size: 0.82rem;
+    }
+
+    .no-classe-card {
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .no-classe-card i {
+        font-size: 2rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .enseignant-hero {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .enseignant-hero-avatar {
+        width: 52px;
+        height: 52px;
+        font-size: 1.1rem;
+        border-radius: 14px;
+    }
+
+    .enseignant-hero-name {
+        font-size: 1rem;
+    }
+
+    .enseignant-tab {
+        padding: 10px 12px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================================
+   11. IMPRESSION
+   ============================================================ */
+@media print {
+    .enseignant-hero-actions,
+    .enseignant-tabs,
+    .btn-print-fiche,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .toast-container,
+    .no-print {
+        display: none !important;
+    }
+
+    .enseignant-hero {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+        padding: 16px;
+    }
+
+    .enseignant-hero-name,
+    .enseignant-hero-meta span,
+    .hero-badge {
+        color: #000 !important;
+    }
+
+    .hero-badge {
+        background: #e2e8f0 !important;
+        border-color: #cbd5e1 !important;
+        color: #000 !important;
+    }
+
+    .enseignant-info-card,
+    .classe-titulaire-card,
+    .data-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .enseignant-panel {
+        display: block !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 10px;
+    }
+}

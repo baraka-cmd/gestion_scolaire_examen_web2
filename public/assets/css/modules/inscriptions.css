@@ -731,3 +731,954 @@
         font-size: 0.7rem;
     }
 }
+
+
+
+
+
+/* ============================================================
+   AJOUTS INSCRIPTIONS.CSS — Animations, finesses UI, pagination, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 12px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes arrowPulse {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(8px); }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.stats-grid .stat-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.05s both; }
+.stats-grid .stat-card:nth-child(2) { animation: slideInLeft 0.5s ease-out 0.15s both; }
+.stats-grid .stat-card:nth-child(3) { animation: slideInLeft 0.5s ease-out 0.25s both; }
+
+.inscriptions-table-card {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.reinscription-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+/* ============================================================
+   3. STATS CARDS — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.stat-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover .stat-icon {
+    transform: rotate(-5deg) scale(1.1);
+    animation: float 2s ease-in-out infinite;
+}
+
+.stat-card:hover .stat-value {
+    transform: scale(1.05);
+}
+
+.stat-icon,
+.stat-value {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   4. EN-TÊTE INSCRIPTIONS — STYLE AMÉLIORÉ
+   ============================================================ */
+.inscriptions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.inscriptions-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.inscriptions-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.inscriptions-header-left {
+    position: relative;
+    z-index: 1;
+}
+
+.inscriptions-header-left h4 {
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inscriptions-header-left h4 i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.inscriptions-header-left p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+}
+
+.inscriptions-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* Boutons dans l'en-tête */
+.inscriptions-header-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.inscriptions-header-right .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+}
+
+.inscriptions-header-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: var(--color-white);
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.inscriptions-header-right .btn-success {
+    background-color: #10b981;
+    color: var(--color-white);
+    border-color: #10b981;
+}
+
+.inscriptions-header-right .btn-success:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.inscriptions-header-right .btn-outline-primary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.inscriptions-header-right .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   5. FILTRES — EFFETS DE SURVOL ET FOCUS
+   ============================================================ */
+.inscriptions-filters {
+    transition: all 0.3s ease;
+}
+
+.inscriptions-filters:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.inscriptions-filters .filter-group select,
+.inscriptions-filters .filter-group input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.inscriptions-filters .filter-group select:hover,
+.inscriptions-filters .filter-group input:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.inscriptions-filters .filter-group select:focus,
+.inscriptions-filters .filter-group input:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   6. TABLEAU — SURVOL DES LIGNES (CORRIGÉ SANS DÉCALAGE)
+   ============================================================ */
+.inscriptions-table-card .table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.inscriptions-table-card .table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(44,62,144,0.03) 0%, rgba(44,62,144,0.01) 50%, transparent 100%);
+}
+
+.inscriptions-table-card .table tbody tr td:first-child {
+    position: relative;
+}
+
+.inscriptions-table-card .table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.inscriptions-table-card .table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.inscriptions-table-card .table tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   7. BADGES STATUT — EFFETS
+   ============================================================ */
+.statut-badge {
+    transition: all 0.25s ease;
+}
+
+.statut-badge:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   8. RÉINSCRIPTION — EFFETS DE SURVOL
+   ============================================================ */
+.reinscription-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reinscription-card:hover {
+    transform: translateY(-2px);
+}
+
+.reinscription-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reinscription-card:hover .reinscription-icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Flèche animée */
+.reinscription-arrow i {
+    animation: arrowPulse 2s ease-in-out infinite;
+}
+
+/* Résumé */
+.reinscription-summary-item {
+    transition: all 0.25s ease;
+}
+
+.reinscription-summary-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================================
+   9. LIGNE ÉLÈVE RÉINSCRIPTION — EFFETS
+   ============================================================ */
+.eleve-reinscription-row {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.eleve-reinscription-row:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(44, 62, 144, 0.1);
+}
+
+.eleve-reinscription-decision select {
+    transition: all 0.25s ease;
+}
+
+.eleve-reinscription-decision select:hover {
+    border-color: var(--color-primary);
+}
+
+/* ============================================================
+   10. TIMELINE HISTORIQUE — EFFETS
+   ============================================================ */
+.historique-content {
+    transition: all 0.3s ease;
+}
+
+.historique-item:hover .historique-content {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-color: var(--color-primary);
+}
+
+.historique-dot {
+    transition: all 0.3s ease;
+}
+
+.historique-item:hover .historique-dot {
+    transform: scale(1.3);
+}
+
+/* ============================================================
+   11. RECHERCHE ÉLÈVE — EFFETS
+   ============================================================ */
+.eleve-search-item {
+    transition: all 0.2s ease;
+}
+
+.eleve-search-item:hover {
+    background-color: var(--color-primary-lighter);
+    padding-left: 18px;
+}
+
+.eleve-search-item.selected {
+    background-color: #d1fae5;
+    border-left: 3px solid #10b981;
+}
+
+/* ============================================================
+   12. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    border-radius: 0 0 16px 16px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: var(--color-dark);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid var(--border-color);
+    background: var(--color-white);
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover {
+    background: var(--color-primary-lighter);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.15);
+}
+
+.pagination a.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.3);
+}
+
+.pagination a.active:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.pagination a.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--color-gray-50);
+}
+
+.pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    color: var(--color-gray-400);
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+/* ============================================================
+   13. SCROLLBAR HORIZONTALE STYLÉE
+   ============================================================ */
+.inscriptions-table-card .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+}
+
+.inscriptions-table-card .table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.inscriptions-table-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+.inscriptions-table-card .table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+}
+
+.inscriptions-table-card .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #1a274f, #3b4fa0);
+}
+
+.inscriptions-table-card .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+@media (max-width: 768px) {
+    .inscriptions-table-card .table-responsive::-webkit-scrollbar {
+        height: 4px;
+    }
+    .inscriptions-table-card .table-responsive::-webkit-scrollbar-track {
+        margin: 0 10px;
+    }
+}
+
+/* ============================================================
+   14. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-gray-400);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   15. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-row {
+    height: 50px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+}
+
+/* ============================================================
+   16. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   17. RESPONSIVE COMPLET
+   ============================================================ */
+
+@media (min-width: 1400px) {
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .reinscription-selectors {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 992px) {
+    .reinscription-selectors {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .reinscription-arrow {
+        transform: rotate(90deg);
+        padding: 8px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .inscriptions-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+        border-radius: 14px;
+    }
+
+    .inscriptions-header-left h4 {
+        font-size: 1rem;
+    }
+
+    .inscriptions-header-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .inscriptions-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 14px;
+    }
+
+    .inscriptions-filters .search-input {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .inscriptions-filters .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .inscriptions-filters .filter-group select {
+        width: 100%;
+    }
+
+    .eleve-reinscription-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .eleve-reinscription-decision,
+    .eleve-reinscription-destination {
+        width: 100%;
+    }
+
+    .eleve-reinscription-decision select {
+        width: 100%;
+    }
+
+    .reinscription-summary {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .reinscription-summary-item {
+        justify-content: space-between;
+    }
+
+    .inscription-form-card {
+        max-width: 100%;
+    }
+
+    .reinscription-body,
+    .inscription-form-body {
+        padding: 20px;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 16px;
+    }
+
+    .pagination a {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .inscriptions-header {
+        padding: 14px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+
+    .inscriptions-header-left h4 {
+        font-size: 0.9rem;
+    }
+
+    .inscriptions-header-right .btn {
+        font-size: 0.72rem;
+        padding: 7px 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .stat-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    .reinscription-header,
+    .inscription-form-header {
+        padding: 14px 16px;
+    }
+
+    .reinscription-icon,
+    .inscription-form-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .reinscription-body,
+    .inscription-form-body {
+        padding: 14px;
+    }
+
+    .eleve-reinscription-row {
+        padding: 12px 14px;
+    }
+
+    .eleve-reinscription-name {
+        font-size: 0.82rem;
+    }
+
+    .historique-timeline {
+        padding-left: 28px;
+    }
+
+    .pagination a {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 374px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .eleve-reinscription-row {
+        padding: 10px;
+    }
+}
+
+/* ============================================================
+   18. IMPRESSION
+   ============================================================ */
+@media print {
+    .inscriptions-header-right,
+    .inscriptions-filters,
+    .btn,
+    .actions-cell,
+    .eleve-reinscription-check,
+    .eleve-reinscription-decision,
+    .pagination-wrapper,
+    .toast-container,
+    .no-print {
+        display: none !important;
+    }
+
+    .inscriptions-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+        padding: 10px 0;
+    }
+
+    .inscriptions-header-left h4,
+    .inscriptions-header-left p {
+        color: #000 !important;
+    }
+
+    .inscriptions-table-card,
+    .reinscription-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}
+
+
+
+
+
+
+
+/* ============================================================
+   TABLE HEADER INFO — Style amélioré
+   ============================================================ */
+.table-header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+.table-header-info span {
+    font-size: 0.82rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.table-header-info strong {
+    color: #2c3e90;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.table-header-info i {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+/* ============================================================
+   RESPONSIVE — Table header info
+   ============================================================ */
+@media (max-width: 768px) {
+    .table-header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .table-header-info span {
+        font-size: 0.76rem;
+    }
+
+    .table-header-info strong {
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .table-header-info {
+        padding: 10px 14px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .table-header-info span {
+        font-size: 0.72rem;
+    }
+
+    .table-header-info strong {
+        font-size: 0.78rem;
+    }
+}

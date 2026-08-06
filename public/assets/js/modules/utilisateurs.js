@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================================
     // 1. ÉLÉMENTS DU DOM — LISTE
     // ============================================================
-    const tableUsers         = document.getElementById('tableUsers');
     const tbodyUsers         = document.getElementById('tbodyUsers');
     const searchInput        = document.getElementById('searchUsers');
     const filterRole         = document.getElementById('filterRole');
@@ -18,12 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnResetFilters    = document.getElementById('btnResetFilters');
     const paginationContainer = document.getElementById('paginationUsers');
     const totalUsersEl       = document.getElementById('totalUsers');
-    const btnAddUser         = document.getElementById('btnAddUser');
-
-    
     const flashMessage       = document.getElementById('flashMessage');
 
-    // Éléments du formulaire
+    // Éléments du formulaire (pour la modale)
     const userNom            = document.getElementById('user_nom');
     const userPrenom         = document.getElementById('user_prenom');
     const userEmail          = document.getElementById('user_email');
@@ -37,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentUserId = null;
 
     // ============================================================
-    // 2. FONCTIONS UTILITAIRES (si non définies dans main.js)
+    // 2. FONCTIONS UTILITAIRES
     // ============================================================
     function setButtonLoading(button) {
         if (!button) return;
@@ -84,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (tbodyUsers) {
             tbodyUsers.innerHTML = `
-                <tr><td colspan="7">
+                <tr><td colspan="6">
                     <div style="text-align:center;padding:30px;">
                         <i class="fa-solid fa-spinner fa-spin" style="font-size:1.5rem;color:var(--color-primary);"></i>
                         <p style="margin-top:10px;color:var(--color-gray-500);">Chargement...</p>
@@ -95,9 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData();
         formData.append('action', 'liste');
         formData.append('page', page);
-        formData.append('recherche', searchInput?.value || '');
-        formData.append('role', filterRole?.value || '');
-        formData.append('statut', filterStatut?.value || '');
+        formData.append('recherche', searchInput ? searchInput.value.trim() : '');
+        formData.append('role', filterRole ? filterRole.value : '');
+        formData.append('statut', filterStatut ? filterStatut.value : '');
 
         fetch('/gestion_scolaire/utilisateurs', {
             method: 'POST',
@@ -123,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderTable(utilisateurs) {
         if (!tbodyUsers) return;
 
-        if (utilisateurs.length === 0) {
+        if (!utilisateurs || utilisateurs.length === 0) {
             tbodyUsers.innerHTML = `
                 <tr>
-                    <td colspan="7">
+                    <td colspan="6">
                         <div class="empty-state">
                             <i class="fa-solid fa-users-slash"></i>
                             <p>Aucun utilisateur trouvé</p>
@@ -139,11 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const colors = ['blue', 'green', 'orange', 'purple', 'red', 'cyan'];
         tbodyUsers.innerHTML = utilisateurs.map((user, index) => `
             <tr>
+               
                 <td>
                     <div class="user-cell">
-                        <div class="user-avatar-placeholder ${colors[index % colors.length]}">
-                            ${escapeHtml(user.initials)}
-                        </div>
+                        ${user.photo 
+                            ? `<img src="/gestion_scolaire/${escapeHtml(user.photo)}" alt="Photo" class="user-avatar">`
+                            : `<div class="user-avatar-placeholder ${colors[index % colors.length]}">${escapeHtml(user.initials)}</div>`
+                        }
                         <div class="user-info">
                             <span class="user-name">
                                 <a href="/gestion_scolaire/utilisateurs/fiche/${user.id}">${escapeHtml(user.prenom)} ${escapeHtml(user.nom)}</a>
@@ -152,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </td>
-                <td><span class="role-badge ${user.role_nom.toLowerCase()}"><i class="fa-solid fa-circle"></i> ${escapeHtml(user.role_nom)}</span></td>
+                <td><span class="role-badge ${escapeHtml(user.role_nom).toLowerCase()}"><i class="fa-solid fa-circle"></i> ${escapeHtml(user.role_nom)}</span></td>
                 <td>${escapeHtml(user.login)}</td>
                 <td>${escapeHtml(user.derniere_connexion)}</td>
                 <td>
@@ -216,8 +214,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', debounce(() => loadUsers(1), 400));
     }
-    if (filterRole) filterRole.addEventListener('change', () => loadUsers(1));
-    if (filterStatut) filterStatut.addEventListener('change', () => loadUsers(1));
+    if (filterRole) {
+        filterRole.addEventListener('change', () => {
+            loadUsers(1);
+        });
+    }
+    if (filterStatut) {
+        filterStatut.addEventListener('change', () => {
+            loadUsers(1);
+        });
+    }
     if (btnResetFilters) {
         btnResetFilters.addEventListener('click', () => {
             if (searchInput) searchInput.value = '';
@@ -228,122 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    // 5. OUVERTURE MODALE AJOUT
-    // ============================================================
-    if (btnAddUser) {
-        btnAddUser.addEventListener('click', () => {
-            window.location.href = '/gestion_scolaire/utilisateurs/ajouter';
-        });
-    }
-
-    // ============================================================
-    // 6. ÉDITION D'UN UTILISATEUR
-    // ============================================================
-    window.editUser = function(id) {
-        currentUserId = id;
-        if (modalUserTitle) modalUserTitle.innerHTML = '<i class="fa-solid fa-pen-to-square"></i> Modifier l\'utilisateur';
-        if (passwordSection) {
-            passwordSection.style.display = 'none';
-        }
-
-        const formData = new FormData();
-        formData.append('action', 'getUtilisateur');
-        formData.append('id', id);
-
-        fetch('/gestion_scolaire/utilisateurs', {
-            method: 'POST',
-            body: formData,
-            headers: { 'X-Requested-With': 'XMLHttpRequest' }
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                const u = data.utilisateur;
-                if (userNom) userNom.value = u.nom;
-                if (userPrenom) userPrenom.value = u.prenom;
-                if (userEmail) userEmail.value = u.email;
-                if (userTelephone) userTelephone.value = u.telephone || '';
-                if (userLogin) userLogin.value = u.login;
-                if (userRoleId) userRoleId.value = u.role_id;
-                openModal();
-            } else {
-                showFlash('error', data.message);
-            }
-        })
-        .catch(() => showFlash('error', 'Erreur de connexion.'));
-    };
-
-    // ============================================================
-    // 7. SAUVEGARDE (AJOUT/MODIFICATION)
-    // ============================================================
-    if (btnSaveUser && formUser) {
-        btnSaveUser.addEventListener('click', async () => {
-            if (!validateUserForm()) return;
-
-            setButtonLoading(btnSaveUser);
-            const formData = new FormData(formUser);
-            formData.append('action', currentUserId ? 'modifier' : 'creer');
-            if (currentUserId) formData.append('id', currentUserId);
-
-            try {
-                const res = await fetch('/gestion_scolaire/utilisateurs', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                });
-                const data = await res.json();
-
-                if (data.success) {
-                    showFlash('success', data.message);
-                    closeModal();
-                    loadUsers(currentPage);
-                } else {
-                    showFlash('error', data.message);
-                    if (data.errors) {
-                        Object.keys(data.errors).forEach(field => {
-                            showFieldError('user_' + field, data.errors[field]);
-                        });
-                    }
-                }
-            } catch (err) {
-                showFlash('error', 'Erreur de connexion.');
-            } finally {
-                resetButtonLoading(btnSaveUser);
-            }
-        });
-    }
-
-    // ============================================================
-    // 8. SUPPRESSION
-    // ============================================================
-    window.deleteUser = function(id, nom) {
-        if (!confirm(`Êtes-vous sûr de vouloir supprimer "${nom}" ?\n\nCette action est irréversible.`)) {
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('action', 'supprimer');
-        formData.append('id', id);
-
-        fetch('/gestion_scolaire/utilisateurs', {
-            method: 'POST',
-            body: formData,
-            headers: { 'X-Requested-With': 'XMLHttpRequest' }
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                showFlash('success', data.message);
-                loadUsers(currentPage);
-            } else {
-                showFlash('error', data.message);
-            }
-        })
-        .catch(() => showFlash('error', 'Erreur de connexion.'));
-    };
-
-    // ============================================================
-    // 9. TOGGLE STATUT
+    // 5. TOGGLE STATUT
     // ============================================================
     window.toggleUserStatus = function(id, toggle) {
         const checkbox = toggle.querySelector('input');
@@ -374,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ============================================================
-    // 10. RÉINITIALISATION MOT DE PASSE
+    // 6. RÉINITIALISATION MOT DE PASSE
     // ============================================================
     window.resetPassword = function(id) {
         const newPassword = prompt('Nouveau mot de passe (min. 8 caractères) :');
@@ -402,14 +293,44 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ============================================================
-    // 11. VOIR FICHE
+    // 7. VOIR FICHE / ÉDITER / SUPPRIMER
     // ============================================================
     window.viewUser = function(id) {
         window.location.href = `/gestion_scolaire/utilisateurs/fiche/${id}`;
     };
 
+    window.editUser = function(id) {
+        window.location.href = `/gestion_scolaire/utilisateurs/modifier/${id}`;
+    };
+
+    window.deleteUser = function(id, nom) {
+        if (!confirm(`Êtes-vous sûr de vouloir supprimer "${nom}" ?\n\nCette action est irréversible.`)) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('action', 'supprimer');
+        formData.append('id', id);
+
+        fetch('/gestion_scolaire/utilisateurs', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                showFlash('success', data.message);
+                loadUsers(currentPage);
+            } else {
+                showFlash('error', data.message);
+            }
+        })
+        .catch(() => showFlash('error', 'Erreur de connexion.'));
+    };
+
     // ============================================================
-    // 12. VALIDATION FORMULAIRE
+    // 8. VALIDATION FORMULAIRE (MODALE)
     // ============================================================
     function validateUserForm() {
         clearFormErrors();
@@ -470,30 +391,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    // 13. MODALE
+    // 9. SAUVEGARDE FORMULAIRE (MODALE)
+    // ============================================================
+    if (typeof btnSaveUser !== 'undefined' && btnSaveUser && typeof formUser !== 'undefined' && formUser) {
+        btnSaveUser.addEventListener('click', async () => {
+            if (!validateUserForm()) return;
+
+            setButtonLoading(btnSaveUser);
+            const formData = new FormData(formUser);
+            formData.append('action', currentUserId ? 'modifier' : 'creer');
+            if (currentUserId) formData.append('id', currentUserId);
+
+            try {
+                const res = await fetch('/gestion_scolaire/utilisateurs', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showFlash('success', data.message);
+                    closeModal();
+                    loadUsers(currentPage);
+                } else {
+                    showFlash('error', data.message);
+                    if (data.errors) {
+                        Object.keys(data.errors).forEach(field => {
+                            showFieldError('user_' + field, data.errors[field]);
+                        });
+                    }
+                }
+            } catch (err) {
+                showFlash('error', 'Erreur de connexion.');
+            } finally {
+                resetButtonLoading(btnSaveUser);
+            }
+        });
+    }
+
+    // ============================================================
+    // 10. MODALE
     // ============================================================
     function openModal() {
-        if (modalUser) modalUser.classList.add('show');
-        document.body.style.overflow = 'hidden';
+        if (typeof modalUser !== 'undefined' && modalUser) {
+            modalUser.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     function closeModal() {
-        if (modalUser) modalUser.classList.remove('show');
-        document.body.style.overflow = '';
+        if (typeof modalUser !== 'undefined' && modalUser) {
+            modalUser.classList.remove('show');
+            document.body.style.overflow = '';
+        }
     }
 
     window.closeModal = closeModal;
 
-    if (btnCloseModal) btnCloseModal.addEventListener('click', closeModal);
-    if (btnCancelModal) btnCancelModal.addEventListener('click', closeModal);
-    if (modalUser) {
+    if (typeof btnCloseModal !== 'undefined' && btnCloseModal) {
+        btnCloseModal.addEventListener('click', closeModal);
+    }
+    if (typeof btnCancelModal !== 'undefined' && btnCancelModal) {
+        btnCancelModal.addEventListener('click', closeModal);
+    }
+    if (typeof modalUser !== 'undefined' && modalUser) {
         modalUser.addEventListener('click', function(e) {
             if (e.target === modalUser) closeModal();
         });
     }
 
     // ============================================================
-    // 14. MESSAGES FLASH
+    // 11. MESSAGES FLASH
     // ============================================================
     function showFlash(type, message) {
         if (!flashMessage) return;
@@ -513,13 +482,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    // 15. INITIALISATION
+    // 12. INITIALISATION
     // ============================================================
-    if (tbodyUsers) loadUsers(1);
+    if (tbodyUsers) {
+        loadUsers(1);
+    }
 
     // Exposer loadUsers globalement pour la pagination
     window.loadUsers = loadUsers;
 
-    console.log('%cModule Utilisateurs%c initialisé.',
+    console.log('%cModule Utilisateurs%c initialisé avec succès.',
         'color: #2c3e90; font-weight: 600;', 'color: #64748b;');
 });

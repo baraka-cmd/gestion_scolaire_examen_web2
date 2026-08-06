@@ -10,40 +10,70 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================================
     // 1. ÉLÉMENTS DU DOM
     // ============================================================
-    const loginForm           = document.getElementById('loginForm');
-    const emailInput          = document.getElementById('email');
-    const passwordInput       = document.getElementById('password');
-    const togglePassword      = document.getElementById('togglePassword');
-    const loginButton         = document.getElementById('loginButton');
-    const loginError          = document.getElementById('loginError');
-    const loginSuccess        = document.getElementById('loginSuccess');
-    const loginErrorMessage   = document.getElementById('loginErrorMessage');
-    const loginSuccessMessage = document.getElementById('loginSuccessMessage');
-    const passwordStrength    = document.getElementById('passwordStrength');
-    const strengthFill        = document.getElementById('strengthFill');
-    const strengthText        = document.getElementById('strengthText');
+    const loginForm            = document.getElementById('loginForm');
+    const emailInput           = document.getElementById('email');
+    const passwordInput        = document.getElementById('password');
+    const togglePassword       = document.getElementById('togglePassword');
+    const loginButton          = document.getElementById('loginButton');
+    const loginError           = document.getElementById('loginError');
+    const loginSuccess         = document.getElementById('loginSuccess');
+    const loginErrorMessage    = document.getElementById('loginErrorMessage');
+    const loginSuccessMessage  = document.getElementById('loginSuccessMessage');
+    const passwordStrength     = document.getElementById('passwordStrength');
+    const strengthFill         = document.getElementById('strengthFill');
+    const strengthText         = document.getElementById('strengthText');
     const passwordRequirements = document.getElementById('passwordRequirements');
-    const rememberCheckbox     = document.getElementById('remember');
+    const rememberCheckbox      = document.getElementById('remember');
 
     // Si on n'est pas sur la page login, sortir
     if (!loginForm) return;
 
-    // ============================================================
-    // 2. TOGGLE AFFICHAGE MOT DE PASSE (SANS REDÉCLARATION)
+                // ============================================================
+    // 2. TOGGLE AFFICHAGE MOT DE PASSE (CORRIGÉ POUR AUTOFILL)
     // ============================================================
     if (togglePassword && passwordInput) {
-        togglePassword.addEventListener('click', function(e) {
+        togglePassword.setAttribute('type', 'button');
+
+        togglePassword.addEventListener('click', function (e) {
             e.preventDefault();
-            
-            const isPassword = passwordInput.getAttribute('type') === 'password';
-            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
-            
+            e.stopPropagation();
+
+            // 1. Vérifier l'état actuel
+            const isPassword = passwordInput.type === 'password';
+
+            // 2. Bascule du type
+            passwordInput.type = isPassword ? 'text' : 'password';
+
+            // 3. Forcer le redessin du texte pré-rempli (Fix Bogue Autofill Chrome/Edge)
+            const currentVal = passwordInput.value;
+            passwordInput.value = '';
+            passwordInput.value = currentVal;
+
+            // 4. Neutraliser le masquage WebKit sur l'autofill
+            if (isPassword) {
+                passwordInput.style.webkitTextSecurity = 'none';
+            } else {
+                passwordInput.style.webkitTextSecurity = '';
+            }
+
+            // 5. Mise à jour de l'icône FontAwesome
             const icon = this.querySelector('i');
             if (icon) {
-                icon.className = isPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+                if (isPassword) {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
             }
+
+            // 6. Maintenir le focus sur le champ mot de passe
+            passwordInput.focus();
         });
     }
+
+
 
     // ============================================================
     // 3. VALIDATION EMAIL EN TEMPS RÉEL
@@ -62,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = emailInput.value.trim();
         const emailError = document.getElementById('emailError');
 
-        // Réinitialiser
         emailInput.classList.remove('is-invalid', 'is-valid');
 
         if (email === '') {
@@ -94,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         passwordInput.addEventListener('focus', () => {
-            if (passwordRequirements) {
+            if (passwordRequirements && passwordInput.value.trim() !== '') {
                 passwordRequirements.style.display = 'block';
             }
         });
@@ -114,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
         const passwordError = document.getElementById('passwordError');
 
-        // Réinitialiser
         passwordInput.classList.remove('is-invalid', 'is-valid');
 
         if (password === '') {
@@ -129,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
 
-        // Vérifier les exigences de complexité
         const hasUpper   = /[A-Z]/.test(password);
         const hasLower   = /[a-z]/.test(password);
         const hasNumber  = /[0-9]/.test(password);
@@ -161,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let score = 0;
 
-        // Critères
         if (password.length >= 8) score++;
         if (password.length >= 12) score++;
         if (/[A-Z]/.test(password)) score++;
@@ -171,9 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (/[A-Z].*[A-Z]/.test(password)) score++;
         if (/[0-9].*[0-9]/.test(password)) score++;
 
-        // Classes de force
         const strengthClasses = ['very-weak', 'weak', 'medium', 'strong', 'very-strong'];
-        const strengthLabels = ['Très faible', 'Faible', 'Moyen', 'Fort', 'Très fort'];
+        const strengthLabels  = ['Très faible', 'Faible', 'Moyen', 'Fort', 'Très fort'];
 
         let level;
         if (score <= 2) level = 0;
@@ -240,59 +265,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================================
     // 7. SOUMISSION DU FORMULAIRE
     // ============================================================
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-            hideMessages();
+        hideMessages();
 
-            const isEmailValid = validateEmailField();
-            const isPasswordValid = validatePasswordField();
+        const isEmailValid = validateEmailField();
+        const isPasswordValid = validatePasswordField();
 
-            if (!isEmailValid || !isPasswordValid) {
-                if (!isEmailValid) emailInput.focus();
-                else passwordInput.focus();
-                return;
-            }
+        if (!isEmailValid || !isPasswordValid) {
+            if (!isEmailValid) emailInput.focus();
+            else passwordInput.focus();
+            return;
+        }
 
-            if (typeof setButtonLoading === 'function') {
-                setButtonLoading(loginButton);
-            }
+        if (typeof setButtonLoading === 'function') {
+            setButtonLoading(loginButton);
+        }
 
-            const formData = new FormData(loginForm);
+        const formData = new FormData(loginForm);
 
-            try {
-                const response = await fetch('/gestion_scolaire/public/views/auth/login.php', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    showLoginSuccess(data.message || 'Connexion réussie. Redirection...');
-                    setTimeout(() => {
-                        window.location.href = data.redirect || '/gestion_scolaire/dashboard';
-                    }, 800);
-                } else {
-                    showLoginError(data.message || 'Identifiants incorrects.');
-                    if (typeof resetButtonLoading === 'function') {
-                        resetButtonLoading(loginButton);
-                    }
-                    shakeForm();
+        try {
+            const response = await fetch('/gestion_scolaire/public/views/auth/login.php', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
-            } catch (error) {
-                showLoginError('Erreur de connexion au serveur. Veuillez réessayer.');
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showLoginSuccess(data.message || 'Connexion réussie. Redirection...');
+                setTimeout(() => {
+                    window.location.href = data.redirect || '/gestion_scolaire/dashboard';
+                }, 800);
+            } else {
+                showLoginError(data.message || 'Identifiants incorrects.');
                 if (typeof resetButtonLoading === 'function') {
                     resetButtonLoading(loginButton);
                 }
-                console.error('Erreur login:', error);
+                shakeForm();
             }
-        });
-    }
+        } catch (error) {
+            showLoginError('Erreur de connexion au serveur. Veuillez réessayer.');
+            if (typeof resetButtonLoading === 'function') {
+                resetButtonLoading(loginButton);
+            }
+            console.error('Erreur login:', error);
+        }
+    });
 
     // ============================================================
     // 8. AFFICHAGE DES MESSAGES
@@ -335,9 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     // ============================================================
-    // 11. LIEN MOT DE PASSE OUBLIÉ
+    // 10. LIEN MOT DE PASSE OUBLIÉ
     // ============================================================
     const forgotLink = document.getElementById('forgotPasswordLink') || document.querySelector('.forgot-link');
     if (forgotLink) {
@@ -349,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    // 12. RESTAURER L'EMAIL SI "SE SOUVENIR DE MOI"
+    // 11. RESTAURER L'EMAIL SI "SE SOUVENIR DE MOI"
     // ============================================================
     if (emailInput && rememberCheckbox) {
         if (typeof getCookie === 'function') {
@@ -376,14 +398,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    // 13. FOCUS AUTOMATIQUE
+    // 12. FOCUS AUTOMATIQUE
     // ============================================================
     if (emailInput && emailInput.value.trim() !== '') {
         passwordInput?.focus();
     }
 
     // ============================================================
-    // 14. ANIMATION CSS SUPPLÉMENTAIRE
+    // 13. ANIMATION CSS SUPPLÉMENTAIRE
     // ============================================================
     const style = document.createElement('style');
     style.textContent = `

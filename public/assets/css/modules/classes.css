@@ -719,3 +719,947 @@
         border: 1px solid #ddd;
     }
 }
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS CLASSES.CSS — Animations, finesses UI, pagination, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes progressGrow {
+    from { width: 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES CARTES
+   ============================================================ */
+.classes-grid .classe-card:nth-child(1)  { animation: fadeInUp 0.5s ease-out 0.05s both; }
+.classes-grid .classe-card:nth-child(2)  { animation: fadeInUp 0.5s ease-out 0.10s both; }
+.classes-grid .classe-card:nth-child(3)  { animation: fadeInUp 0.5s ease-out 0.15s both; }
+.classes-grid .classe-card:nth-child(4)  { animation: fadeInUp 0.5s ease-out 0.20s both; }
+.classes-grid .classe-card:nth-child(5)  { animation: fadeInUp 0.5s ease-out 0.25s both; }
+.classes-grid .classe-card:nth-child(6)  { animation: fadeInUp 0.5s ease-out 0.30s both; }
+.classes-grid .classe-card:nth-child(7)  { animation: fadeInUp 0.5s ease-out 0.35s both; }
+.classes-grid .classe-card:nth-child(8)  { animation: fadeInUp 0.5s ease-out 0.40s both; }
+
+/* ============================================================
+   3. CARTE CLASSE — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.classe-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet brillance au survol */
+.classe-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44,62,144,0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.classe-card:hover::after {
+    opacity: 1;
+}
+
+.classe-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-primary);
+}
+
+/* Icône de la carte */
+.classe-card-icon {
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.classe-card:hover .classe-card-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* Titre */
+.classe-card-title h5 {
+    position: relative;
+    z-index: 1;
+}
+
+/* Lignes d'info */
+.classe-info-row {
+    position: relative;
+    z-index: 1;
+    transition: all 0.25s ease;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin: 2px -10px;
+}
+
+.classe-info-row:hover {
+    background-color: var(--color-gray-50);
+}
+
+.classe-info-row i {
+    transition: transform 0.3s ease;
+}
+
+.classe-info-row:hover i {
+    transform: scale(1.2);
+    color: var(--color-primary-dark);
+}
+
+/* Pied de carte */
+.classe-card-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.classe-badge {
+    transition: all 0.3s ease;
+}
+
+.classe-card:hover .classe-badge {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   4. VUE TABLEAU — SURVOL DES LIGNES (CORRIGÉ)
+   ============================================================ */
+.classes-table-card .table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.classes-table-card .table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(44,62,144,0.03) 0%, rgba(44,62,144,0.01) 50%, transparent 100%);
+}
+
+/* Barre latérale sur la première cellule — SANS décalage */
+.classes-table-card .table tbody tr td:first-child {
+    position: relative;
+}
+
+.classes-table-card .table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.classes-table-card .table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.classes-table-card .table tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.classes-table-card .table tbody tr:hover .classe-niveau-badge {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   5. BARRE DE PROGRESSION — ANIMATION
+   ============================================================ */
+.capacity-bar-fill {
+    animation: progressGrow 1s ease-out;
+}
+
+.capacity-bar-track {
+    transition: all 0.3s ease;
+}
+
+.classe-card:hover .capacity-bar-track {
+    box-shadow: 0 0 0 2px rgba(44, 62, 144, 0.1);
+}
+
+/* ============================================================
+   6. FILTRES — EFFETS DE SURVOL ET FOCUS
+   ============================================================ */
+.classes-filters {
+    transition: all 0.3s ease;
+}
+
+.classes-filters .filter-group select,
+.classes-filters .filter-group input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.classes-filters .filter-group select:hover,
+.classes-filters .filter-group input:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.classes-filters .filter-group select:focus,
+.classes-filters .filter-group input:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+.search-wrapper i {
+    transition: color 0.3s ease;
+}
+
+.search-input:focus ~ i,
+.search-wrapper:focus-within i {
+    color: var(--color-primary);
+}
+
+/* Bouton reset */
+.btn-reset-filters {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-reset-filters:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.btn-reset-filters:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   7. FICHE DÉTAIL — EFFETS DE SURVOL
+   ============================================================ */
+.detail-stat {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.detail-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(44, 62, 144, 0.12);
+    border-color: var(--color-primary);
+}
+
+.detail-stat-value {
+    transition: all 0.3s ease;
+}
+
+.detail-stat:hover .detail-stat-value {
+    transform: scale(1.1);
+}
+
+/* Titulaire */
+.titulaire-card {
+    transition: all 0.3s ease;
+}
+
+.titulaire-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.15);
+}
+
+.titulaire-avatar {
+    transition: all 0.3s ease;
+}
+
+.titulaire-card:hover .titulaire-avatar {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.titulaire-empty {
+    transition: all 0.3s ease;
+}
+
+.titulaire-empty:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+}
+
+/* ============================================================
+   8. BADGE NIVEAU — EFFET SURVOL
+   ============================================================ */
+.classe-niveau-badge {
+    transition: all 0.3s ease;
+}
+
+.classe-niveau-badge:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   9. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    margin-top: 20px;
+    box-shadow: var(--shadow-xs);
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: var(--color-dark);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination a,
+.pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid var(--border-color);
+    background: var(--color-white);
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover,
+.pagination-btn:hover {
+    background: var(--color-primary-lighter);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.15);
+}
+
+.pagination a.active,
+.pagination-btn.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.3);
+}
+
+.pagination a.active:hover,
+.pagination-btn.active:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.pagination a.disabled,
+.pagination-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--color-gray-50);
+}
+
+.pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    color: var(--color-gray-400);
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+/* ============================================================
+   10. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-gray-400);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   11. SKELETON LOADING AMÉLIORÉ
+   ============================================================ */
+.skeleton-classe-card {
+    height: 220px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 16px;
+}
+
+.skeleton-row {
+    height: 50px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+}
+
+/* ============================================================
+   12. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: var(--color-white);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: var(--color-dark);
+    background: var(--color-gray-100);
+}
+
+/* ============================================================
+   13. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .classes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 24px;
+    }
+
+    .classe-detail-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Desktop standard */
+@media (max-width: 1399px) {
+    .classes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+/* Petit desktop / Tablette paysage */
+@media (max-width: 1199px) {
+    .classes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 16px;
+    }
+
+    .classe-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .classes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 14px;
+    }
+
+    .classe-card-header {
+        padding: 16px 20px;
+    }
+
+    .classe-card-body {
+        padding: 16px 20px;
+    }
+
+    .classe-card-footer {
+        padding: 12px 20px;
+    }
+
+    .classe-detail-header {
+        padding: 20px 24px;
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .classe-detail-actions {
+        justify-content: center;
+    }
+
+    .classe-detail-meta {
+        justify-content: center;
+    }
+
+    .classe-detail-body {
+        padding: 20px 24px;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagination-info {
+        text-align: center;
+    }
+}
+
+/* Tablette verticale / Grand mobile */
+@media (max-width: 768px) {
+    .classes-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .classes-header-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .classes-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 14px;
+    }
+
+    .classes-filters .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .classes-filters .filter-group label {
+        margin-bottom: 4px;
+    }
+
+    .classes-filters .search-input {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .classes-filters .filter-group select,
+    .classes-filters .filter-group input {
+        width: 100%;
+    }
+
+    .btn-reset-filters {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .classes-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .classe-card-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .classe-card-title h5 {
+        font-size: 0.95rem;
+    }
+
+    .classe-detail-header {
+        padding: 16px;
+    }
+
+    .classe-detail-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+    }
+
+    .classe-detail-body {
+        padding: 16px;
+    }
+
+    .classe-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .detail-stat {
+        padding: 14px;
+    }
+
+    .detail-stat-value {
+        font-size: 1.4rem;
+    }
+
+    .titulaire-card,
+    .titulaire-empty {
+        padding: 14px;
+    }
+
+    .pagination a,
+    .pagination-btn {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .pagination-dots {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .classes-header-left h4 {
+        font-size: 1rem;
+    }
+
+    .classes-header-right {
+        gap: 6px;
+    }
+
+    .classes-header-right select,
+    .classes-header-right .btn {
+        font-size: 0.72rem;
+        padding: 6px 10px;
+    }
+
+    .classe-card {
+        border-radius: 14px;
+    }
+
+    .classe-card-header {
+        padding: 14px 16px;
+        gap: 10px;
+    }
+
+    .classe-card-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    .classe-card-title h5 {
+        font-size: 0.88rem;
+    }
+
+    .classe-card-title span {
+        font-size: 0.7rem;
+    }
+
+    .classe-card-body {
+        padding: 14px 16px;
+    }
+
+    .classe-info-row {
+        font-size: 0.78rem;
+        padding: 6px 8px;
+        margin: 1px -8px;
+    }
+
+    .classe-card-footer {
+        padding: 10px 16px;
+    }
+
+    .classe-badge {
+        font-size: 0.68rem;
+        padding: 3px 8px;
+    }
+
+    .classe-detail-header {
+        padding: 14px;
+    }
+
+    .classe-detail-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        font-size: 1.2rem;
+    }
+
+    .classe-detail-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .classe-detail-body {
+        padding: 14px;
+    }
+
+    .classe-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .detail-stat {
+        padding: 12px;
+    }
+
+    .detail-stat-value {
+        font-size: 1.2rem;
+    }
+
+    .detail-stat-label {
+        font-size: 0.72rem;
+    }
+
+    .titulaire-avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .pagination-wrapper {
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
+
+    .pagination a,
+    .pagination-btn {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .pagination-dots {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .classe-card-header {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .classe-card-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .classe-card-body {
+        padding: 12px;
+    }
+
+    .classe-card-footer {
+        padding: 8px 12px;
+    }
+
+    .classe-detail-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .detail-stat {
+        padding: 10px;
+    }
+
+    .detail-stat-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================================
+   14. IMPRESSION
+   ============================================================ */
+@media print {
+    .classes-header-right,
+    .classes-filters,
+    .classe-card-footer .btn,
+    .classe-detail-actions,
+    .pagination-wrapper,
+    .btn-reset-filters,
+    .toast-container,
+    .no-print {
+        display: none !important;
+    }
+
+    .classe-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .classe-card-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .classe-card-header h5,
+    .classe-card-header span {
+        color: #000 !important;
+    }
+
+    .classe-detail-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .classe-detail-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}

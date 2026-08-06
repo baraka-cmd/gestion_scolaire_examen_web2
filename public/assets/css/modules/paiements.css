@@ -850,3 +850,1396 @@
 .stat-change.neutral {
     color: var(--color-gray-400);
 }
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS PAIEMENTS.CSS — Animations, finesses UI, pagination, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes bounceIn {
+    0%   { transform: scale(0.3); opacity: 0; }
+    50%  { transform: scale(1.05); }
+    70%  { transform: scale(0.95); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes progressGrow {
+    from { width: 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.retards-stats .retard-stat-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.05s both; }
+.retards-stats .retard-stat-card:nth-child(2) { animation: slideInLeft 0.5s ease-out 0.12s both; }
+.retards-stats .retard-stat-card:nth-child(3) { animation: slideInLeft 0.5s ease-out 0.19s both; }
+.retards-stats .retard-stat-card:nth-child(4) { animation: slideInLeft 0.5s ease-out 0.26s both; }
+
+.retards-table-card {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.paiement-form-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.info-card-custom:nth-child(1) { animation: slideInRight 0.5s ease-out 0.1s both; }
+.info-card-custom:nth-child(2) { animation: slideInRight 0.5s ease-out 0.2s both; }
+
+.recu-document {
+    animation: fadeInScale 0.5s ease-out 0.15s both;
+}
+
+/* ============================================================
+   3. STATS CARDS — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.retard-stat-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.retard-stat-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44,62,144,0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.retard-stat-card:hover::after {
+    opacity: 1;
+}
+
+.retard-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.retard-stat-card:hover .retard-stat-icon {
+    transform: rotate(-5deg) scale(1.1);
+    animation: float 2s ease-in-out infinite;
+}
+
+.retard-stat-card:hover .retard-stat-value {
+    transform: scale(1.05);
+}
+
+.retard-stat-icon,
+.retard-stat-value {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   4. FILTRES — EFFETS DE SURVOL ET FOCUS
+   ============================================================ */
+.retards-filters {
+    transition: all 0.3s ease;
+}
+
+.retards-filters:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.retards-filters .filter-group select,
+.retards-filters .filter-group input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.retards-filters .filter-group select:hover,
+.retards-filters .filter-group input:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.retards-filters .filter-group select:focus,
+.retards-filters .filter-group input:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   5. TABLEAU — SURVOL DES LIGNES (CORRIGÉ SANS DÉCALAGE)
+   ============================================================ */
+.retards-table-card .table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.retards-table-card .table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(44,62,144,0.03) 0%, rgba(44,62,144,0.01) 50%, transparent 100%);
+}
+
+.retards-table-card .table tbody tr td:first-child {
+    position: relative;
+}
+
+.retards-table-card .table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.retards-table-card .table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.retards-table-card .table tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.retards-table-card .table tbody tr:hover strong {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   6. TABLE HEADER INFO — STYLE AMÉLIORÉ
+   ============================================================ */
+.table-header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.table-header-info span {
+    font-size: 0.82rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.table-header-info strong {
+    color: #2c3e90;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.table-header-info i {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+/* ============================================================
+   7. BARRE DE PROGRESSION IMPAYÉS — ANIMATION
+   ============================================================ */
+.retards-table-card .table tbody td .progress-bar-fill {
+    animation: progressGrow 1s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.retards-table-card .table tbody td .progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+    background-size: 200% 100%;
+}
+
+/* ============================================================
+   8. BADGES — EFFETS
+   ============================================================ */
+.badge {
+    transition: all 0.25s ease;
+}
+
+.badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================================
+   9. FORMULAIRE PAIEMENT — EFFETS
+   ============================================================ */
+.paiement-form-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.paiement-form-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.paiement-form-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.paiement-form-card:hover .paiement-form-icon {
+    transform: scale(1.1) rotate(-8deg);
+    animation: float 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   10. CHAMPS DE FORMULAIRE — EFFETS
+   ============================================================ */
+.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.1);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   11. SECTIONS FORMULAIRE — EFFETS
+   ============================================================ */
+.form-section-icon {
+    transition: all 0.3s ease;
+}
+
+.form-section-header:hover .form-section-icon {
+    transform: scale(1.1);
+    background-color: var(--color-primary);
+}
+
+.form-section-header:hover .form-section-icon i {
+    color: var(--color-white);
+}
+
+.form-section-title {
+    transition: color 0.3s ease;
+}
+
+.form-section-header:hover .form-section-title {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   12. RECHERCHE ÉLÈVE — EFFETS
+   ============================================================ */
+.resultat-eleve-item {
+    transition: all 0.2s ease;
+}
+
+.resultat-eleve-item:hover {
+    background-color: var(--color-primary-lighter);
+    padding-left: 20px;
+}
+
+.resultat-eleve-avatar {
+    transition: transform 0.3s ease;
+}
+
+.resultat-eleve-item:hover .resultat-eleve-avatar {
+    transform: scale(1.1);
+}
+
+/* Élève trouvé */
+.eleve-trouve-card {
+    transition: all 0.3s ease;
+}
+
+.eleve-trouve-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+}
+
+.eleve-trouve-avatar {
+    transition: transform 0.3s ease;
+}
+
+.eleve-trouve-card:hover .eleve-trouve-avatar {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   13. MONTANT ATTENDU — EFFETS
+   ============================================================ */
+.paiement-montant-attendu {
+    transition: all 0.3s ease;
+}
+
+.paiement-montant-attendu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.montant-attendu-valeur {
+    transition: all 0.3s ease;
+}
+
+.paiement-montant-attendu:hover .montant-attendu-valeur {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   14. REÇU — EFFETS DE SURVOL
+   ============================================================ */
+.recu-document {
+    transition: all 0.3s ease;
+}
+
+.recu-document:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.recu-logo {
+    transition: all 0.3s ease;
+}
+
+.recu-document:hover .recu-logo {
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.recu-section {
+    transition: all 0.3s ease;
+}
+
+.recu-section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-color: var(--color-primary);
+}
+
+.recu-field.highlight {
+    transition: all 0.3s ease;
+}
+
+.recu-field.highlight:hover {
+    background-color: #fde68a;
+}
+
+.recu-signature-block {
+    transition: all 0.3s ease;
+}
+
+.recu-signature-block:hover .recu-signature-line {
+    border-bottom-color: var(--color-primary);
+    border-bottom-width: 2px;
+}
+
+.recu-signature-block:hover span {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   15. CARTES INFO — EFFETS DE SURVOL
+   ============================================================ */
+.info-card-custom {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-card-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.info-card-custom-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.info-card-custom-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover .info-card-custom-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.info-card-custom-icon.blue   { background-color: #e8eaf6; color: #2c3e90; }
+.info-card-custom-icon.green  { background-color: #d1fae5; color: #10b981; }
+.info-card-custom-icon.orange { background-color: #fef3c7; color: #f59e0b; }
+.info-card-custom-icon.red    { background-color: #fee2e2; color: #ef4444; }
+.info-card-custom-icon.purple { background-color: #ede9fe; color: #8b5cf6; }
+.info-card-custom-icon.cyan   { background-color: #dbeafe; color: #06b6d4; }
+
+.info-card-custom-header h6 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.info-card-custom:hover .info-card-custom-header h6 {
+    color: var(--color-primary);
+}
+
+.info-card-custom-body {
+    padding: 16px 20px;
+}
+
+/* ============================================================
+   16. INFO LIST — EFFETS
+   ============================================================ */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-list li {
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+    padding: 6px 10px 6px 20px;
+    position: relative;
+    line-height: 1.5;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    margin: 0 -8px;
+}
+
+.info-list li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.info-list li:hover {
+    background-color: #f8fafc;
+    transform: translateX(4px);
+}
+
+.info-list li:hover::before {
+    background-color: #1a274f;
+    transform: scale(1.3);
+}
+
+.info-list li strong {
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+/* ============================================================
+   17. HELP TEXT — EFFET
+   ============================================================ */
+.form-help {
+    transition: all 0.3s ease;
+}
+
+.form-help i {
+    transition: transform 0.3s ease;
+}
+
+.form-help:hover i {
+    transform: scale(1.2);
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   18. BOUTONS — EFFETS
+   ============================================================ */
+.paiement-form-footer .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.paiement-form-footer .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.paiement-form-footer .btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.paiement-form-footer .btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   19. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    border-radius: 0 0 20px 20px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: #1e293b;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover {
+    background: #e8eaf6;
+    border-color: #2c3e90;
+    color: #2c3e90;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.15);
+}
+
+.pagination a.active {
+    background: #2c3e90;
+    color: #ffffff;
+    border-color: #2c3e90;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.3);
+}
+
+.pagination a.active:hover {
+    background: #1a274f;
+    color: #ffffff;
+}
+
+.pagination a.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #f1f5f9;
+}
+
+.pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+/* ============================================================
+   20. SCROLLBAR HORIZONTALE STYLÉE
+   ============================================================ */
+.retards-table-card .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #1a274f, #3b4fa0);
+}
+
+.retards-table-card .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+@media (max-width: 768px) {
+    .retards-table-card .table-responsive::-webkit-scrollbar {
+        height: 4px;
+    }
+    .retards-table-card .table-responsive::-webkit-scrollbar-track {
+        margin: 0 10px;
+    }
+}
+
+/* ============================================================
+   21. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-gray-400);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   22. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-row {
+    height: 50px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+}
+
+/* ============================================================
+   23. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   24. RESPONSIVE COMPLET
+   ============================================================ */
+
+@media (min-width: 1400px) {
+    .paiement-form-grid {
+        grid-template-columns: 1fr 400px;
+        gap: 28px;
+    }
+
+    .retards-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1199px) {
+    .paiement-form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .retard-stat-card {
+        padding: 16px 18px;
+    }
+
+    .retard-stat-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+    }
+
+    .retard-stat-value {
+        font-size: 1.5rem;
+    }
+
+    .paiement-form-body {
+        padding: 20px;
+    }
+
+    .paiement-form-footer {
+        padding: 14px 20px;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagination-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .retards-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .retard-stat-card {
+        padding: 14px;
+    }
+
+    .retard-stat-value {
+        font-size: 1.3rem;
+    }
+
+    .retards-filters {
+        flex-direction: column;
+        padding: 14px 16px;
+    }
+
+    .retards-filters .filter-group {
+        min-width: 100%;
+    }
+
+    .retards-filters .filter-group select,
+    .retards-filters .filter-group input {
+        width: 100%;
+    }
+
+    .paiement-form-header {
+        padding: 18px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .paiement-form-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .paiement-form-body {
+        padding: 18px;
+    }
+
+    .paiement-form-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .paiement-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .recu-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recu-header-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .recu-logo {
+        margin: 0 auto;
+    }
+
+    .recu-titre-wrapper {
+        text-align: center;
+    }
+
+    .recu-signatures {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .recu-signature-block {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .table-header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .table-header-info strong {
+        font-size: 0.82rem;
+    }
+
+    .pagination a {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 575px) {
+    .retards-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .retard-stat-card {
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+
+    .retard-stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+
+    .retard-stat-value {
+        font-size: 1.2rem;
+    }
+
+    .retard-stat-label {
+        font-size: 0.72rem;
+    }
+
+    .stat-change {
+        font-size: 0.68rem;
+    }
+
+    .paiement-form-card {
+        border-radius: 14px;
+    }
+
+    .paiement-form-header {
+        padding: 14px;
+    }
+
+    .paiement-form-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .paiement-form-header h5 {
+        font-size: 0.9rem;
+    }
+
+    .paiement-form-body {
+        padding: 14px;
+    }
+
+    .paiement-form-footer {
+        padding: 10px 14px;
+    }
+
+    .form-control {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+        border-radius: 10px;
+    }
+
+    .form-section-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.78rem;
+    }
+
+    .form-section-title {
+        font-size: 0.82rem;
+    }
+
+    .montant-attendu-valeur {
+        font-size: 1.4rem;
+    }
+
+    .recu-header {
+        padding: 16px;
+    }
+
+    .recu-body {
+        padding: 16px;
+    }
+
+    .recu-section {
+        padding: 12px 14px;
+    }
+
+    .recu-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .recu-montant {
+        font-size: 1rem;
+    }
+
+    .info-card-custom {
+        border-radius: 14px;
+    }
+
+    .info-card-custom-header {
+        padding: 12px 14px;
+    }
+
+    .info-card-custom-body {
+        padding: 12px 14px;
+    }
+
+    .info-card-custom-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+    }
+
+    .info-card-custom-header h6 {
+        font-size: 0.82rem;
+    }
+
+    .info-list li {
+        font-size: 0.76rem;
+        padding: 5px 8px 5px 18px;
+    }
+
+    .pagination a {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .pagination-wrapper {
+        padding: 10px 12px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .retards-stats {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .recu-header {
+        padding: 12px;
+    }
+
+    .recu-body {
+        padding: 12px;
+    }
+}
+
+/* ============================================================
+   25. IMPRESSION
+   ============================================================ */
+@media print {
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .pagination-wrapper,
+    .toast-container,
+    #flashMessage,
+    .btn {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff !important;
+        font-size: 11px;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .recu-document {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        max-width: 100%;
+    }
+
+    .recu-header {
+        border-bottom: 2px double #000;
+        padding: 10px 0;
+    }
+
+    .recu-section {
+        background: #fff !important;
+        border: 1px solid #ccc;
+    }
+
+    .recu-signature-line {
+        border-bottom: 1px solid #000;
+    }
+
+    .retards-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    @page {
+        size: A5 portrait;
+        margin: 8mm;
+    }
+}
+
+
+
+
+
+
+
+/* ============================================================
+   SCROLLBAR HORIZONTALE — Tableau des impayés
+   ============================================================ */
+.retards-table-card .table-responsive {
+    overflow-x: auto !important;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    position: relative;
+    max-width: 100%;
+}
+
+/* S'assurer que le tableau a une largeur minimale qui force le scroll */
+.retards-table-card .table-responsive table {
+    min-width: 900px;
+    width: max-content;
+}
+
+/* Barre de défilement horizontale — Webkit (Chrome, Edge, Safari) */
+.retards-table-card .table-responsive::-webkit-scrollbar {
+    height: 10px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 16px;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+    cursor: pointer;
+}
+
+.retards-table-card .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #1a274f, #3b4fa0);
+}
+
+/* Barre de défilement horizontale — Firefox */
+.retards-table-card .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+/* ============================================================
+   INDICATEUR "GLISSER POUR VOIR PLUS" SUR MOBILE
+   ============================================================ */
+.table-scroll-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0 6px 0;
+    font-size: 0.7rem;
+    color: #64748b;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.table-scroll-indicator i {
+    font-size: 0.65rem;
+    color: #2c3e90;
+    animation: scrollHintBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollHintBounce {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50%      { transform: translateX(6px); opacity: 1; }
+}
+
+/* Cacher l'indicateur sur grand écran */
+@media (min-width: 993px) {
+    .table-scroll-indicator {
+        display: none;
+    }
+}
+
+/* Sur mobile, barre plus fine */
+@media (max-width: 768px) {
+    .retards-table-card .table-responsive::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .retards-table-card .table-responsive::-webkit-scrollbar-track {
+        margin: 0 10px;
+    }
+
+    .retards-table-card .table-responsive::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+    }
+
+    .retards-table-card .table-responsive table {
+        min-width: 750px;
+    }
+}
+
+@media (max-width: 480px) {
+    .retards-table-card .table-responsive::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .retards-table-card .table-responsive table {
+        min-width: 650px;
+    }
+}
+
+/* ============================================================
+   STICKY COLONNES — Matricule + Élève (optionnel)
+   ============================================================ */
+.retards-table-card .table thead th:first-child,
+.retards-table-card .table thead th:nth-child(2),
+.retards-table-card .table tbody td:first-child,
+.retards-table-card .table tbody td:nth-child(2) {
+    position: sticky;
+    left: 0;
+    background: #ffffff;
+    z-index: 1;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.03);
+}
+
+.retards-table-card .table thead th:first-child {
+    left: 0;
+    z-index: 3;
+    background: #f8fafc;
+}
+
+.retards-table-card .table thead th:nth-child(2) {
+    left: 120px;
+    z-index: 3;
+    background: #f8fafc;
+}
+
+.retards-table-card .table tbody td:first-child {
+    left: 0;
+    z-index: 1;
+}
+
+.retards-table-card .table tbody td:nth-child(2) {
+    left: 120px;
+    z-index: 1;
+}
+
+.retards-table-card .table tbody tr:hover td:first-child,
+.retards-table-card .table tbody tr:hover td:nth-child(2) {
+    background: #f8fafc;
+}

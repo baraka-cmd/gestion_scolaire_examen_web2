@@ -136,7 +136,7 @@ function submenuLink($url, $icon, $label, $permission = null)
                 <ul class="submenu">
                     <?= submenuLink($baseUrl . '/enseignants', 'fa-list', 'Tous les enseignants', 'enseignants.consulter') ?>
                     <?= submenuLink($baseUrl . '/enseignants/ajouter', 'fa-plus', 'Ajouter un enseignant', 'enseignants.creer') ?>
-                    <?= submenuLink($baseUrl . '/enseignants/affectations', 'fa-link', 'Affectations', 'enseignants.modifier') ?>
+                    
                 </ul>
             </li>
             <?php endif; ?>
@@ -221,19 +221,7 @@ function submenuLink($url, $icon, $label, $permission = null)
             
             <?= menuLink($baseUrl . '/retards', 'fa-clock', 'Retards', 'retards.consulter') ?>
             
-            <?php if (can('discipline.consulter')): ?>
-            <li class="menu-item has-submenu">
-                <a href="#" class="menu-link">
-                    <i class="fa-solid fa-gavel"></i>
-                    <span class="link-text">Discipline</span>
-                    <i class="fa-solid fa-chevron-down submenu-arrow"></i>
-                </a>
-                <ul class="submenu">
-                    <?= submenuLink($baseUrl . '/discipline', 'fa-list', 'Incidents', 'discipline.consulter') ?>
-                    <?= submenuLink($baseUrl . '/discipline/ajouter', 'fa-plus', 'Signaler un incident', 'discipline.signaler') ?>
-                </ul>
-            </li>
-            <?php endif; ?>
+            
         </ul>
     </div>
     <?php endif; ?>

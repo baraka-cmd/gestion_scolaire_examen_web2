@@ -2477,3 +2477,37 @@ Stack trace:
 #3 C:\xampp\htdocs\gestion_scolaire\public\index.php(439): require_once('C:\\xampp\\htdocs...')
 #4 {main}
   thrown in C:\xampp\htdocs\gestion_scolaire\src\config\database.php on line 75
+[05-Aug-2026 14:27:33 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 168
+[05-Aug-2026 14:27:33 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 189
+[05-Aug-2026 14:28:58 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 168
+[05-Aug-2026 14:28:58 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 189
+[05-Aug-2026 14:29:19 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 168
+[05-Aug-2026 14:29:19 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 189
+[05-Aug-2026 14:29:42 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 168
+[05-Aug-2026 14:29:42 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 189
+[05-Aug-2026 14:30:34 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 168
+[05-Aug-2026 14:30:34 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 189
+[05-Aug-2026 14:33:03 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 168
+[05-Aug-2026 14:33:03 Africa/Lubumbashi] PHP Warning:  Undefined array key "utilisateur_id" in C:\xampp\htdocs\gestion_scolaire\public\views\templates\header.php on line 189
+[05-Aug-2026 14:49:06 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Call to undefined method Database::getConnection() in C:\xampp\htdocs\gestion_scolaire\public\views\auth\login.php:87
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\auth\login.php on line 87
+[05-Aug-2026 14:49:08 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Call to undefined method Database::getConnection() in C:\xampp\htdocs\gestion_scolaire\public\views\auth\login.php:87
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\auth\login.php on line 87
+[05-Aug-2026 14:49:09 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Call to undefined method Database::getConnection() in C:\xampp\htdocs\gestion_scolaire\public\views\auth\login.php:87
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\views\auth\login.php on line 87
+[05-Aug-2026 22:18:33 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/discipline/liste.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 439
+[05-Aug-2026 22:18:33 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/discipline/liste.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:439
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 439
+[05-Aug-2026 22:18:39 Africa/Lubumbashi] PHP Warning:  require_once(C:\xampp\htdocs\gestion_scolaire\public/views/modules/discipline/ajouter.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 439
+[05-Aug-2026 22:18:39 Africa/Lubumbashi] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\gestion_scolaire\public/views/modules/discipline/ajouter.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gestion_scolaire\public\index.php:439
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gestion_scolaire\public\index.php on line 439

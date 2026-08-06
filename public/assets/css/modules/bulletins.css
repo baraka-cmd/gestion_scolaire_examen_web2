@@ -793,3 +793,1253 @@
         border-bottom: 1px solid #000;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS BULLETINS.CSS — Corrections, animations, finesses UI, responsive
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES CARTES
+   ============================================================ */
+.bulletin-selector-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.imprimer-option-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.1s both; }
+.imprimer-option-card:nth-child(2) { animation: slideInRight 0.5s ease-out 0.15s both; }
+
+.bulletin-document {
+    animation: fadeInScale 0.5s ease-out 0.2s both;
+}
+
+/* ============================================================
+   3. CORRECTION — SUPPRESSION ESPACE VIDE ENTRE BRANCHES ET PÉRIODES
+   ============================================================ */
+
+/* Empêcher le texte des branches de pousser le tableau */
+.bulletin-table .col-branches {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 120px;
+    max-width: 140px;
+}
+
+/* Alignement parfait des cellules */
+.bulletin-table tbody .col-branches {
+    text-align: left;
+    padding-left: 6px;
+    padding-right: 4px;
+    font-size: 0.6rem;
+    font-weight: 500;
+}
+
+/* Correction du colspan pour éviter l'espace vide */
+.bulletin-table .groupe-row td {
+    padding: 6px 4px;
+}
+
+/* Empêcher les sauts de ligne parasites dans les en-têtes */
+.bulletin-table thead th {
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Réduire l'espace entre les colonnes M et O */
+.bulletin-table .col-m,
+.bulletin-table .col-o {
+    padding: 2px 1px;
+}
+
+/* Alignement uniforme des sous-en-têtes */
+.bulletin-table .sub-header th {
+    padding: 3px 1px;
+    font-size: 0.54rem;
+}
+
+/* ============================================================
+   4. TABLEAU — SURVOL DES LIGNES DE DONNÉES
+   ============================================================ */
+.sous-matiere-row {
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.sous-matiere-row:hover {
+    background-color: #e8eaf6 !important;
+}
+
+.sous-matiere-row:hover .col-branches {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Survol des totaux */
+.sous-total-row:hover {
+    background-color: #dbeafe !important;
+}
+
+/* ============================================================
+   5. EN-TÊTE RDC — EFFET DE SURVOL
+   ============================================================ */
+.bulletin-rdc-header {
+    transition: all 0.3s ease;
+}
+
+.rdc-titre-bulletin::after {
+    transition: width 0.4s ease;
+}
+
+.bulletin-document:hover .rdc-titre-bulletin::after {
+    width: 160px;
+}
+
+/* ============================================================
+   6. SÉLECTEURS — EFFETS DE SURVOL
+   ============================================================ */
+.bulletin-selector-card {
+    transition: all 0.3s ease;
+}
+
+.bulletin-selector-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.bulletin-selector-form .form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bulletin-selector-form .form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.bulletin-selector-form .form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   7. CARTES D'IMPRESSION — EFFETS DE SURVOL
+   ============================================================ */
+.imprimer-option-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.imprimer-option-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44,62,144,0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.imprimer-option-card:hover::after {
+    opacity: 1;
+}
+
+.imprimer-option-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+}
+
+.imprimer-option-icon {
+    transition: all 0.3s ease;
+}
+
+.imprimer-option-card:hover .imprimer-option-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* ============================================================
+   8. BOUTONS D'ACTION — EFFETS
+   ============================================================ */
+.bulletin-actions .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bulletin-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.bulletin-actions .btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.bulletin-actions .btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.bulletin-actions .btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   9. SIGNATURES — EFFET SURVOL
+   ============================================================ */
+.signature-block {
+    transition: all 0.3s ease;
+}
+
+.signature-block:hover .signature-line {
+    border-bottom-color: var(--color-primary);
+    border-bottom-width: 2px;
+}
+
+.signature-block:hover span {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   10. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: var(--color-dark);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination a,
+.pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid var(--border-color);
+    background: var(--color-white);
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover,
+.pagination-btn:hover {
+    background: var(--color-primary-lighter);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.15);
+}
+
+.pagination a.active,
+.pagination-btn.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.3);
+}
+
+.pagination a.active:hover,
+.pagination-btn.active:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.pagination a.disabled,
+.pagination-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--color-gray-50);
+}
+
+/* ============================================================
+   11. EMPTY STATE AMÉLIORÉ
+   ============================================================ */
+.empty-state {
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   12. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-bulletin {
+    height: 400px;
+    border-radius: 8px;
+}
+
+/* ============================================================
+   13. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: var(--color-white);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: var(--color-dark);
+    background: var(--color-gray-100);
+}
+
+/* ============================================================
+   14. BARRE D'INFO RÉSULTATS
+   ============================================================ */
+.resultats-info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    color: var(--color-white);
+    transition: all 0.3s ease;
+}
+
+.resultats-info-bar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.resultats-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.84rem;
+}
+
+.resultats-info-item i {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.resultats-info-item strong {
+    font-weight: 700;
+}
+
+/* ============================================================
+   15. ALERTE RÉSULTATS NON CALCULÉS
+   ============================================================ */
+.resultats-non-calcules {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border: 1px solid #fde68a;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s ease;
+}
+
+.resultats-non-calcules:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+}
+
+.resultats-non-calcules-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.resultats-non-calcules:hover .resultats-non-calcules-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.resultats-non-calcules h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #92400e;
+    margin: 0 0 4px 0;
+}
+
+.resultats-non-calcules p {
+    font-size: 0.82rem;
+    color: #78350f;
+    margin: 0;
+}
+
+/* ============================================================
+   16. POURCENTAGE BADGE
+   ============================================================ */
+.pourcentage-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.pourcentage-badge.success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.pourcentage-badge.warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.pourcentage-badge.danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* ============================================================
+   17. STATS GRID (réutilisé)
+   ============================================================ */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: var(--color-white);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+}
+
+.stat-icon.blue   { background: linear-gradient(135deg, #2c3e90, #4a6cf7); }
+.stat-icon.green  { background: linear-gradient(135deg, #10b981, #34d399); }
+.stat-icon.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.stat-icon.red    { background: linear-gradient(135deg, #ef4444, #f87171); }
+.stat-icon.cyan   { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+.stat-icon.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+
+.stat-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    margin-bottom: 4px;
+}
+
+.stat-change {
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-change.up       { color: #10b981; }
+.stat-change.down     { color: #ef4444; }
+.stat-change.neutral  { color: #64748b; }
+
+/* ============================================================
+   18. INFO CARD CUSTOM
+   ============================================================ */
+.info-card-custom {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.info-card-custom-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    background-color: var(--color-gray-50);
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.info-card-custom-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.info-card-custom-icon.blue { background-color: #e8eaf6; color: #2c3e90; }
+
+.info-card-custom-header h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.info-card-custom-body {
+    padding: 20px 24px;
+}
+
+/* Liste à puces */
+.info-list {
+    font-size: 0.82rem;
+    color: var(--color-gray-600);
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.6;
+}
+
+.info-list li {
+    transition: all 0.25s ease;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.info-list li:hover {
+    background-color: var(--color-gray-50);
+    transform: translateX(4px);
+}
+
+.info-list li::marker {
+    color: var(--color-primary);
+}
+
+.info-list li strong {
+    color: var(--color-dark);
+}
+
+/* ============================================================
+   19. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .bulletin-table {
+        min-width: 1800px;
+    }
+}
+
+/* Desktop standard */
+@media (max-width: 1399px) {
+    .bulletin-table {
+        min-width: 1500px;
+    }
+}
+
+/* Petit desktop / Tablette paysage */
+@media (max-width: 1200px) {
+    .bulletin-table {
+        min-width: 1300px;
+        font-size: 0.58rem;
+    }
+
+    .bulletin-table .col-branches {
+        min-width: 100px;
+        max-width: 120px;
+        font-size: 0.56rem;
+    }
+
+    .bulletin-table .col-m,
+    .bulletin-table .col-o {
+        width: 24px;
+        min-width: 24px;
+    }
+
+    .imprimer-options {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .bulletin-table {
+        min-width: 1100px;
+        font-size: 0.55rem;
+    }
+
+    .bulletin-table .col-branches {
+        min-width: 90px;
+        max-width: 110px;
+        font-size: 0.54rem;
+    }
+
+    .bulletin-rdc-header {
+        padding: 14px 16px;
+    }
+
+    .rdc-ecole,
+    .rdc-eleve {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .rdc-ecole-ligne,
+    .rdc-eleve-ligne {
+        white-space: normal;
+    }
+
+    .bulletin-signatures {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .signature-block {
+        min-width: 120px;
+    }
+
+    .bulletin-actions .btn {
+        min-width: 130px;
+        font-size: 0.76rem;
+    }
+
+    .bulletin-selector-form .form-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .bulletin-selector-form .form-group {
+        min-width: 100%;
+    }
+
+    .resultats-non-calcules {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+}
+
+/* Tablette verticale / Grand mobile */
+@media (max-width: 768px) {
+    .bulletin-table {
+        min-width: 950px;
+        font-size: 0.5rem;
+    }
+
+    .rdc-titre-bulletin {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .rdc-annee-scolaire {
+        font-size: 0.7rem;
+    }
+
+    .bulletin-signatures {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .signature-block {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .bulletin-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bulletin-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .imprimer-option-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .imprimer-option-form .form-row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .imprimer-option-form .form-group {
+        min-width: 100%;
+    }
+
+    .resultats-info-bar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 16px;
+    }
+
+    .info-card-custom-header {
+        padding: 14px 18px;
+    }
+
+    .info-card-custom-body {
+        padding: 16px 18px;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 16px;
+    }
+
+    .pagination a,
+    .pagination-btn {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .bulletin-table {
+        min-width: 800px;
+        font-size: 0.45rem;
+    }
+
+    .bulletin-rdc-header {
+        padding: 10px 12px;
+    }
+
+    .rdc-pays {
+        font-size: 0.68rem;
+    }
+
+    .rdc-ministere {
+        font-size: 0.58rem;
+    }
+
+    .rdc-titre-bulletin {
+        font-size: 0.72rem;
+        letter-spacing: 0.5px;
+    }
+
+    .rdc-ecole,
+    .rdc-eleve {
+        font-size: 0.65rem;
+        padding: 6px 8px;
+    }
+
+    .bulletin-table .col-branches {
+        min-width: 80px;
+        max-width: 90px;
+        font-size: 0.48rem;
+    }
+
+    .bulletin-table .col-m,
+    .bulletin-table .col-o {
+        width: 18px;
+        min-width: 18px;
+    }
+
+    .bulletin-signatures {
+        padding: 10px;
+        gap: 14px;
+    }
+
+    .signature-block span {
+        font-size: 0.65rem;
+    }
+
+    .bulletin-actions .btn {
+        font-size: 0.7rem;
+        padding: 8px 14px;
+        min-width: auto;
+    }
+
+    .imprimer-option-card {
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .imprimer-option-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+
+    .imprimer-option-content h5 {
+        font-size: 0.85rem;
+    }
+
+    .imprimer-option-content p {
+        font-size: 0.72rem;
+    }
+
+    .resultats-non-calcules {
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .resultats-non-calcules-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .resultats-non-calcules h5 {
+        font-size: 0.85rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .stat-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .info-card-custom {
+        border-radius: 14px;
+    }
+
+    .info-card-custom-header {
+        padding: 12px 14px;
+    }
+
+    .info-card-custom-body {
+        padding: 14px;
+    }
+
+    .info-card-custom-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .info-list {
+        font-size: 0.76rem;
+        gap: 6px;
+    }
+
+    .pagination a,
+    .pagination-btn {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .bulletin-table {
+        min-width: 700px;
+        font-size: 0.4rem;
+    }
+
+    .bulletin-rdc-header {
+        padding: 8px 10px;
+    }
+
+    .rdc-pays {
+        font-size: 0.62rem;
+    }
+
+    .rdc-ministere {
+        font-size: 0.52rem;
+    }
+
+    .bulletin-signatures {
+        gap: 10px;
+    }
+
+    .signature-block {
+        max-width: 200px;
+    }
+
+    .signature-line {
+        padding-top: 24px;
+    }
+
+    .imprimer-option-card {
+        padding: 12px;
+    }
+
+    .stat-card {
+        padding: 12px;
+        gap: 10px;
+    }
+}
+
+/* ============================================================
+   20. IMPRESSION — CORRECTIONS
+   ============================================================ */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 5mm;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 6px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .no-print,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .bulletin-selectors,
+    .bulletin-actions,
+    .imprimer-options,
+    .resultats-selectors,
+    .resultats-header-right,
+    .toast-container,
+    .pagination-wrapper,
+    .btn {
+        display: none !important;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    .bulletin-document {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        max-width: 100%;
+        page-break-after: always;
+    }
+
+    .bulletin-rdc-header {
+        padding: 4px 0;
+        border-bottom: 2px double #000;
+    }
+
+    .rdc-titre-bulletin::after {
+        display: none;
+    }
+
+    .bulletin-table {
+        font-size: 5.5px;
+        min-width: 100%;
+    }
+
+    .bulletin-table thead th {
+        background-color: #000 !important;
+        color: #fff !important;
+        font-size: 4.5px;
+        padding: 2px 1px;
+    }
+
+    .bulletin-table .sub-header th {
+        background-color: #333 !important;
+        font-size: 4.5px;
+    }
+
+    .bulletin-table tbody td {
+        font-size: 5px;
+        padding: 1px;
+    }
+
+    .bulletin-table .col-m {
+        font-size: 4.5px;
+        width: 20px;
+        min-width: 20px;
+    }
+
+    .bulletin-table .col-o {
+        width: 22px;
+        min-width: 22px;
+    }
+
+    .bulletin-table .col-branches {
+        font-size: 5px;
+        min-width: 70px;
+        max-width: 80px;
+    }
+
+    .total-general-row td {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+    .pourcentage-row td {
+        background-color: #fef3c7 !important;
+    }
+
+    .mention-row td {
+        background-color: #dbeafe !important;
+    }
+
+    .decision-row td {
+        background-color: #f0fdf4 !important;
+    }
+
+    .groupe-row td {
+        background-color: #e8eaf6 !important;
+    }
+
+    .bulletin-signatures {
+        padding: 8px 0;
+    }
+
+    .signature-line {
+        border-bottom: 1px solid #000;
+    }
+
+    .signature-block span {
+        font-size: 6px;
+    }
+}

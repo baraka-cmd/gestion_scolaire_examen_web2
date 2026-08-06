@@ -487,3 +487,560 @@
         page-break-inside: avoid;
     }
 }
+
+
+
+
+/* ============================================================
+   AJOUTS ANNEES.CSS — Animations, finesses UI, pagination, responsive
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    50%      { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES CARTES
+   ============================================================ */
+.annee-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.05s both; }
+.annee-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.12s both; }
+.annee-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.19s both; }
+.annee-card:nth-child(4) { animation: fadeInUp 0.5s ease-out 0.26s both; }
+.annee-card:nth-child(5) { animation: fadeInUp 0.5s ease-out 0.33s both; }
+.annee-card:nth-child(6) { animation: fadeInUp 0.5s ease-out 0.40s both; }
+
+/* ============================================================
+   3. CARTE ANNÉE — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.annee-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.annee-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Carte active — pulse vert */
+.annee-card.active {
+    animation: pulseGlow 2s ease-in-out infinite;
+    border-color: #34d399;
+}
+
+.annee-card.active:hover {
+    box-shadow: 0 16px 40px rgba(16, 185, 129, 0.2);
+}
+
+/* Icône de la carte */
+.annee-card-icon {
+    transition: all 0.3s ease;
+}
+
+.annee-card:hover .annee-card-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* Badge statut */
+.annee-status-badge {
+    transition: all 0.3s ease;
+}
+
+.annee-card:hover .annee-status-badge {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   4. TRIMESTRES — EFFET SURVOL
+   ============================================================ */
+.trimestre-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.trimestre-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 3px 3px 0 0;
+    transition: width 0.3s ease;
+}
+
+.trimestre-item:hover::after {
+    width: 60%;
+}
+
+.trimestre-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.trimestre-item.actif {
+    position: relative;
+}
+
+.trimestre-item.actif::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 13px;
+    border: 2px solid #10b981;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.trimestre-item.actif:hover::before {
+    opacity: 1;
+}
+
+.trimestre-actif-badge {
+    transition: all 0.3s ease;
+}
+
+.trimestre-item:hover .trimestre-actif-badge {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   5. STATS RAPIDES — ANIMATION
+   ============================================================ */
+.annee-stat {
+    transition: all 0.25s ease;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.annee-stat:hover {
+    background-color: var(--color-gray-50);
+}
+
+.annee-stat i {
+    transition: transform 0.3s ease;
+}
+
+.annee-stat:hover i {
+    transform: scale(1.2);
+    color: var(--color-primary-dark);
+}
+
+/* ============================================================
+   6. ALERTE ANNÉE ACTIVE
+   ============================================================ */
+.annee-active-alert {
+    transition: all 0.3s ease;
+}
+
+.annee-active-alert:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12);
+}
+
+/* ============================================================
+   7. BOUTONS D'ACTION
+   ============================================================ */
+.annee-card-actions .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.annee-card-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+.annee-card-actions .btn:active {
+    transform: translateY(0) scale(0.96);
+}
+
+/* ============================================================
+   8. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   9. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-card {
+    height: 180px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+/* ============================================================
+   10. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: var(--color-white);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: var(--color-dark);
+    background: var(--color-gray-100);
+}
+
+/* ============================================================
+   11. RESPONSIVE — CORRECTIONS ET AMÉLIORATIONS
+   ============================================================ */
+
+/* Tablette */
+@media (max-width: 992px) {
+    .trimestres-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .trimestre-item {
+        padding: 12px 14px;
+    }
+
+    .annee-card-header {
+        padding: 16px 20px;
+    }
+
+    .annee-card-body {
+        padding: 16px 20px;
+    }
+}
+
+/* Tablette verticale */
+@media (max-width: 768px) {
+    .annees-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .annees-header-right {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .trimestres-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .annee-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+    }
+
+    .annee-card-body {
+        padding: 14px 16px;
+    }
+
+    .annee-card-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .annee-card-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+    }
+
+    .annee-card-name {
+        font-size: 1rem;
+    }
+
+    .annee-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .annee-form-card {
+        max-width: 100%;
+    }
+
+    .annee-form-header {
+        padding: 16px 20px;
+    }
+
+    .annee-form-body {
+        padding: 20px;
+    }
+
+    .annee-form-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+    }
+
+    .annee-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .annee-card {
+        border-radius: 14px;
+        margin-bottom: 14px;
+    }
+
+    .annee-card-header {
+        padding: 12px 14px;
+        gap: 8px;
+    }
+
+    .annee-card-body {
+        padding: 12px 14px;
+    }
+
+    .annee-card-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    .annee-card-name {
+        font-size: 0.9rem;
+    }
+
+    .annee-card-dates {
+        font-size: 0.72rem;
+    }
+
+    .annee-status-badge {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    .trimestre-item {
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+
+    .trimestre-libelle {
+        font-size: 0.8rem;
+    }
+
+    .trimestre-dates {
+        font-size: 0.68rem;
+    }
+
+    .annee-stat {
+        font-size: 0.74rem;
+    }
+
+    .annee-card-actions .btn {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+
+    .annee-active-alert {
+        padding: 12px 14px;
+        border-radius: 12px;
+    }
+
+    .annee-active-alert i {
+        font-size: 1.2rem;
+    }
+
+    .annee-form-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .annee-form-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .annee-form-body {
+        padding: 16px;
+    }
+
+    .annee-form-footer {
+        padding: 12px 16px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .annee-card-title {
+        gap: 8px;
+    }
+
+    .annee-card-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .annee-card-name {
+        font-size: 0.82rem;
+    }
+
+    .annee-card-dates {
+        font-size: 0.68rem;
+    }
+
+    .annee-card-actions {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .annee-card-actions .btn {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+    }
+}
+
+/* ============================================================
+   12. IMPRESSION
+   ============================================================ */
+@media print {
+    .annees-header-right,
+    .annee-card-actions,
+    .btn,
+    .toast-container {
+        display: none !important;
+    }
+
+    .annee-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+        animation: none;
+    }
+
+    .annee-card.active::before,
+    .annee-card.cloturee::before {
+        display: none;
+    }
+
+    .trimestres-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}

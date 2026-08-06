@@ -721,3 +721,571 @@
         width: 100%;
     }
 }
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS FICHE_PARENT.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE
+   ============================================================ */
+.parent-hero {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.parent-tabs {
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.parent-panel.active {
+    animation: fadeInScale 0.35s ease;
+}
+
+/* ============================================================
+   3. HERO HEADER — EFFETS DE SURVOL
+   ============================================================ */
+.parent-hero {
+    transition: all 0.3s ease;
+}
+
+.parent-hero:hover {
+    box-shadow: 0 16px 40px rgba(44, 62, 144, 0.3);
+}
+
+.parent-hero-avatar {
+    transition: all 0.3s ease;
+}
+
+.parent-hero:hover .parent-hero-avatar {
+    transform: scale(1.05);
+}
+
+.parent-hero-lien {
+    transition: all 0.3s ease;
+}
+
+.parent-hero-lien:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Boutons d'action */
+.parent-hero-actions .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parent-hero-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-print-fiche {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-print-fiche:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   4. ONGLETS — EFFETS
+   ============================================================ */
+.parent-tab {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parent-tab:hover {
+    background-color: var(--color-primary-lighter);
+}
+
+.parent-tab .tab-count {
+    transition: all 0.3s ease;
+}
+
+.parent-tab.active .tab-count {
+    animation: fadeInScale 0.3s ease;
+}
+
+/* ============================================================
+   5. CARTES D'INFORMATION — EFFETS DE SURVOL
+   ============================================================ */
+.parent-info-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parent-info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(44, 62, 144, 0.1);
+}
+
+.parent-info-card-icon {
+    transition: all 0.3s ease;
+}
+
+.parent-info-card:hover .parent-info-card-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.parent-info-field {
+    transition: all 0.25s ease;
+    padding: 6px 8px;
+    border-radius: 8px;
+    margin: 0 -8px;
+}
+
+.parent-info-field:hover {
+    background-color: #f8fafc;
+}
+
+/* ============================================================
+   6. CARTES ENFANTS — EFFETS ENRICHIS
+   ============================================================ */
+.enfant-detail-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enfant-detail-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(44, 62, 144, 0.12);
+}
+
+.enfant-card-avatar {
+    transition: all 0.3s ease;
+}
+
+.enfant-detail-card:hover .enfant-card-avatar {
+    transform: scale(1.1);
+}
+
+.enfant-detail-row i {
+    transition: transform 0.3s ease;
+}
+
+.enfant-detail-card:hover .enfant-detail-row i {
+    transform: scale(1.15);
+    color: #1a274f;
+}
+
+.enfant-card-actions .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enfant-card-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+.enfant-card-actions .btn-outline-danger:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================================
+   7. SECTION LIER UN ENFANT — EFFETS
+   ============================================================ */
+.lier-enfant-card {
+    transition: all 0.3s ease;
+}
+
+.lier-enfant-card:hover {
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+    transform: translateY(-2px);
+}
+
+.eleve-lier-item {
+    transition: all 0.2s ease;
+}
+
+.eleve-lier-item:hover {
+    background-color: #f0fdf4;
+}
+
+.eleve-lier-item input[type="radio"]:checked + .eleve-lier-info .eleve-lier-name {
+    color: #10b981;
+}
+
+/* ============================================================
+   8. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   9. RESPONSIVE COMPLET
+   ============================================================ */
+
+@media (min-width: 1400px) {
+    .parent-info-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .enfants-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .parent-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .parent-hero-actions {
+        justify-content: center;
+    }
+
+    .parent-hero-meta {
+        justify-content: center;
+    }
+
+    .enfants-container {
+        grid-template-columns: 1fr;
+    }
+
+    .parent-tabs {
+        overflow-x: auto;
+    }
+
+    .parent-tab {
+        flex: none;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .parent-hero {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .parent-hero-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8rem;
+        border-radius: 18px;
+    }
+
+    .parent-hero-name {
+        font-size: 1.2rem;
+    }
+
+    .parent-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lier-enfant-form {
+        flex-direction: column;
+    }
+
+    .lier-enfant-form .form-group {
+        min-width: 100%;
+    }
+
+    .lier-enfant-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .lier-enfant-footer button {
+        width: 100%;
+    }
+
+    .parent-tab span {
+        display: none;
+    }
+
+    .parent-tab {
+        min-width: auto;
+        padding: 14px 16px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 575px) {
+    .parent-hero {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .parent-hero-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 1.4rem;
+        border-radius: 16px;
+    }
+
+    .parent-hero-name {
+        font-size: 1.1rem;
+    }
+
+    .parent-hero-meta {
+        gap: 8px;
+    }
+
+    .parent-hero-meta span {
+        font-size: 0.74rem;
+    }
+
+    .parent-hero-lien {
+        font-size: 0.72rem;
+        padding: 4px 10px;
+    }
+
+    .parent-info-card {
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .parent-info-card-header {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    .parent-info-card-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+    }
+
+    .parent-info-card-title {
+        font-size: 0.82rem;
+    }
+
+    .parent-info-label {
+        font-size: 0.66rem;
+    }
+
+    .parent-info-value {
+        font-size: 0.8rem;
+    }
+
+    .enfant-detail-card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .enfant-card-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 0.8rem;
+        border-radius: 10px;
+    }
+
+    .enfant-card-name {
+        font-size: 0.84rem;
+    }
+
+    .lier-enfant-card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .eleves-selection-list {
+        max-height: 180px;
+    }
+
+    .eleve-lier-item {
+        padding: 8px 12px;
+    }
+
+    .eleve-lier-name {
+        font-size: 0.82rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .parent-hero {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .parent-hero-avatar {
+        width: 52px;
+        height: 52px;
+        font-size: 1.1rem;
+        border-radius: 14px;
+    }
+
+    .parent-hero-name {
+        font-size: 1rem;
+    }
+
+    .parent-tab {
+        padding: 10px 12px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .parent-hero-actions,
+    .parent-tabs,
+    .btn-print-fiche,
+    .lier-enfant-card,
+    .enfant-card-actions,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .breadcrumb,
+    .toast-container,
+    .no-print {
+        display: none !important;
+    }
+
+    .parent-hero {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+        padding: 16px;
+    }
+
+    .parent-hero-name,
+    .parent-hero-meta span,
+    .parent-hero-lien {
+        color: #000 !important;
+    }
+
+    .parent-hero-lien {
+        background: #e2e8f0 !important;
+        border-color: #cbd5e1 !important;
+        color: #000 !important;
+    }
+
+    .parent-info-card,
+    .enfant-detail-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .parent-panel {
+        display: block !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 10px;
+    }
+}

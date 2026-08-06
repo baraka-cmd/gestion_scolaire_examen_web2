@@ -1215,3 +1215,870 @@ textarea.form-control {
         background-color: white;
     }
 }
+
+
+
+
+
+
+/* ============================================================
+   18. EN-TÊTE DE MODULE (commun à tous les modules)
+   ============================================================ */
+.module-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cercles décoratifs en fond */
+.module-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.module-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.module-header-left {
+    position: relative;
+    z-index: 1;
+}
+
+.module-header-left h4 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.module-header-left h4 i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.module-header-left p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+.module-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* Boutons dans l'en-tête */
+.module-header-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.module-header-right .btn-primary {
+    background-color: #ffffff;
+    color: #2c3e90;
+    border-color: #ffffff;
+}
+
+.module-header-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: #ffffff;
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.module-header-right .btn-outline-primary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.module-header-right .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.module-header-right .btn-sm {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+}
+
+/* Select dans l'en-tête (vue mode) */
+.module-header-right select.form-control,
+.module-header-right .view-select {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    min-width: 130px;
+}
+
+.module-header-right select.form-control option,
+.module-header-right .view-select option {
+    color: #1e293b;
+    background-color: #ffffff;
+}
+
+.module-header-right select.form-control:focus,
+.module-header-right .view-select:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================================
+   19. VARIANTE CLAIRE (pour les modules qui préfèrent un fond clair)
+   ============================================================ */
+.module-header-light {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 18px 24px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.module-header-light:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: #2c3e90;
+}
+
+.module-header-light .module-header-left h4 {
+    color: #1e293b;
+}
+
+.module-header-light .module-header-left h4 i {
+    color: #2c3e90;
+}
+
+.module-header-light .module-header-left p {
+    color: #64748b;
+}
+
+.module-header-light .module-header-right .btn-outline-primary {
+    color: #2c3e90;
+    border-color: #2c3e90;
+}
+
+.module-header-light .module-header-right .btn-outline-primary:hover {
+    background-color: #e8eaf6;
+    color: #2c3e90;
+    border-color: #2c3e90;
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   20. RESPONSIVE — EN-TÊTE DE MODULE
+   ============================================================ */
+@media (max-width: 768px) {
+    .module-header,
+    .module-header-light {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+        border-radius: 14px;
+    }
+
+    .module-header-left h4 {
+        font-size: 1rem;
+    }
+
+    .module-header-left p {
+        font-size: 0.76rem;
+    }
+
+    .module-header-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .module-header-right .btn,
+    .module-header-right select {
+        font-size: 0.76rem;
+        padding: 7px 12px;
+    }
+}
+
+@media (max-width: 575px) {
+    .module-header,
+    .module-header-light {
+        padding: 14px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+
+    .module-header-left h4 {
+        font-size: 0.9rem;
+    }
+
+    .module-header-left h4 i {
+        font-size: 1rem;
+    }
+
+    .module-header-left p {
+        font-size: 0.7rem;
+    }
+
+    .module-header-right .btn,
+    .module-header-right select {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+}
+
+/* ============================================================
+   21. COMPATIBILITÉ — Appliquer le style à .resultats-header
+   ============================================================ */
+.resultats-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.resultats-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.resultats-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.resultats-header-left {
+    position: relative;
+    z-index: 1;
+}
+
+.resultats-header-left h4 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resultats-header-left h4 i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.resultats-header-left p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+.resultats-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.resultats-header-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resultats-header-right .btn-primary {
+    background-color: #ffffff;
+    color: #2c3e90;
+    border-color: #ffffff;
+}
+
+.resultats-header-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: #ffffff;
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.resultats-header-right .btn-outline-primary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.resultats-header-right .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.resultats-header-right .btn-sm {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+}
+
+/* ============================================================
+   22. COMPATIBILITÉ — Appliquer le style à .classes-header
+   ============================================================ */
+.classes-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.classes-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.classes-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.classes-header-left {
+    position: relative;
+    z-index: 1;
+}
+
+.classes-header-left h4 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.classes-header-left h4 i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.classes-header-left p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+.classes-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.classes-header-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.classes-header-right .btn-primary {
+    background-color: #ffffff;
+    color: #2c3e90;
+    border-color: #ffffff;
+}
+
+.classes-header-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: #ffffff;
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.classes-header-right .btn-outline-primary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.classes-header-right .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.classes-header-right select.form-control,
+.classes-header-right .view-select {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    min-width: 130px;
+}
+
+.classes-header-right select.form-control option {
+    color: #1e293b;
+    background-color: #ffffff;
+}
+
+/* ============================================================
+   23. COMPATIBILITÉ — Appliquer le style à .annees-header
+   ============================================================ */
+.annees-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.annees-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.annees-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.annees-header-left {
+    position: relative;
+    z-index: 1;
+}
+
+.annees-header-left h4 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.annees-header-left h4 i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.annees-header-left p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+.annees-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.annees-header-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.annees-header-right .btn-primary {
+    background-color: #ffffff;
+    color: #2c3e90;
+    border-color: #ffffff;
+}
+
+.annees-header-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: #ffffff;
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.annees-header-right .btn-outline-primary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.annees-header-right .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   24. RESPONSIVE — Tous les en-têtes
+   ============================================================ */
+@media (max-width: 768px) {
+    .resultats-header,
+    .classes-header,
+    .annees-header,
+    .module-header,
+    .module-header-light {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+        border-radius: 14px;
+    }
+
+    .resultats-header-left h4,
+    .classes-header-left h4,
+    .annees-header-left h4,
+    .module-header-left h4 {
+        font-size: 1rem;
+    }
+
+    .resultats-header-left p,
+    .classes-header-left p,
+    .annees-header-left p,
+    .module-header-left p {
+        font-size: 0.76rem;
+    }
+
+    .resultats-header-right,
+    .classes-header-right,
+    .annees-header-right,
+    .module-header-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 575px) {
+    .resultats-header,
+    .classes-header,
+    .annees-header,
+    .module-header,
+    .module-header-light {
+        padding: 14px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+
+    .resultats-header-left h4,
+    .classes-header-left h4,
+    .annees-header-left h4,
+    .module-header-left h4 {
+        font-size: 0.9rem;
+    }
+
+    .resultats-header-left h4 i,
+    .classes-header-left h4 i,
+    .annees-header-left h4 i,
+    .module-header-left h4 i {
+        font-size: 1rem;
+    }
+
+    .resultats-header-left p,
+    .classes-header-left p,
+    .annees-header-left p,
+    .module-header-left p {
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================================
+   25. STYLES UNIFIÉS — Pour les pages utilisant .d-flex.justify-content-between
+   ============================================================ */
+.d-flex.justify-content-between.align-items-center {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.d-flex.justify-content-between.align-items-center::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.d-flex.justify-content-between.align-items-center::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.d-flex.justify-content-between.align-items-center h4 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.d-flex.justify-content-between.align-items-center h4 i {
+    color: #f59e0b;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.d-flex.justify-content-between.align-items-center p {
+    font-size: 0.84rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+.d-flex.justify-content-between.align-items-center .btn-outline-primary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.d-flex.justify-content-between.align-items-center .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   26. CORRECTION — Éviter que ces styles n'affectent les cartes
+   ============================================================ */
+.card-header h4,
+.card-header h5 {
+    color: #1e293b !important;
+}
+
+.card-header h4 i,
+.card-header h5 i {
+    color: #2c3e90 !important;
+    background: transparent !important;
+    border: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* ============================================================
+   27. STYLES UNIFIÉS — Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+    .d-flex.justify-content-between.align-items-center {
+        flex-direction: column;
+        align-items: flex-start !important;
+        padding: 16px 18px;
+        border-radius: 14px;
+        gap: 12px;
+    }
+
+    .d-flex.justify-content-between.align-items-center h4 {
+        font-size: 1.05rem;
+    }
+
+    .d-flex.justify-content-between.align-items-center h4 i {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .d-flex.justify-content-between.align-items-center p {
+        font-size: 0.78rem;
+    }
+
+    .d-flex.justify-content-between.align-items-center .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575px) {
+    .d-flex.justify-content-between.align-items-center {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .d-flex.justify-content-between.align-items-center h4 {
+        font-size: 0.95rem;
+    }
+
+    .d-flex.justify-content-between.align-items-center h4 i {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================================
+   28. STYLES UNIFIÉS — Impression
+   ============================================================ */
+@media print {
+    .d-flex.justify-content-between.align-items-center {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+        padding: 10px 0;
+    }
+
+    .d-flex.justify-content-between.align-items-center h4,
+    .d-flex.justify-content-between.align-items-center p {
+        color: #000 !important;
+    }
+
+    .d-flex.justify-content-between.align-items-center .btn {
+        display: none !important;
+    }
+}

@@ -99,7 +99,11 @@ require_once VIEWS_PATH . 'templates' . DIRECTORY_SEPARATOR . 'header.php';
 <div class="profile-card">
     <div class="profile-header">
         <div class="profile-avatar-placeholder-large">
-            <?= mb_strtoupper(mb_substr($utilisateur['prenom'], 0, 1) . mb_substr($utilisateur['nom'], 0, 1)) ?>
+            <?php if (!empty($utilisateur['photo']) && file_exists(UPLOADS_PATH . $utilisateur['photo'])): ?>
+                <img src="<?= ASSETS_URL . $utilisateur['photo'] ?>" alt="Photo" class="profile-avatar-large">
+            <?php else: ?>
+                <?= mb_strtoupper(mb_substr($utilisateur['prenom'], 0, 1) . mb_substr($utilisateur['nom'], 0, 1)) ?>
+            <?php endif; ?>
         </div>
         <div class="profile-header-info">
             <h3><?= e($utilisateur['prenom'] . ' ' . $utilisateur['nom']) ?></h3>

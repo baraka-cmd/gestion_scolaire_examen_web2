@@ -478,3 +478,486 @@ input[type="date"].form-control:hover::-webkit-calendar-picker-indicator {
         page-break-inside: avoid;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS AJOUTER_ELEVE.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* ============================================================
+   2. CARTE DE SECTION — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.eleve-form-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.eleve-form-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Icône de section */
+.eleve-form-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.eleve-form-card:hover .eleve-form-icon {
+    transform: scale(1.1) rotate(-8deg);
+    animation: float 2s ease-in-out infinite;
+}
+
+/* Titre de section */
+.eleve-form-header h5 {
+    transition: color 0.3s ease;
+}
+
+/* ============================================================
+   3. CHAMPS DE FORMULAIRE — EFFETS ENRICHIS
+   ============================================================ */
+.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Icône dans l'input */
+.input-icon {
+    transition: all 0.3s ease;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+    color: var(--color-primary);
+    transform: scale(1.15);
+}
+
+/* Select */
+select.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+select.form-control:hover {
+    cursor: pointer;
+    border-color: var(--color-primary);
+}
+
+/* Textarea */
+textarea.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+textarea.form-control:focus {
+    min-height: 85px;
+}
+
+/* ============================================================
+   4. VALIDATION — FEEDBACK ANIMÉ
+   ============================================================ */
+.invalid-feedback {
+    animation: feedbackShake 0.5s ease;
+}
+
+.form-control.is-invalid {
+    animation: feedbackShake 0.4s ease;
+}
+
+.form-control.is-valid {
+    transition: all 0.3s ease;
+}
+
+/* ============================================================
+   5. INDICATEUR DE PROGRESSION — EFFETS
+   ============================================================ */
+.progress-dot {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-dot.completed:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.progress-dot.active:hover {
+    transform: scale(1.15);
+}
+
+.progress-line {
+    transition: background-color 0.5s ease;
+}
+
+/* ============================================================
+   6. BOUTONS — EFFETS
+   ============================================================ */
+.btn-submit {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(44, 62, 144, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.form-actions .btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   7. HELP TEXT — EFFET
+   ============================================================ */
+.form-help {
+    transition: all 0.3s ease;
+}
+
+.form-help i {
+    transition: transform 0.3s ease;
+}
+
+.form-help:hover i {
+    transform: scale(1.2);
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   8. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   9. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Desktop large */
+@media (min-width: 1400px) {
+    .add-eleve-container {
+        max-width: 1000px;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .eleve-form-header {
+        padding: 18px 22px;
+    }
+
+    .eleve-form-body {
+        padding: 22px;
+    }
+
+    .form-progress {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 0 10px;
+    }
+
+    .progress-line {
+        display: none;
+    }
+
+    .progress-label {
+        display: none;
+    }
+}
+
+/* Tablette verticale */
+@media (max-width: 768px) {
+    .eleve-form-header {
+        padding: 16px 18px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .eleve-form-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .eleve-form-header h5 {
+        font-size: 0.95rem;
+    }
+
+    .eleve-form-body {
+        padding: 18px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .eleve-form-card {
+        border-radius: 14px;
+        margin-bottom: 16px;
+    }
+
+    .eleve-form-header {
+        padding: 14px;
+    }
+
+    .eleve-form-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .eleve-form-header h5 {
+        font-size: 0.88rem;
+    }
+
+    .eleve-form-header p {
+        font-size: 0.7rem;
+    }
+
+    .eleve-form-body {
+        padding: 14px;
+    }
+
+    .form-control {
+        padding: 10px 12px 10px 36px;
+        font-size: 0.82rem;
+        border-radius: 10px;
+    }
+
+    .input-icon {
+        left: 12px;
+        font-size: 0.78rem;
+    }
+
+    .form-label {
+        font-size: 0.78rem;
+    }
+
+    .form-help {
+        font-size: 0.68rem;
+    }
+
+    .btn-submit {
+        padding: 10px 18px;
+        font-size: 0.82rem;
+        border-radius: 10px;
+    }
+
+    .progress-dot {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .eleve-form-header {
+        padding: 12px;
+    }
+
+    .eleve-form-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .eleve-form-body {
+        padding: 12px;
+    }
+
+    .form-control {
+        padding: 9px 10px 9px 32px;
+        font-size: 0.78rem;
+    }
+
+    .btn-submit {
+        padding: 8px 14px;
+        font-size: 0.78rem;
+    }
+}
+
+/* ============================================================
+   10. IMPRESSION
+   ============================================================ */
+@media print {
+    .form-actions,
+    .btn-submit,
+    .toast-container,
+    .breadcrumb,
+    .no-print {
+        display: none !important;
+    }
+
+    .eleve-form-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    .eleve-form-header h5,
+    .eleve-form-header p {
+        color: #000 !important;
+    }
+
+    .eleve-form-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}

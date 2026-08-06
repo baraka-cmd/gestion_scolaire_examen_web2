@@ -1,6 +1,6 @@
 /* ============================================================
    Fichier : public/assets/css/modules/eleves.css
-   Rôle    : Styles du module de gestion des élèves
+   Rôle    : Styles du module de gestion des élèves & composants d'authentification
    ============================================================ */
 
 /* ============================================================
@@ -473,7 +473,7 @@
 }
 
 /* ============================================================
-   6. FORMULAIRE ÉLÈVE
+   6. FORMULAIRE ÉLÈVE & CHAMPS MOT DE PASSE
    ============================================================ */
 .eleve-form-card {
     background-color: var(--color-white);
@@ -593,6 +593,69 @@
     color: var(--color-gray-300);
     font-size: 0.5rem;
     letter-spacing: 4px;
+}
+
+/* Styles pour le masquage / affichage du mot de passe */
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-icon-wrapper .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    font-size: 0.9rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.input-icon-wrapper .form-control {
+    width: 100%;
+    padding: 10px 42px 10px 40px;
+    font-size: 0.88rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.25s ease;
+}
+
+.input-icon-wrapper .form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.1);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: var(--color-gray-400);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+    z-index: 3;
+}
+
+.toggle-password:hover {
+    color: var(--color-primary);
+}
+
+.toggle-password:focus {
+    outline: none;
+    color: var(--color-primary);
 }
 
 /* ============================================================
@@ -787,9 +850,6 @@
     }
 }
 
-
-
-
 /* ============================================================
    11. STATISTIQUES (SECTION RÉSUMÉ)
    ============================================================ */
@@ -912,7 +972,7 @@
     font-size: 0.65rem;
 }
 
-/* Responsive */
+/* Responsive pour les statistiques */
 @media (max-width: 768px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -962,4 +1022,1021 @@
     .stat-label {
         font-size: 0.7rem;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS ELEVES.CSS — Animations, finesses UI, pagination, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 12px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.stats-grid .stat-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.05s both; }
+.stats-grid .stat-card:nth-child(2) { animation: slideInLeft 0.5s ease-out 0.15s both; }
+.stats-grid .stat-card:nth-child(3) { animation: slideInLeft 0.5s ease-out 0.25s both; }
+.stats-grid .stat-card:nth-child(4) { animation: slideInLeft 0.5s ease-out 0.35s both; }
+
+.eleves-table-card {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+/* ============================================================
+   3. STATS CARDS — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.stat-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover .stat-icon {
+    transform: rotate(-5deg) scale(1.1);
+    animation: float 2s ease-in-out infinite;
+}
+
+.stat-card:hover .stat-value {
+    transform: scale(1.05);
+}
+
+.stat-icon,
+.stat-value {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   4. EN-TÊTE ÉLÈVES — STYLE AMÉLIORÉ
+   ============================================================ */
+.eleves-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.eleves-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.eleves-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.eleves-header-left {
+    position: relative;
+    z-index: 1;
+}
+
+.eleves-header-left h4 {
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.eleves-header-left h4 i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.eleves-header-left p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+}
+
+.eleves-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* Boutons dans l'en-tête */
+.eleves-header-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.eleves-header-right .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+}
+
+.eleves-header-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: var(--color-white);
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.eleves-header-right .btn-outline-primary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.eleves-header-right .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   5. FILTRES — EFFETS DE SURVOL ET FOCUS
+   ============================================================ */
+.eleves-filters {
+    transition: all 0.3s ease;
+}
+
+.eleves-filters:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.eleves-filters .filter-group select,
+.eleves-filters .filter-group input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.eleves-filters .filter-group select:hover,
+.eleves-filters .filter-group input:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.eleves-filters .filter-group select:focus,
+.eleves-filters .filter-group input:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+.search-wrapper i {
+    transition: color 0.3s ease;
+}
+
+.search-input:focus ~ i,
+.search-wrapper:focus-within i {
+    color: var(--color-primary);
+}
+
+/* Bouton reset */
+.btn-reset-filters {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-reset-filters:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.btn-reset-filters:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   6. TABLEAU — SURVOL DES LIGNES (CORRIGÉ SANS DÉCALAGE)
+   ============================================================ */
+.eleves-table-card .table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.eleves-table-card .table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(44,62,144,0.03) 0%, rgba(44,62,144,0.01) 50%, transparent 100%);
+}
+
+/* Barre latérale sur la première cellule — SANS décalage */
+.eleves-table-card .table tbody tr td:first-child {
+    position: relative;
+}
+
+.eleves-table-card .table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.eleves-table-card .table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.eleves-table-card .table tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Avatar */
+.eleve-avatar-placeholder {
+    transition: all 0.3s ease;
+}
+
+.eleves-table-card .table tbody tr:hover .eleve-avatar-placeholder {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Nom */
+.eleve-name a {
+    transition: all 0.25s ease;
+}
+
+.eleves-table-card .table tbody tr:hover .eleve-name a {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   7. BADGES — EFFETS
+   ============================================================ */
+.badge {
+    transition: all 0.25s ease;
+}
+
+.sexe-badge {
+    transition: all 0.3s ease;
+}
+
+.sexe-badge:hover {
+    transform: scale(1.05);
+}
+
+.age-badge {
+    transition: all 0.3s ease;
+}
+
+/* ============================================================
+   8. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--color-gray-50);
+    border-radius: 0 0 16px 16px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: var(--color-dark);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid var(--border-color);
+    background: var(--color-white);
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination a:hover {
+    background: var(--color-primary-lighter);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.15);
+}
+
+.pagination a.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.3);
+}
+
+.pagination a.active:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.pagination a.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--color-gray-50);
+}
+
+.pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    color: var(--color-gray-400);
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+/* ============================================================
+   9. FICHE ÉLÈVE — EFFETS DE SURVOL
+   ============================================================ */
+.eleve-profile-card {
+    transition: all 0.3s ease;
+}
+
+.eleve-profile-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.eleve-profile-avatar-placeholder {
+    transition: all 0.3s ease;
+}
+
+.eleve-profile-card:hover .eleve-profile-avatar-placeholder {
+    transform: scale(1.05);
+}
+
+.eleve-profile-actions .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.eleve-profile-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Sections */
+.eleve-section-title i {
+    transition: transform 0.3s ease;
+}
+
+.eleve-section:hover .eleve-section-title i {
+    transform: scale(1.15);
+}
+
+.eleve-detail-field {
+    transition: all 0.25s ease;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin: -4px -8px;
+}
+
+.eleve-detail-field:hover {
+    background-color: var(--color-gray-50);
+}
+
+/* ============================================================
+   10. PARENTS — EFFETS DE SURVOL
+   ============================================================ */
+.parent-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parent-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(44, 62, 144, 0.12);
+}
+
+.parent-info-row i {
+    transition: transform 0.3s ease;
+}
+
+.parent-card:hover .parent-info-row i {
+    transform: scale(1.2);
+}
+
+/* ============================================================
+   11. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-gray-400);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   12. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-row {
+    height: 50px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+}
+
+/* ============================================================
+   13. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   14. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .eleve-profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 24px;
+    }
+
+    .eleve-profile-actions {
+        justify-content: center;
+    }
+
+    .eleve-profile-meta {
+        justify-content: center;
+    }
+
+    .parents-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablette verticale */
+@media (max-width: 768px) {
+    .eleves-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+        border-radius: 14px;
+    }
+
+    .eleves-header-left h4 {
+        font-size: 1rem;
+    }
+
+    .eleves-header-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .eleves-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 14px;
+    }
+
+    .eleves-filters .search-input {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .eleves-filters .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .eleves-filters .filter-group select {
+        width: 100%;
+    }
+
+    .btn-reset-filters {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .eleve-profile-body {
+        padding: 16px;
+    }
+
+    .eleve-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eleve-form-card {
+        max-width: 100%;
+    }
+
+    .eleve-form-body {
+        padding: 16px;
+    }
+
+    .eleve-form-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+    }
+
+    .eleve-form-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 16px;
+    }
+
+    .pagination a {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .eleves-header {
+        padding: 14px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+
+    .eleves-header-left h4 {
+        font-size: 0.9rem;
+    }
+
+    .eleves-header-right .btn {
+        font-size: 0.72rem;
+        padding: 7px 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .stat-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    .eleve-profile-header {
+        padding: 16px;
+    }
+
+    .eleve-profile-avatar-placeholder {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+        border-radius: 14px;
+    }
+
+    .eleve-profile-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .eleve-form-header {
+        padding: 14px 16px;
+    }
+
+    .eleve-form-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .parent-card {
+        padding: 14px 16px;
+        border-radius: 12px;
+    }
+
+    .pagination a {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .eleve-profile-header {
+        padding: 12px;
+    }
+
+    .eleve-profile-avatar-placeholder {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================================
+   15. IMPRESSION
+   ============================================================ */
+@media print {
+    .eleves-header-right,
+    .eleves-filters,
+    .eleve-profile-actions,
+    .btn,
+    .actions-cell,
+    .pagination-wrapper,
+    .toast-container,
+    .no-print {
+        display: none !important;
+    }
+
+    .eleves-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+        padding: 10px 0;
+    }
+
+    .eleves-header-left h4,
+    .eleves-header-left p {
+        color: #000 !important;
+    }
+
+    .eleve-profile-card,
+    .eleves-table-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .eleve-profile-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+}
+
+
+
+/* ============================================================
+   SCROLLBAR HORIZONTALE STYLÉE — Tableau des élèves (CORRIGÉ)
+   ============================================================ */
+
+/* Forcer le conteneur du tableau à avoir un scroll horizontal */
+.eleves-table-card .table-responsive {
+    overflow-x: auto !important;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    position: relative;
+    max-width: 100%;
+}
+
+/* S'assurer que le tableau a une largeur minimale qui force le scroll */
+.eleves-table-card .table-responsive table {
+    min-width: 900px;
+    width: max-content;
+}
+
+/* Barre de défilement horizontale — Webkit (Chrome, Edge, Safari) */
+.eleves-table-card .table-responsive::-webkit-scrollbar {
+    height: 10px;
+}
+
+.eleves-table-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 16px;
+}
+
+.eleves-table-card .table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+    cursor: pointer;
+}
+
+.eleves-table-card .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #1a274f, #3b4fa0);
+}
+
+/* Barre de défilement horizontale — Firefox */
+.eleves-table-card .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+/* ============================================================
+   INDICATEUR "GLISSER POUR VOIR PLUS" SUR MOBILE
+   ============================================================ */
+.table-scroll-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0 6px 0;
+    font-size: 0.7rem;
+    color: #64748b;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.table-scroll-indicator i {
+    font-size: 0.65rem;
+    color: #2c3e90;
+    animation: scrollHintBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollHintBounce {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50%      { transform: translateX(6px); opacity: 1; }
+}
+
+/* Cacher l'indicateur sur grand écran */
+@media (min-width: 993px) {
+    .table-scroll-indicator {
+        display: none;
+    }
+}
+
+/* Sur mobile, barre plus fine */
+@media (max-width: 768px) {
+    .eleves-table-card .table-responsive::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .eleves-table-card .table-responsive::-webkit-scrollbar-track {
+        margin: 0 10px;
+    }
+
+    .eleves-table-card .table-responsive::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+    }
+
+    .eleves-table-card .table-responsive table {
+        min-width: 750px;
+    }
+}
+
+@media (max-width: 480px) {
+    .eleves-table-card .table-responsive::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .eleves-table-card .table-responsive table {
+        min-width: 650px;
+    }
+}
+
+/* ============================================================
+   STICKY COLONNE NOM + MATRICULE (optionnel)
+   ============================================================ */
+.eleves-table-card .table thead th:first-child,
+.eleves-table-card .table thead th:nth-child(2),
+.eleves-table-card .table tbody td:first-child,
+.eleves-table-card .table tbody td:nth-child(2) {
+    position: sticky;
+    left: 0;
+    background: #ffffff;
+    z-index: 1;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.03);
+}
+
+.eleves-table-card .table thead th:first-child {
+    left: 0;
+    z-index: 3;
+    background: #f8fafc;
+}
+
+.eleves-table-card .table thead th:nth-child(2) {
+    left: var(--col1-width, 180px);
+    z-index: 3;
+    background: #f8fafc;
+}
+
+.eleves-table-card .table tbody td:first-child {
+    left: 0;
+    z-index: 1;
+}
+
+.eleves-table-card .table tbody td:nth-child(2) {
+    left: var(--col1-width, 180px);
+    z-index: 1;
+}
+
+.eleves-table-card .table tbody tr:hover td:first-child,
+.eleves-table-card .table tbody tr:hover td:nth-child(2) {
+    background: #f8fafc;
 }

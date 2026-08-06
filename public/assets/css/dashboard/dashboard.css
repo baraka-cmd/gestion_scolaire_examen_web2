@@ -679,3 +679,709 @@
         background: white;
     }
 }
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS DASHBOARD — À placer à la fin de dashboard.css
+   Rôle    : Corrections, animations, pagination, responsive manquant
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS D'ENTRÉE
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.4); }
+    50%      { box-shadow: 0 0 0 12px rgba(44, 62, 144, 0); }
+}
+
+@keyframes ripple {
+    0%   { transform: scale(0); opacity: 1; }
+    100% { transform: scale(4); opacity: 0; }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES STATS CARDS
+   ============================================================ */
+.stats-grid .stat-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.1s both; }
+.stats-grid .stat-card:nth-child(2) { animation: slideInLeft 0.5s ease-out 0.2s both; }
+.stats-grid .stat-card:nth-child(3) { animation: slideInLeft 0.5s ease-out 0.3s both; }
+.stats-grid .stat-card:nth-child(4) { animation: slideInRight 0.5s ease-out 0.1s both; }
+.stats-grid .stat-card:nth-child(5) { animation: slideInRight 0.5s ease-out 0.2s both; }
+.stats-grid .stat-card:nth-child(6) { animation: slideInRight 0.5s ease-out 0.3s both; }
+
+.charts-grid .card,
+.bottom-grid .card {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.charts-grid .card:nth-child(1) { animation-delay: 0.35s; }
+.charts-grid .card:nth-child(2) { animation-delay: 0.45s; }
+.bottom-grid .card:nth-child(1) { animation-delay: 0.55s; }
+.bottom-grid .card:nth-child(2) { animation-delay: 0.6s; }
+.bottom-grid .card:nth-child(3) { animation-delay: 0.65s; }
+
+/* ============================================================
+   3. EFFET VAGUE SUR STATS CARDS
+   ============================================================ */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease-out, height 0.6s ease-out;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.stat-card:hover::before {
+    width: 500px;
+    height: 500px;
+}
+
+.stat-card:hover .stat-icon {
+    animation: float 2s ease-in-out infinite;
+}
+
+.stat-card:hover .stat-value {
+    transform: scale(1.05);
+}
+
+/* Bordures lumineuses par couleur */
+.stat-card.students:hover   { box-shadow: 0 12px 30px rgba(44, 62, 144, 0.2), 0 0 0 1px rgba(44, 62, 144, 0.3); }
+.stat-card.teachers:hover  { box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2), 0 0 0 1px rgba(16, 185, 129, 0.3); }
+.stat-card.classes:hover   { box-shadow: 0 12px 30px rgba(245, 158, 11, 0.2), 0 0 0 1px rgba(245, 158, 11, 0.3); }
+.stat-card.attendance:hover { box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(59, 130, 246, 0.3); }
+.stat-card.payments:hover  { box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2), 0 0 0 1px rgba(139, 92, 246, 0.3); }
+.stat-card.messages:hover  { box-shadow: 0 12px 30px rgba(239, 68, 68, 0.2), 0 0 0 1px rgba(239, 68, 68, 0.3); }
+
+/* ============================================================
+   7. TABLEAUX — STYLE ZEBRA AMÉLIORÉ (CORRIGÉ)
+   ============================================================ */
+.table tbody tr {
+    transition: background 0.25s ease;
+}
+
+/* Effet de surbrillance au survol */
+.table tbody tr:hover {
+    background: linear-gradient(90deg, 
+        rgba(44, 62, 144, 0.03) 0%, 
+        rgba(44, 62, 144, 0.01) 50%, 
+        transparent 100%);
+}
+
+/* Barre latérale gauche au survol — sur la première cellule, SANS décalage */
+.table tbody tr td:first-child {
+    position: relative;
+}
+
+.table tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.table tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+/* Avatar placeholder amélioré */
+.table-avatar-placeholder {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.table tbody tr:hover .table-avatar-placeholder {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Badge avec animation */
+.badge {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover .badge {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+/* ============================================================
+   5. TIMELINE DES ACTIVITÉS
+   ============================================================ */
+.activity-list {
+    position: relative;
+}
+
+.activity-list::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-lighter) 50%, transparent 100%);
+    border-radius: 1px;
+}
+
+.activity-item {
+    position: relative;
+    padding-left: 20px;
+}
+
+.activity-dot {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    transition: all 0.3s ease;
+}
+
+.activity-item:hover .activity-dot {
+    transform: scale(1.5);
+    box-shadow: 0 0 0 6px rgba(16,185,129,0.15);
+}
+
+.activity-item:hover .activity-text {
+    color: var(--color-primary);
+}
+
+.activity-item:hover .activity-time {
+    color: var(--color-gray-600);
+}
+
+/* ============================================================
+   6. PAGINATION
+   ============================================================ */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.pagination-info strong {
+    color: var(--color-dark);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1.5px solid var(--border-color);
+    background: var(--color-white);
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination-btn:hover {
+    background: var(--color-primary-lighter);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44,62,144,0.15);
+}
+
+.pagination-btn:active {
+    transform: translateY(0);
+}
+
+.pagination-btn.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(44,62,144,0.3);
+}
+
+.pagination-btn.active:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.pagination-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--color-gray-50);
+}
+
+.pagination-btn i {
+    font-size: 0.7rem;
+}
+
+.pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+    color: var(--color-gray-400);
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+/* ============================================================
+   7. FILTRES DE PÉRIODE (SEGMENT CONTROL)
+   ============================================================ */
+.period-filters {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--color-gray-50);
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.period-filter-btn {
+    padding: 6px 14px;
+    border-radius: 9px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    color: var(--color-gray-500);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-primary);
+    white-space: nowrap;
+}
+
+.period-filter-btn:hover {
+    color: var(--color-primary);
+    background: rgba(44,62,144,0.05);
+}
+
+.period-filter-btn.active {
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* ============================================================
+   8. TOOLTIP
+   ============================================================ */
+.tooltip-trigger {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted var(--color-gray-400);
+}
+
+.tooltip-content {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.tooltip-content::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--color-dark);
+}
+
+.tooltip-trigger:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   9. BOUTON RETOUR EN HAUT
+   ============================================================ */
+.btn-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(44,62,144,0.3);
+}
+
+.btn-back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.btn-back-to-top:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(44,62,144,0.4);
+}
+
+.btn-back-to-top:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   10. EMPTY STATE AMÉLIORÉ
+   ============================================================ */
+.empty-state-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: var(--color-gray-400);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover .empty-state-icon {
+    background: var(--color-primary-lighter);
+    color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+.empty-state h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+}
+
+/* ============================================================
+   11. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-chart {
+    height: 300px;
+    border-radius: 16px;
+}
+
+.skeleton-table {
+    height: 200px;
+    border-radius: 12px;
+}
+
+.skeleton-stat {
+    height: 90px;
+    border-radius: 16px;
+}
+
+/* ============================================================
+   12. CORRECTIONS RESPONSIVE (mobile < 480px)
+   ============================================================ */
+@media (max-width: 575px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 10px 8px;
+        gap: 6px;
+        border-radius: 12px;
+    }
+
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+        margin-bottom: 4px;
+    }
+
+    .stat-change {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .card-header {
+        padding: 10px 12px;
+    }
+
+    .card-header-title {
+        font-size: 0.85rem;
+    }
+
+    .card-body {
+        padding: 10px 12px;
+    }
+
+    .chart-container {
+        height: 200px;
+    }
+
+    .chart-container.large {
+        height: 220px;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: 8px 6px;
+        font-size: 0.68rem;
+    }
+
+    .user-cell {
+        gap: 6px;
+    }
+
+    .user-name {
+        font-size: 0.72rem;
+    }
+
+    .user-detail {
+        font-size: 0.65rem;
+    }
+
+    .badge {
+        padding: 3px 7px;
+        font-size: 0.62rem;
+    }
+
+    .btn-card-action {
+        padding: 5px 10px;
+        font-size: 0.68rem;
+    }
+
+    .activity-item {
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    .activity-text {
+        font-size: 0.75rem;
+    }
+
+    .activity-time {
+        font-size: 0.65rem;
+    }
+
+    .pagination-btn {
+        min-width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+        padding: 0 5px;
+    }
+
+    .pagination-dots {
+        min-width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .period-filters {
+        padding: 3px;
+        border-radius: 10px;
+    }
+
+    .period-filter-btn {
+        padding: 4px 8px;
+        font-size: 0.65rem;
+        border-radius: 7px;
+    }
+
+    .empty-state {
+        padding: 30px 15px;
+    }
+
+    .empty-state-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .btn-back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 16px;
+        right: 16px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+}
+
+/* ============================================================
+   13. TRÈS PETIT MOBILE (< 375px)
+   ============================================================ */
+@media (max-width: 374px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .stat-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .chart-container {
+        height: 180px;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: 6px 5px;
+        font-size: 0.62rem;
+    }
+
+    .table-avatar-placeholder {
+        width: 26px;
+        height: 26px;
+        font-size: 0.62rem;
+    }
+}
+
+/* ============================================================
+   14. GRAND ÉCRAN (> 1400px) — Grille élargie
+   ============================================================ */
+@media (min-width: 1400px) {
+    .stats-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .chart-container {
+        height: 350px;
+    }
+
+    .chart-container.large {
+        height: 400px;
+    }
+}
+
+/* ============================================================
+   15. EFFET RIPPLE SUR BOUTONS (optionnel)
+   ============================================================ */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+}

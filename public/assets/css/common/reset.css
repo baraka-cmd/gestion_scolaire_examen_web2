@@ -364,22 +364,10 @@ address {
         text-shadow: none !important;
     }
 
+    /* Liens : ne pas afficher l'URL */
     a,
     a:visited {
         text-decoration: underline;
-    }
-
-    a[href]::after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]::after {
-        content: " (" attr(title) ")";
-    }
-
-    a[href^="#"]::after,
-    a[href^="javascript:"]::after {
-        content: "";
     }
 
     pre {

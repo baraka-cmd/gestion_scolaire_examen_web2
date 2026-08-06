@@ -420,3 +420,873 @@
         height: 220px;
     }
 }
+
+
+
+/* ============================================================
+   AJOUTS STATISTIQUES.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes bounceIn {
+    0%   { transform: scale(0.3); opacity: 0; }
+    50%  { transform: scale(1.05); }
+    70%  { transform: scale(0.95); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES GRAPHIQUES
+   ============================================================ */
+.charts-grid-2 .card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.2s both; }
+.charts-grid-2 .card:nth-child(2) { animation: slideInRight 0.5s ease-out 0.25s both; }
+
+.card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+/* ============================================================
+   3. KPIs — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.kpi-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet brillance au survol */
+.kpi-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44,62,144,0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.kpi-card:hover::after {
+    opacity: 1;
+}
+
+.kpi-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Icône KPI */
+.kpi-card-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.kpi-card:hover .kpi-card-icon {
+    transform: rotate(-5deg) scale(1.1);
+    animation: float 2s ease-in-out infinite;
+}
+
+/* Valeur KPI */
+.kpi-card-value {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.kpi-card:hover .kpi-card-value {
+    transform: scale(1.05);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Sous-titre */
+.kpi-card-subtitle {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.kpi-card-subtitle i {
+    transition: transform 0.3s ease;
+}
+
+.kpi-card:hover .kpi-card-subtitle.up i {
+    animation: bounceIn 0.5s ease;
+}
+
+/* Barre latérale colorée — animation */
+.kpi-card::before {
+    transition: width 0.3s ease;
+}
+
+.kpi-card:hover::before {
+    width: 8px;
+}
+
+/* ============================================================
+   4. CARDS — EFFETS DE SURVOL
+   ============================================================ */
+.card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-header h5 i {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-header h5 i {
+    transform: scale(1.15);
+    color: #2c3e90;
+}
+
+/* Card header avec icône à gauche */
+.card-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-header-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.card-header-icon.blue   { background: #e8eaf6; color: #2c3e90; }
+.card-header-icon.green  { background: #d1fae5; color: #10b981; }
+.card-header-icon.orange { background: #fef3c7; color: #f59e0b; }
+.card-header-icon.red    { background: #fee2e2; color: #ef4444; }
+.card-header-icon.purple { background: #ede9fe; color: #8b5cf6; }
+.card-header-icon.cyan   { background: #dbeafe; color: #06b6d4; }
+
+.card:hover .card-header-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.card-header-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-header-title {
+    color: #2c3e90;
+}
+
+.card-header-subtitle {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: 2px;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-header-subtitle {
+    color: #64748b;
+}
+
+/* ============================================================
+   5. TABLE FINANCE — SURVOL DES LIGNES (CORRIGÉ)
+   ============================================================ */
+.table-finance tbody tr {
+    transition: background 0.25s ease;
+    position: relative;
+}
+
+.table-finance tbody tr:hover {
+    background: linear-gradient(90deg, rgba(44,62,144,0.03) 0%, rgba(44,62,144,0.01) 50%, transparent 100%);
+}
+
+.table-finance tbody tr td:first-child {
+    position: relative;
+}
+
+.table-finance tbody tr td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #2c3e90;
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.table-finance tbody tr:hover td:first-child::before {
+    transform: scaleY(1);
+}
+
+.table-finance tbody tr:hover .badge {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.table-finance tbody tr:hover strong {
+    color: #2c3e90;
+}
+
+/* ============================================================
+   6. TOP ENSEIGNANT — EFFETS
+   ============================================================ */
+.top-enseignant-card {
+    transition: all 0.3s ease;
+}
+
+.top-enseignant-avatar {
+    transition: all 0.3s ease;
+}
+
+.top-enseignant-card:hover .top-enseignant-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(245, 158, 11, 0.4);
+}
+
+.top-enseignant-card h5 {
+    transition: color 0.3s ease;
+}
+
+.top-enseignant-card:hover h5 {
+    color: #2c3e90;
+}
+
+.top-enseignant-moyenne strong {
+    transition: all 0.3s ease;
+}
+
+.top-enseignant-card:hover .top-enseignant-moyenne strong {
+    color: #1a274f;
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   7. CONTENEURS DE GRAPHIQUES — EFFET SURVOL
+   ============================================================ */
+.chart-wrapper-lg,
+.chart-wrapper-md,
+.chart-wrapper-sm {
+    transition: all 0.3s ease;
+}
+
+.card:hover .chart-wrapper-lg,
+.card:hover .chart-wrapper-md,
+.card:hover .chart-wrapper-sm {
+    filter: brightness(1.02);
+}
+
+/* ============================================================
+   8. ALERTE RISQUE — EFFETS
+   ============================================================ */
+.risque-alerte {
+    transition: all 0.3s ease;
+}
+
+.risque-alerte:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+    transform: translateY(-2px);
+}
+
+.risque-alerte-header i {
+    transition: transform 0.3s ease;
+}
+
+.risque-alerte:hover .risque-alerte-header i {
+    transform: scale(1.2);
+}
+
+/* ============================================================
+   9. LÉGENDE — EFFETS
+   ============================================================ */
+.legend-item {
+    transition: all 0.25s ease;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: default;
+}
+
+.legend-item:hover {
+    background-color: #f8fafc;
+}
+
+.legend-color {
+    transition: transform 0.3s ease;
+}
+
+.legend-item:hover .legend-color {
+    transform: scale(1.2);
+}
+
+/* ============================================================
+   10. TENDANCE — EFFETS
+   ============================================================ */
+.tendance {
+    transition: all 0.3s ease;
+}
+
+.tendance:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   11. BADGES — EFFETS
+   ============================================================ */
+.badge {
+    transition: all 0.25s ease;
+}
+
+.badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================================
+   12. BOUTONS — EFFETS
+   ============================================================ */
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   13. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: #2c3e90;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   14. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-kpi {
+    height: 120px;
+    border-radius: 18px;
+}
+
+.skeleton-chart {
+    height: 350px;
+    border-radius: 16px;
+}
+
+/* ============================================================
+   15. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   16. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .kpi-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+    }
+
+    .charts-grid-2 {
+        gap: 24px;
+    }
+
+    .chart-wrapper-lg {
+        height: 420px;
+    }
+
+    .chart-wrapper-md {
+        height: 350px;
+    }
+}
+
+/* Desktop standard */
+@media (max-width: 1399px) {
+    .kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Petit desktop / Tablette paysage */
+@media (max-width: 1199px) {
+    .kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .charts-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .chart-wrapper-lg {
+        height: 340px;
+    }
+
+    .chart-wrapper-md {
+        height: 300px;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .kpi-card {
+        padding: 18px 20px;
+    }
+
+    .kpi-card-value {
+        font-size: 1.6rem;
+    }
+
+    .kpi-card-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .charts-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-wrapper-lg {
+        height: 300px;
+    }
+
+    .chart-wrapper-md {
+        height: 260px;
+    }
+}
+
+/* Tablette verticale / Grand mobile */
+@media (max-width: 768px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .kpi-card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .kpi-card-value {
+        font-size: 1.4rem;
+    }
+
+    .kpi-card-title {
+        font-size: 0.7rem;
+    }
+
+    .kpi-card-subtitle {
+        font-size: 0.68rem;
+    }
+
+    .card-header {
+        padding: 14px 16px;
+    }
+
+    .card-body {
+        padding: 14px 16px;
+    }
+
+    .chart-wrapper-lg {
+        height: 280px;
+    }
+
+    .chart-wrapper-md {
+        height: 240px;
+    }
+
+    .chart-wrapper-sm {
+        height: 220px;
+    }
+
+    .table-finance thead th,
+    .table-finance tbody td {
+        padding: 10px 12px;
+        font-size: 0.78rem;
+    }
+
+    .top-enseignant-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .kpi-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .kpi-card {
+        padding: 14px 12px;
+        border-radius: 12px;
+    }
+
+    .kpi-card::before {
+        width: 4px;
+    }
+
+    .kpi-card:hover::before {
+        width: 6px;
+    }
+
+    .kpi-card-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+    }
+
+    .kpi-card-value {
+        font-size: 1.2rem;
+    }
+
+    .kpi-card-title {
+        font-size: 0.65rem;
+        letter-spacing: 0.3px;
+    }
+
+    .kpi-card-subtitle {
+        font-size: 0.62rem;
+    }
+
+    .card {
+        border-radius: 14px;
+    }
+
+    .card-header {
+        padding: 12px 14px;
+    }
+
+    .card-body {
+        padding: 12px 14px;
+    }
+
+    .card-header-title {
+        font-size: 0.85rem;
+    }
+
+    .card-header-subtitle {
+        font-size: 0.68rem;
+    }
+
+    .card-header-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
+    }
+
+    .chart-wrapper-lg {
+        height: 250px;
+    }
+
+    .chart-wrapper-md {
+        height: 220px;
+    }
+
+    .chart-wrapper-sm {
+        height: 200px;
+    }
+
+    .table-finance thead th,
+    .table-finance tbody td {
+        padding: 8px 8px;
+        font-size: 0.7rem;
+    }
+
+    .table-finance thead th {
+        font-size: 0.62rem;
+        letter-spacing: 0.3px;
+    }
+
+    .risque-alerte {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .risque-alerte-header {
+        font-size: 0.78rem;
+    }
+
+    .risque-alerte-detail {
+        font-size: 0.72rem;
+    }
+
+    .custom-legend {
+        gap: 12px;
+    }
+
+    .legend-item {
+        font-size: 0.72rem;
+        padding: 4px 8px;
+    }
+
+    .legend-color {
+        width: 12px;
+        height: 12px;
+    }
+
+    .tendance {
+        font-size: 0.68rem;
+        padding: 2px 8px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .chart-wrapper-lg {
+        height: 220px;
+    }
+
+    .chart-wrapper-md {
+        height: 200px;
+    }
+}
+
+/* ============================================================
+   17. IMPRESSION
+   ============================================================ */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+
+    .kpi-card,
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+        animation: none;
+    }
+
+    .kpi-card::before,
+    .kpi-card::after {
+        display: none;
+    }
+
+    .btn,
+    .no-print,
+    .breadcrumb,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .toast-container,
+    #flashMessage {
+        display: none !important;
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+    body {
+        background: #ffffff !important;
+        font-size: 10px;
+    }
+
+    .chart-wrapper-lg,
+    .chart-wrapper-md {
+        height: 280px !important;
+    }
+
+    .charts-grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

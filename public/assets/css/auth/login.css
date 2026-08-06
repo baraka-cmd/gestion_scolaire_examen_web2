@@ -1,6 +1,6 @@
 /* ============================================================
    Fichier : public/assets/css/auth/login.css
-   Rôle    : Styles de la page de connexion
+   Rôle    : Styles complets de la page de connexion
    ============================================================ */
 
 /* ============================================================
@@ -283,7 +283,7 @@
 }
 
 /* ============================================================
-   4. CHAMPS DE FORMULAIRE (CORRIGÉ)
+   4. CHAMPS DE FORMULAIRE & SITES D'ICÔNES
    ============================================================ */
 .form-group {
     margin-bottom: 20px;
@@ -306,6 +306,7 @@
     text-align: center;
 }
 
+/* Conteneur relatif pour l'icône + input + bouton toggle */
 .input-icon-wrapper {
     position: relative;
     display: flex;
@@ -313,24 +314,26 @@
     width: 100%;
 }
 
-.input-icon {
+/* Icône de gauche (E-mail / Mot de passe) */
+.input-icon-wrapper .input-icon {
     position: absolute;
     left: 14px;
+    z-index: 2;
     color: var(--color-gray-400);
     font-size: 0.85rem;
     pointer-events: none;
     transition: color 0.3s ease;
-    z-index: 1;
 }
 
 .input-icon-wrapper:focus-within .input-icon {
     color: var(--color-primary);
 }
 
+/* Champ de saisie */
 .form-control {
     width: 100%;
-    /* 48px à droite pour laisser la place au bouton toggle sans chevauchement */
-    padding: 12px 48px 12px 42px;
+    height: 48px;
+    padding: 12px 48px 12px 42px !important;
     font-family: var(--font-primary);
     font-size: 0.88rem;
     font-weight: 400;
@@ -371,66 +374,56 @@
     box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.06);
 }
 
+/* Ajustements pour la saisie automatique du navigateur (Autofill) */
+#password:-webkit-autofill,
+#password:-webkit-autofill:hover, 
+#password:-webkit-autofill:focus,
+#password:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--color-dark, #2b3674) !important;
+    transition: background-color 50000s ease-in-out 0s;
+}
+
+#password[type="text"] {
+    -webkit-text-security: none !important;
+    color: var(--color-dark, #2b3674) !important;
+}
+
 /* ============================================================
-   BOUTON TOGGLE MOT DE PASSE (CORRIGÉ)
+   5. BOUTON TOGGLE MOT DE PASSE (ŒIL)
    ============================================================ */
-.toggle-password {
+.toggle-password,
+.btn-toggle-password {
     position: absolute;
-    right: 6px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent !important;
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
     color: var(--color-gray-400);
     cursor: pointer;
-    padding: 8px 12px;
-    font-size: 0.9rem;
+    padding: 8px;
+    font-size: 1rem;
     transition: color 0.2s ease;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    /* Suppression des conflits de hauteur */
-    height: auto;
 }
 
-.toggle-password:hover {
+.toggle-password:hover,
+.btn-toggle-password:hover {
     color: var(--color-primary);
 }
 
-.toggle-password:focus {
-    outline: none;
+.toggle-password i,
+.btn-toggle-password i {
+    font-size: 1.1rem;
+    pointer-events: none;
 }
-
-/* Autoriser explicitement les événements de pointeur */
-.toggle-password i {
-    font-size: 0.9rem;
-    pointer-events: auto !important;
-}
-
-.invalid-feedback {
-    display: block;
-    font-size: 0.72rem;
-    color: var(--color-error);
-    margin-top: 5px;
-    font-weight: 500;
-    padding-left: 2px;
-    animation: shakeError 0.4s ease;
-}
-
-@keyframes shakeError {
-    0%, 100% { transform: translateX(0); }
-    20% { transform: translateX(-4px); }
-    40% { transform: translateX(4px); }
-    60% { transform: translateX(-3px); }
-    80% { transform: translateX(3px); }
-}
-
 
 /* ============================================================
-   5. INDICATEUR DE FORCE DU MOT DE PASSE
+   6. INDICATEUR DE FORCE DU MOT DE PASSE
    ============================================================ */
 .password-strength {
     margin-top: -8px;
@@ -473,7 +466,7 @@
 .strength-text.very-strong { color: #10b981; }
 
 /* ============================================================
-   6. EXIGENCES DU MOT DE PASSE
+   7. EXIGENCES DU MOT DE PASSE
    ============================================================ */
 .password-requirements {
     margin-top: -8px;
@@ -541,88 +534,45 @@
 }
 
 /* ============================================================
-   7. OPTIONS (Se souvenir + Mot de passe oublié)
+   7. OPTIONS (Se souvenir de moi + Mot de passe oublié)
    ============================================================ */
 .form-options {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 22px;
-    flex-wrap: wrap;
-    gap: 10px;
+    justify-content: space-between; /* Place la checkbox à gauche et le lien à droite */
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    gap: 12px;
 }
 
-/* Checkbox personnalisée */
 .checkbox-wrapper {
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
     user-select: none;
-}
-
-.checkbox-wrapper input[type="checkbox"] {
-    display: none;
-}
-
-.checkbox-custom {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-gray-300);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.25s ease;
-    flex-shrink: 0;
-}
-
-.checkbox-custom i {
-    font-size: 0.6rem;
-    color: var(--color-white);
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.25s ease;
-}
-
-.checkbox-wrapper input:checked + .checkbox-custom {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-.checkbox-wrapper input:checked + .checkbox-custom i {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.checkbox-wrapper:hover .checkbox-custom {
-    border-color: var(--color-primary);
+    margin: 0;
 }
 
 .checkbox-label {
     font-size: 0.82rem;
-    color: var(--color-gray-600);
-    font-weight: 400;
+    color: var(--color-gray-600, #4b5563);
+    white-space: nowrap;
 }
 
 .forgot-link {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 500;
-    color: var(--color-primary);
+    color: var(--color-primary, #2c3e90);
     text-decoration: none;
+    white-space: nowrap;
     transition: color 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 4px;
 }
 
 .forgot-link:hover {
-    color: var(--color-primary-dark);
+    color: var(--color-primary-dark, #1a274f);
     text-decoration: underline;
-}
-
-.forgot-link i {
-    font-size: 0.7rem;
 }
 
 /* ============================================================
@@ -634,32 +584,16 @@
     font-size: 0.9rem;
     font-weight: 600;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-primary, #2c3e90) 0%, var(--color-primary-dark, #1a274f) 100%);
+    color: #ffffff;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-login::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    transition: left 0.5s ease;
-}
-
-.btn-login:hover::before {
-    left: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 62, 144, 0.25);
 }
 
 .btn-login:hover {
@@ -669,21 +603,11 @@
 
 .btn-login:active {
     transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(44, 62, 144, 0.25);
 }
 
-.btn-login:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.btn-login .spinner {
-    font-size: 0.9rem;
-}
 
 /* ============================================================
-   9. SÉPARATEUR
+   10. SÉPARATEUR
    ============================================================ */
 .divider {
     display: flex;
@@ -710,7 +634,7 @@
 }
 
 /* ============================================================
-   10. BOUTON GOOGLE
+   11. BOUTON GOOGLE
    ============================================================ */
 .btn-google {
     width: 100%;
@@ -742,10 +666,13 @@
 
 .btn-google svg {
     flex-shrink: 0;
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
 }
 
 /* ============================================================
-   11. PIED DU FORMULAIRE
+   12. PIED DU FORMULAIRE
    ============================================================ */
 .login-form-footer {
     text-align: center;
@@ -768,7 +695,7 @@
 }
 
 /* ============================================================
-   12. ALERTES
+   13. ALERTES
    ============================================================ */
 .alert {
     padding: 13px 16px;
@@ -830,7 +757,7 @@
 }
 
 /* ============================================================
-   13. RESPONSIVE
+   14. RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
     .login-container {
@@ -918,37 +845,4 @@
         padding: 10px 20px;
         font-size: 0.8rem;
     }
-}
-
-
-
-
-
-.toggle-password {
-    position: absolute;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--color-gray-400);
-    cursor: pointer;
-    padding: 10px 14px;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-    z-index: 2;
-    border-radius: 0 10px 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(100% - 4px);
-}
-
-.toggle-password:hover {
-    color: var(--color-primary);
-}
-
-.toggle-password i {
-    font-size: 0.9rem;
-    pointer-events: none;
 }

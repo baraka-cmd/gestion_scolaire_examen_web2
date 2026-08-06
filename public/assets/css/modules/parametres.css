@@ -267,3 +267,653 @@
         display: none !important;
     }
 }
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS PARAMETRES.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES CARTES
+   ============================================================ */
+.parametres-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.parametres-card:nth-child(1) { animation-delay: 0.05s; }
+.parametres-card:nth-child(2) { animation-delay: 0.12s; }
+.parametres-card:nth-child(3) { animation-delay: 0.19s; }
+.parametres-card:nth-child(4) { animation-delay: 0.26s; }
+.parametres-card:nth-child(5) { animation-delay: 0.33s; }
+
+/* ============================================================
+   3. CARTES PARAMÈTRES — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.parametres-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parametres-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.parametres-card-icon {
+    transition: all 0.3s ease;
+}
+
+.parametres-card:hover .parametres-card-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.parametres-card-header h5 {
+    transition: color 0.3s ease;
+}
+
+.parametres-card:hover .parametres-card-header h5 {
+    color: #2c3e90;
+}
+
+/* ============================================================
+   4. UPLOAD LOGO — EFFETS
+   ============================================================ */
+.logo-preview {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-preview:hover {
+    border-color: #2c3e90;
+    background: #e8eaf6;
+    transform: scale(1.02);
+}
+
+.logo-placeholder {
+    transition: all 0.3s ease;
+}
+
+.logo-preview:hover .logo-placeholder {
+    transform: scale(1.1);
+    color: #2c3e90;
+}
+
+.logo-image {
+    transition: all 0.3s ease;
+}
+
+.logo-preview:hover .logo-image {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   5. CHAMPS DE FORMULAIRE — EFFETS ENRICHIS
+   ============================================================ */
+.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.form-control:focus {
+    border-color: #2c3e90;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+select.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+select.form-control:hover {
+    cursor: pointer;
+    border-color: #2c3e90;
+}
+
+/* ============================================================
+   6. SECTIONS FORMULAIRE — EFFETS
+   ============================================================ */
+.form-section-icon {
+    transition: all 0.3s ease;
+}
+
+.form-section-header:hover .form-section-icon {
+    transform: scale(1.1);
+    background: #2c3e90;
+    color: #ffffff;
+}
+
+.form-section-title {
+    transition: color 0.3s ease;
+}
+
+.form-section-header:hover .form-section-title {
+    color: #2c3e90;
+}
+
+.form-divider {
+    transition: border-color 0.3s ease;
+}
+
+.form-divider:hover {
+    border-color: #2c3e90;
+}
+
+/* ============================================================
+   7. HELP TEXT — EFFETS
+   ============================================================ */
+.form-help {
+    transition: all 0.3s ease;
+}
+
+.form-help i {
+    transition: transform 0.3s ease;
+    color: #64748b;
+}
+
+.form-help:hover i {
+    transform: scale(1.2);
+    color: #2c3e90;
+}
+
+.form-help code {
+    transition: all 0.3s ease;
+}
+
+.form-help:hover code {
+    background: #e8eaf6;
+    color: #1a274f;
+}
+
+/* ============================================================
+   8. PONDÉRATION — EFFETS
+   ============================================================ */
+#ponderationTotal {
+    transition: all 0.3s ease;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+#ponderationOk,
+#ponderationErreur {
+    transition: all 0.3s ease;
+}
+
+#ponderationOk i {
+    animation: float 1.5s ease-in-out infinite;
+}
+
+#ponderationErreur i {
+    animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   9. BOUTONS — EFFETS
+   ============================================================ */
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-lg {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   10. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   11. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-card {
+    height: 200px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+/* ============================================================
+   12. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: #2c3e90;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   13. RESPONSIVE COMPLET
+   ============================================================ */
+
+/* Grand écran */
+@media (min-width: 1400px) {
+    .parametres-card-body {
+        padding: 32px;
+    }
+
+    .parametres-card-header {
+        padding: 24px 32px;
+    }
+}
+
+/* Petit desktop / Tablette paysage */
+@media (max-width: 1199px) {
+    .parametres-card-body {
+        padding: 24px;
+    }
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+    .parametres-card-body {
+        padding: 20px;
+    }
+
+    .parametres-card-header {
+        padding: 16px 20px;
+    }
+
+    .logo-upload-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+}
+
+/* Tablette verticale / Grand mobile */
+@media (max-width: 768px) {
+    .parametres-card {
+        border-radius: 14px;
+    }
+
+    .parametres-card-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .parametres-card-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .parametres-card-header h5 {
+        font-size: 0.95rem;
+    }
+
+    .parametres-card-body {
+        padding: 16px;
+    }
+
+    .logo-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 16px;
+    }
+
+    .logo-placeholder {
+        font-size: 2.5rem;
+    }
+
+    .form-section-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+        border-radius: 10px;
+    }
+
+    .form-section-title {
+        font-size: 0.82rem;
+    }
+
+    .form-section-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .btn-lg {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Petit mobile */
+@media (max-width: 575px) {
+    .parametres-card {
+        border-radius: 12px;
+        margin-bottom: 14px;
+    }
+
+    .parametres-card-header {
+        padding: 12px 14px;
+        gap: 8px;
+    }
+
+    .parametres-card-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .parametres-card-header h5 {
+        font-size: 0.88rem;
+    }
+
+    .parametres-card-header p {
+        font-size: 0.72rem;
+    }
+
+    .parametres-card-body {
+        padding: 14px;
+    }
+
+    .logo-preview {
+        width: 80px;
+        height: 80px;
+        border-radius: 14px;
+    }
+
+    .logo-placeholder {
+        font-size: 2rem;
+    }
+
+    .form-control {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+        border-radius: 10px;
+    }
+
+    .form-label {
+        font-size: 0.78rem;
+    }
+
+    .form-help {
+        font-size: 0.68rem;
+    }
+
+    .form-help code {
+        font-size: 0.66rem;
+        padding: 1px 5px;
+    }
+
+    .form-section-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+    }
+
+    .form-section-title {
+        font-size: 0.78rem;
+    }
+
+    .form-divider {
+        margin: 16px 0;
+    }
+
+    .btn-lg {
+        padding: 10px 18px;
+        font-size: 0.82rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .d-flex.justify-content-end.gap-sm {
+        flex-direction: column;
+    }
+
+    .d-flex.justify-content-end.gap-sm .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+/* Très petit mobile */
+@media (max-width: 374px) {
+    .parametres-card-header {
+        padding: 10px 12px;
+    }
+
+    .parametres-card-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .parametres-card-body {
+        padding: 12px;
+    }
+
+    .logo-preview {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* ============================================================
+   14. IMPRESSION
+   ============================================================ */
+@media print {
+    .parametres-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+    }
+
+    .btn,
+    .no-print,
+    .breadcrumb,
+    .sidebar,
+    .navbar-top,
+    .footer,
+    .toast-container,
+    #flashMessage {
+        display: none !important;
+    }
+
+    .parametres-card-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11px;
+    }
+
+    .logo-preview {
+        border: 1px solid #ddd;
+    }
+}

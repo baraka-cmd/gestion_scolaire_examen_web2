@@ -1876,3 +1876,1069 @@
         page-break-inside: avoid;
     }
 }
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   AJOUTS EVALUATIONS.CSS — Animations, finesses UI, responsive complet
+   ============================================================ */
+
+/* ============================================================
+   1. ANIMATIONS GLOBALES SUPPLÉMENTAIRES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 62, 144, 0.3); }
+    50%      { box-shadow: 0 0 0 10px rgba(44, 62, 144, 0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes progressGrow {
+    from { width: 0; }
+}
+
+@keyframes trashShake {
+    0%, 100% { transform: rotate(0deg); }
+    15%      { transform: rotate(5deg); }
+    30%      { transform: rotate(-5deg); }
+    45%      { transform: rotate(4deg); }
+    60%      { transform: rotate(-4deg); }
+    75%      { transform: rotate(2deg); }
+    90%      { transform: rotate(-2deg); }
+}
+
+/* ============================================================
+   2. ANIMATION PROGRESSIVE DES ÉLÉMENTS
+   ============================================================ */
+.stats-grid .stat-card:nth-child(1) { animation: slideInLeft 0.5s ease-out 0.05s both; }
+.stats-grid .stat-card:nth-child(2) { animation: slideInLeft 0.5s ease-out 0.15s both; }
+.stats-grid .stat-card:nth-child(3) { animation: slideInLeft 0.5s ease-out 0.25s both; }
+
+.evaluation-card {
+    animation: fadeInUp 0.4s ease both;
+}
+
+.evaluation-card:nth-child(1) { animation-delay: 0.05s; }
+.evaluation-card:nth-child(2) { animation-delay: 0.1s; }
+.evaluation-card:nth-child(3) { animation-delay: 0.15s; }
+.evaluation-card:nth-child(4) { animation-delay: 0.2s; }
+.evaluation-card:nth-child(5) { animation-delay: 0.25s; }
+.evaluation-card:nth-child(6) { animation-delay: 0.3s; }
+
+.progression-card {
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.info-card-custom {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+/* ============================================================
+   3. STATS CARDS — EFFETS DE SURVOL ENRICHIS
+   ============================================================ */
+.stat-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44,62,144,0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stat-card:hover::after {
+    opacity: 1;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary, #2c3e90);
+}
+
+.stat-card:hover .stat-icon {
+    transform: rotate(-5deg) scale(1.1);
+    animation: float 2s ease-in-out infinite;
+}
+
+.stat-card:hover .stat-value {
+    transform: scale(1.05);
+}
+
+.stat-icon,
+.stat-value {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   4. EN-TÊTE ÉVALUATIONS — STYLE AMÉLIORÉ
+   ============================================================ */
+.evaluations-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #2c3e90 0%, #3b4fa0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(44, 62, 144, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.evaluations-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.evaluations-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.evaluations-header-left {
+    position: relative;
+    z-index: 1;
+}
+
+.evaluations-header-left h4 {
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.evaluations-header-left h4 i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.evaluations-header-left p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+}
+
+.evaluations-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.evaluations-header-right .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evaluations-header-right .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+}
+
+.evaluations-header-right .btn-primary:hover {
+    background-color: #f59e0b;
+    color: var(--color-white);
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.evaluations-header-right .btn-success {
+    background-color: #10b981;
+    color: var(--color-white);
+    border-color: #10b981;
+}
+
+.evaluations-header-right .btn-success:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.evaluations-header-right .btn-outline-primary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.evaluations-header-right .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   5. FILTRES — EFFETS DE SURVOL ET FOCUS
+   ============================================================ */
+.evaluations-filters {
+    transition: all 0.3s ease;
+}
+
+.evaluations-filters:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.evaluations-filters .filter-group select {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evaluations-filters .filter-group select:hover {
+    border-color: #cbd5e1;
+    background-color: #fafbfc;
+}
+
+.evaluations-filters .filter-group select:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   6. CARTE ÉVALUATION — EFFETS DE SURVOL
+   ============================================================ */
+.evaluation-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evaluation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+}
+
+.evaluation-type-dot {
+    transition: all 0.3s ease;
+}
+
+.evaluation-card:hover .evaluation-type-dot {
+    transform: scale(1.3);
+}
+
+.evaluation-type-text {
+    transition: color 0.3s ease;
+}
+
+.evaluation-card:hover .evaluation-type-text {
+    color: var(--color-primary);
+}
+
+/* Badge groupe */
+.evaluation-card-badge {
+    transition: all 0.3s ease;
+}
+
+.evaluation-card:hover .evaluation-card-badge {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Lignes d'info */
+.evaluation-card-info-row {
+    transition: all 0.25s ease;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin: 0 -8px;
+}
+
+.evaluation-card-info-row:hover {
+    background-color: #f8fafc;
+}
+
+.evaluation-card-info-row i {
+    transition: transform 0.3s ease;
+}
+
+.evaluation-card-info-row:hover i {
+    transform: scale(1.2);
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   7. BARRE DE PROGRESSION — ANIMATION
+   ============================================================ */
+.evaluation-progress-fill {
+    animation: progressGrow 1s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.evaluation-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+    background-size: 200% 100%;
+}
+
+.evaluation-progress-bar {
+    transition: all 0.3s ease;
+}
+
+.evaluation-card:hover .evaluation-progress-bar {
+    box-shadow: 0 0 0 2px rgba(44, 62, 144, 0.1);
+}
+
+/* ============================================================
+   8. BOUTONS D'ACTION — EFFETS
+   ============================================================ */
+.btn-saisir {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-saisir:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 144, 0.3);
+}
+
+.btn-saisir:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn-modifier {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-modifier:hover {
+    transform: translateY(-2px);
+}
+
+.btn-modifier:hover i {
+    transform: rotate(-15deg) scale(1.1);
+}
+
+.btn-supprimer {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-supprimer:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   9. PROGRESSION CARD — EFFETS
+   ============================================================ */
+.progression-card {
+    transition: all 0.3s ease;
+}
+
+.progression-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.progression-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progression-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.progression-item-icon {
+    transition: all 0.3s ease;
+}
+
+.progression-item:hover .progression-item-icon {
+    transform: scale(1.1);
+}
+
+.progression-item-fill {
+    animation: progressGrow 1s ease-out;
+}
+
+/* ============================================================
+   10. INFO CARD — EFFETS
+   ============================================================ */
+.info-card-custom {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-card-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.info-card-custom-icon {
+    transition: all 0.3s ease;
+}
+
+.info-card-custom:hover .info-card-custom-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.info-list li {
+    transition: all 0.25s ease;
+    padding: 4px 8px 4px 20px;
+    border-radius: 6px;
+    margin: 0 -8px;
+}
+
+.info-list li:hover {
+    background-color: #f8fafc;
+    transform: translateX(4px);
+}
+
+.info-list li::before {
+    transition: all 0.3s ease;
+}
+
+.info-list li:hover::before {
+    background-color: #1a274f;
+    transform: scale(1.3);
+}
+
+/* ============================================================
+   11. GRILLE DE SAISIE — EFFETS
+   ============================================================ */
+.notes-grid-table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.notes-grid-table tbody tr:hover td {
+    background-color: #f8fafc;
+}
+
+.notes-grid-table tbody tr:hover td.eleve-col {
+    background-color: #f8fafc;
+}
+
+.note-input {
+    transition: all 0.25s ease;
+}
+
+.note-input:hover {
+    border-color: #cbd5e1;
+}
+
+.note-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 144, 0.1);
+    background-color: #f8fafc;
+    transform: scale(1.02);
+}
+
+.note-input.saisie:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.note-input.absent:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Cellule élève */
+.eleve-avatar-mini {
+    transition: transform 0.3s ease;
+}
+
+.notes-grid-table tbody tr:hover .eleve-avatar-mini {
+    transform: scale(1.1);
+}
+
+.eleve-name-mini {
+    transition: color 0.3s ease;
+}
+
+.notes-grid-table tbody tr:hover .eleve-name-mini {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   12. SAISIE HEADER — EFFETS
+   ============================================================ */
+.saisie-header-card {
+    transition: all 0.3s ease;
+}
+
+.saisie-header-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.saisie-header-icon {
+    transition: all 0.3s ease;
+}
+
+.saisie-header-card:hover .saisie-header-icon {
+    transform: scale(1.05);
+}
+
+.saisie-header-title {
+    transition: color 0.3s ease;
+}
+
+.saisie-header-meta span {
+    transition: all 0.25s ease;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.saisie-header-meta span:hover {
+    background-color: #f8fafc;
+}
+
+/* ============================================================
+   13. EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    transition: all 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-gray-400);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover i {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   14. SKELETON LOADING
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e8ecf2 37%, #f1f5f9 63%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-eval-card {
+    height: 200px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+}
+
+/* ============================================================
+   15. TOAST NOTIFICATION
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 420px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.toast-success { border-left: 4px solid #10b981; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-warning { border-left: 4px solid #f59e0b; }
+.toast-info    { border-left: 4px solid #3b82f6; }
+
+.toast-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon { background: #d1fae5; color: #065f46; }
+.toast-error .toast-icon   { background: #fee2e2; color: #991b1b; }
+.toast-warning .toast-icon { background: #fef3c7; color: #92400e; }
+.toast-info .toast-icon    { background: #dbeafe; color: #1e40af; }
+
+.toast-content {
+    flex: 1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    color: #1e293b;
+    background: #f1f5f9;
+}
+
+/* ============================================================
+   16. SCROLLBAR HORIZONTALE STYLÉE (GRILLE DE SAISIE)
+   ============================================================ */
+.notes-table-body {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+}
+
+.notes-table-body::-webkit-scrollbar {
+    height: 8px;
+}
+
+.notes-table-body::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+.notes-table-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2c3e90, #4a6cf7);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+}
+
+.notes-table-body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #1a274f, #3b4fa0);
+}
+
+.notes-table-body {
+    scrollbar-width: thin;
+    scrollbar-color: #2c3e90 #f1f5f9;
+}
+
+@media (max-width: 768px) {
+    .notes-table-body::-webkit-scrollbar {
+        height: 4px;
+    }
+    .notes-table-body::-webkit-scrollbar-track {
+        margin: 0 10px;
+    }
+}
+
+/* ============================================================
+   17. RESPONSIVE COMPLET
+   ============================================================ */
+
+@media (min-width: 1400px) {
+    .evaluations-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .progression-grid {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .evaluations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .evaluations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progression-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .progression-item {
+        padding: 18px 12px;
+    }
+
+    .progression-item-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+    }
+
+    .notes-grid-table {
+        min-width: 650px;
+    }
+}
+
+@media (max-width: 768px) {
+    .evaluations-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+        border-radius: 14px;
+    }
+
+    .evaluations-header-left h4 {
+        font-size: 1rem;
+    }
+
+    .evaluations-header-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .evaluations-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 14px;
+    }
+
+    .evaluations-filters .filter-group {
+        width: 100%;
+    }
+
+    .evaluations-filters .filter-group select {
+        width: 100%;
+    }
+
+    .progression-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .progression-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .evaluation-card-header {
+        padding: 14px 16px;
+    }
+
+    .evaluation-card-body {
+        padding: 14px 16px;
+    }
+
+    .evaluation-card-actions {
+        flex-wrap: wrap;
+    }
+
+    .notes-table-header {
+        padding: 16px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .notes-grid-table thead th {
+        font-size: 0.68rem;
+        padding: 8px 4px;
+    }
+
+    .note-input {
+        width: 55px;
+        padding: 5px 3px;
+        font-size: 0.78rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 575px) {
+    .evaluations-header {
+        padding: 14px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+
+    .evaluations-header-left h4 {
+        font-size: 0.9rem;
+    }
+
+    .evaluations-header-right .btn {
+        font-size: 0.72rem;
+        padding: 7px 12px;
+    }
+
+    .evaluation-card {
+        border-radius: 14px;
+    }
+
+    .evaluation-card-header {
+        padding: 12px 14px;
+    }
+
+    .evaluation-card-body {
+        padding: 12px 14px;
+    }
+
+    .evaluation-type-text {
+        font-size: 0.82rem;
+    }
+
+    .evaluation-card-badge {
+        font-size: 0.68rem;
+        padding: 4px 8px;
+    }
+
+    .evaluation-card-info-row {
+        font-size: 0.76rem;
+    }
+
+    .evaluation-progress-value {
+        font-size: 0.7rem;
+    }
+
+    .evaluation-card-actions .btn-saisir {
+        width: 100%;
+        order: -1;
+        font-size: 0.78rem;
+        padding: 8px 14px;
+    }
+
+    .evaluation-card-actions .btn-modifier,
+    .evaluation-card-actions .btn-supprimer {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+    }
+
+    .progression-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 14px 12px;
+        gap: 10px;
+    }
+
+    .progression-item-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .progression-item-title {
+        font-size: 0.8rem;
+    }
+
+    .progression-item-stats {
+        font-size: 0.72rem;
+    }
+
+    .notes-grid-table {
+        min-width: 500px;
+    }
+
+    .notes-grid-table thead th {
+        font-size: 0.6rem;
+        padding: 6px 2px;
+    }
+
+    .note-input {
+        width: 48px;
+        padding: 4px 2px;
+        font-size: 0.72rem;
+        border-radius: 4px;
+    }
+
+    .eleve-name-mini {
+        font-size: 0.72rem;
+    }
+
+    .eleve-matricule-mini {
+        font-size: 0.62rem;
+    }
+
+    .info-card-custom {
+        border-radius: 14px;
+    }
+
+    .info-card-custom-header {
+        padding: 12px 14px;
+    }
+
+    .info-card-custom-body {
+        padding: 14px;
+    }
+
+    .info-list li {
+        font-size: 0.76rem;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: 90vw;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .toast-content {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .evaluations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notes-grid-table {
+        min-width: 420px;
+    }
+}
+
+/* ============================================================
+   18. IMPRESSION
+   ============================================================ */
+@media print {
+    .evaluations-header-right,
+    .evaluations-filters,
+    .btn,
+    .evaluation-card-actions,
+    .toast-container,
+    .no-print,
+    .breadcrumb,
+    .sidebar,
+    .navbar-top,
+    .footer {
+        display: none !important;
+    }
+
+    .evaluations-header {
+        background: #f1f5f9 !important;
+        color: #000 !important;
+        box-shadow: none;
+        padding: 10px 0;
+    }
+
+    .evaluations-header-left h4,
+    .evaluations-header-left p {
+        color: #000 !important;
+    }
+
+    .evaluation-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    .progression-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .notes-grid-table {
+        min-width: 100%;
+    }
+
+    .note-input {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 10px;
+    }
+}
